@@ -1,0 +1,91 @@
+
+BugGrabberDB = {
+	["lastSanitation"] = 3,
+	["session"] = 7257,
+	["errors"] = {
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
+			["time"] = "2023/11/11 13:00:11",
+			["locals"] = "",
+			["stack"] = "",
+			["session"] = 7252,
+			["counter"] = 1,
+		}, -- [1]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Config.lua:1: Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.",
+			["time"] = "2023/11/11 13:00:11",
+			["locals"] = "(*temporary) = \"Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.\"\n",
+			["stack"] = "[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/DeBuffFilter/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:151: in function `GetAddon'\n[string \"@Interface/AddOns/DragonflightUI/Config.lua\"]:1: in main chunk",
+			["session"] = 7252,
+			["counter"] = 1,
+		}, -- [2]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Castbar.lua:1: Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.",
+			["time"] = "2023/11/11 13:00:11",
+			["locals"] = "(*temporary) = \"Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.\"\n",
+			["stack"] = "[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/DeBuffFilter/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:151: in function `GetAddon'\n[string \"@Interface/AddOns/DragonflightUI/Modules/Castbar.lua\"]:1: in main chunk",
+			["session"] = 7252,
+			["counter"] = 1,
+		}, -- [3]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Core.lua:1 Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [4]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Actionbar.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Actionbar.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [5]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Chat.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Chat.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [6]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Minimap.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Minimap.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [7]
+		{
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Unitframe.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Unitframe.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [8]
+		{
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Core.lua:1 Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [9]
+		{
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Actionbar.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Actionbar.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [10]
+		{
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Chat.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Chat.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [11]
+		{
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Minimap.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Minimap.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [12]
+		{
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Unitframe.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Unitframe.lua",
+			["session"] = 7252,
+			["time"] = "2023/11/11 13:00:12",
+			["counter"] = 1,
+		}, -- [13]
+	},
+}

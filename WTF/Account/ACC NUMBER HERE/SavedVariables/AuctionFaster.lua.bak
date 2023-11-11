@@ -1,0 +1,43 @@
+
+AuctionFasterDb = {
+	["enabled"] = true,
+	["auctionDuration"] = 3,
+	["historical"] = {
+		["enabled"] = true,
+		["keepDays"] = 20,
+	},
+	["enableToolTips"] = true,
+	["sniper"] = {
+		["refreshInterval"] = 5,
+	},
+	["buy"] = {
+		["tooltips"] = {
+			["enabled"] = true,
+			["anchor"] = "BOTTOMRIGHT",
+		},
+		["recentSearches"] = {
+		},
+	},
+	["tutorials"] = {
+		["sell"] = true,
+		["chain"] = true,
+		["buy"] = true,
+	},
+	["pricing"] = {
+		["maxBidDeviation"] = 20,
+	},
+	["fastMode"] = true,
+	["chainBuy"] = {
+	},
+	["sell"] = {
+		["tooltips"] = {
+			["enabled"] = true,
+			["anchor"] = "TOPRIGHT",
+			["itemEnabled"] = true,
+			["itemAnchor"] = "TOPRIGHT",
+		},
+	},
+	["auctionDb"] = {
+	},
+	["defaultTab"] = "NONE",
+}

@@ -1,0 +1,20 @@
+
+jpcbDB = {
+	["profileKeys"] = {
+		["Evolvebanned - Firemaw"] = "Default",
+		["Evolvepwe - Firemaw"] = "Default",
+		["Evolvepwe - Gehennas"] = "Default",
+		["Evolvepwp - Classic Era PTR"] = "Default",
+		["Evolvepwp - Firemaw"] = "Default",
+		["Evolvebank - Gehennas"] = "Default",
+		["Evolvepwp - Gehennas"] = "Default",
+		["Evolvepwp - Stitches"] = "Default",
+	},
+	["profiles"] = {
+		["Default"] = {
+			["offsetX"] = 480,
+			["scale"] = 1.00233268737793,
+			["offsetY"] = -270,
+		},
+	},
+}
