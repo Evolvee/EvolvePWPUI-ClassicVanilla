@@ -142,6 +142,6 @@ end)
 
 -- LFG, quest log, spellbook, and social window icons
 -- (LFG not introduced on Classic YET) LFGParentFrame:HookScript("OnShow", function() UpdatePortrait(LFGParentFrameIcon, "player") end)
-UpdatePortrait((select(1, QuestLogFrame:GetRegions())), "player")
-UpdatePortrait((SpellBookFrame:GetRegions()), "player")
+-- UpdatePortrait((select(1, QuestLogFrame:GetRegions())), "player")
+-- UpdatePortrait((SpellBookFrame:GetRegions()), "player")
 -- UpdatePortrait((FriendsFrame:GetRegions()), "player")

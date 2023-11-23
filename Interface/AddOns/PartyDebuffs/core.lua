@@ -8,24 +8,15 @@ local _G = getfenv(0)
 local mod, UnitDebuff, DebuffTypeColor = _G.mod, _G.UnitDebuff, _G.DebuffTypeColor
 
 local blacklist = {
-    [GetSpellInfo(1543)] = true, -- Flare
     [GetSpellInfo(6788)] = true, -- Weakened Soul
-    [GetSpellInfo(48560)] = true, -- Demoralizing Roar
-    [GetSpellInfo(57723)] = true, -- Exhaustion
-    [GetSpellInfo(48660)] = true, -- Hemorrhage
-    [GetSpellInfo(48564)] = true, -- Mangle (Bear)
-    [GetSpellInfo(48566)] = true, -- Mangle (Cat)
-    [GetSpellInfo(33193)] = true, -- Misery
-    [GetSpellInfo(57724)] = true, -- Sated
-    [GetSpellInfo(57722)] = true, -- Totem of Wrath
-    [GetSpellInfo(46857)] = true, -- Trauma
+    [GetSpellInfo(9898)] = true, -- Demoralizing Roar
+    [GetSpellInfo(17348)] = true, -- Hemorrhage
+    [GetSpellInfo(407995)] = true, -- Mangle (Bear)
+    [GetSpellInfo(407993)] = true, -- Mangle (Cat)
     [GetSpellInfo(26013)] = true, -- Deserter
-    [GetSpellInfo(29859)] = true, -- Blood Frenzy
-    [GetSpellInfo(8647)] = true, -- Expose Armor
-    [GetSpellInfo(47502)] = true, -- Thunder Clap
-    [GetSpellInfo(47437)] = true, -- Demoralizing Shout
-    [GetSpellInfo(29859)] = true, -- Blood Frenzy
-    [GetSpellInfo(49231)] = true, -- Earth Shock
+    [GetSpellInfo(11198)] = true, -- Expose Armor
+    [GetSpellInfo(11581)] = true, -- Thunder Clap
+    [GetSpellInfo(11556)] = true, -- Demoralizing Shout
 
 }
 

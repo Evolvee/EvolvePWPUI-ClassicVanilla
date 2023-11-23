@@ -203,6 +203,8 @@ local tooltipOwnerBlacklist = {
     "AchievementMicroButton",
     "QuestLogMicroButton",
     "SocialsMicroButton",
+	"MainMenuMicroButton", -- vanilla
+	"WorldMapMicroButton", -- vanilla
     --"PVPMicroButton",
     "LFGMicroButton",
     "HelpMicroButton",
@@ -344,9 +346,9 @@ local function OnInit()
     TargetFrameHealthBar:SetPoint("CENTER", -50, 6)
     TargetFrameNameBackground:Hide()
     TargetFrameTextureFrameName:SetPoint("CENTER", -50, 35)
-    --TargetFrameHealthBar.TextString:SetPoint("CENTER", -50, 12)
-    --TargetFrameHealthBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
-    --TargetFrameManaBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 10, "OUTLINE")
+    TargetFrameHealthBar.TextString:SetPoint("CENTER", -50, 12)
+    TargetFrameHealthBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 16, "OUTLINE")
+    TargetFrameManaBar.TextString:SetFont("Fonts/FRIZQT__.TTF", 10, "OUTLINE")
 
     --FocusFrameHealthBar:SetWidth(119)
     --FocusFrameHealthBar:SetHeight(29)
@@ -582,6 +584,9 @@ local function OnInit()
 
     texture = HelpMicroButton:GetHighlightTexture()
     texture:SetAlpha(0)
+	
+	texture = WorldMapMicroButton:GetHighlightTexture() -- vanilla
+	texture:SetAlpha(0) -- vanilla
 
     -- Remove Fizzle sounds (this was previously done by replacing the actual sound in Data/Sounds)
     for _, fdid in pairs(sounds) do
@@ -607,20 +612,20 @@ local function OnInit()
 
     -- trying to salvage the main action bar abomination they created in the clASSic ICC patch (bringing back the old looks of it)
 
-    MainMenuBar:SetSize(1024, 53)
-    MainMenuExpBar:SetSize(1024, 13);
-    MainMenuBarTexture0:SetPoint("BOTTOM", -384, 0);
-    MainMenuBarTexture1:SetPoint("BOTTOM", -128, 0);
-    MainMenuBarTexture2:SetPoint("BOTTOM", 128, 0);
-    MainMenuBarTexture3:SetPoint("BOTTOM", 384, 0);
-    MainMenuBarLeftEndCap:SetPoint("BOTTOM", -544, 0);
-    MainMenuBarRightEndCap:SetPoint("BOTTOM", 544, 0);
-    MainMenuBarPageNumber:SetPoint("CENTER", 30, -5);
-    MainMenuXPBarTexture0:SetSize(256, 10);
-    MainMenuXPBarTexture1:SetSize(256, 10);
-    MainMenuXPBarTexture2:SetSize(256, 10);
-    MainMenuXPBarTexture3:SetSize(256, 10);
-    MainMenuXPBarTexture3:SetPoint("BOTTOM", 384, 3);
+    --MainMenuBar:SetSize(1024, 53)
+    --MainMenuExpBar:SetSize(1024, 13);
+    --MainMenuBarTexture0:SetPoint("BOTTOM", -384, 0);
+    --MainMenuBarTexture1:SetPoint("BOTTOM", -128, 0);
+    --MainMenuBarTexture2:SetPoint("BOTTOM", 128, 0);
+    --MainMenuBarTexture3:SetPoint("BOTTOM", 384, 0);
+    --MainMenuBarLeftEndCap:SetPoint("BOTTOM", -544, 0);
+    --MainMenuBarRightEndCap:SetPoint("BOTTOM", 544, 0);
+    --MainMenuBarPageNumber:SetPoint("CENTER", 30, -5);
+    --MainMenuXPBarTexture0:SetSize(256, 10);
+    --MainMenuXPBarTexture1:SetSize(256, 10);
+    --MainMenuXPBarTexture2:SetSize(256, 10);
+    --MainMenuXPBarTexture3:SetSize(256, 10);
+    --MainMenuXPBarTexture3:SetPoint("BOTTOM", 384, 3);
     --CollectionsMicroButton:Hide()
     --PVPMicroButton:SetPoint("BOTTOMLEFT", SocialsMicroButton, "BOTTOMRIGHT", -2, 0)
     --UpdateMicroButtons()
@@ -928,12 +933,12 @@ local function colour(statusbar, unit)
                 local _, class = UnitClass(unit)
                 local c = RAID_CLASS_COLORS[class]
                 if c then
-                    if class == "DEATHKNIGHT" then
+                    --if class == "DEATHKNIGHT" then
                         -- experimental DK recoulouring feature (part1)
-                        statusbar:SetStatusBarColor(0, 1, 0.6)
-                    else
+                        --statusbar:SetStatusBarColor(0, 1, 0.6)
+                    --else
                         statusbar:SetStatusBarColor(c.r, c.g, c.b)
-                    end
+                    --end
                 end
             elseif unit == "player" then
                 local value = UnitHealth("player")
@@ -1125,20 +1130,20 @@ end)
 
 -- IT IS ALSO ABSOLUTELY NECESSARY FOR YOU TO DISABLE THE "Totem Plates" PLUGIN IN GLADDY UI
 
-if IsAddOnLoaded("Gladdy") then
-    local Gladdy = LibStub and LibStub("Gladdy")
-    if Gladdy then
-        local TotemPlates = Gladdy.modules["Totem Plates"]
-        if TotemPlates then
-            local TotemPlates_ToggleAddon = TotemPlates.ToggleAddon
-            function TotemPlates:ToggleAddon(nameplate, show)
-                if not show then
-                    TotemPlates_ToggleAddon(self, nameplate, show)
-                end
-            end
-        end
-    end
-end
+--if IsAddOnLoaded("Gladdy") then
+--    local Gladdy = LibStub and LibStub("Gladdy")
+--    if Gladdy then
+--        local TotemPlates = Gladdy.modules["Totem Plates"]
+--        if TotemPlates then
+--            local TotemPlates_ToggleAddon = TotemPlates.ToggleAddon
+--            function TotemPlates:ToggleAddon(nameplate, show)
+--                if not show then
+--                    TotemPlates_ToggleAddon(self, nameplate, show)
+--                end
+--            end
+--        end
+--    end
+--end
 
 -- Highlight Tremor Totem (disable nameplates of everything else) + disable Snake Trap Cancer + prevent displaying already dead Tremor Totem (retarded Classic-like behavior)
 
@@ -1207,9 +1212,9 @@ local function HandleNewNameplate(nameplate, unit)
             nameplate.tremorTotemGuid = guid
             texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-TREMOR.blp")
         end
-    elseif name == "Ebon Gargoyle" then
-        local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
-        texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-GARGOYLE.blp")
+    --elseif name == "Ebon Gargoyle" then
+    --    local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
+    --    texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-GARGOYLE.blp")
     end
 end
 
@@ -1328,7 +1333,7 @@ local classmarkers = {
     ["PRIEST"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Priest",
     ["WARRIOR"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Warrior",
     ["PALADIN"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Paladin",
-    ["DEATHKNIGHT"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\RetardedDog",
+    --["DEATHKNIGHT"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\RetardedDog",
     ["HUNTER"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Hunter",
     ["DRUID"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Druid",
     ["MAGE"] = "Interface\\AddOns\\TextureScript\\PartyIcons\\Mage",
@@ -1436,7 +1441,7 @@ local gossipSkipIcon = {
     [132057] = 1, -- taxi
     [132058] = 1, -- trainer
     [132060] = 1, -- vendor
-    [528409] = 1, -- Dalaran auction house
+    --[528409] = 1, -- Dalaran auction house
 }
 
 local IsShiftKeyDown, IsAltKeyDown, IsControlKeyDown = IsShiftKeyDown, IsAltKeyDown, IsControlKeyDown
@@ -1469,46 +1474,46 @@ local function skipEventFrame()
 end
 
 -- Add MMR at the bottom of Arena Scoreboard
-local teamRatingFrame = CreateFrame("frame", "TeamRatingTextFrame", WorldStateScoreFrame)
-teamRatingFrame:SetPoint("BOTTOM", WorldStateScoreFrameLeaveButton, "TOP", 0, 12)
-teamRatingFrame:SetSize(300, 80)
-teamRatingFrame:Hide()
-teamRatingFrame.names = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-teamRatingFrame.ratings = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-teamRatingFrame.names:SetFont("Fonts/FRIZQT__.TTF", 24)
-teamRatingFrame.ratings:SetFont("Fonts/FRIZQT__.TTF", 24)
-teamRatingFrame.names:SetJustifyH("LEFT")
-teamRatingFrame.ratings:SetJustifyH("LEFT")
-teamRatingFrame.ratings:SetPoint("TOPLEFT", teamRatingFrame.names, "TOPRIGHT", 0, 0)
+--local teamRatingFrame = CreateFrame("frame", "TeamRatingTextFrame", WorldStateScoreFrame)
+--teamRatingFrame:SetPoint("BOTTOM", WorldStateScoreFrameLeaveButton, "TOP", 0, 12)
+--teamRatingFrame:SetSize(300, 80)
+--teamRatingFrame:Hide()
+--teamRatingFrame.names = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+--teamRatingFrame.ratings = teamRatingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+--teamRatingFrame.names:SetFont("Fonts/FRIZQT__.TTF", 24)
+--teamRatingFrame.ratings:SetFont("Fonts/FRIZQT__.TTF", 24)
+--teamRatingFrame.names:SetJustifyH("LEFT")
+--teamRatingFrame.ratings:SetJustifyH("LEFT")
+--teamRatingFrame.ratings:SetPoint("TOPLEFT", teamRatingFrame.names, "TOPRIGHT", 0, 0)
 
-teamRatingFrame:SetScript("OnShow", function()
-    local nWidth = teamRatingFrame.names:GetWidth()
-    local rWidth = teamRatingFrame.ratings:GetWidth()
-    local x = (nWidth / 2) - ((nWidth + rWidth - 10) / 2) -- no idea why "- 10" helps centering it!
-    teamRatingFrame.names:ClearAllPoints()
-    teamRatingFrame.names:SetPoint("BOTTOM", teamRatingFrame, "BOTTOM", x, 0)
-end)
+--teamRatingFrame:SetScript("OnShow", function()
+--    local nWidth = teamRatingFrame.names:GetWidth()
+--    local rWidth = teamRatingFrame.ratings:GetWidth()
+--    local x = (nWidth / 2) - ((nWidth + rWidth - 10) / 2) -- no idea why "- 10" helps centering it!
+--    teamRatingFrame.names:ClearAllPoints()
+--    teamRatingFrame.names:SetPoint("BOTTOM", teamRatingFrame, "BOTTOM", x, 0)
+--end)
 
-teamRatingFrame:SetScript("OnEvent", function(_, event)
-    if event == "UPDATE_BATTLEFIELD_SCORE" then
-        local _, isRatedArena = IsActiveBattlefieldArena()
-        if isRatedArena then
-            local name1, _, newRating1, mmr1 = GetBattlefieldTeamInfo(0)
-            local name2, _, _, mmr2 = GetBattlefieldTeamInfo(1)
-            if newRating1 and newRating1 > 0 then
-                local nameText = string_format('|cffbd67ff"%s" |r\n|cffffd500"%s" |r', name1, name2)
-                local ratingText = string_format('|cffbd67ffMMR: %d|r\n|cffffd500MMR: %d|r', mmr1, mmr2)
-                teamRatingFrame.names:SetText(nameText)
-                teamRatingFrame.ratings:SetText(ratingText)
-                teamRatingFrame:Show()
-                return
-            end
-        end
-    end
-    teamRatingFrame:Hide()
-end)
-teamRatingFrame:RegisterEvent("UPDATE_BATTLEFIELD_SCORE")
-teamRatingFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+--teamRatingFrame:SetScript("OnEvent", function(_, event)
+--    if event == "UPDATE_BATTLEFIELD_SCORE" then
+--        local _, isRatedArena = IsActiveBattlefieldArena()
+--        if isRatedArena then
+--            local name1, _, newRating1, mmr1 = GetBattlefieldTeamInfo(0)
+--            local name2, _, _, mmr2 = GetBattlefieldTeamInfo(1)
+--            if newRating1 and newRating1 > 0 then
+--                local nameText = string_format('|cffbd67ff"%s" |r\n|cffffd500"%s" |r', name1, name2)
+--                local ratingText = string_format('|cffbd67ffMMR: %d|r\n|cffffd500MMR: %d|r', mmr1, mmr2)
+--                teamRatingFrame.names:SetText(nameText)
+--                teamRatingFrame.ratings:SetText(ratingText)
+--                teamRatingFrame:Show()
+--                return
+--            end
+--        end
+--    end
+--    teamRatingFrame:Hide()
+--end)
+--teamRatingFrame:RegisterEvent("UPDATE_BATTLEFIELD_SCORE")
+--teamRatingFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 -- Moving right and left multibar (actionbars at the right side) to match the 2.4.3 position
 local function SetPosition(frame, ...)
@@ -1714,16 +1719,16 @@ end
 --@@ Wrath end
 
 --
-local evolvedFrame = CreateFrame("Frame")
-evolvedFrame:RegisterEvent("ADDON_LOADED")
-evolvedFrame:RegisterEvent("PLAYER_LOGIN")
-evolvedFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-evolvedFrame:RegisterEvent("GOSSIP_SHOW")
-evolvedFrame:RegisterEvent("UPDATE_BINDINGS")
-evolvedFrame:RegisterUnitEvent("UNIT_PET", "player")
-evolvedFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED")
-evolvedFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED")
-evolvedFrame:SetScript("OnEvent", function(self, event, ...)
+local supaFrame = CreateFrame("Frame")
+supaFrame:RegisterEvent("ADDON_LOADED")
+supaFrame:RegisterEvent("PLAYER_LOGIN")
+supaFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+supaFrame:RegisterEvent("GOSSIP_SHOW")
+supaFrame:RegisterEvent("UPDATE_BINDINGS")
+supaFrame:RegisterUnitEvent("UNIT_PET", "player")
+supaFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED")
+supaFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED")
+supaFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "PLAYER_LOGIN" then
         CustomCvar() -- Set our CVAR values
         OnInit() -- Init tons of shit
@@ -1794,4 +1799,4 @@ end)
 --Login message informing all scripts of this file were properly executed
 ChatFrame1:AddMessage("EvolvePWPUI-ClassicVanilla v0.1 Loaded successfully!", 255, 255, 0)
 ChatFrame1:AddMessage("Check for updates at:", 255, 255, 0)
-ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicWOTLK", 255, 255, 0)
+ChatFrame1:AddMessage("https://github.com/Evolvee/EvolvePWPUI-ClassicVanilla", 255, 255, 0)
