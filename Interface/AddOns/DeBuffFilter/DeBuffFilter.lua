@@ -15,7 +15,6 @@ local GetAddOnInfo = C_AddOns.GetAddOnInfo or GetAddOnInfo
 local defaults = {
     profile = {
         hiddenBuffs = {},
-        hiddenRaidAuras = {},
         selfSize = 21,
         otherSize = 17,
         auraWidth = 122,
@@ -273,49 +272,6 @@ function DeBuffFilter:SetupOptions()
                         name = "Buff List",
                         type = "group",
                         args = DeBuffFilter:AddCustomHighlightOptions()
-                    },
-                },
-            },
-            raidAuras = {
-                name = "RaidFrame Auras",
-                type = "group",
-                order = 4,
-                args = {
-                    buffsInput = {
-                        order = 1,
-                        width = 1.5,
-                        name = "Add (De)Buff By Name / Spell Id",
-                        desc = "Type the name or spell id of a (de)buff to hide",
-                        type = "input",
-                        set = function(info, val)
-                            if tonumber(val) then
-                                val = select(1, GetSpellInfo(val))
-                            end
-
-                            for _, value in ipairs(self.db.profile.hiddenRaidAuras) do
-                                if value == val then
-                                    return
-                                end
-                            end
-                            table.insert(self.db.profile.hiddenRaidAuras, val);
-                            table.sort(self.db.profile.hiddenRaidAuras)
-                        end,
-                    },
-                    buffsList = {
-                        order = 2,
-                        width = 1,
-                        name = "Hidden Auras:",
-                        type = "multiselect",
-                        values = self.db.profile.hiddenRaidAuras,
-                        get = function(info, val)
-                            return true;
-                        end,
-                        set = function(info, val)
-                            table.remove(self.db.profile.hiddenRaidAuras, val);
-                        end,
-                        confirm = function(info, val, v2)
-                            return "Delete " .. self.db.profile.hiddenRaidAuras[val] .. "?"
-                        end
                     },
                 },
             },
@@ -640,8 +596,7 @@ local function updatePositions(frame, auraName, numAuras, numOppositeAuras, upda
 end
 
 local function Filterino(self)
-    --if self and (not (self == TargetFrame or self == FocusFrame) or self:IsForbidden()) then
-	if self and (not (self == TargetFrame) or self:IsForbidden()) then
+    if self and (not (self == TargetFrame) or self:IsForbidden()) then
         return
     end
 
@@ -727,11 +682,6 @@ local function Filterino(self)
     end
 end
 
-local origCompactUnitFrame_UtilIsPriorityDebuff = CompactUnitFrame_UtilIsPriorityDebuff
-local origCompactUnitFrame_UtilShouldDisplayDebuff = CompactUnitFrame_UtilShouldDisplayDebuff
-local origCompactUnitFrame_UtilShouldDisplayBuff = CompactUnitFrame_UtilShouldDisplayBuff
-local UnitAura = UnitAura
-
 DeBuffFilter.event = CreateFrame("Frame")
 DeBuffFilter.event:RegisterEvent("PLAYER_LOGIN")
 DeBuffFilter.event:SetScript("OnEvent", function(self)
@@ -739,42 +689,6 @@ DeBuffFilter.event:SetScript("OnEvent", function(self)
     hooksecurefunc("TargetFrame_UpdateAuras", Filterino)
     hooksecurefunc(TargetFrame.spellbar, "SetPoint", hookCastBar)
     --hooksecurefunc(FocusFrame.spellbar, "SetPoint", hookCastBar)
-
-    local bd = IsAddOnLoaded("BigDebuffs")
-    if not bd then
-        function CompactUnitFrame_UtilIsPriorityDebuff(...)
-            local unit, index = ...
-
-            local name = UnitAura(unit, index, "HARMFUL")
-            if name and DeBuffFilter:RFBuffs(name) then
-                return
-            end
-
-            return origCompactUnitFrame_UtilIsPriorityDebuff(...)
-        end
-
-        function CompactUnitFrame_UtilShouldDisplayDebuff(...)
-            local unit, index = ...
-
-            local name = UnitAura(unit, index, "HARMFUL")
-            if name and DeBuffFilter:RFBuffs(name) then
-                return
-            end
-
-            return origCompactUnitFrame_UtilShouldDisplayDebuff(...)
-        end
-
-        function CompactUnitFrame_UtilShouldDisplayBuff(...)
-            local unit, index = ...
-
-            local name = UnitAura(unit, index, "HELPFUL")
-            if name and DeBuffFilter:RFBuffs(name) then
-                return
-            end
-
-            return origCompactUnitFrame_UtilShouldDisplayBuff(...)
-        end
-    end
 
     self:UnregisterEvent("PLAYER_LOGIN")
     self:SetScript("OnEvent", nil)

@@ -1,12 +1,12 @@
-## Interface: 30402
+## Interface: 30403
 ## Title: DragonflightUI
 ## Notes: 
 ## Author: Karl-Heinz Schneider
 ## X-Website: https://github.com/Karl-HeinzSchneider/WoW-DragonflightUI
 ## X-Curse-Project-ID: 819757
-## Version: v0.2.0
+## Version: v0.4.0
 ## SavedVariables: DragonflightUIDB
-## OptionalDeps: Ace3
+## OptionalDeps: Ace3, Blizzard_TalentUI, Blizzard_TimeManager, NovaWorldBuffs
 
 # Libs
 Libs\LibStub\LibStub.lua
@@ -22,9 +22,15 @@ Libs\AceConfig-3.0\AceConfig-3.0.xml
 Core.lua
 Config.lua
 
+# XML
+XML\Castbar.xml
+
 # Modules
 Modules\Actionbar.lua
 Modules\Castbar.lua
 Modules\Chat.lua
 Modules\Minimap.lua
 Modules\Unitframe.lua
+
+#
+Compatibility.lua

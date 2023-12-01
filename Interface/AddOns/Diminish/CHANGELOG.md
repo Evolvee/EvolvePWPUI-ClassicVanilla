@@ -1,15 +1,9 @@
 # Diminish
 
-## [v2.6.6](https://github.com/wardz/Diminish/tree/v2.6.6) (2023-09-25)
-[Full Changelog](https://github.com/wardz/Diminish/compare/v2.6.5...v2.6.6) [Previous Releases](https://github.com/wardz/Diminish/releases)
+## [v2.6.8](https://github.com/wardz/Diminish/tree/v2.6.8) (2023-11-20)
+[Full Changelog](https://github.com/wardz/Diminish/compare/v2.6.7...v2.6.8) [Previous Releases](https://github.com/wardz/Diminish/releases)
 
-- luacheck ignore 'Diminish/libs'  
-- specifying tag shouldnt be needed anymore  
-- add libs folder for easy testing without bigwigs packager script  
-- bump actions checkout version  
-- remove personal symlink script, fix old packager ignore paths  
-- grey out test option  
-- remove packager manual changelog  
-- update README.md  
-- bump retail toc version  
-- bump classic toc version  
+- update DRList-1.0  
+- remove non-english localizations as bigwigs packager and/or curseforge API seems bugged atm  
+- remove unused var  
+- fixes/support for classic era patch 1.15.0  

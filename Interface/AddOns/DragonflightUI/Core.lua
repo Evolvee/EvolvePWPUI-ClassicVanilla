@@ -7,7 +7,7 @@ DF.Era = DF.InterfaceVersion <= 20000
 
 local defaults = {
     profile = {
-        modules = {['Actionbar'] = true, ['Castbar'] = true, ['Chat'] = true, ['Minimap'] = true, ['Unitframe'] = true},
+        modules = {['Actionbar'] = true, ['Castbar'] = true, ['Chat'] = false, ['Minimap'] = true, ['Unitframe'] = true},
         bestnumber = 42
     }
 }
@@ -22,7 +22,7 @@ end
 
 function DF:OnEnable()
     -- Called when the addon is enabled
-    --self:Print('DragonflightUI enabled!')
+    -- self:Print('DragonflightUI enabled!')
     self:ShowStartMessage()
 end
 
@@ -50,9 +50,11 @@ end
 local name, realm = UnitName('player')
 local showDebug = name == 'Zimtdev'
 function DF:Debug(m, value)
-    if showDebug then
-        m:Print(value)
-    end
+    if showDebug then m:Print(value) end
+end
+
+function DF:Dump(value)
+    if showDebug then DevTools_Dump(value) end
 end
 
 function DF:ShowStartMessage()
@@ -64,7 +66,7 @@ function DF:ShowStartMessage()
         version = GetAddOnMetadata('DragonflightUI', 'Version')
     end
 
-    self:Print(version .. " loaded! Type '/dragonflight'or '/df' to open the options menu.")
+    self:Print(version .. " loaded! Type '/dragonflight' or '/df' to open the options menu.")
 end
 
 function DF:GetClassColor(class, alpha)

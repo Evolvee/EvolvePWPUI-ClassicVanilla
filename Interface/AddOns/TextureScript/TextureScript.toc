@@ -1,6 +1,6 @@
 ## Interface: 30402
 ## Author: Evolve, Pyralis, Xyz
-## Title: |FFF569EvolvePWPUI - ClassicVanilla|r
+## Title: |cff00aeffEvolvePWPUI - ClassicVanilla|r
 ## Notes: Evolve PWP UI for Classic Vanilla
 
 TextureScript.lua

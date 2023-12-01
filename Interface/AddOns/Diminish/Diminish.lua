@@ -221,7 +221,6 @@ function Diminish:InitDB()
         NS.db.unitFrames.player.usePersonalNameplate = false
     end
     if NS.IS_CLASSIC then
-        NS.db.timerStartAuraEnd = true
         NS.db.unitFrames.focus.enabled = false
         NS.db.unitFrames.arena.enabled = false
     end
@@ -367,21 +366,15 @@ do
     local DRList = LibStub("DRList-1.0")
 
     function Diminish:COMBAT_LOG_EVENT_UNFILTERED()
-        local _, eventType, _, srcGUID, _, srcFlags, _, destGUID, _, destFlags, _, spellID, spellName, _, auraType = CombatLogGetCurrentEventInfo()
+        local _, eventType, _, srcGUID, _, srcFlags, _, destGUID, _, destFlags, _, spellID, _, _, auraType = CombatLogGetCurrentEventInfo()
         if not destGUID then return end -- sanity check
 
         if auraType == "DEBUFF" then
             if eventType ~= "SPELL_AURA_REMOVED" and eventType ~= "SPELL_AURA_APPLIED" and eventType ~= "SPELL_AURA_REFRESH" then return end
-            if spellID == 0 then -- for classic
-                spellID = spellName
-            end
 
-            local category, drSpellID = DRList:GetCategoryBySpellID(spellID)
+            local category = DRList:GetCategoryBySpellID(spellID)
             if not category or category == "knockback" then return end
             category = DRList:GetCategoryLocalization(category)
-            if drSpellID then
-                spellID = drSpellID
-            end
 
             local isMindControlled = false
             local isNotPetOrPlayer = false
