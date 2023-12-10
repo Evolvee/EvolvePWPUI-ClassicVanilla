@@ -228,8 +228,8 @@ L["showBuffsDesc"] = "Show your current world buffs for all your characters, thi
 ---General Options---
 L["generalHeaderDesc"] = "General Options";
 
-L["showWorldMapMarkersTitle"] = "City Map Timers";
-L["showWorldMapMarkersDesc"] = "Show timer icons on the Orgrimmar/Stormwind world map?";
+L["showWorldMapMarkersTitle"] = "World Map Timers";
+L["showWorldMapMarkersDesc"] = "Show timer icons on the Orgrimmar/Stormwind/Barrens world map?";
 
 L["receiveGuildDataOnlyTitle"] = "Guild Data Only";
 L["receiveGuildDataOnlyDesc"] = "This will make it so you don't get timer data from anyone outside the guild. You should only enable this if you think someone is spoofing wrong timer data on purpose because it will lower the accuracy of your timers with less people to pull data from. It will make it especially hard to get songflower timers becaus they are so short. Every single person in the guild needs this enabled for it to even work.";
@@ -849,3 +849,11 @@ L["wintergraspChat10Desc"] = "Print a msg in chat when 10 minutes left on Winter
 
 L["wintergraspMiddle10Title"] = "Wintergrasp 10 Minutes";
 L["wintergraspMiddle10Desc"] = "Show a raid warning style msg in the middle of the screen when 10 minutes left on Wintergrasp spirit towers.";
+
+L["ashenvaleHordeVictoryMsg"] = "The Alliance Priestess of the Moon has been slain";
+L["ashenvaleAllianceVictoryMsg"] = "The Horde Far Seer has been slain";
+
+L["ashenvaleWarning"] = "Ashenvale PvP event starting soon (Alliance %s%%) (Horde %s%%)."; --Any localization of this string must match the same format with brackets etc.
+
+L["Boon of Blackfathom"] = "Boon of Blackfathom";
+L["Ashenvale Rallying Cry"] = "Ashenvale Rallying Cry";

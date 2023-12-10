@@ -23,6 +23,9 @@ elseif (WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC) then
 elseif (WOW_PROJECT_ID == WOW_PROJECT_MAINLINE) then
 	NWB.isRetail = true;
 end
+if (C_Engraving and C_Engraving.IsEngravingEnabled()) then
+	NWB.isSOD = true;
+end
 --Temporary until actual launch.
 --if (WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC) then
 	--This basically meant prepatch, some things were still enabled.
@@ -97,6 +100,7 @@ function NWB:OnInitialize()
 	self:createShatDailyMarkers();
 	self:getDmfData();
 	self:createDmfMarkers();
+	self:createAshenvaleMarkers();
 	self:doResetTimerData();
 	self:resetSongFlowers();
 	self:resetLayerData();
@@ -1066,6 +1070,20 @@ function NWB:sendGuildMsg(msg, type, zoneName, prefix, minVersion)
 	end
 end
 
+function NWB:inMyGuild(who)
+	if (who) then
+		for i = 1, GetNumGuildMembers() do
+			local name = GetGuildRosterInfo(i);
+			if (name) then
+				local nameOnly, realm = strsplit("-", who, 2);
+				if (who == name or who == nameOnly) then
+					return true;
+				end
+			end
+		end
+	end
+end
+
 function NWB:logonCheckGuildMasterSetting()
 	C_Timer.After(10, function()
 		NWB.checkedGuildNote = true;
@@ -1321,6 +1339,10 @@ function NWB:monsterYell(...)
 		else
 			NWB.data.hellfireRep = GetServerTime();
 		end
+	--elseif ((name == L["Dawnwatcher Selgorm"] or name == L["Horde Placeholder"]) and string.match(msg, L["the dread beast Aku'mai has been slain"])) then
+		--SoD Darnassus npc.
+		--print("darn yell", GetServerTime())
+		--This turned out to be only 6 seconds warning, probably not worth adding the yell to guild chat?
 	end
 end
 
@@ -2027,6 +2049,17 @@ function NWB:combatLogEventUnfiltered(...)
 			local expirationTime = NWB:getBuffDuration(spellName, 0);
 			if (expirationTime >= 7199) then
 				NWB:trackNewBuff(spellName, "swiftZanza");
+			end
+		--New SoD buffs, now that they allow spellIDs in classic this needs to all be changed to a hash table instead of this mess of elseif's in the future.
+		elseif (destName == UnitName("player") and spellName == L["Boon of Blackfathom"]) then
+			local expirationTime = NWB:getBuffDuration(spellName, 0);
+			if (expirationTime >= 7199) then
+				NWB:trackNewBuff(spellName, "boonOfBlackfathom");
+			end
+		elseif (destName == UnitName("player") and spellName == L["Ashenvale Rallying Cry"]) then
+			local expirationTime = NWB:getBuffDuration(spellName, 0);
+			if (expirationTime >= 7199) then
+				NWB:trackNewBuff(spellName, "ashenvaleRallyingCry");
 			end
 		elseif (destName == UnitName("player") and spellName == L["Stealth"]) then
 			--Vanish is hidden from combat log even to ourself, use stealth instead as it fires when we vanish.
@@ -2807,7 +2840,7 @@ function NWB:trackNewBuff(spellName, type, npcID)
 		NWB:print(string.format(L["dmfBuffDropped"], spellName));
 		NWB:addDmfCooldown();
 	end
-	NWB:debug("Tracking new buff", type, spellName);
+	NWB:debug(GetServerTime(), "Tracking new buff", type, spellName);
 	NWB:recalcBuffListFrame();
 end
 
@@ -2890,6 +2923,9 @@ local spellTypes = {
 	[40586] = "unstableFlaskPhysician",
 	[40575] = "unstableFlaskSoldier",
 	[40587] = "unstableFlaskSoldier",
+	--SoD.
+	[430947] = "boonOfBlackfathom",
+	[430352] = "ashenvaleRallyingCry",
 }; 
 		
 local buffTable = {
@@ -3099,6 +3135,17 @@ local buffTable = {
 		icon = "|TInterface\\Icons\\inv_potion_84:12:12:0:0|t",
 		--icon = "|TInterface\\Icons\\inv_potion_91:12:12:0:0|t",
 		fullName = "Unstable Flask of the Soldier",
+		maxDuration = 7200,
+	},
+	--SoD.
+	["boonOfBlackfathom"] = {
+		icon = "|TInterface\\Icons\\achievement_boss_bazil_akumai:12:12:0:0|t",
+		fullName = "Boon of Blackfathom",
+		maxDuration = 7200,
+	},
+	["ashenvaleRallyingCry"] = {
+		icon = "|TInterface\\Icons\\spell_misc_warsongfocus:12:12:0:0|t",
+		fullName = "Ashenvale Rallying Cry",
 		maxDuration = 7200,
 	},
 };
@@ -3920,6 +3967,10 @@ f:SetScript("OnEvent", function(self, event, ...)
 		if (who == UnitName("player")) then
 			--Register ourself to other addon users when joining a guild.
 			NWB:requestData("GUILD", nil, "ALERT");
+		end
+		--Request roster update when guild member goes online or offline, this seems to be delayed, see if this helps?
+		if (string.match(text, string.gsub(ERR_FRIEND_ONLINE_SS, "|H.+|h", "(.+)")) or string.match(text, string.gsub(ERR_FRIEND_OFFLINE_S, "%%s", "(.+)"))) then
+			GuildRoster();
 		end
 	elseif (event == "CHAT_MSG_ADDON") then
 		local commPrefix, string, distribution, sender = ...;
@@ -5689,7 +5740,8 @@ function NWB:updateMinimapButton(tooltip, frame)
 				tooltip:AddLine(NWB.chatColor .."|cFFFF6900Daily|r |cFF9CD6DE(|r|cff00ff00N|r|cFF9CD6DE)|r "
 						.. name .. " (" .. questData.abbrev .. ")");
 			end
-		else
+		elseif (NWB.isTBC) then
+			--Disabled this in wrath phase 4, there are no different dung dailies anyway just the same type every day.
 			tooltip:AddLine(NWB.chatColor .."|cFFFF6900Daily|r |cFF9CD6DE(|r|cff00ff00N|r|cFF9CD6DE)|r Unknown.");
 		end
 		if (NWB.data.tbcHD and NWB.data.tbcHDT and GetServerTime() - NWB.data.tbcHDT < 86400) then
@@ -5699,7 +5751,8 @@ function NWB:updateMinimapButton(tooltip, frame)
 				tooltip:AddLine(NWB.chatColor .."|cFFFF6900Daily|r |cFF9CD6DE(|r|cFFFF2222H|r|cFF9CD6DE)|r "
 						.. name .. " (" .. questData.abbrev .. ")");
 			end
-		else
+		elseif (NWB.isTBC) then
+			--Disabled this in wrath phase 4, there are no different dung dailies anyway just the same type every day.
 			tooltip:AddLine(NWB.chatColor .."|cFFFF6900Daily|r |cFF9CD6DE(|r|cFFFF2222H|r|cFF9CD6DE)|r Unknown.");
 		end
 		local texture = "|TInterface\\TargetingFrame\\UI-PVP-Horde:12:12:-1:0:64:64:7:36:1:36|t";
@@ -5768,6 +5821,9 @@ function NWB:updateMinimapButton(tooltip, frame)
 			tooltip.NWBSeparator3:SetPoint("TOP", _G[tooltip:GetName() .. "TextLeft" .. tooltip:NumLines()], "CENTER");
 			tooltip.NWBSeparator3:Show();
 		end
+	end
+	if (NWB.isSOD) then
+		NWB:addAshenvaleMinimapString(tooltip);
 	end
 	tooltip:AddLine("|cFF9CD6DELeft-Click|r Timers");
 	tooltip:AddLine("|cFF9CD6DERight-Click|r Buffs");
@@ -6513,6 +6569,7 @@ function NWB:updateFelwoodWorldmapMarker(type)
 					frame:SetWidth(42);
 					frame:SetHeight(24);
 					hasTimer = count;
+					frame.hasTimer = true;
 			  	elseif (time > 0) then
 					--If timer is less than 25 minutes old then return time left.
 			    	local minutes = string.format("%02.f", math.floor(time / 60));
@@ -6525,6 +6582,7 @@ function NWB:updateFelwoodWorldmapMarker(type)
 					frame:SetWidth(42);
 					frame:SetHeight(24);
 					hasTimer = count;
+					frame.hasTimer = true;
 			  	else
 			  		--tooltipText = tooltipText .. "\n" .. L["noTimer"] .. " (Layer " .. count .. ")";
 			  		tooltipText = L["noTimer"] .. " (Layer " .. count .. ")\n" .. tooltipText
@@ -6532,19 +6590,38 @@ function NWB:updateFelwoodWorldmapMarker(type)
 					frame.fs:SetText(L["noTimer"]);
 					frame:SetWidth(54);
 					frame:SetHeight(22);
+					frame.hasTimer = false;
 				end
 			end
 		end
 		if (hasTimer) then
 			--Show all frames if any have an active timer.
-			for i = 1, count do
+			--[[for i = 1, count do
 				if (i == 1) then
 					_G[type .. "NWB"]["timerFrame"]:Show();
 				elseif (_G[type .. "NWB"]["timerFrame" .. i]) then
 					_G[type .. "NWB"]["timerFrame" .. i]:SetPoint("CENTER", 0, i * 18.5);
 					_G[type .. "NWB"]["timerFrame" .. i]:Show();
 				end
+			end]]
+			
+			--Now we only show layers that have a timer instead.
+			local offset = 0;
+			for i = 1, count do
+				if (i == 1) then
+					if (_G[type .. "NWB"]["timerFrame"].hasTimer) then
+						offset = offset + 18.5;
+						_G[type .. "NWB"]["timerFrame"]:Show();
+					end
+				elseif (_G[type .. "NWB"]["timerFrame" .. i]) then
+					if (_G[type .. "NWB"]["timerFrame" .. i].hasTimer) then
+						offset = offset + 18.5;
+						_G[type .. "NWB"]["timerFrame" .. i]:SetPoint("CENTER", 0, offset);
+						_G[type .. "NWB"]["timerFrame" .. i]:Show();
+					end
+				end
 			end
+			
 			--_G[type .. "NWB"].tooltip.fs:SetText("|CffDEDE42" .. _G[type .. "NWB"].name .. "|r\n" .. _G[type .. "NWB"].subZone .. tooltipText);
 			_G[type .. "NWB"].tooltip.fs:SetText("|CffDEDE42" .. _G[type .. "NWB"].name .. "|r\n" .. _G[type .. "NWB"].subZone .. "\n" .. tooltipText);
 		else
@@ -7309,9 +7386,9 @@ function NWB:createWorldbuffMarkersTable()
 			};
 		else
 			NWB.worldBuffMapMarkerTypes = {
-				["rend"] = {x = 60.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
-				["ony"] = {x = 68, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
-				["nef"] = {x = 76.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
+				["rend"] = {x = 60.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
+				["ony"] = {x = 68, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
+				["nef"] = {x = 76.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
 				--["zanCity"] = {x = 84.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 				--["zanStv"] = {x = 11.0, y = 20.5, mapID = 1434, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 			};
@@ -7319,17 +7396,17 @@ function NWB:createWorldbuffMarkersTable()
 	else
 		if (NWB.faction == "Alliance") then
 			NWB.worldBuffMapMarkerTypes = {
-				["rend"] = {x = 74.0, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
-				["ony"] = {x = 79.5, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
-				["nef"] = {x = 85.0, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
+				["rend"] = {x = 78.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
+				["ony"] = {x = 83.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
+				["nef"] = {x = 88.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
 				--["zanCity"] = {x = 90.5, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 				--["zanStv"] = {x = 11.0, y = 20.5, mapID = 1434, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 			};
 		else
 			NWB.worldBuffMapMarkerTypes = {
-				["rend"] = {x = 59.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
-				["ony"] = {x = 64.5, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
-				["nef"] = {x = 70.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
+				["rend"] = {x = 63.0, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]},
+				["ony"] = {x = 68, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]},
+				["nef"] = {x = 73.0, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]},
 				--["zanCity"] = {x = 75.5, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 				--["zanStv"] = {x = 11.0, y = 20.5, mapID = 1434, icon = "Interface\\Icons\\ability_creature_poison_05", name = L["Zandalar"]},
 			};
@@ -7337,6 +7414,9 @@ function NWB:createWorldbuffMarkersTable()
 	end
 	if (WorldMapFrame) then
 		hooksecurefunc(WorldMapFrame, "OnMapChanged", function()
+			NWB:refreshWorldbuffMarkers();
+		end)
+		hooksecurefunc(WorldMapFrame, "OnFrameSizeChanged", function()
 			NWB:refreshWorldbuffMarkers();
 		end)
 	end
@@ -7374,7 +7454,7 @@ function NWB:createWorldbuffMarker(type, data, layer, count)
 			obj.texture = bg;
 			obj:SetSize(23, 23);
 			--Worldmap tooltip.
-			obj.tooltip = CreateFrame("Frame", type .. layer .. "WorldMapTooltip", WorldMapFrame, "TooltipBorderedFrameTemplate");
+			obj.tooltip = CreateFrame("Frame", type .. layer .. "WorldMapTooltip", obj, "TooltipBorderedFrameTemplate");
 			obj.tooltip:SetPoint("CENTER", obj, "CENTER", 0, -46);
 			--obj.tooltip:SetPoint("CENTER", obj, "CENTER", 0, -26);
 			obj.tooltip:SetFrameStrata("TOOLTIP");
@@ -7394,7 +7474,7 @@ function NWB:createWorldbuffMarker(type, data, layer, count)
 			end)
 			obj.tooltip:Hide();
 			--Timer frame that sits above the icon when an active timer is found.
-			obj.timerFrame = CreateFrame("Frame", type .. layer .. "WorldMapTimerFrame", WorldMapFrame, "TooltipBorderedFrameTemplate");
+			obj.timerFrame = CreateFrame("Frame", type .. layer .. "WorldMapTimerFrame", obj, "TooltipBorderedFrameTemplate");
 			obj.timerFrame:SetPoint("CENTER", obj, "CENTER",  0, 21);
 			obj.timerFrame:SetFrameStrata("FULLSCREEN");
 			obj.timerFrame:SetFrameLevel(9);
@@ -7470,7 +7550,7 @@ function NWB:createWorldbuffMarker(type, data, layer, count)
 		obj.texture = bg;
 		obj:SetSize(23, 23);
 		--Worldmap tooltip.
-		obj.tooltip = CreateFrame("Frame", type.. "WorldMapTooltip", WorldMapFrame, "TooltipBorderedFrameTemplate");
+		obj.tooltip = CreateFrame("Frame", type.. "WorldMapTooltip", obj, "TooltipBorderedFrameTemplate");
 		obj.tooltip:SetPoint("CENTER", obj, "CENTER", 0, -46);
 		obj.tooltip:SetFrameStrata("TOOLTIP");
 		obj.tooltip:SetFrameLevel(9999);
@@ -7489,7 +7569,7 @@ function NWB:createWorldbuffMarker(type, data, layer, count)
 		end)
 		obj.tooltip:Hide();
 		--Timer frame that sits above the icon when an active timer is found.
-		obj.timerFrame = CreateFrame("Frame", type.. "WorldMapTimerFrame", WorldMapFrame, "TooltipBorderedFrameTemplate");
+		obj.timerFrame = CreateFrame("Frame", type.. "WorldMapTimerFrame", obj, "TooltipBorderedFrameTemplate");
 		obj.timerFrame:SetPoint("CENTER", obj, "CENTER",  0, 21);
 		obj.timerFrame:SetFrameStrata("FULLSCREEN");
 		obj.timerFrame:SetFrameLevel(9);
@@ -7548,6 +7628,63 @@ function NWB:createWorldbuffMarker(type, data, layer, count)
 	end
 end
 
+--Update scale when maz is resized, and depending on what zone we're viewing.
+function NWB:updateWorldbuffMarkersScale()
+	local scale = 0.8;
+	local mapModInstalled;
+	if (IsAddOnLoaded("Leatrix_Maps")) then
+		--Only needed with Leatrix Maps so far since it resizes the full map.
+		--ElvUI seems to use the blizzard large and small map.
+		mapModInstalled = true;
+	end
+	if (WorldMapFrame) then
+		if (not mapModInstalled) then
+			--This is usually nil if a map mod is installed?
+			local mapID = WorldMapFrame:GetMapID();
+			if (mapID == 1413) then
+				scale = 0.7;
+			end
+			if (not WorldMapFrame.isMaximized) then
+				scale = scale / 1.5;
+			end
+		end
+		--Still do the 0.8 to all markers even if there's a map mod installed.
+		for k, v in pairs(mapMarkers) do
+			_G[k]:SetScale(scale);
+		end
+		for k, v in pairs(NWB.extraMapMarkers) do
+			--Extra markers defined in NWBData.lua are 20% bigger.
+			_G[k]:SetScale(scale + (scale * 0.2));
+		end
+		--Update Felwood markers.
+		for k, v in pairs(NWB.songFlowers) do
+			_G[k .. "NWB"]:SetScale(scale);
+			_G[k .. "NWB"].tooltip:SetScale(scale);
+			_G[k .. "NWB"].timerFrame:SetScale(scale);
+		end
+	 	for k, v in pairs(NWB.tubers) do
+			_G[k .. "NWB"]:SetScale(scale);
+			_G[k .. "NWB"].tooltip:SetScale(scale);
+			_G[k .. "NWB"].timerFrame:SetScale(scale);
+		end
+	 	for k, v in pairs(NWB.dragons) do
+			_G[k .. "NWB"]:SetScale(scale);
+			_G[k .. "NWB"].tooltip:SetScale(scale);
+			_G[k .. "NWB"].timerFrame:SetScale(scale);
+		end
+		--DMF.
+		if (_G["NWBDMF"]) then
+			_G["NWBDMF"]:SetScale(scale);
+			_G["NWBDMF"].tooltip:SetScale(scale);
+			_G["NWBDMF"].timerFrame:SetScale(scale);
+		end
+		if (_G["NWBDMFContinent"]) then
+			_G["NWBDMFContinent"]:SetScale(scale);
+			_G["NWBDMFContinent"].tooltip:SetScale(scale);
+		end
+	end
+end
+
 function NWB:refreshWorldbuffMarkers()
 	local mapID = 0;
 	local hideFS;
@@ -7559,19 +7696,19 @@ function NWB:refreshWorldbuffMarkers()
 			--For alliance we'll add timers to the barrens and org if they have rend option enabled.
 			--Easy way to do this is just alter the map pin table above.
 			if (mapID == 1413 and NWB.db.global.allianceEnableRend) then --The Barrens.
-				NWB.worldBuffMapMarkerTypes.rend = {x = 71.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-				NWB.worldBuffMapMarkerTypes.ony = {x = 79.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-				NWB.worldBuffMapMarkerTypes.nef = {x = 87.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+				NWB.worldBuffMapMarkerTypes.rend = {x = 77.5, y = 81.0, mapID = 1413, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+				NWB.worldBuffMapMarkerTypes.ony = {x = 82.5, y = 81.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+				NWB.worldBuffMapMarkerTypes.nef = {x = 87.5, y = 81.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				hideFS = true;
 			elseif (mapID == 1454 and NWB.db.global.allianceEnableRend) then --Orgrimmar.
 				if (LOCALE_koKR or LOCALE_zhCN or LOCALE_zhTW) then
-					NWB.worldBuffMapMarkerTypes.rend = {x = 60.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-					NWB.worldBuffMapMarkerTypes.ony = {x = 68, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-					NWB.worldBuffMapMarkerTypes.nef = {x = 76.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+					NWB.worldBuffMapMarkerTypes.rend = {x = 60.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+					NWB.worldBuffMapMarkerTypes.ony = {x = 68, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+					NWB.worldBuffMapMarkerTypes.nef = {x = 76.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				else
-					NWB.worldBuffMapMarkerTypes.rend = {x = 59.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-					NWB.worldBuffMapMarkerTypes.ony = {x = 64.5, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-					NWB.worldBuffMapMarkerTypes.nef = {x = 70.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+					NWB.worldBuffMapMarkerTypes.rend = {x = 77.0, y = 80.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+					NWB.worldBuffMapMarkerTypes.ony = {x = 82.0, y = 80.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+					NWB.worldBuffMapMarkerTypes.nef = {x = 87.0, y = 80.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				end
 				hideFS = true;
 			else
@@ -7581,27 +7718,27 @@ function NWB:refreshWorldbuffMarkers()
 					NWB.worldBuffMapMarkerTypes.ony = {x = 79.5, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
 					NWB.worldBuffMapMarkerTypes.nef = {x = 87.5, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				else
-					NWB.worldBuffMapMarkerTypes.rend = {x = 74.0, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-					NWB.worldBuffMapMarkerTypes.ony = {x = 79.5, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-					NWB.worldBuffMapMarkerTypes.nef = {x = 85.0, y = 73.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+					NWB.worldBuffMapMarkerTypes.rend = {x = 78.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+					NWB.worldBuffMapMarkerTypes.ony = {x = 83.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+					NWB.worldBuffMapMarkerTypes.nef = {x = 88.0, y = 77.0, mapID = 1453, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				end
 			end
 		else
 			if (mapID == 1413) then --The Barrens.
-				NWB.worldBuffMapMarkerTypes.rend = {x = 71.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-				NWB.worldBuffMapMarkerTypes.ony = {x = 79.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-				NWB.worldBuffMapMarkerTypes.nef = {x = 87.5, y = 73.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+				NWB.worldBuffMapMarkerTypes.rend = {x = 77.5, y = 85.0, mapID = 1413, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+				NWB.worldBuffMapMarkerTypes.ony = {x = 82.5, y = 85.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+				NWB.worldBuffMapMarkerTypes.nef = {x = 87.5, y = 85.0, mapID = 1413, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				hideFS = true;
 			else
 				--Default, matches the table a few functions above.
 				if (LOCALE_koKR or LOCALE_zhCN or LOCALE_zhTW) then
-					NWB.worldBuffMapMarkerTypes.rend = {x = 60.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-					NWB.worldBuffMapMarkerTypes.ony = {x = 68, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-					NWB.worldBuffMapMarkerTypes.nef = {x = 76.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+					NWB.worldBuffMapMarkerTypes.rend = {x = 60.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+					NWB.worldBuffMapMarkerTypes.ony = {x = 68, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+					NWB.worldBuffMapMarkerTypes.nef = {x = 76.0, y = 85.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				else
-					NWB.worldBuffMapMarkerTypes.rend = {x = 59.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
-					NWB.worldBuffMapMarkerTypes.ony = {x = 64.5, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
-					NWB.worldBuffMapMarkerTypes.nef = {x = 70.0, y = 79.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
+					NWB.worldBuffMapMarkerTypes.rend = {x = 63.0, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\spell_arcane_teleportorgrimmar", name = L["rend"]};
+					NWB.worldBuffMapMarkerTypes.ony = {x = 68.0, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_01", name = L["onyxia"]};
+					NWB.worldBuffMapMarkerTypes.nef = {x = 73.0, y = 87.0, mapID = 1454, icon = "Interface\\Icons\\inv_misc_head_dragon_black", name = L["nefarian"]};
 				end
 			end
 		end
@@ -7675,7 +7812,7 @@ function NWB:refreshWorldbuffMarkers()
 					_G[k .. layer .. "NWBWorldMap"].fs:Show();
 				end
 			end
-			offset = offset - 10;
+			offset = offset - 8;
 		end
 		--This will add layer icons and remove default non-layer icons when we go from having no timer info to got new layers timer info.
 		if (not foundLayers) then
@@ -7745,6 +7882,7 @@ function NWB:refreshWorldbuffMarkers()
 			end
 		end
 	end
+	NWB:updateWorldbuffMarkersScale();
 end
 
 ---=============---

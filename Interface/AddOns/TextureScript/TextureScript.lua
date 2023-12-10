@@ -14,7 +14,6 @@ local floor, strfind = _G.math.floor, _G.string.find
 local GetFramerate = _G.GetFramerate
 local UnitExists, UnitIsFriend, UnitPowerType = _G.UnitExists, _G.UnitIsFriend, _G.UnitPowerType
 local PlaySound, C_NamePlate = _G.PlaySound, C_NamePlate
-local inArena = false
 local SetCVar, GetCVar = _G.SetCVar, _G.GetCVar
 
 --dark theme
@@ -309,6 +308,7 @@ local function OnInit()
     MiniMapMailFrame:ClearAllPoints()
     MiniMapMailFrame:SetPoint('BOTTOMRIGHT', 0, -10)
     MinimapZoneTextButton:Hide()
+	PlayerPVPTimerText:SetAlpha(0)
 
     -- MiniMapWorldMapButton:Hide() needs to be done like this since patch 2.5.3 for some reason
     hooksecurefunc(MiniMapWorldMapButton, "Show", MiniMapWorldMapButton.Hide)
@@ -490,8 +490,8 @@ local function OnInit()
     MicroButtonPortrait:Hide()
     CharacterMicroButton:SetNormalTexture("Interface/BUTTONS/Custom Evo C panel");
     CharacterMicroButton:SetPushedTexture("Interface/BUTTONS/Custom Evo C panel");
-    LFGMicroButton:SetNormalTexture("Interface/BUTTONS/UI-MicroButton-Help-Up");
-    LFGMicroButton:SetPushedTexture("Interface/BUTTONS/UI-MicroButton-Help-Up");
+    WorldMapMicroButton:SetNormalTexture("Interface/BUTTONS/UI-MicroButton-Talents-Up");
+    WorldMapMicroButton:SetPushedTexture("Interface/BUTTONS/UI-MicroButton-Talents-Up");
 
     -- removing the new "latency" bar unfortunately introduced in wotlk
     --MainMenuBarPerformanceBar:SetAlpha(0)
@@ -895,13 +895,11 @@ local function SmoothBar(bar)
 end
 
 smoothframe:SetScript("OnUpdate", function()
-    if not inArena then
         for _, plate in pairs(C_NamePlate.GetNamePlates(true)) do
             if not plate:IsForbidden() and plate:IsVisible() and plate.UnitFrame:IsShown() then
                 SmoothBar(plate.UnitFrame.healthBar)
             end
         end
-    end
     AnimationTick()
 end)
 
@@ -933,12 +931,12 @@ local function colour(statusbar, unit)
                 local _, class = UnitClass(unit)
                 local c = RAID_CLASS_COLORS[class]
                 if c then
-                    --if class == "DEATHKNIGHT" then
-                        -- experimental DK recoulouring feature (part1)
-                        --statusbar:SetStatusBarColor(0, 1, 0.6)
-                    --else
+                    if class == "SHAMAN" then
+                         -- classic vanilla ass client doesnt have proper shaman colours (default is paladin pink) so adding more appropriate one...
+                        statusbar:SetStatusBarColor(0, 0.44, 0.87)
+                    else
                         statusbar:SetStatusBarColor(c.r, c.g, c.b)
-                    --end
+                    end
                 end
             elseif unit == "player" then
                 local value = UnitHealth("player")
@@ -984,25 +982,6 @@ local function RemovePortraitFlash(self, r, g, b)
     end
 end
 
-
-
-
---for _, i in pairs({ TargetFramePortrait, FocusFramePortrait, FocusFrameToTPortrait, TargetFrameToTPortrait }) do
---    if i then
---        hooksecurefunc(i, "SetVertexColor", RemovePortraitFlash)
---    end
---end
-
---local function ChangeAlpha(self, a)
---    if a ~= 1.0 then
---        self:SetAlpha(1.0)
---    end
---end
---hooksecurefunc(TargetFramePortrait, "SetAlpha", ChangeAlpha)
---hooksecurefunc(FocusFramePortrait, "SetAlpha", ChangeAlpha)
-
-
-
 for _, i in pairs({ TargetFramePortrait, TargetFrameToTPortrait }) do
     if i then
         hooksecurefunc(i, "SetVertexColor", RemovePortraitFlash)
@@ -1015,21 +994,30 @@ local function ChangeAlpha(self, a)
     end
 end
 hooksecurefunc(TargetFramePortrait, "SetAlpha", ChangeAlpha)
+      
+for _, i in pairs({ TargetFramePortrait, TargetFrameToTPortrait }) do
+    if i then
+        hooksecurefunc(i, "SetVertexColor", RemovePortraitFlash)
+    end
+end
 
-
-
-
-
+local function ChangeAlpha(self, a)
+    if a ~= 1.0 then
+        self:SetAlpha(1.0)
+    end
+end
+hooksecurefunc(TargetFramePortrait, "SetAlpha", ChangeAlpha)
+      
 
 -- Blacklist of frames where tooltip mouseover is hidden
 GameTooltip:HookScript("OnShow", function(self, ...)
     local owner = self:GetOwner() and self:GetOwner():GetName()
     if owner then
-        -- hide world object tooltips like torches and signs
-        if owner == "UIParent" and not self:GetUnit() then
-            self:Hide()
-            return
-        end
+        -- hide world object tooltips like torches and signs (not using during leveling)
+        --if owner == "UIParent" and not self:GetUnit() then
+        --    self:Hide()
+        --    return
+        --end
         -- hide tooltips owned by frames in the blacklist
         for i = 1, #tooltipOwnerBlacklist do
             if owner:find(tooltipOwnerBlacklist[i]) then
@@ -1109,8 +1097,8 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
         if color then
             local text = GameTooltipTextLeft1:GetText()
             if text then
-                if class == "DEATHKNIGHT" then
-                    GameTooltipTextLeft1:SetFormattedText("|cff00ff99%s|r", text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
+                if class == "SHAMAN" then
+                    GameTooltipTextLeft1:SetFormattedText("|cff0070DD%s|r", text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
                 else
                     GameTooltipTextLeft1:SetFormattedText("|cff%02x%02x%02x%s|r", color.r * 255, color.g * 255, color.b * 255, text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
                 end
@@ -1194,11 +1182,11 @@ local function HandleNewNameplate(nameplate, unit)
     -- the rest of nameplate stuff
     if name:match("Totem") and not name:match("Tremor Totem") then
         HideNameplate(nameplate)
-    elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
-            or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
-        HideNameplate(nameplate)
-    elseif ShrinkPlates[name] then
-        nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
+   -- elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
+   --         or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
+   --     HideNameplate(nameplate)
+   -- elseif ShrinkPlates[name] then
+   --     nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
     elseif name == "Tremor Totem" then
         local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
         local guid = UnitGUID(unit)
@@ -1230,7 +1218,8 @@ local function plateOnUpdateFrame()
         plateEventFrame:Hide()
     end
 end
-
+  
+plateEventFrame:SetScript("OnUpdate", plateOnUpdateFrame)
 -- PlaySound whenever an enemy casts Tremor Totem in arena (previously handled in a standalone addon "EvolveAlert" - https://github.com/Evolvee/EvolvePWPUI-ClassicTBC/tree/main/Interface/AddOns/EvolveAlert)
 
 local COMBATLOG_FILTER_HOSTILE_PLAYERS = COMBATLOG_FILTER_HOSTILE_PLAYERS;
@@ -1253,13 +1242,12 @@ plateEventFrame:SetScript("OnEvent", function(_, event)
     if event == "COMBAT_LOG_EVENT_UNFILTERED" then
         local _, action, _, sourceGuid, _, sourceFlags, _, destGuid, destName, _, _, ex1, _, _, ex4 = CombatLogGetCurrentEventInfo()
         local isSourceEnemy = CombatLog_Object_IsA(sourceFlags, COMBATLOG_FILTER_HOSTILE_PLAYERS)
-        local _, instanceType = IsInInstance()
 
         if not (eventRegistered[action]) then
             return
         end
 
-        if isSourceEnemy and instanceType == "arena" and ex1 == 8143 and action == "SPELL_CAST_SUCCESS" then
+        if isSourceEnemy and ex1 == 8143 and action == "SPELL_CAST_SUCCESS" then
             PlaySound(12889)
         end
 
@@ -1366,9 +1354,9 @@ local function AddPlates(unit)
     HandleNewNameplate(nameplate, unit)
 
     -- Class icon on friendly plates in arena, WRATH??
-    local _, unitClass = UnitClass(unit)
+    --local _, unitClass = UnitClass(unit)
 
-    if UnitIsPlayer(unit) and UnitIsFriend("player", unit) and inArena then
+    --[[if UnitIsPlayer(unit) and UnitIsFriend("player", unit) and inArena then
         if not nameplate.UnitFrame.texture then
             nameplate.UnitFrame.texture = nameplate.UnitFrame:CreateTexture(nil, "OVERLAY")
             nameplate.UnitFrame.texture:SetSize(40, 40)
@@ -1414,7 +1402,7 @@ local function AddPlates(unit)
     -- This is needed to restore scale due to the ShrinkPlates
     if nameplate.UnitFrame:GetScale() < 1.0 then
         nameplate.UnitFrame:SetScale(1.0)
-    end
+    end]]--
 end
 
 local function RemovePlate(unit)
@@ -1609,14 +1597,14 @@ end)
 
 
 for _, totFrame in ipairs({ TargetFrameToT }) do
-    totFrame:HookScript("OnShow", function()
+    --totFrame:HookScript("OnShow", function()
         for i = 1, 4 do
             local dbf = _G[totFrame:GetName() .. "Debuff" .. i]
             if dbf and dbf:GetAlpha() > 0 then
                 dbf:SetAlpha(0)
             end
         end
-    end)
+    --end)
 end
 
 -- Change position of widget showing below minimap
@@ -1653,20 +1641,20 @@ end)
 --    end
 --end)
 
--- Changing DK default colour in order to bring more clarity
---hooksecurefunc("CompactUnitFrame_UpdateHealthColor", function(frame)
---    if not frame.unit or frame:IsForbidden() or not string.find(frame.unit, "nameplate") then
---        return
---    end
---
---    if UnitIsConnected(frame.unit) and UnitIsPlayer(frame.unit) then
---        local _, class = UnitClass(frame.unit)
---        if class == "DEATHKNIGHT" then
---            -- experimental DK recoulouring feature (part2)
---            frame.healthBar:SetStatusBarColor(0, 1, 0.6)
---        end
---    end
---end)
+-- Changing Shaman default colour in order to bring more clarity
+hooksecurefunc("CompactUnitFrame_UpdateHealthColor", function(frame)
+    if not frame.unit or frame:IsForbidden() then
+        return
+    end
+
+    if UnitIsConnected(frame.unit) and UnitIsPlayer(frame.unit) then
+        local _, class = UnitClass(frame.unit)
+        if class == "SHAMAN" then
+            -- experimental Shaman recoulouring feature (part2)
+            frame.healthBar:SetStatusBarColor(0, 0.44, 0.87)
+        end
+    end
+end)
 
 -- leave arena on PVP icon doubleclick (useful when playing against DK retards)
 --MiniMapBattlefieldFrame:HookScript("OnDoubleClick", function()
@@ -1706,13 +1694,13 @@ local function PlateNames(frame)
 
         if UnitIsPlayer(frame.unit) then
             frame.name:SetText((UnitName(frame.unit)):gsub("%-.*", "")) -- not sure if UnitName() adds the realm so :gsub() might not be needed
-            if UnitIsEnemy("player", frame.unit) then
-                local _, _, class = UnitClass(frame.unit)
-                if (class == 6) then
+            --if UnitIsEnemy("player", frame.unit) then
+             --   local _, _, class = UnitClass(frame.unit)
+              --  if (class == 6) then
                     -- Only actual retards play this dogshit broken class that has nothing to do with World of Warcraft design
-                    frame.name:SetText("I AM RETARDED")
-                end
-            end
+               --     frame.name:SetText("I AM RETARDED")
+              --  end
+            --end
         end
     end
 end
@@ -1725,7 +1713,6 @@ supaFrame:RegisterEvent("PLAYER_LOGIN")
 supaFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 supaFrame:RegisterEvent("GOSSIP_SHOW")
 supaFrame:RegisterEvent("UPDATE_BINDINGS")
-supaFrame:RegisterUnitEvent("UNIT_PET", "player")
 supaFrame:RegisterEvent("NAME_PLATE_UNIT_ADDED")
 supaFrame:RegisterEvent("NAME_PLATE_UNIT_REMOVED")
 supaFrame:SetScript("OnEvent", function(self, event, ...)
@@ -1738,14 +1725,6 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
         hooksecurefunc("CompactUnitFrame_UpdateName", PlateNames) -- has to be called after event
         UpdateBinds(self)
         self:UnregisterEvent("PLAYER_LOGIN")
-    elseif event == "UNIT_PET" then
-        local _, type = IsInInstance()
-        if type ~= "arena" then
-            return
-        end
-        if GetRaidTargetIndex("pet") ~= 3 then
-            SetRaidTarget("pet", 3)
-        end
     elseif event == "UPDATE_BINDINGS" then
         UpdateBinds(self)
     elseif event == "ADDON_LOADED" then
@@ -1753,26 +1732,8 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
         DarkenFrames(addon)
         self:UnregisterEvent("ADDON_LOADED")
     elseif event == "PLAYER_ENTERING_WORLD" then
-        local _, type = IsInInstance()
-        if type == "arena" then
-            if GetCVar("nameplateShowFriends") == "0" then
-                SetCVar("nameplateShowFriends", 1)
-            end
-            inArena = true
-        else
-            if GetCVar("nameplateShowFriends") == "1" then
-                SetCVar("nameplateShowFriends", 0)
-            end
-            inArena = false
-        end
-
         -- clear the totems on loading screens
         tremorTotems = {}
-        if type == "arena" or type == "pvp" then
-            plateEventFrame:SetScript("OnUpdate", plateOnUpdateFrame)
-        else
-            plateEventFrame:SetScript("OnUpdate", nil)
-        end
     elseif event == "GOSSIP_SHOW" then
         skipEventFrame()
     elseif event == "NAME_PLATE_UNIT_ADDED" then
@@ -1783,7 +1744,6 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
         RemovePlate(unit)
     end
 end)
-
 
 
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0

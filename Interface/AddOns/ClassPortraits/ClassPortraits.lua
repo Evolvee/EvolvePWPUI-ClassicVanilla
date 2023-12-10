@@ -112,17 +112,17 @@ addonLoadEvent:RegisterEvent("ADDON_LOADED")
 addonLoadEvent:SetScript("OnEvent", function(self, e, addon)
 
    -- talent frame
-   if addon == "Blizzard_TalentUI" then
-      hooksecurefunc(PlayerTalentFrame, "updateFunction", function()
-         UpdatePortrait(PlayerTalentFramePortrait, PlayerTalentFrame.unit or "player")
-      end)
-      hooksecurefunc("PlayerTalentFrame_OnEvent", function()
-         if event == "UNIT_PORTRAIT_UPDATE" and UnitIsUnit(arg1, "player") then
-            UpdatePortrait(PlayerTalentFramePortrait, "player")
-         end
-      end)
-      return
-   end
+   --if addon == "Blizzard_TalentUI" then
+   --   hooksecurefunc(PlayerTalentFrame, "updateFunction", function()
+   --      UpdatePortrait(PlayerTalentFramePortrait, PlayerTalentFrame.unit or "player")
+    --  end)
+    --  hooksecurefunc("PlayerTalentFrame_OnEvent", function()
+    --     if event == "UNIT_PORTRAIT_UPDATE" and UnitIsUnit(arg1, "player") then
+    --        UpdatePortrait(PlayerTalentFramePortrait, "player")
+    --     end
+    --  end)
+    --  return
+   --end
    -- inspect frame
    if addon == "Blizzard_InspectUI" then
       hooksecurefunc("InspectFrame_OnShow", function()
