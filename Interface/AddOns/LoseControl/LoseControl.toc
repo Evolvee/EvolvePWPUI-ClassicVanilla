@@ -1,7 +1,7 @@
-## Interface: 30402
-## Title: LoseControl WotLK
+## Interface: 11500
+## Title: |TInterface\Addons\LoseControl\micon:16:16|t LoseControl Classic
 ## Author: millanzarreta, Kouri
-## Version: 3.03
+## Version: 1.20
 ## IconTexture: Interface\Addons\LoseControl\micon
 ## Notes: Displays the duration of CC effects on your character and other units
 ## Notes-deDE: Zeigt die Dauer von CC-Effekten auf Ihrem Charakter und andere Einheiten an
@@ -17,13 +17,14 @@
 ## X-Website: http://www.curse.com/addons/wow/losecontrol
 ## X-Website2: http://www.wowinterface.com/downloads/info11642-LoseControl.html
 ## X-Category: Buffs
-## OptionalDeps: LibStub, Masque, PitBull4
+## OptionalDeps: LibStub, CallbackHandler-1.0, LibClassicDurations, Masque, ClassicAuraDurations, PitBull4
 ## SavedVariablesPerCharacter: LoseControlDB
 
 #@no-lib-strip@
 Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\LibClassicDurations\LibClassicDurations.xml
 #@end-no-lib-strip@
-Libs\LibUIDropDownMenu\LibUIDropDownMenu.lua
 
 localization.lua
 LoseControl.lua

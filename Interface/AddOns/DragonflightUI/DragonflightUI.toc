@@ -4,7 +4,7 @@
 ## Author: Karl-Heinz Schneider
 ## X-Website: https://github.com/Karl-HeinzSchneider/WoW-DragonflightUI
 ## X-Curse-Project-ID: 819757
-## Version: v0.4.0
+## Version: v0.4.3
 ## SavedVariables: DragonflightUIDB
 ## OptionalDeps: Ace3, Blizzard_TalentUI, Blizzard_TimeManager, NovaWorldBuffs
 
@@ -26,11 +26,7 @@ Config.lua
 XML\Castbar.xml
 
 # Modules
-Modules\Actionbar.lua
 Modules\Castbar.lua
-Modules\Chat.lua
-Modules\Minimap.lua
-Modules\Unitframe.lua
 
 #
 Compatibility.lua

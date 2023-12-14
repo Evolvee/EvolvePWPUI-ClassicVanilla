@@ -1,9 +1,21 @@
 # RestedXP Guides
 
-## [v4.5.30-4-ge602822](https://github.com/RestedXP/RXPGuides/tree/e6028222a9f35d57cea0ba4c736a92356e85f78b) (2023-11-22)
-[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.5.30...e6028222a9f35d57cea0ba4c736a92356e85f78b) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
+## [v4.5.37-16-gafa9ddc](https://github.com/RestedXP/RXPGuides/tree/afa9ddc2aad9e0cc431ae25615c6456bef8cfc8a) (2023-12-08)
+[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.5.37...afa9ddc2aad9e0cc431ae25615c6456bef8cfc8a) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
 
-- Minor era Darkshore adjustments  
-- Separate Vendor Trasures pin scale setting  
-- Era Speedrun Darkshore updates  
-- Add frFR support to ItemUpgrades (#202)  
+- Merge branch 'main' of https://github.com/RestedXP/RXPGuides  
+- small bugfixes  
+- Completed Alliance Priest runes  
+- Update Alliance Warrior/Rogue/Priest runes  
+- SoD Paladin - Speedrun Guide Rune Integration  
+- Paladin Rune bugfixes  
+- Added Quick Strike rune  
+- Added Raging Blow rune  
+- Fixes  
+- Paladin Rune Fixes  
+- Fixed Divine Sacrifice rune subgroup  
+- Update Mage.lua  
+- Added Flagellation and Mass Regeneration runes  
+- Big Update Mage.lua  
+- Bug fixes and added Deadly Brew for Alliance  
+- Added Wild Growth rune  

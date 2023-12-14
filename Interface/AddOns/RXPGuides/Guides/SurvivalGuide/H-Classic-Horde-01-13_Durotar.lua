@@ -24,8 +24,8 @@ step << Warrior/Shaman/Warlock
     #completewith next
     +|cRXP_WARN_Kill |cRXP_ENEMY_Mottled Boars|r. Loot them until you have 35 copper worth of vendor items (including your armor)|r << Warlock
     +|cRXP_WARN_Kill |cRXP_ENEMY_Mottled Boars|r. Loot them until you have 10 copper worth of vendor items (including your armor)|r << Warrior/Shaman
-    .goto Durotar,43.85,71.73,50,0 << Warlock
-    .goto Durotar,44.19,65.34,50,0 << Warrior/Shaman
+    .goto Durotar,43.85,71.73,30,0 << Warlock
+    .goto Durotar,44.19,65.34,30,0 << Warrior/Shaman
     .mob Mottled Boar
     .money >0.01
 step << Warlock
@@ -34,8 +34,7 @@ step << Warlock
     .accept 1485 >>Accept Vile Familiars
     .target Ruzan
 step << Warrior/Shaman
-    .goto Durotar,43.49,67.35,30,0
-    .goto Durotar,42.59,67.34
+    .goto Durotar,42.59,67.35
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Duokna|r
     .vendor >> Vendor Trash
     .target Duokna
@@ -121,11 +120,7 @@ step
     .target Hana'zua
 step
     #label Sarkoth
-	.goto Durotar,40.88,66.41,40,0
-	.goto Durotar,40.41,66.64,40,0
-	.goto Durotar,40.43,67.36,40,0
-	.goto Durotar,40.72,67.39,40,0
-	.loop 20,Durotar,40.88,66.41,40.41,66.64,40.43,67.36,40.72,67.39,40.88,66.41
+    .goto Durotar,40.60,66.80
     >>Kill |cRXP_ENEMY_Sarkoth|r. Loot him for |cRXP_LOOT_Sarkoth's Mangled Claw|r
     .complete 790,1 --Sarkoth's Mangled Claw (1)
     .mob Sarkoth
@@ -1559,7 +1554,7 @@ step
     #completewith TaillasherEggs
     .goto Durotar,67.10,69.29,100 >> Swim to the Island
 step
-    #completewith Fur
+    #completewith MinshinasSkull
     >>Kill |cRXP_ENEMY_Tigers|r. Loot them for their |cRXP_LOOT_Fur|r. This does not need to be finished now
     .complete 817,1 --Durotar Tiger Fur (4)
     .mob Durotar Tiger
@@ -1743,8 +1738,7 @@ step << Shaman/Hunter
     .goto Durotar,51.95,43.50
     .target Cook Torka
     .target Gar'Thok
-    .isQuestComplete 837
-step
+step << !Shaman !Hunter
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Torka|r and |cRXP_FRIENDLY_Gar'Thok|r
     .turnin 815 >>Turn in Break a Few Eggs
     .goto Durotar,51.12,42.46
@@ -1778,8 +1772,14 @@ step << Warrior
 step << Shaman
     .goto Durotar,54.42,42.59
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Swart|r
+    .train 8050 >> Train your class spells
     .accept 2983 >>Accept Call of Fire
-    .trainer >> Train your class spells
+    .target Swart
+    .isNotOnQuest 1522
+step << Shaman
+    .goto Durotar,54.42,42.59
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Swart|r
+    .train 8050 >> Train your class spells
     .target Swart
 step << Warlock
     .goto Durotar,54.37,41.20
@@ -2082,7 +2082,7 @@ step << Hunter
     .zone Orgrimmar >> Enter Orgrimmar
     .zoneskip Orgrimmar
 step << Hunter
-    .goto Orgrimmar,34.34,36.33
+    .goto Orgrimmar,32.28,35.80
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nazgrel|r
     .turnin 831 >>Turn in The Admiral's Orders
     .target Nazgrel
@@ -3125,6 +3125,10 @@ step
     .target Gretchen Dedmar
     .maxlevel 12
 step << Warrior
+    #completewith next
+    .abandon 1505 >>Abandon Veteran Uzzek
+    .isOnQuest 1505
+step << Warrior
     .goto Tirisfal Glades,61.85,52.55
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Austil|r
     .accept 1818 >> Accept Speak with Dillinger
@@ -3274,7 +3278,18 @@ step
     .isOnQuest 365
 step
     #optional
-    .loop 25,Tirisfal Glades,33.73,49.34,33.65,51.07,31.78,51.36,30.02,50.48,29.91,49.24,30.62,47.53,31.01,46.50,32.15,44.83,33.73,45.29,34.10,47.88,33.73,49.34
+    .goto Tirisfal Glades,31.78,51.36,0
+    .goto Tirisfal Glades,33.73,49.34,50,0
+    .goto Tirisfal Glades,33.65,51.07,50,0
+    .goto Tirisfal Glades,31.78,51.36,50,0
+    .goto Tirisfal Glades,30.02,50.48,50,0
+    .goto Tirisfal Glades,29.91,49.24,50,0
+    .goto Tirisfal Glades,30.62,47.53,50,0
+    .goto Tirisfal Glades,31.01,46.50,50,0
+    .goto Tirisfal Glades,32.15,44.83,50,0
+    .goto Tirisfal Glades,33.73,45.29,50,0
+    .goto Tirisfal Glades,34.10,47.88,50,0
+    .goto Tirisfal Glades,33.73,49.34,50,0
     >>Kill |cRXP_ENEMY_Scarlet Warriors|r
     .complete 427,1 --Scarlet Warrior (10)
     .mob Scarlet Warrior
@@ -3644,9 +3659,6 @@ step << Warlock
     .complete 1473,1 --Egalin's Grimoire (1)
 step << Warlock
     #completewith next
-    .goto Tirisfal Glades,51.07,71.51,50,0
-    .zone Undercity >> Travel back into the Undercity through the sewers
-step << Warlock
     .goto Undercity,16.51,42.76,35,0
     .goto Undercity,22.98,39.76,35,0
     .goto Undercity,24.93,32.54,35,0
@@ -3655,6 +3667,8 @@ step << Warlock
     .goto Undercity,41.35,38.40,10,0
     .goto Undercity,45.25,39.20,10,0
     .goto Undercity,45.67,43.60,10,0
+    .zone Undercity >> Travel back into the Undercity through the sewers
+step << Warlock
     .goto Undercity,85.07,25.96
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Carendin|r in the Magic Quarter
     .turnin 1473 >> Turn in Creature of the Void
@@ -4176,6 +4190,7 @@ step
 step
     #optional
     #loop
+    .goto Tirisfal Glades,85.03,54.72,0
     .goto Tirisfal Glades,83.50,55.56,30,0
     .goto Tirisfal Glades,85.03,54.72,30,0
     .goto Tirisfal Glades,86.56,54.51,30,0

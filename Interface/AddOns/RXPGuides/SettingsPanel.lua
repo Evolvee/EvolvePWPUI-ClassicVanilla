@@ -6,6 +6,7 @@ local AceConfig = LibStub("AceConfig-3.0")
 local LibDBIcon = LibStub("LibDBIcon-1.0")
 local LibDataBroker = LibStub("LibDataBroker-1.1")
 local AceConfigRegistry = LibStub("AceConfigRegistry-3.0")
+local AceConfigDialog = LibStub("AceConfigDialog-3.0")
 
 local fmt, tostr, next, GetTime = string.format, tostring, next, GetTime
 
@@ -33,23 +34,49 @@ if not addon.settings.gui then
     addon.settings.gui = {selectedDeleteGuide = "", importStatusHistory = {}}
 end
 
-function addon.settings.ChatCommand(input)
-    if not input then
+function addon.settings.OpenSettings(panelName)
+    if not (_G.Settings and _G.Settings.GetCategory) then
+        -- Not used by Era (1.15.0), Wrath (2.5.3), nor Retail (10.1.7)
+        -- Support legacy generic fall through to base settings though
         _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
         _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
+        return
     end
+
+    -- panelName only provided for Import currently
+    if panelName then
+        local optionsName = fmt("%s/%s", addon.RXPOptions.name, panelName)
+
+        -- If sub category, open dedicated standalone window
+        AceConfigDialog:Open(optionsName)
+
+        local acdFrame = AceConfigDialog.OpenFrames and
+                             AceConfigDialog.OpenFrames[optionsName]
+
+        if acdFrame and acdFrame:IsShown() then
+            if not acdFrame.isHooked then
+                addon.settings.textboxHook()
+                acdFrame.isHooked = true
+            end
+
+            -- Successfully opened sub menu
+            return
+        end -- else, fall through to generic handling
+    end
+
+    local category = _G.Settings.GetCategory(addon.RXPOptions.name)
+
+    if category:HasSubcategories() then category.expanded = true end
+
+    _G.Settings.OpenToCategory(category.ID)
+end
+
+function addon.settings.ChatCommand(input)
+    if not input then addon.settings.OpenSettings() end
 
     input = input:trim()
     if input == "import" then
-        -- addon.RXPOptions.expanded = true
-        if _G.Settings and _G.Settings.GetCategory then
-            _G.Settings.GetCategory(addon.RXPOptions.name).expanded = true;
-            _G.Settings.OpenToCategory(addon.RXPOptions.name);
-            -- Settings.OpenToCategory(addon.settings.gui.import); -- causes UI taint on 10.0
-        else
-            _G.InterfaceOptionsFrame_OpenToCategory(addon.settings.gui.import)
-            _G.InterfaceOptionsFrame_OpenToCategory(addon.settings.gui.import)
-        end
+        addon.settings.OpenSettings('Import')
     elseif input == "debug" then
         addon.settings.profile.debug = not addon.settings.profile.debug
     elseif input == "splits" then
@@ -62,8 +89,7 @@ function addon.settings.ChatCommand(input)
         addon.comms.PrettyPrint(_G.HELP .. "\n" ..
                                     addon.help["What are command the line options?"])
     else
-        _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
-        _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
+        addon.settings.OpenSettings()
     end
 end
 
@@ -93,12 +119,10 @@ function addon.settings:InitializeSettings()
             enableBindAutomation = true,
             enableGossipAutomation = true,
             showUnusedGuides = true,
-            SoM = 1,
             anchorOrientation = "top",
             chromieTime = "auto",
             enableXpStepSkipping = true,
             enableAutomaticXpRate = true,
-            autoLoadStartingGuides = true,
             showFlightTimers = true,
 
             -- Sliders
@@ -172,7 +196,8 @@ function addon.settings:InitializeSettings()
 
             dungeons = {},
 
-            framePositions = {}
+            framePositions = {},
+            frameSizes = {}
         }
     }
 
@@ -237,12 +262,6 @@ function addon.settings:MigrateLegacySettings()
         RXPData.hideUnusedGuides = nil
     end
 
-    -- TODO autoLoadGuides -> autoLoadStartingGuides
-    if RXPData.autoLoadGuides ~= nil then
-        n("hideUnusedGuides", RXPData.autoLoadGuides)
-        db.autoLoadStartingGuides = RXPData.autoLoadGuides
-        RXPData.autoLoadGuides = nil
-    end
 
     if RXPCData.disableArrow ~= nil then
         n("disableArrow", RXPCData.disableArrow)
@@ -538,9 +557,10 @@ function addon.settings:CreateImportOptionsPanel()
                     return L(
                                "This action will remove ALL guides from the database\nAre you sure?")
                 end,
-                disabled = function()
+                --[[disabled = function()
                     return next(addon.db.profile.guides) == nil
-                end,
+                end,]]
+                --Let people purge the data even without any installed guides in case they experience caching issues
                 func = function()
                     addon.db.profile.guides = {}
                     addon:CreateMetaDataTable(true)
@@ -598,10 +618,12 @@ function addon.settings:CreateImportOptionsPanel()
         }
     }
 
-    AceConfig:RegisterOptionsTable(addon.title .. "/Import", importOptionsTable)
+    AceConfig:RegisterOptionsTable(addon.RXPOptions.name .. "/Import",
+                                   importOptionsTable)
 
-    self.gui.import = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(
-                          addon.title .. "/Import", L("Import"), addon.title)
+    self.gui.import = AceConfigDialog:AddToBlizOptions(
+                          addon.RXPOptions.name .. "/Import", L("Import"),
+                          addon.RXPOptions.name)
 
     -- Ace3 ConfigDialog doesn't support embedding icons in header
     -- Directly references Ace3 built frame object
@@ -662,7 +684,7 @@ function addon.settings:CreateImportOptionsPanel()
         tinsert(importCache.bufferData, char)
     end
 
-    self.gui.import.obj.frame:HookScript("OnShow", function()
+    local function textboxHook()
         -- Prevent hooking multiple times on show
         if importCache.widget then return end
 
@@ -686,8 +708,12 @@ function addon.settings:CreateImportOptionsPanel()
             end
             n = n + 1
         end
-    end)
+    end
 
+    self.textboxHook = textboxHook
+
+    -- Hook embedded settings
+    self.gui.import.obj.frame:HookScript("OnShow", textboxHook)
 end
 
 function addon.settings:CreateAceOptionsPanel()
@@ -1205,21 +1231,23 @@ function addon.settings:CreateAceOptionsPanel()
                         end,
                         hidden = addon.game ~= "CLASSIC"
                     },
-                    SoM = {
-                        name = L("Season of Mastery"),
+                    season = {
+                        hidden = addon.game ~= "CLASSIC",
+                        --[[disabled = function()
+                            return addon.settings.profile.enableAutomaticXpRate
+                        end,]]
+                        name = L("Season"),
                         desc = L(
-                            "Adjust the leveling routes to the Season of Mastery changes (40/100% quest xp)"),
-                        type = "toggle",
+                            "Adjust the leveling routes to the current season"),
+                        type = "select",
+                        values = {[false] = L"None", [1] = L"Season of Mastery", [2] = L"Season of Discovery"},
+                        --sorting = {0, 1, 2},
                         width = optionsWidth,
                         order = 2.5,
                         set = function(info, value)
                             SetProfileOption(info, value)
-                            addon.RXPFrame.GenerateMenuTable()
                             addon.ReloadGuide()
-                        end,
-                        hidden = addon.game ~= "CLASSIC",
-                        disabled = function()
-                            return addon.settings.profile.enableAutomaticXpRate
+                            addon.RXPFrame.GenerateMenuTable()
                         end
                     },
                     dungeons = {
@@ -1722,6 +1750,7 @@ function addon.settings:CreateAceOptionsPanel()
                         min = 0.1,
                         max = 1,
                         step = 0.1,
+                        isPercent = true,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             addon.tracker:UpdateLevelSplits("full")
@@ -2464,6 +2493,7 @@ function addon.settings:CreateAceOptionsPanel()
                         min = 0.2,
                         max = 2,
                         step = 0.05,
+                        isPercent = true,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             addon.RXPFrame:SetScale(value)
@@ -2536,24 +2566,6 @@ function addon.settings:CreateAceOptionsPanel()
                             addon.RXPFrame.GenerateMenuTable()
                         end
                     },
-                    autoLoadStartingGuides = {
-                        name = L("Load starting zone guides"),
-                        desc = L(
-                            "Automatically picks a suitable guide whenever you log in for the first time on a character"),
-                        type = "toggle",
-                        get = function()
-                            return RXPData.autoLoadStartingGuides
-                        end,
-                        width = optionsWidth,
-                        order = 3.7,
-                        hidden = not addon.defaultGuideList,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            RXPData.autoLoadStartingGuides = value
-                            addon.RXPFrame.GenerateMenuTable()
-
-                        end
-                    },
                     arrowHeader = {
                         name = L("Waypoint Arrow"), -- TODO locale
                         type = "header",
@@ -2614,6 +2626,7 @@ function addon.settings:CreateAceOptionsPanel()
                         min = 0.8,
                         max = 3,
                         step = 0.05,
+                        isPercent = true,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             addon.activeItemFrame:SetScale(value)
@@ -2683,6 +2696,7 @@ function addon.settings:CreateAceOptionsPanel()
                         min = 0.05,
                         max = 1,
                         step = 0.05,
+                        isPercent = true,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             addon.UpdateMap()
@@ -2733,6 +2747,7 @@ function addon.settings:CreateAceOptionsPanel()
                         min = 0,
                         max = 1,
                         step = 0.05,
+                        isPercent = true,
                         set = function(info, value)
                             SetProfileOption(info, value)
                             addon.UpdateMap()
@@ -2902,8 +2917,7 @@ function addon.settings:CreateAceOptionsPanel()
         end
     }
 
-    addon.RXPOptions = LibStub("AceConfigDialog-3.0"):AddToBlizOptions(
-                           addon.title)
+    addon.RXPOptions = AceConfigDialog:AddToBlizOptions(addon.title)
 
     -- Ace3 ConfigDialog doesn't support embedding icons in header
     -- Directly references Ace3 built frame object
@@ -2993,11 +3007,12 @@ function addon.settings:DetectXPRate()
     end
 
     if addon.gameVersion < 20000 then
-        local isSoM = CheckBuff(362859)
+        local season = addon.player.season or CheckBuff(362859) and 1
 
-        if isSoM == addon.settings.profile.SoM then return end
+        if season == addon.settings.profile.season then return end
 
-        addon.settings.profile.SoM = isSoM
+
+        addon.settings.profile.season = season
 
         if addon.currentGuide and addon.currentGuide.name then
             addon:LoadGuide(addon.currentGuide, 'onLoad')
@@ -3273,10 +3288,7 @@ local function buildWorldMapMenu()
     tinsert(menu, {
         text = _G.GAMEOPTIONS_MENU .. "...",
         notCheckable = 1,
-        func = function()
-            _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
-            _G.InterfaceOptionsFrame_OpenToCategory(addon.RXPOptions)
-        end
+        func = function() addon.settings.OpenSettings() end
     })
 
     tinsert(menu, {
@@ -3363,6 +3375,10 @@ function addon.settings:SaveFramePositions()
         addon.settings.profile.framePositions = {}
     end
 
+    if not addon.settings.profile.frameSizes then
+        addon.settings.profile.frameSizes = {}
+    end
+
     local point, relativeToFrameOrPoint, relativePointOrX, offsetXOrY,
           offsetYOrNil
 
@@ -3371,6 +3387,10 @@ function addon.settings:SaveFramePositions()
             addon.comms
                 .PrettyPrint("SaveFramePositions:frameName %s", frameName)
         end
+
+        addon.settings.profile.frameSizes[frameName] = {
+            frame:GetWidth(), frame:GetHeight()
+        }
 
         addon.settings.profile.framePositions[frameName] = {}
 
@@ -3394,26 +3414,30 @@ end
 function addon.settings:LoadFramePositions()
     local point, relativeToName, relativePoint, offsetX, offsetYOrNil
     local result, reason
+    local p = addon.settings.profile
 
     for frameName, frame in pairs(addon.enabledFrames) do
         -- Wipe alpha frame data
         -- Alpha frame restoration only tracked one point, to [1] would be "TOPLEFT" or similar
-        if addon.settings.profile.framePositions[frameName] and
-            addon.settings.profile.framePositions[frameName][1] and
-            type(addon.settings.profile.framePositions[frameName][1]) ~= "table" then
-            addon.settings.profile.framePositions[frameName] = nil
+        if p.framePositions[frameName] and p.framePositions[frameName][1] and
+            type(p.framePositions[frameName][1]) ~= "table" then
+            p.framePositions[frameName] = nil
         end
 
-        if addon.settings.profile.framePositions[frameName] then
+        if p.framePositions[frameName] then
             for i = 1, frame:GetNumPoints() or 0 do
                 point, relativeToName, relativePoint, offsetX, offsetYOrNil =
-                    unpack(addon.settings.profile.framePositions[frameName][i])
+                    unpack(p.framePositions[frameName][i])
 
                 frame:ClearAllPoints()
                 result, reason = pcall(frame.SetPoint, frame, point,
                                        relativeToName, relativePoint, offsetX,
                                        offsetYOrNil)
             end
+        end
+
+        if p.frameSizes[frameName] then
+            frame:SetSize(unpack(p.frameSizes[frameName]))
         end
     end
 
@@ -3436,4 +3460,12 @@ function addon.settings:LoadScales()
         addon.targeting.activeTargetFrame:SetScale(self.profile
                                                        .activeTargetScale)
     end
+end
+
+function addon.settings:IsEnabled(...)
+    for _, settingName in ipairs({...}) do
+        if not self.profile[settingName] then return false end
+    end
+
+    return true
 end

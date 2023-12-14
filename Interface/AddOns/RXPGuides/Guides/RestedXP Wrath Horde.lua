@@ -1,5 +1,5 @@
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -889,7 +889,7 @@ step
 .accept 1184 >> Accept Parts of the Swarm
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -1050,7 +1050,7 @@ step
 .zoneskip Orgrimmar
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -2177,7 +2177,7 @@ step
 
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -3134,7 +3134,7 @@ step << wotlk
 .accept 669 >> Accept Sunken Treasure
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -4202,7 +4202,7 @@ step
 .abandon 1173
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -4976,7 +4976,7 @@ step
 .turnin 208 >> Turn in Big Game Hunter
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -6316,7 +6316,7 @@ step
 .turnin 32 >> Turn in Rise of the Silithid
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -6519,7 +6519,7 @@ goto The Hinterlands,59.3,78.2
 step
 #completewith next
 >> If you want to save some time, you can do a jump skip and skip killing a lot of the Aman'zasi Guards.
-.link https://www.youtube.com/watch?v=7vmnvdjbUnM >> Click here for a video guide
+.link https://www.youtube.com/watch?v=UPiNtMem9tM >> Click here for a video guide
 step
 .goto The Hinterlands,57.8,86.8
 >>Kill Hitah'ya the Keeper inside the cave and loot the Shackle Key
@@ -7032,7 +7032,7 @@ step
 .turnin 580 >> Turn in Whiskey Slim's Lost Grog
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -7577,7 +7577,7 @@ step
 .turnin 3444 >> Turn in The Stone Circle
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -7965,7 +7965,7 @@ step
 step
 #completewith next
 >> If you want to save some time, you can do a jump skip and skip killing a lot of the Gorillas.
-.link https://www.youtube.com/watch?v=7vmnvdjbUnM >> Click here for a video guide
+.link https://www.youtube.com/watch?v=UPiNtMem9tM >> Click here for a video guide
 step
 >>Run to the back of the Gorilla cave. Kill U'cha. Loot him for his pelt
 .goto Un'Goro Crater,68.0,13.2
@@ -8098,7 +8098,7 @@ step
 .fly Splintertree Post >> Fly to Splintertree Post
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -8588,7 +8588,7 @@ step
 .turnin 4300 >>Turn in Bone-Bladed Weapons
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -9373,7 +9373,7 @@ step
 .accept 9407 >>Accept Through the Dark Portal
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -12402,7 +12402,7 @@ step
 >>You are now attuned to Karazhan - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -13711,7 +13711,7 @@ step
 .target Warden Hamoot
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -15575,7 +15575,7 @@ step
 .zone Shattrath City >> Travel to Shattrath
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -17445,7 +17445,7 @@ step
 .target Hemet Nesingwary
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -19427,7 +19427,7 @@ step
 .abandon 10912 >> Abandon The Hound-Master
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 60-70
 << Horde
@@ -20269,7 +20269,7 @@ step
 .target A'dal
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #tbc
 #group RestedXP Horde 60-70
 << Horde
@@ -20784,7 +20784,7 @@ step
 .target Evergrove Druid
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #tbc
 #group RestedXP Horde 60-70
 << Horde
@@ -24262,7 +24262,7 @@ step
 .target Voren'thal the Seer
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80
 #name 68-71 Howling Fjord
@@ -27620,7 +27620,7 @@ step << Warrior
 .target Zel'mak
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -28201,7 +28201,7 @@ step
 .target Tobias the Filth Gorger
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -28770,7 +28770,7 @@ step
 .target Tobias the Filth Gorger
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80
 #defaultfor None
@@ -30974,7 +30974,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Horde
@@ -32297,7 +32297,7 @@ step << skip
 >>Ding Level 80 - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Horde
@@ -32818,7 +32818,7 @@ step
 .xp <73,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -34553,7 +34553,7 @@ step
 step
 .groundgoto BoreanTundra,87.7,22.0,40,0
 .goto BoreanTundra,88.68,21.72,25,0
-.goto BoreanTundra,88.08,20.88,5 >> Travel to the |cRXP_WARN_Spire of Blood|r. Enter through the side enterance
+.goto BoreanTundra,88.08,20.88,5 >> Travel to the |cRXP_WARN_Spire of Blood|r. Enter through the side entrance
 .complete 11633,2 
 step
 #label SDecay
@@ -36101,7 +36101,7 @@ step
 .target Winterfin Tadpole
 step
 .goto BoreanTundra,40.04,19.80
-.use 34669 >> |cRXP_WARN_Use the|r |T133015:0|t[Arcanometer] |cRXP_WARN_at the enterance of the Winterfin Caverns|r
+.use 34669 >> |cRXP_WARN_Use the|r |T133015:0|t[Arcanometer] |cRXP_WARN_at the entrance of the Winterfin Caverns|r
 .complete 12728,1 
 step
 #completewith end
@@ -36222,7 +36222,7 @@ step
 #completewith next
 .goto BoreanTundra,36.80,23.22,40,0
 .goto BoreanTundra,37.87,21.52,25,0
-.goto BoreanTundra,37.84,23.23,30 >> Travel toward |cRXP_FRIENDLY_Glrglrglr|r near the enterance
+.goto BoreanTundra,37.84,23.23,30 >> Travel toward |cRXP_FRIENDLY_Glrglrglr|r near the entrance
 step
 #label Lurgglbr
 .goto BoreanTundra,37.84,23.23
@@ -36649,7 +36649,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #xprate <1.5
 #group RestedXP Horde 70-80
@@ -38758,7 +38758,7 @@ step
 .goto Dragonblight,72.21,73.46,5,0
 .goto Dragonblight,74.0,75.9
 >>Exit the Abbey after speaking to |cRXP_FRIENDLY_High Abbot Landgren|r
->>Wait for |cRXP_FRIENDLY_High Abbot Landgren|r to spawn at the enterance
+>>Wait for |cRXP_FRIENDLY_High Abbot Landgren|r to spawn at the entrance
 >>Stay next to |cRXP_FRIENDLY_High Abbot Landgren|r and follow him very closely to the cliff. Avoid |cRXP_ENEMY_Onslaught Knights|r en route
 >>|cRXP_WARN_Do NOT shapeshift as you will lose your disguise|r << Druid
 >>|cRXP_WARN_Talk to |cRXP_FRIENDLY_Agent Skully|r if you lose your|r |T136177:0|t[Scarlet Raven Priest Image]
@@ -40179,7 +40179,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -42965,7 +42965,7 @@ step
 .target Makki Wintergale
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Horde
 #group RestedXP Horde 70-80
@@ -46677,7 +46677,7 @@ step
 .xp <77,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Horde
@@ -46690,7 +46690,7 @@ step
 .xp 77 >> Grind the mobs in Zol'Maz until your lockouts expire. Try to take one corner of the subzone each to force dynamic respawns
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Horde
 #group RestedXP Horde 70-80
@@ -48566,7 +48566,7 @@ step << !Druid !DK !Mage
 .zoneskip Dalaran
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -50934,7 +50934,7 @@ step
 .zone Icecrown >>Fly to Icecrown
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Horde
 #group RestedXP Horde 70-80

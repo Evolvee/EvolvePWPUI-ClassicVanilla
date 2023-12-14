@@ -22,6 +22,8 @@ L["|cffeda55fMiddle-Click|r to toggle the minimap icon on or off."] = "|cffeda55
 L["|cffeda55fRight-Click|r to toggle performance profiling window."] = "|cffeda55f우-클릭|r 으로 성능 프로파일링 창을 켜고 끕니다."
 L["|cffeda55fShift-Click|r to pause addon execution."] = "|cffeda55f쉬프트-클릭|r 으로 애드온 실행을 일시 중지합니다."
 L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "|cFFFF0000착용하지 않은|r 아이템 보너스 ID"
+--[[Translation missing --]]
+L["|cFFFF0000Not|r Item Equipped"] = "|cFFFF0000Not|r Item Equipped"
 L["|cFFFF0000Not|r Player Name/Realm"] = "플레이어 이름/서버 |cFFFF0000불일치|r"
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
@@ -126,6 +128,8 @@ L["Amount"] = "수량"
 --[[Translation missing --]]
 L["Anchoring"] = "Anchoring"
 L["And Talent"] = "및 특성"
+--[[Translation missing --]]
+L["Angle and Radius"] = "Angle and Radius"
 L["Animations"] = "애니메이션"
 L["Anticlockwise"] = "반시계 방향"
 L["Anub'arak"] = "아눕아락"
@@ -197,7 +201,8 @@ L["Back and Forth"] = "왕복"
 L["Background"] = "배경"
 L["Background Color"] = "배경 색상"
 L["Baltharus the Warborn"] = "전쟁의 아들 발타루스"
-L["Bar Color"] = "바 색상"
+--[[Translation missing --]]
+L["Bar Color/Gradient Start"] = "Bar Color/Gradient Start"
 L["Baron Geddon"] = "남작 게돈"
 L["Battle for Azeroth"] = "격전의 아제로스"
 L["Battle.net Whisper"] = "Battle.net 귓속말"
@@ -377,6 +382,8 @@ L["Crowd Controlled"] = "군중 제어됨"
 L["Crushing"] = "강타"
 L["C'thun"] = "쑨"
 --[[Translation missing --]]
+L["Current Combo Point charged"] = "Current Combo Point charged"
+--[[Translation missing --]]
 L["Current Essence"] = "Current Essence"
 L["Current Experience"] = "현재 경험치"
 L["Current Movement Speed (%)"] = "현재 이동 속도 (%)"
@@ -533,6 +540,8 @@ L["Encounter ID(s)"] = "교전 ID(s)"
 L["Energize"] = "마력 얻음"
 L["Enrage"] = "격노"
 --[[Translation missing --]]
+L["Enter a name or a spellId"] = "Enter a name or a spellId"
+--[[Translation missing --]]
 L["Enter static or relative values with %"] = "Enter static or relative values with %"
 L["Entering"] = "시작"
 L["Entering/Leaving Combat"] = "전투 시작/종료"
@@ -682,9 +691,9 @@ L["Golemagg the Incinerator"] = "초열의 골레마그"
 L["Gothik the Harvester"] = "영혼의 착취자 고딕"
 L["Gradient"] = "색상 전환"
 --[[Translation missing --]]
-L["Gradient Color"] = "Gradient Color"
---[[Translation missing --]]
 L["Gradient Enabled"] = "Gradient Enabled"
+--[[Translation missing --]]
+L["Gradient End"] = "Gradient End"
 --[[Translation missing --]]
 L["Gradient Orientation"] = "Gradient Orientation"
 L["Gradient Pulse"] = "색상 전환(깜빡임)"
@@ -711,6 +720,8 @@ L["Group Finder Poke End"] = "Group Finder Poke End"
 L["Group Finder Poke Initial"] = "Group Finder Poke Initial"
 --[[Translation missing --]]
 L["Group Leader/Assist"] = "Group Leader/Assist"
+--[[Translation missing --]]
+L["Group Size"] = "Group Size"
 L["Group Type"] = "그룹 유형"
 L["Grow"] = "성장"
 L["GTFO Alert"] = "GTFO 경보"
@@ -885,6 +896,8 @@ L["Loatheb"] = "로데브"
 L["Location"] = "Location"
 L["Looking for Raid"] = "공격대 찾기"
 L["Loop"] = "반복"
+--[[Translation missing --]]
+L["Loot"] = "Loot"
 L["Lord Jaraxxus"] = "군주 자락서스"
 L["Lord Marrowgar"] = "군주 매로우가르"
 L["Lost"] = "손실"
@@ -1584,6 +1597,8 @@ L["Tracking Charge CDs"] = "Tracking Charge CDs"
 --[[Translation missing --]]
 L["Tracking Only Cooldown"] = "Tracking Only Cooldown"
 L["Transmission error"] = "전송 오류"
+--[[Translation missing --]]
+L["Treat charged combo point as 7 combo points"] = "Treat charged combo point as 7 combo points"
 L["Trial of the Crusader"] = "십자군의 시험장"
 L["Trigger"] = "활성 조건"
 L["Trigger %i"] = "활성 조건 %i"
@@ -1616,6 +1631,10 @@ L["Unit is Unit"] = "유닛 = 유닛"
 L["Unit Name"] = "유닛 이름"
 L["Unit Name/Realm"] = "유닛 이름/서버"
 L["Units Affected"] = "영향 받은 유닛"
+--[[Translation missing --]]
+L["Units of affected Players in a table format"] = "Units of affected Players in a table format"
+--[[Translation missing --]]
+L["Units of unaffected Players in a table format"] = "Units of unaffected Players in a table format"
 L["unknown location"] = "알 수 없는 위치"
 L["Unlimited"] = "무제한"
 --[[Translation missing --]]

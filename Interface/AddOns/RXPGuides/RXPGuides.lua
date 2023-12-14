@@ -85,6 +85,7 @@ end
 local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
 addon.release = GetAddOnMetadata(addonName, "Version")
 addon.title = GetAddOnMetadata(addonName, "Title")
+local cacheVersion = false
 local L = addon.locale.Get
 
 if string.match(addon.release, 'project') then
@@ -129,6 +130,7 @@ addon.player = {
     faction = select(1,UnitFactionGroup("player")),
     guid = UnitGUID("player"),
     name = UnitName("player"),
+    season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason(),
 }
 addon.player.neutral = addon.player.faction == "Neutral"
 
@@ -194,6 +196,31 @@ function addon.GetStepQuestReward(titleOrId)
     if not element then return 0 end
 
     return element.reward >= 0 and element.reward or 0
+end
+
+function addon.IsPlayerSpell(id)
+    if IsPlayerSpell(id) or IsSpellKnown(id, true) or IsSpellKnown(id) then
+        return true
+    end
+
+    if addon.player.season == 2 then
+        for _,slot in pairs (C_Engraving.GetRuneCategories(false,true)) do
+
+            local runes = C_Engraving.GetRunesForCategory(slot,true)
+            for _,rune in pairs(runes) do
+                if rune.skillLineAbilityID == id then
+                    return true
+                elseif type(rune.learnedAbilitySpellIDs) == "table" then
+                    for _,spell in pairs(rune.learnedAbilitySpellIDs) do
+                        if spell == id then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return false
 end
 
 local currrentSkillLevel = {}
@@ -573,7 +600,7 @@ local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQu
 
     -- If explicitly hard-coded .turnin reward choice, use that and exit
     if addon.settings.profile.enableQuestRewardAutomation
-        and hardCodedReward and hardCodedReward > 0 then -- Quest has an explicit reward ID for .turnin step
+        and hardCodedReward > 0 then -- Quest has an explicit reward ID for .turnin step
 
         return -1, hardCodedReward, {}
     end
@@ -595,7 +622,7 @@ local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQu
 
         itemLink = GetQuestItemLink("choice", i)
 
-        if addon.itemUpgrades then
+        if addon.itemUpgrades and addon.settings:IsEnabled('enableTips', 'enableItemUpgrades') then
             itemData = addon.itemUpgrades:GetItemData(itemLink)
 
             if itemData then
@@ -623,7 +650,7 @@ local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQu
     end
 
     local bestSellOption, bestSellValue = -1, -1
-    local bestRatioOption, bestRatioValue = -1, -1
+    local bestRatioOption, bestRatioValue = -1, 0
     for choice, data in ipairs(options) do
         if data.sellPrice > bestSellValue then
             bestSellValue = data.sellPrice
@@ -633,7 +660,7 @@ local function evaluateQuestChoices(questID, numChoices, GetQuestItemInfo, GetQu
         -- Check for best compared upgrade
         for _, compareData in ipairs(data.comparisons) do
             if not compareData.Ratio then
-                if compareData.debug == _G.EMPTY then
+                if compareData.ItemLink == _G.EMPTY then
                      -- An item needs to be 10x better to beat an empty slot fill
                     bestRatioValue = 10.0
                     bestRatioOption = choice
@@ -660,6 +687,23 @@ local function handleQuestComplete()
         addon:SendEvent("RXP_QUEST_TURNIN", id, numChoices, 1)
         return
     end
+
+    -- Pull quest handling out for .turnin legacy/hard-coded choices
+    local hardCodedReward = addon.GetStepQuestReward(id)
+
+    -- If explicitly hard-coded .turnin reward choice, use that and exit
+    -- Preserve simplest path for existing functionality
+    if hardCodedReward > 0 and
+        addon.settings.profile.enableQuestRewardAutomation then
+
+        GetQuestReward(hardCodedReward)
+        addon:SendEvent("RXP_QUEST_TURNIN", id, numChoices, hardCodedReward)
+
+        -- Hard-coded, so exit early to keep recommendations and QuestLog portions simpler
+        return
+    end
+
+    if not addon.settings.profile.enableTips or not addon.settings.profile.enableItemUpgrades then return end
 
     local bestSellOption, bestRatioOption, options = evaluateQuestChoices(id, numChoices, GetQuestItemInfo, GetQuestItemLink)
 
@@ -885,7 +929,7 @@ function addon:QuestAutomation(event, arg1, arg2, arg3)
 end
 
 function addon:CreateMetaDataTable(wipe)
-    if wipe or addon.release ~= RXPData.release then
+    if wipe or addon.release ~= RXPData.release or RXPData.cacheVersion ~= cacheVersion or not cacheVersion then
         RXPData.guideMetaData = nil
     end
     local guideMetaData = RXPData.guideMetaData or {}
@@ -975,23 +1019,6 @@ function addon:OnEnable()
     addon.GetProfessionLevel()
     local guide = addon.GetGuideTable(RXPCData.currentGuideGroup,
                                       RXPCData.currentGuideName)
-    if not guide and RXPData.autoLoadStartingGuides then
-        if addon.defaultGuideList then
-            local currentMap = C_Map.GetBestMapForUnit("player")
-            for zone, guideName in pairs(addon.defaultGuideList) do
-                if currentMap and (currentMap == zone or currentMap == addon.mapId[zone]) then
-                    local group, name = string.match(guideName,
-                                                     "([^\\]+)%s*\\%s*([^\\]+)")
-                    guide = addon.GetGuideTable(group, name)
-                end
-            end
-        end
-        guide = guide or addon.defaultGuide
-        if addon.game == "TBC" and
-            (UnitLevel("player") == 58 and not guide.boost58) then
-            guide = nil
-        end
-    end
     addon:LoadGuide(guide, true)
     if not addon.currentGuide then
         addon.RXPFrame:SetHeight(20)
@@ -1073,6 +1100,7 @@ function addon:OnEnable()
     local updateFrame = CreateFrame("Frame")
     updateFrame:SetScript("OnUpdate", addon.UpdateLoop)
     RXPData.release = addon.release
+    RXPData.cacheVersion = cacheVersion
 end
 
 -- Tracks if a player is on a loading screen and pauses the main update loop
@@ -1565,11 +1593,23 @@ function addon.stepLogic.AHCheck(step)
 end
 
 function addon.stepLogic.SeasonCheck(step)
-    if addon.settings.profile.SoM and step.era or step.som and
-        not addon.settings.profile.SoM or addon.settings.profile.SoM and
+    local currentSeason = addon.settings.profile.season or 0
+    local SoM = currentSeason == 1
+    --local SoD = currentSeason == 2
+    if SoM and step.era or step.som and not SoM or SoM and
         addon.settings.profile.phase > 2 and step["era/som"] then
         return false
     end
+
+    if step.season then
+        for season in step.season:gmatch("[^,;%s]+") do
+            if currentSeason == tonumber(season) then
+                return true
+            end
+        end
+        return false
+    end
+
     return true
 end
 

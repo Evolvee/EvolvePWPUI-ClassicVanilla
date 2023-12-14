@@ -197,6 +197,8 @@ Enable this setting if you want this timer to be hidden, or when using a WeakAur
 	L["and rotated right"] = ", 오른쪽으로 회전"
 	L["and with width |cFFFF0000%s|r and %s"] = ", 너비 |cFFFF0000%s|r, %s"
 	L["Angle"] = "각도"
+	--[[Translation missing --]]
+	L["Angle Between Auras"] = "Angle Between Auras"
 	L["Animate"] = "애니메이션"
 	L["Animated Expand and Collapse"] = "확장 / 접기 애니메이션"
 	L["Animates progress changes"] = "진행 변화 애니메이션"
@@ -501,7 +503,7 @@ UNIT_POWER_UPDATE, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Fallback Icon"] = "Fallback Icon"
 	L["False"] = "거짓"
 	--[[Translation missing --]]
-	L["Fetch Affected/Unaffected Names"] = "Fetch Affected/Unaffected Names"
+	L["Fetch Affected/Unaffected Names and Units"] = "Fetch Affected/Unaffected Names and Units"
 	--[[Translation missing --]]
 	L["Fetch Raid Mark Information"] = "Fetch Raid Mark Information"
 	L["Fetch Role Information"] = "역할 정보 가져오기"
@@ -1027,6 +1029,8 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	L["Sub Elements"] = "하위 요소"
 	L["Sub Option %i"] = "하위 옵션 %i"
 	--[[Translation missing --]]
+	L["Supports multiple entries, separated by commas"] = "Supports multiple entries, separated by commas"
+	--[[Translation missing --]]
 	L["Swipe Overlay Settings"] = "Swipe Overlay Settings"
 	L["Templates could not be loaded, the addon is %s"] = "템플릿을 불러올 수 없습니다. 애드온은 %s입니다."
 	L["Temporary Group"] = "임시 그룹"
@@ -1063,6 +1067,10 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	L["This adds %tooltip, %tooltip1, %tooltip2, %tooltip3 and %tooltip4 as text replacements and also allows filtering based on the tooltip content/values."] = "This adds %tooltip, %tooltip1, %tooltip2, %tooltip3 and %tooltip4 as text replacements and also allows filtering based on the tooltip content/values."
 	L[ [=[This aura contains custom Lua code.
 Make sure you can trust the person who sent it!]=] ] = "이 효과는 사용자 정의 Lua 코드를 포함합니다. 보낸 사람을 믿을 수 있는지 확인하세요!"
+	--[[Translation missing --]]
+	L["This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."
+	--[[Translation missing --]]
+	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = "이 효과는 월드 오브 워크래프트의 다른 버전(%s)으로 생성되었습니다. 제대로 작동하지 않을 수 있습니다!"
 	--[[Translation missing --]]

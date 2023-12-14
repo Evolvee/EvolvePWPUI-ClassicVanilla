@@ -33,6 +33,20 @@
 	<Script file="Guides/SurvivalGuide/H-Classic-Horde-15-23_Barrens.lua"/>
 	<Script file="Guides/SurvivalGuide/H-Classic-Horde-20-60.lua"/>
 	
+	<Script file="Guides/SoD/Neutral.lua"/>
+	<Script file="Guides/SoD/Rogue.lua"/>
+	<Script file="Guides/SoD/Warrior.lua"/>
+	<Script file="Guides/SoD/Druid.lua"/>
+	<Script file="Guides/SoD/Hunter.lua"/>
+	<Script file="Guides/SoD/Mage.lua"/>
+	<Script file="Guides/SoD/Paladin.lua"/>
+	<Script file="Guides/SoD/Priest.lua"/>
+	<Script file="Guides/SoD/Warlock.lua"/>
+	<Script file="Guides/SoD/Alliance.lua"/>
 
+<!--
+	<Script file="Guides/SoD/Horde.lua"/>
+	<Script file="Guides/SoD/Shaman.lua"/>
+-->
 
 </Ui>

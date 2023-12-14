@@ -1,7 +1,7 @@
 --- @type string, Private
 local AddonName, Private = ...
 
-local internalVersion = 68
+local internalVersion = 70
 
 -- Lua APIs
 local insert = table.insert
@@ -1662,6 +1662,7 @@ local function scanForLoadsImpl(toCheck, event, arg1, ...)
   end
 
   local group = Private.ExecEnv.GroupType()
+  local groupSize = GetNumGroupMembers()
 
   local affixes, warmodeActive, effectiveLevel = 0, false, 0
   if WeakAuras.IsRetail() then
@@ -1682,14 +1683,14 @@ local function scanForLoadsImpl(toCheck, event, arg1, ...)
       local loadFunc = loadFuncs[id];
       local loadOpt = loadFuncsForOptions[id];
       if WeakAuras.IsClassicEra() then
-        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, vehicle, class, player, realm, race, faction, playerLevel, raidRole, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size)
-        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, vehicle, class, player, realm, race, faction, playerLevel, raidRole, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size)
+        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, vehicle, class, player, realm, race, faction, playerLevel, raidRole, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size)
+        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, vehicle, class, player, realm, race, faction, playerLevel, raidRole, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size)
       elseif WeakAuras.IsWrathClassic() then
-        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, vehicle, vehicleUi, class, player, realm, race, faction, playerLevel, role, raidRole, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex)
-        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, vehicle, vehicleUi, class, player, realm, race, faction, playerLevel, role, raidRole, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex)
+        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, vehicle, vehicleUi, class, player, realm, race, faction, playerLevel, role, raidRole, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex)
+        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, vehicle, vehicleUi, class, player, realm, race, faction, playerLevel, role, raidRole, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex)
       elseif WeakAuras.IsRetail() then
-        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, warmodeActive, inPetBattle, vehicle, vehicleUi, dragonriding, specId, player, realm, race, faction, playerLevel, effectiveLevel, role, position, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex, affixes)
-        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, warmodeActive, inPetBattle, vehicle, vehicleUi, dragonriding, specId, player, realm, race, faction, playerLevel, effectiveLevel, role, position, group, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex, affixes)
+        shouldBeLoaded = loadFunc and loadFunc("ScanForLoads_Auras", inCombat, alive, inEncounter, warmodeActive, inPetBattle, vehicle, vehicleUi, dragonriding, specId, player, realm, race, faction, playerLevel, effectiveLevel, role, position, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex, affixes)
+        couldBeLoaded =  loadOpt and loadOpt("ScanForLoads_Auras",   inCombat, alive, inEncounter, warmodeActive, inPetBattle, vehicle, vehicleUi, dragonriding, specId, player, realm, race, faction, playerLevel, effectiveLevel, role, position, group, groupSize, raidMemberType, zone, zoneId, zonegroupId, encounter_id, size, difficulty, difficultyIndex, affixes)
       end
 
       if(shouldBeLoaded and not loaded[id]) then
@@ -3101,11 +3102,11 @@ end
 function Private.SetRegion(data, cloneId)
   local regionType = data.regionType;
   if not(regionType) then
-    error("Improper arguments to Private.SetRegion - regionType not defined");
+    error("Improper arguments to Private.SetRegion - regionType not defined in ".. data.id)
   else
     if(not regionTypes[regionType]) then
       regionType = "fallback";
-      print("Improper arguments to WeakAuras.CreateRegion - regionType \""..data.regionType.."\" is not supported");
+      print("Improper arguments to WeakAuras.CreateRegion - regionType \""..data.regionType.."\" is not supported in ".. data.id)
     end
 
     local id = data.id;
@@ -4050,12 +4051,16 @@ local function SetFrameLevel(id, frameLevel)
 end
 
 function Private.FixGroupChildrenOrderForGroup(data)
-  local frameLevel = 1;
-  if data.parent == nil then
-    for child in Private.TraverseAll(data) do
-      SetFrameLevel(child.id, frameLevel);
-      frameLevel = frameLevel + 4;
-    end
+  SetFrameLevel(data.id, 0)
+  local frameLevel, offset
+  if data.regionType == "dynamicgroup" then
+    frameLevel, offset = 5, 0
+  else
+    frameLevel, offset = 2, 4
+  end
+  for child in Private.TraverseLeafs(data) do
+    SetFrameLevel(child.id, frameLevel);
+    frameLevel = frameLevel + offset;
   end
 end
 

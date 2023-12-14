@@ -207,6 +207,8 @@ Activa esta opción si quieres que el temporizador esté oculto, o cuando utilic
 	--[[Translation missing --]]
 	L["and with width |cFFFF0000%s|r and %s"] = "and with width |cFFFF0000%s|r and %s"
 	L["Angle"] = "Ángulo"
+	--[[Translation missing --]]
+	L["Angle Between Auras"] = "Angle Between Auras"
 	L["Animate"] = "Animar"
 	L["Animated Expand and Collapse"] = "Animar Pliegue y Despliegue"
 	L["Animates progress changes"] = "Anima los cambios de progreso"
@@ -467,7 +469,8 @@ Off Screen]=] ] = "El aura está fuera de la pantalla"
 	L["Fallback"] = "Respuesta"
 	L["Fallback Icon"] = "Icono de respuesta"
 	L["False"] = "Falso"
-	L["Fetch Affected/Unaffected Names"] = "Buscar nombres afectados/no afectados"
+	--[[Translation missing --]]
+	L["Fetch Affected/Unaffected Names and Units"] = "Fetch Affected/Unaffected Names and Units"
 	L["Fetch Raid Mark Information"] = "Obtener información sobre la marca de banda"
 	L["Fetch Role Information"] = "Obtener información del rol"
 	L["Fetch Tooltip Information"] = "Obtener información del tooltip"
@@ -1080,6 +1083,8 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	--[[Translation missing --]]
 	L["Sub Option %i"] = "Sub Option %i"
 	--[[Translation missing --]]
+	L["Supports multiple entries, separated by commas"] = "Supports multiple entries, separated by commas"
+	--[[Translation missing --]]
 	L["Swipe Overlay Settings"] = "Swipe Overlay Settings"
 	--[[Translation missing --]]
 	L["Templates could not be loaded, the addon is %s"] = "Templates could not be loaded, the addon is %s"
@@ -1126,6 +1131,10 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	L[ [=[This aura contains custom Lua code.
 Make sure you can trust the person who sent it!]=] ] = [=[This aura contains custom Lua code.
 Make sure you can trust the person who sent it!]=]
+	--[[Translation missing --]]
+	L["This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."
+	--[[Translation missing --]]
+	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."
 	--[[Translation missing --]]
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = [=[This aura was created with a different version (%s) of World of Warcraft.

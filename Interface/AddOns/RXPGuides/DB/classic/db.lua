@@ -23,10 +23,10 @@ addon.defaultGuideList = {
 }
 
 if faction == "Horde" then
-    addon.defaultGroup = "RestedXP Horde 1-22"
+    addon.defaultGroup = "RestedXP Speedrun Guide (H)"
     addon.defaultGroupHC = "RestedXP Survival Guide (H)"
 elseif faction == "Alliance" then
-    addon.defaultGroup = "RestedXP Alliance 1-20"
+    addon.defaultGroup = "RestedXP Speedrun Guide (A)"
     addon.defaultGroupHC = "RestedXP Survival Guide (A)"
 end
 
@@ -1556,3 +1556,13 @@ addon.dungeonStats = {
         },
     }
 }
+
+addon.dungeonStatsSC = CopyTable(addon.dungeonStats)
+if addon.player.class == "HUNTER" then
+    addon.dungeonStatsSC["Alliance"]["DM"]["travel"] = 0
+    addon.dungeonStatsSC["Alliance"]["DM"]["HUNTER"] = 2
+end
+addon.dungeonStatsSC["Horde"]["DM"] = nil
+addon.dungeonStatsSC["Alliance"]["SFK"] = nil
+addon.dungeonStatsSC["Alliance"]["WC"] = nil
+addon.dungeonStatsSC["Alliance"]["ULDA"].travel = 1

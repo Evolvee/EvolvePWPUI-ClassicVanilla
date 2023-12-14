@@ -1616,6 +1616,15 @@ hooksecurefunc(widget, "SetPoint", function(self, _, parent)
     end
 end)
 
+-- Right click interface menu class colouring (vanilla)
+DropDownList1Button1NormalText:HookScript("OnShow", function()
+    local text = DropDownList1Button1NormalText:GetText()
+    if text:find("cfff58cba") then
+        local newText = string.gsub(text, "|cfff58cba", "|cff0070de")
+        DropDownList1Button1NormalText:SetText(newText)
+    end
+end)
+
 -- Text formating because Blizzard is a bunch of retarded dogs
 
 

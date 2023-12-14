@@ -3,7 +3,7 @@ RXPGuides.RegisterGuide([[
 #classic
 << Horde
 #name 35-37 Desolace Horde
-#version 7
+#version 13
 #group RestedXP Survival Guide (H)
 #subgroup RXP Survival Guide 30-40
 #next 37-39 Northern Stranglethorn
@@ -15,9 +15,11 @@ step
 .isQuestComplete 1088
 .group
 step
+#optional
 .abandon 1088 >> Abandon Ordanus
 .isOnQuest 1088
 step
+#optional
 .abandon 2841 >> Abandon Rig Wars
 .isOnQuest 2841
 step
@@ -37,6 +39,13 @@ step
 .mob Burning Blade Reaver
 .mob Burning Blade Felsworn
 .mob Burning Blade Shadowmage
+step << Warrior/Hunter/Rogue/Druid/Shaman
+.goto Desolace,55.94,29.19
+.xp 35+35000 >> Grind Burning Blade mobs at Thunder Axe Fortress to level 35 35000+/67100
+.mob Burning Blade Felsworn
+.mob Burning Blade Augur
+.mob Burning Blade Reaver
+.mob Burning Blade Adept
 step
 .goto Desolace,38.90,27.20
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Azore|r
@@ -84,9 +93,6 @@ step
 >>|cRXP_WARN_He has 3 different spawn locations in the camp|r
 .complete 1365,1 
 .unitscan Khan Dez'hepah
-step
-.loop 25,Desolace,70.12,50.27,71.63,50.57,73.10,50.24,74.11,49.66,74.43,47.40,73.85,44.44,73.21,42.47,71.53,41.20,70.05,41.17,68.76,43.33,68.56,45.72,68.52,47.77,68.57,50.14,70.12,50.27
-.xp 35+33550>> Grind to level 35.5
 step
 #completewith next
 >>Kill |cRXP_ENEMY_Hatefury Shadowstalkers|r. Loot them for a |cFF00BCD4Scalp|r
@@ -179,6 +185,24 @@ step
 .mob Magram Mauler
 .mob Magram Marauder
 .mob Magram Wrangler
+step << !Warrior !Hunter !Rogue !Druid !Shaman
+.goto Desolace,67.90,73.59,60,0
+.goto Desolace,67.86,75.80,60,0
+.goto Desolace,66.26,75.70,60,0
+.goto Desolace,65.70,78.86,60,0
+.goto Desolace,66.40,80.05,60,0
+.goto Desolace,68.56,81.01,60,0
+.goto Desolace,72.20,78.35,60,0
+.goto Desolace,70.95,75.09,60,0
+.goto Desolace,73.36,73.37,60,0
+.goto Desolace,69.60,77.85
+.xp 35+45000 >> Grind to level 35 45000+/67100
+.mob Magram Outrunner
+.mob Magram Scout
+.mob Magram Stormer
+.mob Magram Mauler
+.mob Magram Marauder
+.mob Magram Wrangler
 step
 .goto Desolace,56.20,59.60
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Felgur|r
@@ -194,7 +218,7 @@ step
 step
 .goto Desolace,60.86,61.86,0
 >>Use the |T132488:0|t[Kodo Kombobulator] on |cRXP_FRIENDLY_Kodos|r, then escort them to |cRXP_FRIENDLY_Smeed|r
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Smeed|r after each trip to progress the quest
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Kodo|r after each trip to progress the quest
 .complete 5561,1 
 .use 13892
 .target Dying Kodo
@@ -253,16 +277,33 @@ step
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thalon|r at the end of the dock
 .fp Shadowprey Village >> Get the Shadowprey Village flight path
 .target Thalon
-step
+step << Warlock/Druid/Shaman
 #ah
 .loop 25,Desolace,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4
 >>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cFF00BCD4Shellfish|r
+>>|cRXP_WARN_The droprates may be low|r
+.use 5996 >>Drink an |T134797:0|t[Elixir of Water Breathing]
+.collect 13545,10 
+.mob Drysnap Crawler
+.mob Drysnap Pincer
+step << Warlock/Druid/Shaman
+.goto Desolace,22.44,73.13
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jinar'Zillen|r
+.collect 13546,2 
+.turnin 5421 >> Turn in Fish in a Bucket
+.target Jinar'Zillen
+.itemcount 13545,10 
+step << !Warlock !Druid !Shaman
+#ah
+.loop 25,Desolace,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cFF00BCD4Shellfish|r
+>>|cRXP_WARN_The droprates may be low|r
 .use 5996 >>Drink an |T134797:0|t[Elixir of Water Breathing]
 .collect 13545,10 
 .mob Drysnap Crawler
 .mob Drysnap Pincer
 .itemcount 5996,1
-step
+step << !Warlock !Druid !Shaman
 #ah
 .goto Desolace,22.44,73.13
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jinar'Zillen|r
@@ -336,7 +377,7 @@ step
 .goto Desolace,36.07,30.40
 >>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Rackmore's Log|r, resting on a barrel
 .accept 6161 >> Accept Claim Rackmore's Treasure!
-step
+step << !Warlock !Druid !Shaman
 #ah
 #completewith next
 .use 5996 >>Drink an |T134797:0|t[Elixir of Water Breathing]
@@ -530,6 +571,11 @@ step
 .vendor >>|cRXP_BUY_Sell your junk, then restock on food and water if necessary|r << !Rogue !Warrior
 .vendor >>|cRXP_BUY_Sell your junk, then restock on food if necessary|r << Rogue/Warrior
 .target Innkeeper Pala
+step
+.goto Thunder Bluff,61.40,80.70
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Melor|r
+.accept 1136 >> Accept Frostmaw
+.target Melor Stonehoof
 
 
 
@@ -549,6 +595,7 @@ step << Druid
 .xp <36,1
 .xp >38,1
 step << Druid
+#optional
 .goto Thunder Bluff,76.46,27.20
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Turak|r
 .train 5201 >>Train your class spells
@@ -562,6 +609,7 @@ step << Hunter
 .xp <36,1
 .xp >38,1
 step << Hunter
+#optional
 .goto Thunder Bluff,59.11,86.87
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Urek|r
 .train 14320 >>Train your class spells
@@ -581,6 +629,7 @@ step << Warrior
 .xp <36,1
 .xp >38,1
 step << Warrior
+#optional
 .goto Thunder Bluff,57.56,85.48
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ker|r
 .train 8820 >> Train your class spells
@@ -603,6 +652,7 @@ step << Mage
 .xp <36,1
 .xp >38,1
 step << Mage
+#optional
 .goto Orgrimmar,38.36,85.54
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Pephredo|r
 .train 8413 >> Train your class spells
@@ -621,6 +671,7 @@ step << Shaman
 .xp <36,1
 .xp >38,1
 step << Shaman
+#optional
 .goto Orgrimmar,38.82,36.41
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Kardris|r
 .train 10391 >> Train your class spells
@@ -634,6 +685,7 @@ step << Rogue
 .xp <36,1
 .xp >38,1
 step << Rogue
+#optional
 .goto Orgrimmar,43.90,54.65
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Ormok|r
 .train 8621 >> Train your class spells
@@ -641,8 +693,8 @@ step << Rogue
 .xp <38,1
 step << Rogue
 .goto Orgrimmar,42.10,49.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Rekkul|r|cRXP_BUY_. Buy |r |T134387:0|t[Flash Powder] |cRXP_BUY_from him|r
-.collect 5140,20,2479,1 
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t|cRXP_BUY_Talk to|r |cRXP_FRIENDLY_Rekkul|r
+.vendor >> |cRXP_BUY_Stock up on Flash Powder and Poisons|r
 .target Rekkul
 step << Warlock
 .goto Orgrimmar,48.62,46.95
@@ -652,6 +704,7 @@ step << Warlock
 .xp <36,1
 .xp >38,1
 step << Warlock
+#optional
 .goto Orgrimmar,48.62,46.95
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mirket|r
 .train 11711 >> Train your class spells
@@ -670,6 +723,7 @@ step << Priest
 .xp <36,1
 .xp >38,1
 step << Priest
+#optional
 .goto Orgrimmar,35.59,87.80
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Ur'kyo|r
 .train 6078 >> Train your class spells

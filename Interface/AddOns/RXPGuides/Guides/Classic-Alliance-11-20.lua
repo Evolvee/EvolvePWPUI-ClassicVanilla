@@ -89,12 +89,10 @@ step << !NightElf
     .target Gwennyth Bly'Leggonde
 step << !NightElf
 #map Darkshore
-    #completewith next
-    .goto Darkshore,36.71,44.98,5,0
-    .goto Felwood,19.10,20.63
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gwennyth Bly'Leggonde|r
+    .goto Darkshore,36.336,45.574
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
     .fp Auberdine >> Get the Auberdine flight path
-    .target Gwennyth Bly'Leggonde
+    .target Caylais Moonfeather
 step << Dwarf Hunter
     #sticky
     .goto Darkshore,40.75,70.49,40,0
@@ -146,22 +144,23 @@ step
     .complete 983,1
     .mob Pygmy Tide Crawler
     .mob Young Reef Crawler
-step
+step << NightElf
 #map Darkshore
     .goto Felwood,18.81,26.69,40,0
     .goto Felwood,22.39,29.45
     .xp 12-1500 >> Grind until you are 1500xp off level 12
 step
 #map Darkshore
+    #era/som
     .goto Felwood,19.13,21.39
     >>Click the |cFFDB2EEFBuzzbox 827|r on the ground
     .turnin 983 >> Turn in Buzzbox 827
+    .accept 1001 >> Accept Buzzbox 411
 step
 #map Darkshore
-    #era/som
 	.goto Felwood,19.13,21.39
     >>Click the |cFFDB2EEFBuzzbox 827|r on the ground
-    .accept 1001 >> Accept Buzzbox 411
+    .turnin 983 >> Turn in Buzzbox 827
 step
 #map Darkshore
     .goto Darkshore,36.71,44.98,5,0
@@ -413,7 +412,7 @@ step
     .turnin 956 >> Turn in Bashal'Aran
     .accept 957 >> Accept Bashal'Aran
     .target Asterion
-step
+step << NightElf/Dwarf Hunter
     .goto Darkshore,47.79,39.46,40,0
     .goto Darkshore,45.36,43.64,40,0
     .goto Darkshore,43.24,41.46,40,0
@@ -533,7 +532,7 @@ step << Druid
     .goto Felwood,22.39,29.45
     .xp 14-2645 >> Grind until you are 2645xp away from level 14
 step << Druid
-    .goto Darkshore,36.34,45.58
+    .goto Darkshore,36.336,45.574
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
     .fly Teldrassil >> Fly to Teldrassil
     .target Caylais Moonfeather
@@ -826,13 +825,17 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gorbold Steelhand|r
     .vendor 6301 >> Buy |T134059:0|t[Mild Spices]
     >>|cFFFCDC00Use the|r |T134059:0|t[Mild Spices] |cFFFCDC00and your|r |T132832:0|t[Small Eggs] |cFFFCDC00to make Herb Baked Eggs. Do this until your Cooking has reached level 10|r
-    .skill cooking,10,1 -- step only displays if cooking skill is less than 10
+    >>|cRXP_WARN_Continue leveling your|r |T133971:0|t[Cooking] |cRXP_WARN_passed 10. There is a quest in Duskwood which requires your|r |T133971:0|t[Cooking] |cRXP_WARN_to be 50. You can also do this while you are on the boat soon|r
+    .skill cooking,50,1
     .target Gorbold Steelhand
+    .itemcount 6889,>4 -- Small Egg
 step
     .goto Darkshore,37.514,41.671
     +|cFFFCDC00Use your|r |T133971:0|t[Cooking] |cFFFCDC00profession to make Herb Baked Eggs. Do this until your|r |T133971:0|t[Cooking] |cFFFCDC00has reached level 10|r
-    .skill cooking,10,1 -- step only displays if cooking skill is less than 10
+    >>|cRXP_WARN_Continue leveling your|r |T133971:0|t[Cooking] |cRXP_WARN_passed 10. There is a quest in Duskwood which requires your|r |T133971:0|t[Cooking] |cRXP_WARN_to be 50. You can also do this while you are on the boat soon|r
+    .skill cooking,50,1
     .target Gorbold Steelhand
+    .itemcount 6889,>4 -- Small Egg
 step
     #optional
     .goto Darkshore,37.70,40.70
@@ -964,7 +967,7 @@ step << NightElf Hunter/Druid
     .goto Darkshore,56.92,27.27,40,0
     .goto Darkshore,55.27,27.74
     >>Kill |cFFFF5722Dark Strand Fanatics|r. Loot them for their |cFF00BCD4Parchments|r
-    .complete 966,1
+    .complete 966,1 --Worn Parchment (4)
     .mob Dark Strand Fanatic
 step << NightElf Hunter/Druid
 #map Darkshore
@@ -1106,7 +1109,7 @@ step << Druid
     .goto Felwood,22.39,29.45
     .xp 16 >> Grind to level 16
 step << Druid
-    .goto Darkshore,36.34,45.58
+    .goto Darkshore,36.336,45.574
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
     .fly Teldrassil >> Fly to Teldrassil
     .target Caylais Moonfeather
@@ -1146,10 +1149,13 @@ step << Druid
 step << Druid
     .goto Moonglade,52.6,51.6
     >>Swim into Lake Elune'Ara
-    >>Open a |cFFDB2EEFBauble Container|r. Loot it for the |cFF00BCD4Shrine Bauble|r
+    >>Open a |cFFDB2EEFBauble Container|r. Loot it for a |T134125:0|t[Shrine Bauble]
     >>|cFFFCDC00It may spawn in different locations underwater|r
+    .collect 15877,1,29,1 -- Shrine Bauble (1)
+step << Druid
+    .goto Moonglade,36.026,41.374
+    .use 15877 >>|cRXP_WARN_Use the|r |T134125:0|t[Shrine Bauble] |cRXP_WARN_at the Shrine of Remulos tree|r
     .complete 29,1 --Complete the Trial of the Lake.
--- needs testing properly etc
 step << Druid
     .goto Moonglade,36.517,40.104
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Tajarri|r
@@ -1165,6 +1171,7 @@ RXPGuides.RegisterGuide([[
 #era/som
 << Alliance
 #name 13-15 Westfall
+#displayname 14-15 Westfall << Dwarf/Gnome
 #version 1
 #group RestedXP Alliance 1-20
 #defaultfor !NightElf !Hunter
@@ -1242,6 +1249,56 @@ step
     >>|cFF0E8312Buy food/water if needed|r
     .vendor >>|T133918:0|t[Longjaw Mud Snapper] |cFFFCDC00is very cheap|r
 	.target Innkeeper Heather
+step << Paladin
+    #season 2
+    #completewith next
+    #label Island
+    .goto Duskwood,4.33,28.26,50 >>Travel toward |cRXP_FRIENDLY_Ada Gelhardt|r on the island
+    .train 410015,1
+    .itemcount 205864,1 --Charred Note (1)
+step << Paladin
+    #season 2
+    #completewith next
+    .goto Duskwood,4.33,28.26
+    .gossipoption 109610 >>Talk to |cRXP_FRIENDLY_Ada Gelhardt|r to start a fight
+    .target Ada Gelhardt
+    .skipgossip 205153,1
+    .train 410015,1
+    .itemcount 205864,1 --Charred Note (1)
+--XX 109612 "As one candle is snuffed out, another is lit"
+--XX 109611 "I've been sent by brother Romulus. Please, Ada, return with me to the Cathedral of Light"
+--XX 109610 "I see. I'm sorry it has come to this, sister. (Fight Ada)"
+step << Paladin
+    #season 2
+    #requires Island
+    .goto Duskwood,4.33,28.26
+    >>Defeat |cRXP_ENEMY_Ada Gelhardt|r
+    >>|cRXP_WARN_Remember to pre-cast|r |T135924:0|t[Seal of the Crusader] |cRXP_WARN_on her|r
+    >>|cRXP_WARN_Be careful as she casts|r |T136197:0|t[Shadow Shock] |cRXP_WARN_(instantly deals 45 shadow damage. Costs her 75 mana. You should kill her quick enough for her to only cast it 3 times)|r
+    >>|cRXP_WARN_After defeating |cRXP_ENEMY_Ada Gelhardt|r:|r
+    >>Talk to |cRXP_FRIENDLY_Ada Gelhardt|r again to receive the |T134419:0|t[Rune of Martyrdom]
+    .collect 205897,1 --Rune of Martyrdom (1)
+    .target Ada Gelhardt
+    .skipgossip 205153,1
+    .train 410015,1
+    .itemcount 205864,1 --Charred Note (1)
+--XX Must have had the Charred Note to unlock the dialogue
+step << Paladin
+    #season 2
+    #sticky
+    .destroy 205864 >> Delete the |T134939:0|t[Charred Note] from your bags, as it's no longer needed
+step << Paladin
+    #season 2
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[Rune of Martyrdom] |cRXP_WARN_to learn|r |T133815:0|t[Engrave Chest: Seal of Martyrdom]
+    .use 205897
+    .itemcount 205897,1 --Rune of Martyrdom (1)
+    .train 410015,1
+step << Paladin
+    #season 2
+    .goto Westfall,36.24,54.52
+    .engrave 5 >>|cRXP_WARN_Engrave your|r |T134596:0|t|cRXP_LOOT_[Chest]|r with|r |T133815:0|t[Engrave Chest: Seal of Martyrdom]
+    >>|cRXP_WARN_Remember to put|r |T135961:0|t[Seal of Martyrdom] |cRXP_WARN_onto your action bars. It is better than both|r |T132325:0|t[Seal of Righteousness] |cRXP_WARN_and|r |T132347:0|t[Seal of Command] |cRXP_WARN_(until you get|r |T133815:0|t[Engrave Chest: Divine Storm]|cRXP_WARN_)|r
+    .train 410015,2
 step
 	#completewith GnollPaws
     >>Open the |cFFDB2EEFSacks of Oats|r on the ground. Loot them for the |cFF00BCD4Handful of Oats|r
@@ -1278,6 +1335,21 @@ step
 	>>|cFFFCDC00Be aware of |cFFFF5722Benny Blanco|r. He hits hard|r
     .complete 64,1 --Furlbrow's Pocket Watch
 step
+    #completewith FurlbrowFarm
+    .isQuestAvailable 38
+    >>Kill |cRXP_ENEMY_Harvest Watchers|r. Loot them for their |cRXP_LOOT_Okra|r and |cRXP_LOOT_Flasks of Oil|r
+    .complete 9,1 --Harvest Watcher (20)
+    .collect 732,3,38,1 --Okra (3)
+    .collect 814,5,103,1 --Flask of Oil (5)
+    .mob Harvest Watcher
+step
+    #completewith FurlbrowFarm
+    .isQuestTurnedIn 38
+    >>Kill |cRXP_ENEMY_Harvest Watchers|r. Loot them for their |cRXP_LOOT_Flasks of Oil|r
+    .complete 9,1 --Harvest Watcher (20)
+    .collect 814,5,103,1 --Flask of Oil (5)
+    .mob Harvest Watcher
+step
     >>Kill |cFFFF5722Defias Trappers|r and |cFFFF5722Defias Smugglers|r. Loot them for their |cFF00BCD4Red Leather Bandanas|r
     .goto Westfall,48.21,46.70,60,0
     .goto Westfall,46.74,52.87,60,0
@@ -1300,12 +1372,12 @@ step
     .mob Riverpaw Gnoll
     .mob Riverpaw Scout
 step
-    .goto Westfall,56.40,9.40,60,0
     .goto Westfall,52.13,10.36,60,0
     .goto Westfall,56.40,9.40,60,0
     .goto Westfall,52.13,10.36,60,0
-    .goto Westfall,56.40,9.40
-    .goto Westfall,52.13,10.36,0
+    .goto Westfall,56.40,9.40,60,0
+    .goto Westfall,52.13,10.36
+    .goto Westfall,56.40,9.40,0
     >>Kill |cFFFF5722Murloc Raiders|r and |cFFFF5722Murloc Coastrunners|r. Loot them for their |cFF00BCD4Eyes|r
     .collect 730,3,38,1 --Murloc Eye (3)
     .mob Murloc Raider
@@ -1340,6 +1412,7 @@ step
 	.complete 151,1 --Handful of Oats (8)
 step
     #era
+    #label FurlbrowFarm
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Farmer Furlbrow|r and |cFF00FF25Verna Furlbrow|r
     .turnin 64 >> Turn in The Forgotten Heirloom
     .goto Westfall,59.95,19.35
@@ -1357,19 +1430,43 @@ step
     .target Farmer Furlbrow
 	.target Verna Furlbrow
 step
+    #completewith SaldeanVendor
+	.goto Westfall,56.04,31.23
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Farmer Saldean|r
+    .vendor >> |cRXP_WARN_Vendor trash|r
+    >>|cFFFCDC00Do NOT sell |T133884:0|t[Murloc Eyes], |T135997:0|t[Goretusk Snouts], |T134341:0|t[Goretusk Livers] or |T133972:0|t[Stringy Vulture Meat]|r
+	.target Farmer Saldean
+step
+    #optional
+    .isQuestComplete 9
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Farmer Saldean|r
+	.target Farmer Saldean
+    .goto Westfall,56.04,31.23
+    .turnin 9 >> Turn in The Killing Fields
+step
+    #optional
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Salma Saldean|r
+    .goto Westfall,56.40,30.50
+    .turnin 22 >> Turn in Goretusk Liver Pie
+    .turnin 38 >> Turn in Westfall Stew
+    .isQuestComplete 22
+    .isQuestComplete 38
+    .target Salma Saldean
+step
+    #optional
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Salma Saldean|r
     .goto Westfall,56.40,30.50
     .turnin 22 >> Turn in Goretusk Liver Pie
     .isQuestComplete 22
     .target Salma Saldean
 step
-    #completewith next
-	.goto Westfall,56.04,31.23
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Farmer Saldean|r
-    .vendor
-    >>|cFFFCDC00Do NOT sell |T133884:0|t[Murloc Eyes], |T135997:0|t[Goretusk Snouts], |T134341:0|t[Goretusk Livers] or |T133972:0|t[Stringy Vulture Meat]|r
-	.target Farmer Saldean
-step
+    #optional
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Salma Saldean|r
+    .goto Westfall,56.40,30.50
+    .turnin 38 >> Turn in Westfall Stew
+    .isQuestComplete 38
+    .target Salma Saldean
+  step
     .isQuestAvailable 38
     .goto Westfall,53.84,32.00,60,0
     .goto Westfall,50.80,21.76,80,0
@@ -1424,6 +1521,7 @@ step
     .goto Westfall,56.04,31.23
     .turnin 9 >> Turn in The Killing Fields
 step
+    #label SaldeanVendor
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Salma Saldean|r
 	.target Salma Saldean
     .goto Westfall,56.40,30.50
@@ -1451,13 +1549,43 @@ step
 	.target Scout Galiaan
     .goto Westfall,54.00,53.00
     .turnin 153 >> Turn in Red Leather Bandanas
+step << Gnome Rogue/Dwarf Rogue
+    #completewith next
+    .goto Westfall,56.55,52.64
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Thor|r
+    .fly Stormwind >> Fly to Stormwind
+    .target Thor
+    .money <0.3815
+step << Gnome Rogue/Dwarf Rogue
+    #ah
+    .goto StormwindClassic,57.38,56.77
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Marda Weller|r
+    .vendor 1287 >>|cRXP_BUY_Buy a|r |T135343:0|t[Scimitar] |cRXP_BUY_or something better from the Auction House and equip it your off-hand|r
+    .money <0.3815
+    .itemStat 17,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<8.7
+    .target Marda Weller
+step << Gnome Rogue/Dwarf Rogue
+    #ssf
+    .goto StormwindClassic,57.38,56.77
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Marda Weller|r
+    .vendor 1287 >>|cRXP_BUY_Buy a|r |T135343:0|t[Scimitar] |cRXP_BUY_and equip it your off-hand|r
+    .money <0.3815
+    .itemStat 17,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<8.7
+    .target Marda Weller
+step << Gnome Rogue/Dwarf Rogue
+    .isQuestComplete 399
+    .goto StormwindClassic,49.194,30.284
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
+    .turnin 399 >> Turn in Humble Beginnings
+    .target Baros Alexston
+    .zoneskip Stormwind City,1
 step << Dwarf !Paladin/Gnome
     #label end
-    #completewith next
+    #completewith DarkshoreBoat
     .hs >> Hearth to Thelsamar
 step << Dwarf !Paladin/Gnome
     #softcore
-    #completewith next
+    #completewith DarkshoreBoat
     .goto Loch Modan,33.94,50.95
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Thorgrum Borrelson|r
     .fly Wetlands >> Fly to Wetlands
@@ -1552,7 +1680,7 @@ step << Dwarf Paladin
     .target Tiza Battleforge
 step << Dwarf Paladin
     #softcore
-    #completewith next
+    #completewith DarkshoreBoat
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gryth Thurden|r
     .fly Wetlands>> Fly to Wetlands
@@ -1616,7 +1744,7 @@ step
     .goto Wetlands,10.6,57.2,15,0
     .goto Wetlands,10.7,56.8
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Neal Allen|r
-    .vendor >> |cFFFCDC00Buy a|r |T133024:0|t[Bronze Tube]
+    .vendor 1448 >> |cFFFCDC00Buy a|r |T133024:0|t[Bronze Tube]
     >>|cFFFCDC00This is a limited supply item. Skip this step if |cFF00FF25Neal Allen|r doesn't have one|r
 	.target Neal Allen
     .bronzetube
@@ -1628,7 +1756,7 @@ step << Human/Dwarf Paladin
 step
     .goto Wetlands,7.95,56.38
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Dewin Shimmerdawn|r
-    .vendor >> |cFFFCDC00Buy as many|r |T134831:0|t[Healing Potions] |cFFFCDC00that are available|r
+    .vendor 1453 >> |cFFFCDC00Buy as many|r |T134831:0|t[Healing Potions] |cFFFCDC00that are available|r
     >>|cFFFCDC00This is a limited supply item. Skip this step if |cFF00FF25Dewin Shimmerdawn|r doesn't have any|r
     .target Dewin Shimmerdawn
 step
@@ -1636,6 +1764,7 @@ step
     .goto Wetlands,7.10,57.96,30,0
     .goto Wetlands,4.61,57.26,15 >> Travel to the Menethil Harbor docks. Wait for the boat to Darkshore
 step
+    #label DarkshoreBoat
     .zone Darkshore >> Take the boat to Darkshore
     >>|cFFFCDC00Level your|r |T135966:0|t[First Aid] |cFFFCDC00and|r |T133971:0|t[Cooking] |cFFFCDC00while waiting for the boat to Darkshore|r
     >>|cFFFCDC00Level up your|r |T133971:0|t[Cooking] |cFFFCDC00using the|r |T133970:0|t[Chunks of Boar Meat] |cFFFCDC00you farmed earlier. Level it to 10 ideally|r
@@ -1652,7 +1781,7 @@ RXPGuides.RegisterGuide([[
 --?
 
 step << NightElf !Druid
-    .goto Darkshore,36.34,45.58
+    .goto Darkshore,36.336,45.574
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
     .fly Teldrassil >> Fly to Teldrassil
     .target Caylais Moonfeather
@@ -1929,7 +2058,7 @@ step
     .accept 951 >> Accept Mathystra Relics
     .target Onu
 step
-    #completewith south1
+    #completewith Southcrabs
 --  .goto Darkshore,33.85,80.92,45,0
 --  .goto Darkshore,32.17,82.92,45,0
 --  .goto Darkshore,35.41,78.96,45,0
@@ -2002,20 +2131,21 @@ step << !Hunter
     .accept 4730 >> Accept Beached Sea Creature
 step
 #map Darkshore
-    #label south1 << !Hunter
     .goto Felwood,13.47,64.01
     >>Click the |cFFDB2EEFBeached Sea Turtle|r
     .accept 4731 >> Accept Beached Sea Turtle
 step << Hunter
-#label south1
 #map Darkshore
+    #label Southcrabs
     .goto Felwood,14.62,60.72
     >>Click the |cFFDB2EEFBeached Sea Creature|r
     .accept 4730 >> Accept Beached Sea Creature
 step << !NightElf !Hunter !Druid
+    #label Southcrabs
     #completewith next
     .hs >> Hearth to Auberdine
 step << Druid
+    #label Southcrabs
     #requires earthroot
 	#completewith next
 	.cast 18960 >> Cast Teleport: Moonglade
@@ -2034,8 +2164,9 @@ step << Druid
     .target Sindrayl
 step << NightElf !Druid/Dwarf Hunter
 #map Darkshore
-    #completewith next
-    .goto Felwood,19.10,20.63,100 >> Travel to Auberdine
+    #label Southcrabs
+    #completewith CleansingTharnariun
+    .subzone 442 >> Travel to Auberdine
 step
 #map Darkshore
     .goto Darkshore,36.71,44.98,5,0
@@ -2049,7 +2180,6 @@ step
     .target Gwennyth Bly'Leggonde
 step
 #map Darkshore
-    #label south2
     .goto Felwood,18.50,19.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gubber Blump|r
     .turnin 1138 >> Turn in Fruit of the Sea
@@ -2063,6 +2193,7 @@ step
     .target Sentinel Glynda Nal'Shea
 step
 #map Darkshore
+    #label CleansingTharnariun
     .goto Felwood,21.63,18.15
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Tharnariun Treetender|r
     .turnin 2138 >> Turn in Cleansing of the Infected
@@ -2161,8 +2292,17 @@ step
     .goto Winterspring,4.82,27.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
     .turnin 965 >> Turn in The Tower of Althalaxx
-    .target Balthule Shadowstrike
     .accept 966 >> Accept The Tower of Althalaxx
+    .target Balthule Shadowstrike
+step << Paladin
+    #season 2
+    #completewith next
+    .goto Darkshore,56.20,26.46
+    >>|cRXP_WARN_Keep an eye out for groups going into the Tower of Althalaxx. If you see anyone, follow behind them slowly inside so you can loot the |cRXP_PICK_Strange Orb|r at the top
+    >>|cRXP_WARN_Be careful as the mobs in this tower are impossible for you to kill (Level 28-31)|r
+    >>Open the |cRXP_PICK_Strange Orb|r on the table atop the Tower of Althalaxx. Loot it for the |cRXP_LOOT_Althalaxx Orb|r
+    .collect 209836,1,78089,1 --Athalaxx Orb (1)
+    .train 410014,1
 step
     .goto Darkshore,55.27,27.74,55,0
     .goto Darkshore,56.92,27.27,55,0
@@ -2170,15 +2310,15 @@ step
     .goto Darkshore,56.92,27.27,55,0
     .goto Darkshore,55.27,27.74
     >>Kill |cFFFF5722Dark Strand Fanatics|r. Loot them for their |cFF00BCD4Parchments|r
-    .complete 966,1
+    .complete 966,1 --Worn Parchment (4)
     .mob Dark Strand Fanatic
 step
-#map Darkshore
+    #map Darkshore
     .goto Winterspring,4.82,27.18
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Balthule Shadowstrike|r
     .turnin 966 >> Turn in The Tower of Althalaxx
-    .target Balthule Shadowstrike
     .accept 967 >> Accept The Tower of Althalaxx
+    .target Balthule Shadowstrike
 step
     .goto Darkshore,57.13,22.04,55,0
     .goto Darkshore,57.97,20.23,55,0
@@ -2275,19 +2415,22 @@ step << !Warrior !Paladin !Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gelkak Gyromast|r
     .turnin 2078 >> Turn in Gyromast's Revenge
     .isQuestComplete 2078
-step << !Warrior !Paladin !Rogue
+step
+    #completewith Turtle4727
+    >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
+    .complete 1138,1 -- Fine Crab Chunks (6)
+    .mob Encrusted Tide Crawler
+    .mob Reef Crawler
+step
     #sticky
+    #optional
     .destroy 7442 >> Delete Gyromast's Key from your inventory
 step
 #map Darkshore
+    #label Turtle4727
     .goto Winterspring,3.10,20.90
     >>Click the |cFFDB2EEFBeached Sea Turtle|r
     .accept 4727 >> Accept Beached Sea Turtle
-step
-    .goto Darkshore,51.50,22.26,50,0
-    .goto Darkshore,49.66,21.39
-    >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
-    .complete 1138,1 -- Fine Crab Chunks (6)
 step << Druid
 #requires deers
     .goto Darkshore,48.87,11.32
@@ -2324,6 +2467,13 @@ step << !NightElf
     .turnin 986 >> Turn in A Lost Master
     .target Terenthis
     .accept 993 >> Accept A Lost Master << Hunter
+step << !NightElf
+    #optional
+    .isQuestTurnedIn 986
+    .goto Darkshore,39.37,43.48
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Terenthis|r
+    .accept 993 >> Accept A Lost Master
+    .target Terenthis
 step << Dwarf Hunter
     .goto Darkshore,33.17,40.17,40,0
     .goto Darkshore,33.17,40.17,0
@@ -2400,6 +2550,7 @@ step
     .target Gwennyth Bly'Leggonde
 step
 #map Darkshore
+    .isQuestComplete 1138
     .goto Felwood,18.50,19.87
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gubber Blump|r
     .turnin 1138 >> Turn in Fruit of the Sea
@@ -2970,10 +3121,10 @@ step
     .accept 3524 >> Accept Washed Ashore
 step << !NightElf
 #map Darkshore
-	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
-	.target Caylais Moonfeather
-    .fp Auberdine >> Get the Auberdine flight path
     .goto Darkshore,36.336,45.574
+	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Caylais Moonfeather|r
+    .fp Auberdine >> Get the Auberdine flight path
+    .target Caylais Moonfeather
 step
     #completewith RabidThistle
     .goto Darkshore,35.88,47.01,0
@@ -3456,13 +3607,17 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gorbold Steelhand|r
     .vendor 6301 >> Buy |T134059:0|t[Mild Spices]
     >>|cFFFCDC00Use the|r |T134059:0|t[Mild Spices] |cFFFCDC00and your|r |T132832:0|t[Small Eggs] |cFFFCDC00to make Herb Baked Eggs. Do this until your Cooking has reached level 10|r
-    .skill cooking,10,1 -- step only displays if cooking skill is less than 10
+    >>|cRXP_WARN_Continue leveling your|r |T133971:0|t[Cooking] |cRXP_WARN_passed 10. There is a quest in Duskwood which requires your|r |T133971:0|t[Cooking] |cRXP_WARN_to be 50. You can also do this while you are on the boat soon|r
+    .skill cooking,50,1
     .target Gorbold Steelhand
+    .itemcount 6889,>4 -- Small Egg
 step
     .goto Darkshore,37.514,41.671
     +|cFFFCDC00Use your|r |T133971:0|t[Cooking] |cFFFCDC00profession to make Herb Baked Eggs. Do this until your|r |T133971:0|t[Cooking] |cFFFCDC00has reached level 10|r
-    .skill cooking,10,1 -- step only displays if cooking skill is less than 10
+    >>|cRXP_WARN_Continue leveling your|r |T133971:0|t[Cooking] |cRXP_WARN_passed 10. There is a quest in Duskwood which requires your|r |T133971:0|t[Cooking] |cRXP_WARN_to be 50. You can also do this while you are on the boat soon|r
+    .skill cooking,50,1
     .target Gorbold Steelhand
+    .itemcount 6889,>4 -- Small Egg
 step
 #map Darkshore
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gorbold Steelhand|r
@@ -3827,8 +3982,9 @@ step << !Warrior !Paladin !Rogue !Druid
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Gelkak Gyromast|r
     .turnin 2078 >> Turn in Gyromast's Revenge
     .isQuestComplete 2078
-step << !Warrior !Paladin !Rogue !Druid
+step
     .solo
+    #optional
     #sticky
     .destroy 7442 >> Delete Gyromast's Key from your inventory
 step
@@ -3881,6 +4037,8 @@ step
     #completewith next
     >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
     .complete 1138,1 -- Fine Crab Chunks (6)
+    .mob Encrusted Tide Crawler
+    .mob Reef Crawler
 step
 #map Darkshore
     #era/som
@@ -3895,6 +4053,8 @@ step
     .goto Darkshore,49.66,21.39
     >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
     .complete 1138,1 -- Fine Crab Chunks (6)
+    .mob Encrusted Tide Crawler
+    .mob Reef Crawler
 step << NightElf
     #softcore
     #completewith next
@@ -4725,26 +4885,23 @@ step << NightElf
     .accept 166 >> Accept The Defias Brotherhood
     .goto Westfall,56.33,47.52
     .target Gryan Stoutmantle
-step << NightElf Warrior/NightElf Rogue/NightElf Priest
+step << NightElf Warrior/NightElf Priest
     #completewith next
     .goto Elwynn Forest,41.08,65.76,25 >> Travel to Goldshire << Warrior
-    .goto Elwynn Forest,43.17,65.70,15 >> Travel to Goldshire << Priest/Rogue
+    .goto Elwynn Forest,43.17,65.70,15 >> Travel to Goldshire << Priest
 step << NightElf Warrior
     .goto Elwynn Forest,41.08,65.76
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Lyria|r
     .trainer >> Train your class spells
     .target Lyria Du Lac
-step << NightElf Rogue/NightElf Priest
+step << NightElf Priest
     >>Travel to the Inn. Go upstairs
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Josetta|r << Priest
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Keryn|r << Rogue
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Josetta|r
     .goto Elwynn Forest,43.17,65.70,12,0
     .goto Elwynn Forest,43.80,66.47,8,0
-    .goto Elwynn Forest,43.28,65.72 << Priest
-    .goto Elwynn Forest,43.87,65.94 << Rogue
+    .goto Elwynn Forest,43.28,65.72
     .trainer >> Train your class spells
-    .target Priestess Josetta << Priest
-    .target Keryn Sylvius << Rogue
+    .target Priestess Josetta
 step << !Human !Warlock
     #som
     #phase 3-6
@@ -6025,6 +6182,7 @@ step
     .goto Darkshore,37.21,44.22
     .accept 4740 >> Accept WANTED: Murkdeep!
 step
+    .isQuestTurnedIn 986
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Terenthis|r
 	.target Terenthis
     .goto Darkshore,39.37,43.48
@@ -6108,6 +6266,13 @@ step
     .complete 731,1
     .isOnQuest 731
 step
+    #era/som
+    #completewith Murkdeep
+    >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
+    .complete 1138,1 -- Fine Crab Chunks (6)
+    .mob Encrusted Tide Crawler
+    .mob Reef Crawler
+step
     .goto Ashenvale,13.97,4.10
     >>Click the |cFFDB2EEFBeached Sea Creature|r
     .accept 4733 >> Accept Beached Sea Creature
@@ -6138,6 +6303,16 @@ step
     .mob Greymist Warrior
     .mob Greymist Hunter
     .mob Greymist Coastrunner
+step
+    #era/som
+    .goto Darkshore,34.0,80.8,60,0
+    .goto Darkshore,35.8,77.8,60,0
+    .goto Darkshore,35.6,71.8,60,0
+    .goto Darkshore,35.8,77.8
+    >>Kill |cFFFF5722Encrusted Tide Crawlers|r and |cFFFF5722Reef Crawlers|r. Loot them for their |cFF00BCD4Crab Chunks|r
+    .complete 1138,1 -- Fine Crab Chunks (6)
+    .mob Encrusted Tide Crawler
+    .mob Reef Crawler
 step
 	#era/som
     .goto Darkshore,41.44,86.06,50,0
@@ -6212,6 +6387,27 @@ step
     .goto Ashenvale,27.26,35.58
     .turnin 5321 >> Turn in The Sleeper Has Awakened
     .isQuestComplete 5321
+step << Paladin
+    #season 2
+    .goto Ashenvale,26.19,38.69
+    >>Talk to |cRXP_FRIENDLY_Delgren the Purifier|r
+    .turnin 967 >> Turn in The Tower of Althalaxx
+    .accept 970 >> Accept The Tower of Althalaxx
+    .turnin 78088 >> Turn in A Strange Artifact
+    .accept 78089 >> Accept Advice From Stormwind
+    .target Delgren the Purifier
+    .train 410014,1
+    .itemcount 209836,1 --Athalaxx Orb (1)
+step << Paladin
+    #season 2
+    .goto Ashenvale,26.19,38.69
+    >>Talk to |cRXP_FRIENDLY_Delgren the Purifier|r
+    .turnin 967 >> Turn in The Tower of Althalaxx
+    .accept 970 >> Accept The Tower of Althalaxx
+    .accept 78089 >> Accept Advice From Stormwind
+    .target Delgren the Purifier
+    .train 410014,1
+    .isQuestTurnedIn 78088
 step
     #label tower
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Delgren the Purifier|r

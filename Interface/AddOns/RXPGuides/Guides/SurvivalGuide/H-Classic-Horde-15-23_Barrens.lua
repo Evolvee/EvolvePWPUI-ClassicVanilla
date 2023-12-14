@@ -299,7 +299,7 @@ step << !Tauren !Undead
 step
     #sticky
     #completewith EnterRFC
-    .subzone 213 >> Now you should be looking for a group to Ragefire Chasm
+    .subzone 2437 >> Now you should be looking for a group to Ragefire Chasm
     .dungeon RFC
 step
     .goto The Barrens,51.99,29.89
@@ -767,7 +767,7 @@ step
     .target Innkeeper Wiley
 step
     #completewith BarenLongshore
-    +Destroy the |T133735:0|t[Control Console Operating Manual] as you won't need it
+    .destroy 5088 >> Destroy the |T133735:0|t[Control Console Operating Manual] as you won't need it
 step
     #completewith BarenLongshore
     >>Kill |cRXP_ENEMY_Southsea Brigands|r and |cRXP_ENEMY_Southsea Cannoneers|r
@@ -968,7 +968,7 @@ step
     .mob Kolkar Stormer
 step
     #completewith next
-    >>Collect |cRXP_PICK_Laden Mushrooms|r around The Forgotten Pools
+    >>Collect |cRXP_LOOT_Laden Mushrooms|r around The Forgotten Pools
     >>|cRXP_WARN_This quest does not have to be completed now|r
     .complete 848,1 --Collect Fungal Spores (x4)
 step
@@ -1495,10 +1495,9 @@ step
     .mob Ornery Plainstrider
 step
     .goto The Barrens,55.80,17.03
-    .cast 12189 >>Use the |T134227:0|t[Horn of Echeyakee] to summon |cRXP_ENEMY_Echeyakee|r
+    .use 10327 >>Use the |T134227:0|t[Horn of Echeyakee] to summon |cRXP_ENEMY_Echeyakee|r
     >>Kill him and loot him for his |cRXP_LOOT_Hide|r
     .complete 881,1 --Echeyakee's Hide (1)
-    .use 10327
     .mob Echeyakee
 step
     #label NuggetSlugsTurnIn
@@ -1705,7 +1704,7 @@ step
     .complete 3281,1 --Stolen Silver (1)
 step
     #completewith Verog
-    >>Collect |cRXP_PICK_Laden Mushrooms|r around The Stagnant Oasis
+    >>Collect |cRXP_LOOT_Laden Mushrooms|r around The Stagnant Oasis
     .complete 848,1 --Collect Fungal Spores (x4)
 step
     #label TestSeeds
@@ -1764,7 +1763,7 @@ step
     .goto The Barrens,56.15,43.28,30,0
     .goto The Barrens,56.08,42.58,30,0
     .goto The Barrens,55.72,42.14,30,0
-    >>Collect |cRXP_PICK_Laden Mushrooms|r around The Stagnant Oasis
+    >>Collect |cRXP_LOOT_Laden Mushrooms|r around The Stagnant Oasis
     .complete 848,1 --Collect Fungal Spores (x4)
 step
     #completewith LizardHorn
@@ -1991,8 +1990,8 @@ step
     >>|cRXP_BUY_Buy|r |T132796:0|t[Melon Juice] |cRXP_BUY_from her|r << Priest/Mage
     >>|cRXP_BUY_Buy|r |T133970:0|t[Mutton Chop] |cRXP_BUY_and|r |T132796:0|t[Melon Juice] |cRXP_BUY_from her|r << Warlock/Shaman/Druid/Hunter
     .vendor >> Vendor Trash
-    .collect 3770,20,895,1 << !Priest !Mage --Mutton Chop (20)
-    .collect 1205,20,895,1 << !Rogue !Warrior --Melon Juice (20)
+    .collect 3770,20,1093,1 << !Priest !Mage --Mutton Chop (20)
+    .collect 1205,20,1093,1 << !Rogue !Warrior --Melon Juice (20)
     .target Innkeeper Jayka
 step
     .goto Stonetalon Mountains,47.61,61.58
@@ -2003,7 +2002,7 @@ step
 step
     .goto Stonetalon Mountains,45.13,59.85
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tharm|r
-    .fp Sun Rock Retreat >> Get the Run Rock Retreat flight path
+    .fp Sun Rock Retreat >> Get the Sun Rock Retreat flight path
     .target Tharm
 step
     #completewith next
@@ -2020,7 +2019,23 @@ step
     .complete 6461,2 --Kill Deepmoss Venomspitter (x7)
     .mob Deepmoss Venomspitter
 step
-    .loop 25,Stonetalon Mountains,59.25,61.55,60.37,60.10,61.34,59.15,61.15,57.85,61.41,56.77,62.21,58.55,63.12,60.02,64.69,60.03,62.76,61.69,62.50,62.92,62.48,64.15,61.85,66.07,60.71,66.12,60.96,63.99,60.25,63.21
+    #loop
+    .goto Stonetalon Mountains,61.41,56.77,0
+    .goto Stonetalon Mountains,59.25,61.55,30,0
+    .goto Stonetalon Mountains,60.37,60.10,30,0
+    .goto Stonetalon Mountains,61.34,59.15,30,0
+    .goto Stonetalon Mountains,61.15,57.85,30,0
+    .goto Stonetalon Mountains,61.41,56.77,30,0
+    .goto Stonetalon Mountains,62.21,58.55,30,0
+    .goto Stonetalon Mountains,63.12,60.02,30,0
+    .goto Stonetalon Mountains,64.69,60.03,30,0
+    .goto Stonetalon Mountains,62.76,61.69,30,0
+    .goto Stonetalon Mountains,62.50,62.92,30,0
+    .goto Stonetalon Mountains,62.48,64.15,30,0
+    .goto Stonetalon Mountains,61.85,66.07,30,0
+    .goto Stonetalon Mountains,60.71,66.12,30,0
+    .goto Stonetalon Mountains,60.96,63.99,30,0
+    .goto Stonetalon Mountains,60.25,63.21,30,0    
     >>Loot the |cRXP_PICK_Spider Eggs|r near the trees
     >>|cRXP_WARN_Be careful! The|r |cRXP_ENEMY_Deepmoss Hatchlings|r |cRXP_WARN_have a chance of summoning a level 22|r |cRXP_ENEMY_Deepmoss Matriarch|r
     .complete 1069,1 --Collect Deepmoss Egg (x15)
@@ -2216,7 +2231,27 @@ step
     .complete 821,3 --Thunder Lizard Horn (1)
     .mob Stormsnout
 step
-    .loop 25,The Barrens,50.71,54.60,50.74,55.33,50.73,56.78,50.42,57.23,50.50,57.65,50.87,57.50,51.26,57.84,51.74,57.69,51.79,57.10,53.08,54.69,53.65,54.27,53.63,53.53,53.35,52.72,53.00,51.83,52.62,52.19,52.59,52.71,52.41,53.07,52.32,53.71,51.39,54.22
+    #loop
+    .goto The Barrens,50.71,54.60,0
+    .goto The Barrens,50.71,54.60,60,0
+    .goto The Barrens,50.74,55.33,60,0
+    .goto The Barrens,50.73,56.78,60,0
+    .goto The Barrens,50.42,57.23,60,0
+    .goto The Barrens,50.50,57.65,60,0
+    .goto The Barrens,50.87,57.50,60,0
+    .goto The Barrens,51.26,57.84,60,0
+    .goto The Barrens,51.74,57.69,60,0
+    .goto The Barrens,51.79,57.10,60,0
+    .goto The Barrens,53.08,54.69,60,0
+    .goto The Barrens,53.65,54.27,60,0
+    .goto The Barrens,53.63,53.53,60,0
+    .goto The Barrens,53.35,52.72,60,0
+    .goto The Barrens,53.00,51.83,60,0
+    .goto The Barrens,52.62,52.19,60,0
+    .goto The Barrens,52.59,52.71,60,0
+    .goto The Barrens,52.41,53.07,60,0
+    .goto The Barrens,52.32,53.71,60,0
+    .goto The Barrens,51.39,54.22,60,0
     >>Kill a lot of |cRXP_ENEMY_Bristleback Quillboars|r. Loot them for their |cRXP_LOOT_Tusks|r. Save the |T134128:0|t[|cFF00BCD4Blood Shards|r] you get
     .complete 878,1 --Kill Bristleback Water Seeker (x6)
     .complete 878,2 --Kill Bristleback Thornweaver (x12)
@@ -2306,12 +2341,6 @@ step
     .target Sputtervalve
     .target Mebok Mizzyrix
     .target Brewmaster Drohn
-step
-    .goto The Barrens,63.09,37.61
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bigglefuzz|r
-    .accept 959 >> Accept Trouble at the Docks
-    .target Crane Operator Bigglefuzz
-    .dungeon WC
 step << Warrior
     .goto The Barrens,62.20,38.41
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grazlix|r
@@ -2322,7 +2351,7 @@ step << Warrior
 step << Rogue/Hunter/Warrior/Shaman/Druid
     .goto The Barrens,62.16,38.45
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Vexspindle|r
-    .vendor >> |cRXP_BUY_Buy|r |T132603:0|t[Wolf Bracers] |cRXP_BUY_from him they're it's up|r
+    .vendor >> |cRXP_BUY_Buy|r |T132603:0|t[Wolf Bracers] |cRXP_BUY_from him if they're up|r
     .target Vexspindle
     .money <0.3515
     .itemStat 9,ITEM_MOD_ARMOR_SHORT,<37
@@ -2344,6 +2373,12 @@ step << Rogue/Hunter/Warrior/Shaman/Druid
     .use 4794
     .itemcount 4794,1
     .itemStat 9,ITEM_MOD_ARMOR_SHORT,<37
+step
+    .goto The Barrens,63.09,37.61
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bigglefuzz|r
+    .accept 959 >> Accept Trouble at the Docks
+    .target Crane Operator Bigglefuzz
+    .dungeon WC
 step
     #label FlytoXroads
     #completewith XroadsHS2
@@ -2822,9 +2857,43 @@ step
     .goto The Barrens,45.66,40.34,120 >> Travel to the Lushwater Oasis
     .isQuestTurnedIn 851
 step
-    .loop 25,The Barrens,45.64,38.16,45.84,37.86,45.78,37.41,45.95,37.11,45.93,36.91,46.14,36.85,46.19,36.88,46.28,36.86,46.46,37.17,46.58,37.31,46.66,37.54,46.63,37.93,46.75,38.39,47.27,38.98,47.47,39.27,48.20,39.57,48.40,39.58,48.60,39.51,48.54,39.96,48.58,40.52,48.27,40.82,48.06,40.82,47.86,41.13,47.49,41.33,47.34,41.61,47.22,41.64,46.85,42.05,46.56,41.93,46.27,41.76,46.03,41.15,45.86,41.32,46.09,40.98,46.08,40.68,45.71,40.56,45.64,38.16
+    #loop
+    .goto The Barrens,45.64,38.16,0
+    .goto The Barrens,45.64,38.16,50,0
+    .goto The Barrens,45.84,37.86,50,0
+    .goto The Barrens,45.78,37.41,50,0
+    .goto The Barrens,45.95,37.11,50,0
+    .goto The Barrens,45.93,36.91,50,0
+    .goto The Barrens,46.14,36.85,50,0
+    .goto The Barrens,46.19,36.88,50,0
+    .goto The Barrens,46.28,36.86,50,0
+    .goto The Barrens,46.46,37.17,50,0
+    .goto The Barrens,46.58,37.31,50,0
+    .goto The Barrens,46.63,37.93,50,0
+    .goto The Barrens,46.75,38.39,50,0
+    .goto The Barrens,47.27,38.98,50,0
+    .goto The Barrens,47.47,39.27,50,0
+    .goto The Barrens,48.20,39.57,50,0
+    .goto The Barrens,48.40,39.58,50,0
+    .goto The Barrens,48.60,39.51,50,0
+    .goto The Barrens,48.54,39.96,50,0
+    .goto The Barrens,48.58,40.52,50,0
+    .goto The Barrens,48.27,40.82,50,0
+    .goto The Barrens,48.06,40.82,50,0
+    .goto The Barrens,47.86,41.13,50,0
+    .goto The Barrens,47.49,41.33,50,0
+    .goto The Barrens,47.34,41.61,50,0
+    .goto The Barrens,47.22,41.64,50,0
+    .goto The Barrens,46.85,42.05,50,0
+    .goto The Barrens,46.56,41.93,50,0
+    .goto The Barrens,46.27,41.76,50,0
+    .goto The Barrens,46.03,41.15,50,0
+    .goto The Barrens,45.86,41.32,50,0
+    .goto The Barrens,46.09,40.98,50,0
+    .goto The Barrens,46.08,40.68,50,0
+    .goto The Barrens,45.71,40.56,50,0
+    .goto The Barrens,45.64,38.16,50,0
     >>Find & kill |cRXP_ENEMY_Hezrul Bloodmark|r, he patrols around the lake. Loot him for his |cRXP_LOOT_Head|r
-    >>|cRXP_WARN_Be careful! He has two|r |cRXP_ENEMY_Kolkar Bloodchargers|r |cRXP_WARN_defending him|r
     .complete 852,1 --Hezrul's Head
     .unitscan Hezrul Bloodmark
     .isQuestTurnedIn 851
@@ -3871,7 +3940,7 @@ step
     .group 3
 step
     .goto Stonetalon Mountains,71.77,60.19
-    >>Protect |cRXP_FRIENDLY_Piznik|r from incoming |cRXP_FRIENDLY_Windshear Vermin|r
+    >>Protect |cRXP_FRIENDLY_Piznik|r from incoming |cRXP_ENEMY_Windshear Vermin|r
     .complete 1090,1 --Keep Piznik safe while he mines the mysterious ore
     .mob Windshear Vermin
     .group 3
@@ -3900,10 +3969,10 @@ step
 step
     .goto Stonetalon Mountains,78.89,41.24
     .goto Ashenvale,40.40,53.06,30 >>|cRXP_WARN_Jump onto the white stone on your right. Perform a Logout Skip by logging out and back in|r
-    .link https://www.youtube.com/watch?v=h2s4ZjFBLtg&ab >> |cRXP_WARN_CLICK HERE for an example|r
+    .link https://www.youtube.com/watch?v=h2s4ZjFBLtg&ab_channel=RestedXP >> |cRXP_WARN_CLICK HERE for an example|r
     .zoneskip Ashenvale
 step
-	#completewith next
+	#completewith ZoramFP
     .goto Ashenvale,39.45,55.29,50,0
     .goto Ashenvale,36.47,57.15,50,0
     .goto Ashenvale,34.56,54.13,30,0
@@ -3914,13 +3983,19 @@ step
     .goto Ashenvale,11.96,34.28,80 >>Travel toward the Zoram'gar Outpost
     >>|cRXP_WARN_Make sure to avoid Astranaar guards en route. Follow the waypoint for safety|r
     .unitscan Astranaar Sentinel
+    .disablecheckbox
 step
+    #optional
+    .loop 25,Ashenvale,10.86,26.99,11.23,25.73,11.83,25.75,12.51,24.09,14.18,24.03,14.85,23.08,14.13,20.77,14.73,19.56,14.59,17.90,13.38,16.39,13.62,14.48,14.15,15.31,15.88,15.42,15.40,16.96,15.22,18.81,15.33,20.78,15.33,22.51,15.32,24.90,14.76,25.52,14.62,26.49,14.52,28.25,13.55,29.36,12.41,29.15,11.22,31.04,10.38,29.60,11.01,28.57
+    .xp 21 >> Grind to level 21
+step
+    #label ZoramFP
     .goto Ashenvale,12.20,33.80
     .fp Zoram'gar Outpost >> Get the Zoram'gar Outpost flight path
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Je'neu|r, |cRXP_FRIENDLY_Karang|r, |cRXP_FRIENDLY_Mitsuwa|r and |cRXP_FRIENDLY_Marukai|r
     .turnin 6562 >> Turn in Trouble in the Deeps
-    .accept 6563 >>Accept The Essence of Aku'Mai
+    .accept 6563 >> Accept The Essence of Aku'Mai
     .goto Ashenvale,11.56,34.29
     .accept 216 >> Accept Between a Rock and a Thistlefur
     .goto Ashenvale,11.90,34.53
@@ -3932,23 +4007,7 @@ step
     .target Karang Amakkar
     .target Mitsuwa
     .target Marukai
-    .xp <21,1
     .group
-step
-    #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Je'neu|r, |cRXP_FRIENDLY_Mitsuwa|r and |cRXP_FRIENDLY_Marukai|r
-    .turnin 6562 >> Turn in Trouble in the Deeps
-    .accept 6563 >>Accept The Essence of Aku'Mai
-    .goto Ashenvale,11.56,34.29
-    .accept 6462 >> Accept Troll Charm
-    .goto Ashenvale,11.65,34.85
-    .accept 6442 >> Accept Naga at the Zoram Strand
-    .goto Ashenvale,11.69,34.90
-    .target Je'neu Sancrea
-    .target Mitsuwa
-    .target Marukai
-    .group
-    .xp >21,1
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Je'neu|r, |cRXP_FRIENDLY_Karang|r, |cRXP_FRIENDLY_Mitsuwa|r and |cRXP_FRIENDLY_Marukai|r
     .turnin 6562 >> Turn in Trouble in the Deeps
@@ -3963,20 +4022,6 @@ step
     .target Karang Amakkar
     .target Mitsuwa
     .target Marukai
-    .xp <21,1
-step
-    #optional
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Je'neu|r, |cRXP_FRIENDLY_Mitsuwa|r and |cRXP_FRIENDLY_Marukai|r
-    .turnin 6562 >> Turn in Trouble in the Deeps
-    .goto Ashenvale,11.56,34.29
-    .accept 6462 >> Accept Troll Charm
-    .goto Ashenvale,11.65,34.85
-    .accept 6442 >> Accept Naga at the Zoram Strand
-    .goto Ashenvale,11.69,34.90
-    .target Je'neu Sancrea
-    .target Mitsuwa
-    .target Marukai
-    .xp >21,1
 step
     .goto Ashenvale,12.06,34.63
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Muglash|r
@@ -4176,8 +4221,8 @@ step << Mage
     .target Pephredo
     .xp <24,1
 step << Mage
-    .goto Orgrimmar,38.70,85.36
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Pephredo|r at the top of the hut
+    .goto Orgrimmar,38.66,85.41
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to|r |cRXP_FRIENDLY_Thuul|r at the top of the hut
     .train 3567 >> Train |T135759:0|t[Teleport: Orgrimmar]
     .target Thuul
 step << Troll Priest

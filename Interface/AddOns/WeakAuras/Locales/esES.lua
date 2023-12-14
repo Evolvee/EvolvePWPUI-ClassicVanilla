@@ -27,6 +27,8 @@ L["|cffeda55fShift-Click|r to pause addon execution."] = "|cffeda55fMayús clic|
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "|cFFFF0000Not|r Item Bonus Id Equipped"
 --[[Translation missing --]]
+L["|cFFFF0000Not|r Item Equipped"] = "|cFFFF0000Not|r Item Equipped"
+--[[Translation missing --]]
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Player Name/Realm"
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
@@ -122,6 +124,8 @@ L["Amount"] = "Cantidad"
 L["Anchoring"] = "Anclaje"
 --[[Translation missing --]]
 L["And Talent"] = "And Talent"
+--[[Translation missing --]]
+L["Angle and Radius"] = "Angle and Radius"
 L["Animations"] = "Animaciones"
 L["Anticlockwise"] = "Sentido antihorario"
 L["Anub'arak"] = "Anub'arak"
@@ -192,7 +196,8 @@ L["Back and Forth"] = "De Atrás a Adelante"
 L["Background"] = "Fondo"
 L["Background Color"] = "Color de fondo"
 L["Baltharus the Warborn"] = "Baltharus el Batallante"
-L["Bar Color"] = "Color de la barra"
+--[[Translation missing --]]
+L["Bar Color/Gradient Start"] = "Bar Color/Gradient Start"
 L["Baron Geddon"] = "Barón Geddon"
 L["Battle for Azeroth"] = "Battle for Azeroth"
 L["Battle.net Whisper"] = "Battle.net Mensaje"
@@ -346,6 +351,8 @@ L["Critical Rating"] = "Índice de crítico"
 L["Crowd Controlled"] = "Bajo Control"
 L["Crushing"] = "Golpe Aplastador"
 L["C'thun"] = "C'thun"
+--[[Translation missing --]]
+L["Current Combo Point charged"] = "Current Combo Point charged"
 --[[Translation missing --]]
 L["Current Essence"] = "Current Essence"
 L["Current Experience"] = "Experiencia actual"
@@ -504,6 +511,8 @@ L["Enchanting Cast Bar"] = "Barra de lanzamiento de encantamiento"
 L["Encounter ID(s)"] = "ID(s) del encuentro"
 L["Energize"] = "Vigorizar"
 L["Enrage"] = "Enfurecido"
+--[[Translation missing --]]
+L["Enter a name or a spellId"] = "Enter a name or a spellId"
 L["Enter static or relative values with %"] = "Introduce valores estáticos o relativos con %."
 L["Entering"] = "Accediendo"
 L["Entering/Leaving Combat"] = "Entrar/Salir de combate"
@@ -664,8 +673,9 @@ L["Golemagg the Incinerator"] = "Golemagg the Incinerator"
 --[[Translation missing --]]
 L["Gothik the Harvester"] = "Gothik the Harvester"
 L["Gradient"] = "Degradado"
-L["Gradient Color"] = "Color del degradado"
 L["Gradient Enabled"] = "Degradado activado"
+--[[Translation missing --]]
+L["Gradient End"] = "Gradient End"
 L["Gradient Orientation"] = "Orientación del degradado"
 L["Gradient Pulse"] = "Degradado Pulsante"
 --[[Translation missing --]]
@@ -692,6 +702,8 @@ L["Group Finder Poke End"] = "Group Finder Poke End"
 L["Group Finder Poke Initial"] = "Group Finder Poke Initial"
 --[[Translation missing --]]
 L["Group Leader/Assist"] = "Group Leader/Assist"
+--[[Translation missing --]]
+L["Group Size"] = "Group Size"
 --[[Translation missing --]]
 L["Group Type"] = "Group Type"
 L["Grow"] = "Crecer"
@@ -900,6 +912,8 @@ L["Loatheb"] = "Loatheb"
 L["Location"] = "Location"
 L["Looking for Raid"] = "Buscador de banda"
 L["Loop"] = "Bucle"
+--[[Translation missing --]]
+L["Loot"] = "Loot"
 L["Lord Jaraxxus"] = "Lord Jaraxxus"
 L["Lord Marrowgar"] = "Lord Tuétano"
 --[[Translation missing --]]
@@ -1776,6 +1790,8 @@ L["Tracking Charge CDs"] = "Tracking Charge CDs"
 L["Tracking Only Cooldown"] = "Tracking Only Cooldown"
 L["Transmission error"] = "Error de transmisión"
 --[[Translation missing --]]
+L["Treat charged combo point as 7 combo points"] = "Treat charged combo point as 7 combo points"
+--[[Translation missing --]]
 L["Trial of the Crusader"] = "Trial of the Crusader"
 L["Trigger"] = "Activador"
 L["Trigger %i"] = "Activador %i"
@@ -1821,6 +1837,10 @@ L["Unit Name"] = "Unit Name"
 L["Unit Name/Realm"] = "Unit Name/Realm"
 --[[Translation missing --]]
 L["Units Affected"] = "Units Affected"
+--[[Translation missing --]]
+L["Units of affected Players in a table format"] = "Units of affected Players in a table format"
+--[[Translation missing --]]
+L["Units of unaffected Players in a table format"] = "Units of unaffected Players in a table format"
 --[[Translation missing --]]
 L["unknown location"] = "unknown location"
 --[[Translation missing --]]

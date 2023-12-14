@@ -1,5 +1,5 @@
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -289,7 +289,7 @@ step << Warrior
 .accept 1112 >> Accept Parts for Kravel
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -721,7 +721,7 @@ step
 .zone Dustwallow Marsh >> Take the Boat to Theramore
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -1517,7 +1517,7 @@ step << !Mage
 .zone The Barrens >> Take the boat to Ratchet. You can deposit Green Hills of Stranglethorn pages into your bank while you wait.
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -2590,7 +2590,7 @@ step << wotlk !Mage
 .fly Ironforge >> Fly to Ironforge
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -3143,7 +3143,7 @@ step
 .accept 697 >> Accept Malin's Request
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -3395,7 +3395,7 @@ step << Gnome !Warlock tbc
 .skill riding,1,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -4216,7 +4216,7 @@ step << wotlk
 .zoneskip Stormwind City
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -4478,7 +4478,7 @@ step << !Mage
 .zone The Barrens>> Take the boat to Ratchet
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5145,7 +5145,7 @@ step << wotlk
 .zoneskip Stormwind City
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5460,7 +5460,7 @@ step
 .fly Tanaris >> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5677,7 +5677,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5880,7 +5880,7 @@ step << wotlk !Mage
 .fly Ironforge >> Fly to Ironforge
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -6090,7 +6090,7 @@ step << tbc/Mage
 .accept 1448 >> Accept In Search of The Temple
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -6470,7 +6470,7 @@ step
 .fly Tanaris>> Fly to Tanaris. This flight takes 3 minutes, feel free to afk and stretch for a bit :D
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -6980,7 +6980,7 @@ step << Warlock
 .isOnQuest 1804
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -7208,7 +7208,7 @@ step << skip
 .turnin 5217 >> Turn in Return to Chillwind Camp
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -7923,7 +7923,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #xprate <1.5
@@ -8183,7 +8183,7 @@ step << Warlock
 .accept 8419 >>Accept An Imp's Request
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #xprate <1.5
@@ -8510,7 +8510,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -9094,7 +9094,7 @@ step
 .turnin 4510>> Turn in Calm Before the Storm
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -9652,7 +9652,7 @@ step << tbc
 .turnin 4512 >> Turn in A Little Slime Goes a Long Way
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -10625,7 +10625,7 @@ step
 .isQuestTurnedIn 6183
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -10894,7 +10894,7 @@ step
 .hs >> Hearth back to Stormwind
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -14008,7 +14008,7 @@ step
 >>You are now attuned to Karazhan - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -15583,7 +15583,7 @@ step
 .mob Sporebat
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -17350,7 +17350,7 @@ step
 .target Adyen the Lightwarden
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -19234,7 +19234,7 @@ step
 .target Hemet Nesingwary
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -20862,7 +20862,7 @@ step
 .target Tree Warden Chawn
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Alliance 60-70
 << Alliance
@@ -21704,7 +21704,7 @@ step
 .target A'dal
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #tbc
 #group RestedXP Alliance 60-70
 << Alliance
@@ -22556,7 +22556,7 @@ step
 .abandon 10912 >> Abandon The Hound-Master
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #tbc
 #group RestedXP Alliance 60-70
 << Alliance
@@ -25923,7 +25923,7 @@ step
 .target Voren'thal the Seer
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -29118,7 +29118,7 @@ step << Warrior
 
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -29994,7 +29994,7 @@ step << Druid/70
 .target Exarch Onaala
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -30814,7 +30814,7 @@ step
 .mob Ancient Shadowmoon Spirit
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Alliance 70-80
 #defaultfor None
@@ -32584,7 +32584,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Alliance
@@ -34307,7 +34307,7 @@ step << skip
 >>Ding Level 80 - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Alliance
@@ -34829,7 +34829,7 @@ step
 .xp <73,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -36233,7 +36233,7 @@ step
 step
 #completewith next
 .groundgoto BoreanTundra,87.7,22.0,40,0
-.goto BoreanTundra,88.68,21.72,25 >> Travel to the Spire of Blood in En'kilah. Enter through the side enterance
+.goto BoreanTundra,88.68,21.72,25 >> Travel to the Spire of Blood in En'kilah. Enter through the side entrance
 step
 .goto BoreanTundra,88.05,20.94
 >>Kill |cRXP_ENEMY_High Priest Andorath|r. Loot him for his |cRXP_LOOT_Scroll|r
@@ -37645,7 +37645,7 @@ step
 .target Winterfin Tadpole
 step
 .goto BoreanTundra,40.04,19.80
-.use 34669 >> |cRXP_WARN_Use the|r |T133015:0|t[Arcanometer] |cRXP_WARN_at the enterance of the Winterfin Caverns|r
+.use 34669 >> |cRXP_WARN_Use the|r |T133015:0|t[Arcanometer] |cRXP_WARN_at the entrance of the Winterfin Caverns|r
 .complete 12728,1 
 step
 #completewith end
@@ -37754,7 +37754,7 @@ step
 #completewith next
 .goto BoreanTundra,36.80,23.22,40,0
 .goto BoreanTundra,37.87,21.52,25,0
-.goto BoreanTundra,37.84,23.23,30 >> Travel toward |cRXP_FRIENDLY_Glrglrglr|r near the enterance
+.goto BoreanTundra,37.84,23.23,30 >> Travel toward |cRXP_FRIENDLY_Glrglrglr|r near the entrance
 step
 .goto BoreanTundra,37.84,23.23
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Glrglrglr|r
@@ -38074,7 +38074,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #xprate <1.5
 #group RestedXP Alliance 70-80
@@ -38859,13 +38859,13 @@ step
 .collect 37465,1,12277,1
 step
 .goto Dragonblight,80.14,45.35
-.cast 48741 >>|cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Wintergarde Mine Bomb|r] |cRXP_WARN_at the Lower Mine Shaft Enterance|r
+.cast 48741 >>|cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Wintergarde Mine Bomb|r] |cRXP_WARN_at the Lower Mine Shaft entrance|r
 
 .use 37465
 .isOnQuest 12277
 step
 .goto Dragonblight,80.42,44.95
-.cast 48741 >>|cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Wintergarde Mine Bomb|r] |cRXP_WARN_at the Upper Mine Shaft Enterance|r
+.cast 48741 >>|cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Wintergarde Mine Bomb|r] |cRXP_WARN_at the Upper Mine Shaft entrance|r
 
 .use 37465
 .isOnQuest 12277
@@ -39013,7 +39013,7 @@ step
 >>|cRXP_WARN_Stay in the|r |cRXP_FRIENDLY_Alliance Steam Tank|r
 step
 .goto Dragonblight,85.60,49.90
->>|cRXP_WARN_Cast|r |T135942:0|t[Drop Off Soldier] (4) |cRXP_WARN_at the enterance of the Wintergarde Mausoleum|r
+>>|cRXP_WARN_Cast|r |T135942:0|t[Drop Off Soldier] (4) |cRXP_WARN_at the entrance of the Wintergarde Mausoleum|r
 .complete 12326,2 
 step
 #completewith next
@@ -41105,7 +41105,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -43627,7 +43627,7 @@ step
 .target Samuel Clearbook
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -47339,7 +47339,7 @@ step
 .xp <77,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Alliance
@@ -47352,7 +47352,7 @@ step
 .xp 77 >> Grind the mobs in Zol'Maz until your lockouts expire. Try to take one corner of the subzone each to force dynamic respawns
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -49228,7 +49228,7 @@ step << !Druid !DK !Mage
 .zoneskip Dalaran
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -51842,7 +51842,7 @@ step
 .zone Icecrown >>Fly to Icecrown
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 #group RestedXP Horde 70-80 << Horde
 #group RestedXP Alliance 70-80 << Alliance
@@ -56510,7 +56510,7 @@ step
 .link https://discord.gg/restedxp >> As this was tested on Beta, the guide may have had some bugs. If you encountered any while playing through, report them here!
 ]])
 RXPGuides.RegisterGuide([[
-#version 23
+#version 24
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80

@@ -176,8 +176,6 @@ step
     .accept 3104 >> Accept Glyphic Letter << Mage
     .accept 3105 >> Accept Tainted Letter << Warlock
 step
-    .xp 3 >> Grind to 3
-step
     .goto Elwynn Forest,47.2,35.1,40,0
     .goto Elwynn Forest,48.9,32.8,40,0
     .goto Elwynn Forest,51.7,37.7,40,0
@@ -208,50 +206,128 @@ step << Priest/Mage
     .goto Elwynn Forest,49.52,39.99,10 >> Travel upstairs << Mage
     .goto Elwynn Forest,49.3,40.7,15 >> Travel toward |cRXP_FRIENDLY_Priestess Anetta|r << Priest
 step << Mage
+    #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Khelden Bremen|r
-    .target Khelden Bremen
     .goto Elwynn Forest,49.661,39.402
     .turnin 3104 >> Turn in Glyphic Letter
+    .trainer >> Train your class spells
+    .target Khelden Bremen
+step << Mage
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Khelden Bremen|r
+    .goto Elwynn Forest,49.661,39.402
+    .turnin 3104 >> Turn in Glyphic Letter
+    .accept 77620 >> Accept Spell Research << Human Mage
     .trainer >> Train your class spells
     .target Khelden Bremen
 step << Priest
     #completewith next
     .goto Elwynn Forest,49.8,40.2,10 >> Travel through the doorway
 step << Priest
+    #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess Anetta|r
     .target Priestess Anetta
     .goto Elwynn Forest,49.808,39.489
     .turnin 3103 >> Turn in Hallowed Letter
+    .trainer >> Train your class spells
+step << Priest
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess Anetta|r
+    .target Priestess Anetta
+    .goto Elwynn Forest,49.808,39.489
+    .turnin 3103 >> Turn in Hallowed Letter
+    .accept 77619 >> Accept Meditation on the Light << Human Priest
     .trainer >> Train your class spells
 step << Warrior/Paladin
     #completewith next
     .goto Elwynn Forest,49.6,41.8,15 >> Travel toward |cRXP_FRIENDLY_Llane Beshere|r << Warrior
     .goto Elwynn Forest,49.6,41.8,15 >> Travel toward |cRXP_FRIENDLY_Brother Sammuel|r << Paladin
 step << Warrior
+    #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Llane Beshere|r
     .target Llane Beshere
     .goto Elwynn Forest,50.242,42.287
     .turnin 3100 >> Turn in Simple Letter
     .trainer >> Train your class spells
+step << Warrior
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Llane Beshere|r
+    .target Llane Beshere
+    .goto Elwynn Forest,50.242,42.287
+    .turnin 3100 >> Turn in Simple Letter
+    .accept 77616 >> Accept The Lost Rune << Human
+    .trainer >> Train your class spells
 step << Paladin
+    #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Sammuel|r
     .target Brother Sammuel
     .goto Elwynn Forest,50.433,42.124
     .turnin 3101 >> Turn in Consecrated Letter
     .trainer >> Train your class spells
+step << Paladin
+    #season 2
+    .goto Elwynn Forest,50.433,42.124
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Sammuel|r
+    .turnin 3101 >> Turn in Consecrated Letter
+    .accept 77617 >> Accept Relics of the Light << Human Paladin
+    .train 20271 >> Train your class spells
+    .target Brother Sammuel
+step << Priest
+    #season 2
+    #completewith next
+    >>Kill |cRXP_ENEMY_Kobold Laborers|r
+	.mob Kobold Laborer
+    .complete 21,1 --Kill Kobold Laborer (x12)
+step << Priest
+    #season 2
+    .goto Elwynn Forest,48.61,27.63
+    >>Kill |cRXP_ENEMY_Kobold Laborers|r. Loot them for a |T136222:0|t[|cRXP_FRIENDLY_Memory of a Troubled Acolyte|r]
+    .collect 205951,1 -- Memory of a Troubled Acolyte (1)
+    .mob Kobold Laborer
+step << Priest
+    #season 2
+    .goto Elwynn Forest,48.61,27.63
+    >>Kill |cRXP_ENEMY_Kobold Laborers|r
+	.mob Kobold Laborer
+    .complete 21,1 --Kill Kobold Laborer (x12)
+step << Priest
+    #season 2
+    .goto Elwynn Forest,48.923,41.606
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marshal McBride|r inside the Abbey
+    .turnin 21,3 >> Turn in Skirmish at Echo Ridge
+    .accept 54 >> Accept Report to Goldshire
+    .target Marshal McBride
+step << Priest
+    #season 2
+    .goto Elwynn Forest,49.808,39.489
+    >>|cRXP_WARN_Type /kneel in your chatbox while inside of Northshire Abbey|r
+    >>|cRXP_WARN_You will receive the|r |T135934:0|t[Meditation on the Light] |cRXP_WARN_buff|r
+    .cast 410958 >> |cRXP_WARN_Use the|r |T136222:0|t[|cRXP_FRIENDLY_Memory of a Troubled Acolyte|r] |cRXP_WARN_while you have the|r |T135934:0|t[Meditation on the Light] |cRXP_WARN_buff|r
+    .use 205951
+    .itemcount 205951,1
+step << Human Priest
+    #season 2
+    .isQuestComplete 77619
+    .goto Elwynn Forest,49.808,39.489
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Priestess Anetta|r
+    .turnin 77619 >> Turn in Meditation on the Light
+    .target Priestess Anetta
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Willem|r
     .target Deputy Willem
     .goto Elwynn Forest,48.171,42.943
     .accept 18 >> Accept Brotherhood of Thieves
 step << Warlock
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Drusilla La Salle|r
-    .target Drusilla La Salle
+    .xp 4
+step << Warlock
+    #season 0
     .goto Elwynn Forest,49.873,42.649
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Drusilla La Salle|r
     .turnin 3105 >> Turn in Tainted Letter
-    .xp 4 >> Grind to 4
-    .trainer >>Train |T136118:0|t[Corruption]
+    .train 172 >>Train |T136118:0|t[Corruption]
+    .target Drusilla La Salle
 step
+    #season 0
     .goto Elwynn Forest,53.9,49.2,50,0
     .goto Elwynn Forest,55.5,42.1,50,0
     .goto Elwynn Forest,53.9,49.2
@@ -259,6 +335,193 @@ step
     >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for their |cRXP_LOOT_Bandanas|r
 	.mob Defias Thug
     .complete 18,1 --Collect Red Burlap Bandana (x12)
+step << Warlock
+    #season 2
+    .goto Elwynn Forest,49.873,42.649
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Drusilla La Salle|r   
+    .turnin 3105 >> Turn in Tainted Letter
+    .accept 77621 >> Accept Stolen Power << Human Warlock
+    .train 172 >>Train |T136118:0|t[Corruption]
+    .target Drusilla La Salle
+step << Rogue
+    #season 2
+    .goto Elwynn Forest,50.314,39.916
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jorik Kerridan|r
+    .turnin 3102 >> Turn in Encrypted Letter
+    .accept 77618 >> Accept Thrice Stolen << Human Rogue
+    .target Jorik Kerridan
+step << Rogue/Warlock
+    #season 2
+    #completewith RoS << Rogue
+    #completewith RoH << Warlock
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for their |cRXP_LOOT_Bandanas|r
+    .complete 18,1 --Collect Red Burlap Bandana (x12)
+    .mob Defias Thug
+step << Rogue
+    #season 2
+    .goto Elwynn Forest,52.544,51.922
+    >>Open the |cRXP_PICK_Defias Stashbox|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowstrike|r]
+    .collect 204795,1 -- Rune of Shadowstrike (1)
+step << Rogue
+    #season 2
+    #label RoS
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowstrike|r]
+    .use 204795
+    .itemcount 204795,1
+step << Warlock
+    #season 2
+    .goto Elwynn Forest,52.544,51.922
+    >>Open the |cRXP_PICK_Defias Stashbox|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
+    .collect 205230,1 -- Rune of Haunting (1)
+step << Warlock
+    #season 2
+    #label RoH
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
+    .use 205230 
+    .itemcount 205230,1
+step << Human Mage
+    #season 2
+    #label CALEENCI
+    #completewith RedBurlapBandana
+    .isOnQuest 77620
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for the |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: CALE ENCI|r]
+    .collect 203751,1,77620,1 -- Spell Notes: CALE ENCI (1)
+    .mob Defias Thug
+step << Human Mage
+    #requires CALEENCI
+    #completewith next
+    #season 2
+    .isOnQuest 77620
+    .use 203751 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: CALE ENCI|r]
+    .complete 77620,1 -- Learn: Engrave Gloves - Ice Lance
+step << Paladin
+    #season 2
+    #loop
+    .goto Elwynn Forest,52.55,48.79,30,0
+    .goto Elwynn Forest,53.89,50.52,30,0
+    .goto Elwynn Forest,55.09,49.00,30,0
+    .goto Elwynn Forest,55.43,45.87,30,0
+    .goto Elwynn Forest,53.86,47.05,30,0
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for the |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r
+    .collect 205420,1 -- Libram of Judgement (1)
+    .mob Defias Thug
+    .train 410002,1
+step << Paladin
+    #season 2
+    .equip 18,205420 >> |cRXP_WARN_Equip the|r |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r
+    .use 205420
+    .itemcount 205420,1 --Libram of Judgement (1)
+    .train 410002,1
+step << Paladin
+    #season 2
+    #completewith RedBurlapBandana
+    #label CSLibram1
+    #loop
+    .goto Elwynn Forest,52.55,48.79,30,0
+    .goto Elwynn Forest,53.89,50.52,30,0
+    .goto Elwynn Forest,55.09,49.00,30,0
+    .goto Elwynn Forest,55.43,45.87,30,0
+    .goto Elwynn Forest,53.86,47.05,30,0
+    .aura 408828 >>|cRXP_WARN_Cast|r |T135959:0|t[Judgement] |cRXP_WARN_10 times to gain the|r |T136116:0|t[Inspired] |cRXP_WARN_buff|r
+    .itemStat 18,QUALITY,2
+    .train 410002,1
+step << Paladin
+    #season 2
+    #completewith RedBurlapBandana
+    #requires CSLibram1
+    #label CSLibram2
+    .cast 409920 >>|cRXP_WARN_Use the|r |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves: Crusader Strike]
+    .use 205420
+    .aura 408828
+    .train 410002,1
+step << Paladin
+    #season 2
+    #completewith RedBurlapBandana
+    #requires CSLibram2
+    #label CSLibram3
+    .equip 10 >>|cRXP_WARN_Equip a pair of|r |T132938:0|t|cRXP_LOOT_[Gloves]|r |cRXP_WARN_if you have some or when you loot some|r
+    .train 410002,2
+step << Paladin
+    #season 2
+    #completewith next
+    #requires CSLibram3
+    .engrave 10 >>|cRXP_WARN_Engrave your|r |T132938:0|t|cRXP_LOOT_[Gloves]|r with|r |T133816:0|t[Engrave Gloves: Crusader Strike]
+    .train 410002,2
+step
+    #season 2
+    #loop
+    #label RedBurlapBandana
+    .goto Elwynn Forest,52.55,48.79,30,0
+    .goto Elwynn Forest,53.89,50.52,30,0
+    .goto Elwynn Forest,55.09,49.00,30,0
+    .goto Elwynn Forest,55.43,45.87,30,0
+    .goto Elwynn Forest,53.86,47.05,30,0
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for their |cRXP_LOOT_Bandanas|r
+	.mob Defias Thug
+    .complete 18,1 --Collect Red Burlap Bandana (x12)
+step << Human Mage
+    #season 2
+    .isOnQuest 77620
+    .goto Elwynn Forest,53.9,49.2,50,0
+    .goto Elwynn Forest,55.5,42.1,50,0
+    .goto Elwynn Forest,53.9,49.2
+    .goto Elwynn Forest,54.57,49.03
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for the |T134939:0|t[|cRXP_FRIENDLY_[Spell Notes: CALE ENCI]|r]
+    .collect 203751,1,77620,1 -- Spell Notes: CALE ENCI (1)
+    .mob Defias Thug
+step << Human Mage
+    #season 2
+    .isOnQuest 77620
+    .use 203751 >>|cRXP_WARN_Use the|r |T134939:0|t[|cRXP_FRIENDLY_[Spell Notes: CALE ENCI]|r]
+    .complete 77620,1 -- Learn: Engrave Gloves - Ice Lance
+step << Paladin
+    #season 2
+    #loop
+    .goto Elwynn Forest,52.55,48.79,30,0
+    .goto Elwynn Forest,53.89,50.52,30,0
+    .goto Elwynn Forest,55.09,49.00,30,0
+    .goto Elwynn Forest,55.43,45.87,30,0
+    .goto Elwynn Forest,53.86,47.05,30,0
+    >>Kill |cRXP_ENEMY_Defias Thugs|r. Loot them for the |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r
+    .collect 205420,1 -- Libram of Judgement (1)
+    .mob Defias Thug
+    .itemStat 18,QUALITY,<2
+    .train 410002,1
+step << Paladin
+    #season 2
+    .equip 18,205420 >> |cRXP_WARN_Equip the|r |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r
+    .use 205420
+    .itemcount 205420,1 --Libram of Judgement (1)
+    .train 410002,1
+step << Paladin
+    #season 2
+    #loop
+    .goto Elwynn Forest,52.55,48.79,30,0
+    .goto Elwynn Forest,53.89,50.52,30,0
+    .goto Elwynn Forest,55.09,49.00,30,0
+    .goto Elwynn Forest,55.43,45.87,30,0
+    .goto Elwynn Forest,53.86,47.05,30,0
+    .aura 408828 >>|cRXP_WARN_Cast|r |T135959:0|t[Judgement] |cRXP_WARN_10 times to gain the|r |T136116:0|t[Inspired] |cRXP_WARN_buff|r
+    .itemStat 18,QUALITY,2
+    .train 410002,1
+step << Paladin
+    #season 2
+    .cast 409920 >>|cRXP_WARN_Use the|r |T134916:0|t|cRXP_LOOT_[Libram of Judgement]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves: Crusader Strike]
+    .use 205420
+    .aura 408828
+    .train 410002,1
+step << Dwarf Paladin
+    #season 2
+    #completewith RestandR
+    #label CSLibram3
+    .equip 10 >> |cRXP_WARN_Equip a pair of|r |T132938:0|t|cRXP_LOOT_[Gloves]|r |cRXP_WARN_if you have some or when you loot some|r
+    .train 410002,2
+step << Dwarf Paladin
+    #season 2
+    #completewith RestandR
+    #requires CSLibram3
+    .engrave 10 >> |cRXP_WARN_Engrave your|r |T132938:0|t|cRXP_LOOT_[Gloves]|r with|r |T133816:0|t[Engrave Gloves: Crusader Strike]
+    .train 410002,2
 step << Rogue
     .xp 4 >> Grind to 4
 step
@@ -266,6 +529,20 @@ step
     #softcore
     .deathskip >> Die and respawn at the Spirit Healer
     .target Spirit Healer
+step << Human Rogue
+    #season 2
+    .isQuestComplete 77618
+    .goto Elwynn Forest,50.314,39.916
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jorik Kerridan|r
+    .turnin 77618 >> Turn in Thrice Stolen
+    .target Jorik Kerridan
+step << Human Warlock
+    #season 2
+    .isQuestComplete 77621
+    .goto Elwynn Forest,49.873,42.649
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Drusilla La Salle|r
+    .turnin 77621 >> Turn in Stolen Power
+    .target Drusilla La Salle
 step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Willem|r
     .target Deputy Willem
@@ -276,14 +553,48 @@ step
     .turnin 18,2 >> Turn in Brotherhood of Thieves << Priest
     .turnin 18,3 >> Turn in Brotherhood of Thieves << Warrior
     .turnin 18 >> Turn in Brotherhood of Thieves << !Warrior !Priest !Mage !Rogue !Warlock !Paladin
-    .accept 6 >> Accept Bounty on Garrick Padfoot
     .accept 3903 >> Accept Milly Osworth
+    .accept 6 >> Accept Bounty on Garrick Padfoot
 step << Paladin
     #completewith next
-    +Equip the |T133052:0|t[Militia Warhammer]
+    .equip 16,5579 >> Equip the |T133052:0|t[Militia Warhammer]
     .use 5579
     .itemcount 5579,1
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<2.6
+step << Human Mage
+    #season 2
+    #completewith next
+    .goto Elwynn Forest,49.52,39.99,10 >> Travel upstairs
+step << Human Mage
+    #season 2
+    .isQuestComplete 77620
+    .goto Elwynn Forest,49.661,39.402
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Khelden Bremen|r
+    .turnin 77620 >> Turn in Spell Research
+    .target Khelden Bremen
+step << Human Paladin
+    #season 2
+    .isQuestComplete 77617
+    .goto Elwynn Forest,50.433,42.124
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Sammuel|r
+    .turnin 77617 >> Turn in Relics of the Light
+    .target Brother Sammuel
+step << Human Paladin
+    #season 2
+    #completewith RestandR
+    #label CSLibram3
+    .equip 10,2385 >> |cRXP_WARN_Equip the|r |T132938:0|t|cRXP_LOOT_[Tarnished Chain Gloves]|r
+    .use 2385
+    .itemcount 2385,1
+    .train 410002,2
+    .itemStat 10,LEVEL,<5
+step << Human Paladin
+    #season 2
+    #completewith RestandR
+    #requires CSLibram3
+    .engrave 10 >> |cRXP_WARN_Engrave the|r |T132938:0|t|cRXP_LOOT_[Tarnished Chain Gloves]|r with|r |T133816:0|t[Engrave Gloves: Crusader Strike]
+    .train 410002,2
+    .itemStat 10,LEVEL,<5
 step << skip
     >> Talk to |cFF00FF25Godric Rothgar|r
     .target Godric Rothgar
@@ -292,6 +603,23 @@ step << skip
 step
     #completewith next
     .goto Elwynn Forest,47.63,32.07,20 >> Enter the Echo Ridge Mine
+step << Warrior
+    #season 2
+    #completewith RoVR << Warrior
+    >>Kill |cRXP_ENEMY_Kobold Laborers|r
+	.mob Kobold Laborer
+    .complete 21,1 --Kill Kobold Laborer (x12)
+step << Warrior
+    #season 2
+    .goto Elwynn Forest,50.640,27.276
+    >>Open the |cRXP_PICK_Kobold Stashbox|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    .collect 204806,1 -- Rune of Victory Rush (1)
+step << Warrior
+    #season 2
+    #label RoVR
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    .use 204806
+    .itemcount 204806,1
 step
     .goto Elwynn Forest,48.61,27.63
     >>Kill |cRXP_ENEMY_Kobold Laborers|r
@@ -312,6 +640,7 @@ step << Priest/Mage
     .turnin 3903 >> Turn in Milly Osworth
     .accept 3904 >> Accept Milly's Harvest
 step << Rogue
+    #season 0
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jorik Kerridan|r
     .target Jorik Kerridan
     .goto Elwynn Forest,50.314,39.916
@@ -361,6 +690,13 @@ step
     .turnin 21,2 >> Turn in Skirmish at Echo Ridge << Warrior/Paladin
     .turnin 21,3 >> Turn in Skirmish at Echo Ridge << !Warrior !Paladin !Rogue
     .accept 54 >> Accept Report to Goldshire
+step << Human Warrior
+    #season 2
+    .isQuestComplete 77616
+    .goto Elwynn Forest,50.242,42.287
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Llane Beshere|r
+    .turnin 77616 >> Turn in The Lost Rune
+    .target Llane Beshere
 step << Priest/Mage
     #sticky
     #completewith next
@@ -377,6 +713,7 @@ step << Priest
     .goto Elwynn Forest,49.808,39.489
     .accept 5623 >> Accept In Favor of the Light
 step
+    #label RestandR
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Falkhaan Isenstrider|r
     .target Falkhaan Isenstrider
     .goto Elwynn Forest,45.563,47.742
@@ -649,6 +986,16 @@ step
     .goto Elwynn Forest,43.131,85.722
     .turnin 84 >> Turn in Back to Billy
     .accept 87 >> Accept Goldtooth
+step << Warrior
+    #season 2
+    #completewith RoD
+    >>Kill |cRXP_ENEMY_Kobold Miners|r and |cRXP_ENEMY_Kobold Tunnelers|r. Loot them for their |T134168:0|t[|cRXP_LOOT_Severed Kobold Head|r]
+    >>|cRXP_WARN_This is one of three items you need to unlock your|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_for when you get to Stormwind at level 10|r
+    .collect 204476,1 -- Severed Kobold Head (1)
+    .mob Kobold Tunneler
+    .mob Kobold Miner
+    .mob Goldtooth
+    .train 403475,1
 step
     #completewith KillGoldtooth
     >>Kill |cRXP_ENEMY_Kobold Tunnelers|r and |cRXP_ENEMY_Kobold Miners|r. Loot them for their |cRXP_LOOT_Candles|r and |cRXP_LOOT_Dust|r
@@ -660,16 +1007,31 @@ step
     .mob Kobold Miner
 step
     #completewith next
-    .goto Elwynn Forest,38.677,81.778,50,0
-    .goto Elwynn Forest,40.5,82.3
+    .goto Elwynn Forest,39.01,82.20,15,0
+    .goto Elwynn Forest,39.92,80.11
     >>Explore Fargodeep Mine
     .complete 62,1 --Scout Through the Fargodeep Mine
 step
+    #season 0,1
     #label KillGoldtooth
     >>Kill |cRXP_ENEMY_Goldtooth|r. Loot him for |cRXP_LOOT_Bernice's Necklace|r
     .goto Elwynn Forest,41.7,78.1
     .complete 87,1 --Collect Bernice's Necklace  (x1)
     .unitscan Goldtooth
+step
+    #season 2
+    #label KillGoldtooth
+    >>Kill |cRXP_ENEMY_Goldtooth|r. Loot him for |cRXP_LOOT_Bernice's Necklace|r << !Warrior
+    >>Kill |cRXP_ENEMY_Goldtooth|r. Loot him for |cRXP_LOOT_Bernice's Necklace|r and the |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r] << Warrior
+    .goto Elwynn Forest,41.7,78.1
+    .complete 87,1 --Collect Bernice's Necklace  (x1)
+    .collect 204809,1 << Warrior -- Rune of Furious Thunder (1)
+    .unitscan Goldtooth
+    .train 403476,1 << Warrior
+step << Warrior
+    #season 2
+    .train 403476 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r] |cRXP_WARN_to train|r |T136048:0|t[Furious Thunder]
+    .use 204809
 step
     #completewith next
     >>Kill |cRXP_ENEMY_Kobold Tunnelers|r and |cRXP_ENEMY_Kobold Miners|r. Loot them for their |cRXP_LOOT_Candles|r and |cRXP_LOOT_Dust|r
@@ -684,6 +1046,7 @@ step
     >>Explore Fargodeep Mine
     .complete 62,1 --Scout Through the Fargodeep Mine
 step
+    #label RoD
     .goto Elwynn Forest,40.5,82.3,25,0
     .goto Elwynn Forest,37.71,83.76,25,0
     .goto Elwynn Forest,40.5,82.3,25,0
@@ -696,6 +1059,20 @@ step
     .complete 47,1 --Gold Dust (10)
     .mob Kobold Tunneler
     .mob Kobold Miner
+step << Warrior
+    #season 2
+    .goto Elwynn Forest,40.5,82.3,25,0
+    .goto Elwynn Forest,37.71,83.76,25,0
+    .goto Elwynn Forest,40.5,82.3,25,0
+    .goto Elwynn Forest,37.71,83.76,25,0
+    .goto Elwynn Forest,40.5,82.3
+    >>Kill |cRXP_ENEMY_Kobold Miners|r and |cRXP_ENEMY_Kobold Tunnelers|r. Loot them for their |T134168:0|t[|cRXP_LOOT_Severed Kobold Head|r]
+    >>|cRXP_WARN_This is one of three items you need to unlock your|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_for when you get to Stormwind at level 10|r
+    .collect 204476,1 -- Severed Kobold Head (1)
+    .mob Kobold Tunneler
+    .mob Kobold Miner
+    .mob Goldtooth
+    .train 403475,1
 step << Warrior
     #completewith Goldtooth
     +|cRXP_WARN_Try to save a single|r |T134829:0|t[Minor Healing Potion] |cRXP_WARN_from now on as you will need it for Rolf's Corpse later|r
@@ -858,6 +1235,15 @@ step
     .vendor >> |cRXP_WARN_Buy up to 40|r |T133995:0|t[Dalaran Sharp] << Warrior/Rogue
     .vendor >> |cRXP_WARN_Buy up to 10|r |T133995:0|t[Dalaran Sharp] |cRXP_WARN_and 10|r |T132815:0|t[Ice Cold Milk] << Paladin
     .target Innkeeper Farley
+step << Warrior
+    #season 2
+    #completewith next
+    >>Kill |cRXP_ENEMY_Murlocs|r and |cRXP_ENEMY_Murloc Streamrunners|r. Loot them for their |T134169:0|t[|cRXP_LOOT_Severed Murloc Head|r]
+    >>|cRXP_WARN_This is one of three items you need to unlock your|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_for when you get to Stormwind at level 10|r
+    .collect 204477,1 -- Severed Murloc Head (1)
+	.mob Murloc
+	.mob Murloc Streamrunner
+    .train 403475,1
 step
     >>Kill |cRXP_ENEMY_Murlocs|r and |cRXP_ENEMY_Murloc Streamrunners|r. Loot them for |cRXP_LOOT_Kelp Fronds|r
     .goto Elwynn Forest,47.6,63.3,60,0
@@ -869,6 +1255,20 @@ step
     .complete 112,1 --Collect Crystal Kelp Frond (x4)
 	.mob Murloc
 	.mob Murloc Streamrunner
+step << Warrior
+    #season 2
+    .goto Elwynn Forest,47.6,63.3,60,0
+    .goto Elwynn Forest,51.4,64.6,60,0
+    .goto Elwynn Forest,57.6,62.8,60,0
+    .goto Elwynn Forest,56.4,66.6,60,0
+    .goto Elwynn Forest,53.8,66.8,60,0
+    .goto Elwynn Forest,57.6,62.8
+    >>Kill |cRXP_ENEMY_Murlocs|r and |cRXP_ENEMY_Murloc Streamrunners|r. Loot them for their |T134169:0|t[|cRXP_LOOT_Severed Murloc Head|r]
+    >>|cRXP_WARN_This is one of three items you need to unlock your|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_for when you get to Stormwind at level 10|r
+    .collect 204477,1 -- Severed Murloc Head (1)
+	.mob Murloc
+	.mob Murloc Streamrunner
+    .train 403475,1
 step
     #completewith next
     .goto Elwynn Forest,61.654,53.608,15 >> Enter the Jasperlode Mine
@@ -952,7 +1352,7 @@ step << !Paladin
     .turnin 45 >> Turn in Discover Rolf's Fate
     .accept 71 >> Accept Report to Thomas
 step
-    #completewith next
+    #completewith BundleOT
     >>Kill |cRXP_ENEMY_Prowlers|r and |cRXP_ENEMY_Young Forest Bears|r
     >>|cRXP_WARN_Prioritize killing any |cRXP_ENEMY_Young Forest Bears|r you see|r
     .complete 52,1 --Kill Prowler (x8)
@@ -969,14 +1369,7 @@ step
     >>Loot the |cRXP_LOOT_Bundle of Wood|r on the ground. |cRXP_WARN_They are found beneath the trees|r
     .complete 5545,1 -- Bundle of Wood (8)
 step
-    #completewith XP9
-    >>Kill |cRXP_ENEMY_Prowlers|r and |cRXP_ENEMY_Young Forest Bears|r
-    >>|cRXP_WARN_Prioritize killing any |cRXP_ENEMY_Young Forest Bears|r you see|r
-    .complete 52,1 --Kill Prowler (x8)
-    .complete 52,2 --Kill Young Forest Bear (x5)
-    .mob Prowler
-    .mob Young Forest Bear
-step
+    #label BundleOT
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Supervisor Raelen|r
     .target Supervisor Raelen
     .goto Elwynn Forest,81.382,66.112
@@ -986,16 +1379,6 @@ step
     .target Sara Timberlain
     .goto Elwynn Forest,79.457,68.789
     .accept 83 >> Accept Red Linen Goods
-step
-    #label XP9
-	.goto Elwynn Forest,76.8,62.4,90,0
-    .goto Elwynn Forest,83.7,59.4,90,0
-    .goto Elwynn Forest,76.8,62.4,90,0
-    .goto Elwynn Forest,83.7,59.4,90,0
-    .goto Elwynn Forest,76.8,62.4,90,0
-    .goto Elwynn Forest,83.7,59.4,90,0
-    .goto Elwynn Forest,76.8,62.4
-    .xp 9 >> Grind to 9
 step
     .goto Elwynn Forest,76.7,75.6,60,0
     .goto Elwynn Forest,79.7,83.7,60,0
@@ -1030,6 +1413,7 @@ step
     >>Kill |cRXP_ENEMY_Defias Bandits|r. Loot them for their |cRXP_LOOT_Bandanas|r
     .complete 83,1 --Collect Red Linen Bandana (x6)
     .mob Defias Bandit
+    .isOnQuest 83
 step
     .goto Elwynn Forest,69.3,79.0
     >>Kill |cRXP_ENEMY_Princess|r. Loot her for her |cRXP_LOOT_Collar|r
@@ -1042,7 +1426,7 @@ step
     .complete 88,1 --Collect Brass Collar (x1)
     .mob Princess
 step
-    #completewith next
+    #completewith Level9Grind
     >>Kill |cRXP_ENEMY_Defias Bandits|r. Loot them for the |T134939:0|t[|cRXP_LOOT_Westfall Deed|r]
     .use 1972>>|cRXP_WARN_Use the |T134939:0|t[|cRXP_LOOT_Westfall Deed|r] to start the quest|r
     >>|cRXP_WARN_The|r |T134939:0|t[|cRXP_LOOT_Westfall Deed|r] |cRXP_WARN_is a very rare drop. Ignore this step if you don't get it|r
@@ -1065,18 +1449,22 @@ step
     .goto Elwynn Forest,69.3,79.0
     .complete 83,1 --Collect Red Linen Bandana (x6)
     .mob Defias Bandit
+    .isOnQuest 83
 step
+    #label Level9Grind
 	.goto Elwynn Forest,69.53,79.47
     .xp 9+3400 >> Grind to 3400+/6500xp
 step
     #softcore
     #completewith next
-    .goto Elwynn Forest,83.6,69.7,120 >>Die and respawn at the Spirit Healer if you're low health, otherwise just run back and handin
+    .deathskip >> Die and respawn at the Spirit Healer if you're low health, otherwise just run back and handin
+    .target Spirit Healer
 step
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Sara Timberlain|r
     .target Sara Timberlain
     .goto Elwynn Forest,79.457,68.789
     .turnin 83 >> Turn in Red Linen Goods
+    .isQuestComplete 83
 step << !Warlock
     .goto Redridge Mountains,8.5,72.0
     .xp 9+4475 >> Grind until 4475+/6500xp
@@ -1141,7 +1529,7 @@ step
     .target Smith Argus
     .goto Elwynn Forest,41.706,65.544
     .accept 1097 >> Accept Elmore's Task
-step
+step << !Mage !Paladin
     .xp 10 >> Grind to 10
 step << Warrior
     .goto Elwynn Forest,41.087,65.768
@@ -1154,6 +1542,7 @@ step << Paladin
     .target Brother Wilhelm
     .goto Elwynn Forest,41.096,66.041
     .trainer >> Train your class spells
+    .xp <10,1
 step << Warlock
     #completewith next
     .goto Elwynn Forest,44.1,66.0,10 >> Travel downstairs in the Inn
@@ -1182,6 +1571,7 @@ step << Mage
 	.target Zaldimar Wefhellt
     .goto Elwynn Forest,43.25,66.19
     .trainer >> Train your class spells
+    .xp <10,1
 step << Rogue
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keryn Sylvius|r
     .target Keryn Sylvius
@@ -1228,10 +1618,55 @@ step
     .turnin 88,1 >> Turn in Princess Must Die! << Rogue/Hunter
     .turnin 88,2 >> Turn in Princess Must Die! << Warrior/Paladin
     .turnin 88,3 >> Turn in Princess Must Die! << !Rogue !Hunter !Warrior !Paladin
+step << Paladin/Mage
+    #completewith Garrison
+    .xp 9+4510 >> Grind en route to 4510+/6500xp
+    .itemcount 1971,1 --Westfall Deed (1)
+step << Paladin/Mage
+    #completewith Garrison
+    .xp 9+5110 >> Grind en route to 5110+/6500xp
+    .itemcount 1971,<1 --Westfall Deed (0)
 step
     #completewith next
     .goto Elwynn Forest,24.82,76.25,80 >> Travel to Westbrook Garrison
+step << Warrior
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Rainer|r
+    .turnin 239 >> Turn in Westbrook Garrison Needs Help!
+    .accept 11 >> Accept Riverpaw Gnoll Bounty
+    .goto Elwynn Forest,24.234,74.450
+    .target Deputy Rainer
+step << Warrior
+    #season 2
+    .goto Elwynn Forest,27.0,86.7,70,0
+    .goto Elwynn Forest,26.1,89.9,70,0
+    .goto Elwynn Forest,25.2,92.7,70,0
+    .goto Elwynn Forest,27.0,93.9,70,0
+    .goto Elwynn Forest,27.0,86.7,70,0
+    .goto Elwynn Forest,26.1,89.9,70,0
+    .goto Elwynn Forest,25.2,92.7,70,0
+    .goto Elwynn Forest,27.0,93.9,70,0
+    .goto Elwynn Forest,27.0,86.7,70,0
+    .goto Elwynn Forest,26.1,89.9,70,0
+    .goto Elwynn Forest,25.2,92.7,70,0
+    .goto Elwynn Forest,27.0,93.9,70,0
+    .goto Elwynn Forest,25.9,93.9
+    >>Kill |cRXP_ENEMY_Riverpaw Runts|r and |cRXP_ENEMY_Riverpaw Outrunners|r. Loot them for their |cRXP_LOOT_Armbands|r and a |T134163:0|t[|cRXP_LOOT_Severed Gnoll Head|r]
+    >>|cRXP_WARN_This is one of three items you need to unlock your|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_for when you get to Stormwind at level 10|r
+    .complete 11,1 -- Painted Gnoll Armband (8)
+    .collect 204478,1 -- Severed Gnoll Head (1)
+    .mob Riverpaw Runt
+    .mob Riverpaw Outrunner
+    .train 403475,1
+step << Warrior
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Rainer|r
+    .turnin 11 >> Turn in Riverpaw Gnoll Bounty
+    .goto Elwynn Forest,24.234,74.450
+    .target Deputy Rainer
 step << !Rogue
+    #label Garrison
+    #season 0,1 << Warrior
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Deputy Rainer|r
     .turnin 239 >> Turn in Westbrook Garrison Needs Help!
     .accept 11 >> Accept Riverpaw Gnoll Bounty << Warlock
@@ -1275,6 +1710,7 @@ step << Warrior
     .goto Elwynn Forest,27.0,93.9,70,0
     .goto Elwynn Forest,25.9,93.9
 step << Warrior
+    #season 0,1
     .money >0.3129
     #era
     >>Kill |cRXP_ENEMY_Riverpaw Runts|r and |cRXP_ENEMY_Riverpaw Outrunners|r
@@ -1355,6 +1791,14 @@ step << Warlock/Rogue
     .target Deputy Rainer
 step << Rogue
     .abandon 123 >>Abandon The Collector
+step << Paladin/Mage
+    #completewith WestEntry
+    .xp 9+4575 >> Grind en route to 4575+/6500xp
+    .itemcount 1971,1 --Westfall Deed (1)
+step << Paladin/Mage
+    #completewith WestEntry
+    .xp 9+5175 >> Grind en route to 5175+/6500xp
+    .itemcount 1971,<1 --Westfall Deed (0)
 step
     #completewith WestEntry
     .goto Westfall,59.95,19.35
@@ -1387,6 +1831,9 @@ step
     .target Salma Saldean
     .accept 38 >> Accept Westfall Stew
     .accept 22 >>Accept Goretusk Liver Pie
+step
+    .goto Westfall,56.327,47.520
+    .xp 9+5775 >> Grind to 5775+/6500xp to ding level 10 in Sentinel Hill
 step
     #softcore
     #completewith next
@@ -1425,7 +1872,32 @@ step << Human
     .turnin 6181 >> Turn in A Swift Message
     .accept 6281 >> Accept Continue To Stormwind
     .target Thor
+step << Rogue
+    #season 2
+    #completewith FlySW
+    #label RoSS
+    .goto Westfall,51.540,55.361,30,0
+    .goto Westfall,51.093,54.642,30,0
+    .goto Westfall,50.81,47.15,50,0
+    .goto Westfall,51.093,54.642
+    >>|T133644:0|t[Pick Pocket] the |cRXP_ENEMY_Defias Scout|r for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Saber Slash|r]
+    >>|cRXP_WARN_You must be in|r |T132320:0|t[Stealth] |cRXP_WARN_to use|r |T133644:0|t[Pick Pocket]
+    >>|cRXP_WARN_There is a very high chance that the|r |T133644:0|t[Pick Pocket] |cRXP_WARN_will fail because your are underleved. If it does, skip this step and fly to Stormwind. You will complete it in Loch Modan shortly|r
+    >>|cRXP_WARN_DO NOT AGRO THE |cRXP_ENEMY_Defias Scout|r OTHERWISE IT WILL|r |T132331:0|t[Vanish] |cRXP_WARN_AND DESPAWN FOR 3-5 MINUTES. ENSURE TO GO IN|r |T132320:0|t[Stealth] |cRXP_WARN_EARLY!|r
+    >>|cRXP_WARN_The |cRXP_ENEMY_Defias Scout|r can spawn on hills|r
+    .collect 208772,1 -- Rune of Saber Slash (1)
+    .unitscan Defias Scout
+    .train 424785,1
+step << Rogue
+    #season 2
+    #completewith next
+    #requires RoSS
+    .cast 402265 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Saber Slash|r]
+    .use 208772 -- Rune of Saber Slash (1)
+    .itemcount 208772,1
+    .train 424785,1
 step
+    #label FlySW
     .goto Westfall,56.55,52.64
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Thor|r
     .fly Stormwind >> Fly to Stormwind
@@ -1478,6 +1950,21 @@ step
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Allison|r
     .home >> Set your Hearthstone to Stormwind City
     .target Innkeeper Allison
+step << Warrior
+    #season 2
+    .gossipoption 109045 >> Talk to |cRXP_FRIENDLY_Liv Bradford|r inside the Inn at the Park
+    .gossipoption 109047
+    .goto Stormwind City,22.608,64.621
+    .gossipoption 109084 >> Talk to |cRXP_ENEMY_Stuart|r, then beat him up. He will pass out at 0%
+    .goto Stormwind City,21.213,62.781
+    >>If |cRXP_ENEMY_Stuart|r is not there wait for him to respawn
+    .gossipoption 109044 >> Talk to |cRXP_FRIENDLY_Liv Bradford|r again after knocking out |cRXP_ENEMY_Stuart|r to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
+    .goto Stormwind City,22.608,64.621
+    .train 425447,1 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r] |cRXP_WARN_to train|r |T236317:0|t[Frenzied Assault]
+    >>|cRXP_WARN_Note: This can be quite difficult to solo at this level. Look for some help or you'll complete it soon at level 12|r
+    .use 204716
+    .target Liv Bradford
+    .mob Stuart
 step << Warlock
     #completewith next
     .goto StormwindClassic,29.2,74.0,20,0
@@ -1600,6 +2087,52 @@ step << Warlock
     .target Gakin the Darkbinder
     .goto StormwindClassic,25.25,78.59
     .turnin 1689 >> Turn in The Binding
+step << Warrior
+    #season 2
+    #completewith RoDSW
+    .goto Stormwind City,69.690,51.023
+    .gossipoption 109028 >>Talk to |cRXP_FRIENDLY_Viktoria Woods|r to turn in your |T134168:0|t[|cRXP_LOOT_Severed Kobold Head|r] to receive |T134455:0|t[Monster Hunter's First Rune Fragment]
+    .collect 204688,1 -- Monster Hunter's First Rune Fragment (1)
+    .itemcount 204476,1 -- Severed Kobold Head (1)
+    .target Viktoria Woods
+    .train 403475,1
+step << Warrior
+    #season 2
+    #completewith RoDSW
+    .goto Stormwind City,69.690,51.023
+    .gossipoption 109027 >>Talk to |cRXP_FRIENDLY_Viktoria Woods|r to turn in your |T134169:0|t[|cRXP_LOOT_Severed Murloc Head|r] to receive |T134455:0|t[Monster Hunter's Second Rune Fragment]
+    .collect 204689,1 -- Monster Hunter's Second Rune Fragment (1)
+    .itemcount 204477,1 -- Severed Murloc Head (1)
+    .target Viktoria Woods
+    .train 403475,1
+step << Warrior
+    #season 2
+    #label GnollHead
+    #completewith RoDSW
+    .goto Stormwind City,69.690,51.023
+    .gossipoption 109026 >>Talk to |cRXP_FRIENDLY_Viktoria Woods|r to turn in your |T134163:0|t[|cRXP_LOOT_Severed Gnoll Head|r] to receive |T134455:0|t[Monster Hunter's Third Rune Fragment]
+    .collect 204690,1 -- Monster Hunter's Third Rune Fragment (1)
+    .itemcount 204478,1 -- Severed Gnoll Head (1)
+    .target Viktoria Woods
+    .train 403475,1
+step << Warrior
+    #season 2
+    #label RoDSW
+    #requires GnollHead
+    .cast 406651 >> |cRXP_WARN_Use any of the|r |T134455:0|t[Monster Hunter's Rune Fragments] |cRXP_WARN_to create the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
+    .collect 204703,1 -- Rune of Devastate (1)
+    .use 204690
+    .use 204689
+    .use 204688
+    .itemcount 204688,1
+    .itemcount 204689,1
+    .itemcount 204690,1
+    .train 403475,1
+step << Warrior
+    #season 2
+    .train 403475 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r] |cRXP_WARN_to train|r |T135291:0|t[Devastate]
+    .use 204703
+    .itemcount 204703,1
 step << Human
     .goto StormwindClassic,74.312,47.240
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Osric Strang|r
@@ -1650,14 +2183,10 @@ step << Priest
     .target High Priestess Laurena
 step
     .goto StormwindClassic,51.757,12.091
-    .target Grimand Elmore
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grimand Elmore|r
     .turnin 1097 >> Turn in Elmore's Task
-step
-    .goto StormwindClassic,51.757,12.091
-    .target Grimand Elmore
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grimand Elmore|r
     .accept 353 >> Accept Stormpike's Delivery
+    .target Grimand Elmore
 step << Warrior
     #completewith next
     +|cRXP_WARN_Put|r |T132363:0|t[Sunder Armor] |cRXP_WARN_on your action bar and ensure to use it constantly. It is more effective than using|r |T132282:0|t[Heroic Strike]
@@ -1688,11 +2217,82 @@ step
     .turnin 6661 >> Turn in Deeprun Rat Roundup
 step
     .zone Ironforge >>Enter Ironforge
+step << Paladin
+    #season 2
+    #completewith next
+    .goto Ironforge,71.54,73.46,10,0
+    .goto Ironforge,72.53,76.94,10 >>Travel toward |cRXP_FRIENDLY_Bruuk Barleybeard|r inside the Inn
+    .train 425621,1
+step << Paladin
+    #season 2
+    .goto Ironforge,72.53,76.94
+    .gossipoption 110791 >>Talk to |cRXP_FRIENDLY_Bruuk Barleybeard|r inside
+    .target Bruuk Barleybeard
+    .skipgossip 5570,1,1
+    .train 425621,1
+--XX 110793 "How's business?"
+--XX 110791 "Sounds like you need someone to bounce him for you."
+step << Paladin
+    #season 2
+    .goto Ironforge,72.40,73.63
+    .gossipoption 109084 >>Talk to |cRXP_FRIENDLY_Bruart|r to start a fight
+    >>Defeat |cRXP_ENEMY_Bruart|r
+    >>|cRXP_WARN_Be careful as he casts|r |T132939:0|t[Backhand] |cRXP_WARN_(stuns you for 2 seconds)|r
+    >>|cRXP_WARN_Remember to pre-cast|r |T135924:0|t[Seal of the Crusader] |cRXP_WARN_on him|r
+    >>|cRXP_WARN_DO NOT accidentally cast|r |T135906:0|t[Blessing of Might] |cRXP_WARN_on him|r
+    >>|cRXP_WARN_Kite him upstairs to the balcony, then drop down outside the inn cast|r |T135920:0|t[Holy Light] |cRXP_WARN_if needed|r
+    .mob Bruart
+    .skipgossip 209004,1
+    .train 425621,1
+--XX 109084 "Seems you've had a few too many"
+--XX Check if another player can skip the "how's business" dialogue for you (paladin, warrior)
+step << Paladin
+    #season 2
+    .goto Ironforge,72.40,73.63,-1
+    .goto Ironforge,72.53,76.94,-1
+    >>Defeat |cRXP_ENEMY_Bruart|r
+    >>|cRXP_WARN_Be careful as he casts|r |T132939:0|t[Backhand] |cRXP_WARN_(stuns you for 2 seconds)|r
+    >>|cRXP_WARN_Remember to pre-cast|r |T135924:0|t[Seal of the Crusader] |cRXP_WARN_on him|r
+    >>|cRXP_WARN_DO NOT accidentally cast|r |T135906:0|t[Blessing of Might] |cRXP_WARN_on him|r
+    >>|cRXP_WARN_Kite him upstairs to the balcony, then drop down outside the inn cast|r |T135920:0|t[Holy Light] |cRXP_WARN_if needed|r
+    >>|cRXP_WARN_After defeating |cRXP_ENEMY_Bruart|r:|r
+    >>Talk to |cRXP_FRIENDLY_Bruuk Barleybeard|r again to receive the |T134419:0|t[Rune of Rebuke]
+    >>|cRXP_WARN_If he doesn't give you the|r |T134419:0|t[Rune of Rebuke]|cRXP_WARN_, you may need to fight |cRXP_ENEMY_Bruart|r again|r
+    .collect 205683,1 --Rune of Rebuke (1)
+    .target Bruuk Barleybeard
+    .skipgossip 5570,2,1
+    .skipgossip 209004,1
+    .train 425621,1
+--XX 109539 "I've taken care of Stuart. He shouldn't be a problem anymore."
+step << Paladin
+    #season 2
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[Rune of Rebuke] |cRXP_WARN_to learn|r |T134596:0|t[Engrave Pants: Rebuke]
+    .use 205683
+    .itemcount 205683,1 --Rune of Rebuke (1)
+    .train 425621,1
+step << Paladin
+    #season 2
+    #completewith Dirt
+    .engrave 7 >>|cRXP_WARN_Engrave your|r |T134596:0|t|cRXP_LOOT_[Pants]|r with|r |T134596:0|t[Engrave Pants: Rebuke]
+    >>|cRXP_WARN_Remember to put|r |T134919:0|t[Rebuke] |cRXP_WARN_onto your action bars|r
+    .train 425621,2
 step
     .goto Ironforge,55.501,47.742
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gryth Thurden|r
     .fp Ironforge >> Get the Ironforge flight path
     .target Gryth Thurden
+step << Mage
+    .goto Ironforge,27.17,8.58
+    >>Talk to |cFF00FF25Dink|r
+    .train 122 >> Train your class spells
+    .target Dink
+--XX Alternative mage train if they didn't get 10 in Goldshire
+step << Paladin
+    .goto Ironforge,23.131,6.143
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brandur Ironhammer|r
+    .train 633 >> Train your class spells
+    .target Brandur Ironhammer
+--XX Alternative paladin train if they didn't get 10 in Goldshire
 step << Warrior
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bixi Wobblebonk|r and |cRXP_FRIENDLY_Buliwyf Stonehand|r
     .train 2567 >> Train Thrown
@@ -1930,6 +2530,58 @@ step
     .accept 416 >> Accept Rat Catching
     .accept 1339 >> Accept Mountaineer Stormpike's Task
     .target Mountaineer Kadrell
+step << Rogue
+    #season 2
+    #completewith LochModanDam
+    >>Kill |cRXP_ENEMY_Elder Black Bears|r. Loot them for their |cRXP_LOOT_Bear Meat|r
+    >>Kill |cRXP_ENEMY_Mountain Boars|r. Loot them for their |cRXP_LOOT_Boar Intestines|r
+    >>Kill |cRXP_ENEMY_Forest Lurkers|r. Loot them for their |cRXP_LOOT_Ichor|r
+    .collect 3172,3,418,1 --Collect Boar Intestines (x3)
+    .collect 3173,3,418,1 --Collect Bear Meat (x3)
+    .collect 3174,3,418,1 --Collect Spider Ichor (x3)
+    .mob Elder Black Bear
+    .mob Mountain Boar
+    .mob Forest Lurker
+    .subzoneskip 146
+    .train 424785,1
+step << Rogue
+    #season 2
+    #completewith LochModanDam
+    >>Kill |cRXP_ENEMY_Tunnel Rats|r. Loot them for their |cRXP_LOOT_Ears|r
+    .complete 416,1 --Collect Tunnel Rat Ear (x12)
+    .mob Tunnel Rat Scout
+    .mob Tunnel Rat Vermin
+    .mob Tunnel Rat Forager
+    .mob Tunnel Rat Geomancer
+    .mob Tunnel Rat Digger
+    .mob Tunnel Rat Surveyor
+    .subzoneskip 146
+    .train 424785,1
+step << Rogue
+    #season 2
+    #label LochModanDam
+    #completewith next
+    .goto Loch Modan,41.01,12.60,50,0
+    .goto Loch Modan,42.86,10.36,60,0 
+    .goto Loch Modan,46.20,13.15,10 >> |cRXP_WARN_Make your way onto the Loch Modan Dam wall and carefully drop down onto the ledge in the center of the Dam. Follow the arrow|r
+    .train 424785,1
+step << Rogue
+    #season 2
+    .goto Loch Modan,46.373,12.666
+    >>Open the |cRXP_PICK_Stonemason's Toolbox|r on the ledge. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Saber Slash|r]
+    .collect 208772,1 -- Rune of Saber Slash (1)
+    .train 424785,1
+step << Rogue
+    #season 2
+    .cast 402265 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Saber Slash|r]
+    .use 208772 -- Rune of Saber Slash (1)
+    .itemcount 208772,1
+    .train 424785,1
+step << Rogue
+    #season 2
+    .goto Loch Modan,45.823,12.652
+    .cast 6477 >> Click the |cRXP_PICK_Escape Rope|r to return to the top
+    .subzoneskip 146,1
 step
     #completewith StormpikeDelivery
     >>Kill |cRXP_ENEMY_Elder Black Bears|r. Loot them for their |cRXP_LOOT_Bear Meat|r
@@ -2217,11 +2869,56 @@ step << Paladin
     .goto StormwindClassic,38.67,32.82
     .trainer >> Train your class spells
     .target Arthur the Faithful
+step << Paladin
+    #season 2
+    .goto StormwindClassic,38.10,28.10
+    .gossipoption 109653 >>Talk to |cRXP_FRIENDLY_Brother Romulus|r
+    .target Brother Romulus
+    .skipgossip
+    .train 410015,1
+step << Paladin
+    #season 2
+    #completewith next
+    .goto StormwindClassic,37.39,29.76,5,0
+    .goto StormwindClassic,37.87,29.10,5,0
+    .goto StormwindClassic,36.52,32.67,8,0
+    .goto StormwindClassic,36.55,33.45,8,0
+    .goto StormwindClassic,35.95,34.05,8,0
+    .goto StormwindClassic,35.46,33.03,8,0
+    .goto StormwindClassic,35.95,31.54,8,0
+    .goto StormwindClassic,34.79,29.31,8,0
+    .goto StormwindClassic,33.69,29.69,8,0
+    .goto StormwindClassic,32.57,27.49,8,0
+    .goto StormwindClassic,33.41,25.61,8,0
+    >>Go downstairs into the western side of the Cathedral's Crypt
+    .goto StormwindClassic,32.86,24.77,8 >>Travel toward the |cRXP_LOOT_Charred Note|r in the crypt
+    .train 410015,1
+step << Paladin
+    #season 2
+    .goto StormwindClassic,32.86,24.87
+    >>Loot the |cRXP_LOOT_Charred Note|r next to the candles
+    .collect 205864,1 --Charred Note (1)
+    .train 410015,1
 step << Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Brother Joshua|r
     .goto StormwindClassic,38.54,26.86
     .trainer >> Train your class spells
     .target Brother Joshua
+step << Warrior
+    #season 2
+    .gossipoption 109045 >> Talk to |cRXP_FRIENDLY_Liv Bradford|r inside the Inn at the Park
+    .gossipoption 109047
+    .goto Stormwind City,22.608,64.621
+    .gossipoption 109084 >> Talk to |cRXP_ENEMY_Stuart|r, then beat him up. He will pass out at 0%
+    .goto Stormwind City,21.213,62.781
+    >>If |cRXP_ENEMY_Stuart|r is not there wait for him to respawn
+    .gossipoption 109044 >> Talk to |cRXP_FRIENDLY_Liv Bradford|r again after knocking out |cRXP_ENEMY_Stuart|r to receive the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
+    .goto Stormwind City,22.608,64.621
+    .train 425447,1 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r] |cRXP_WARN_to train|r |T236317:0|t[Frenzied Assault]
+    >>|cRXP_WARN_Note: This can be quite difficult to solo. Look for some help if needed|r
+    .use 204716
+    .target Liv Bradford
+    .mob Stuart
 step
     .goto StormwindClassic,49.194,30.284
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Baros Alexston|r
@@ -2694,15 +3391,15 @@ step
     .accept 37 >> Accept Find the Lost Guards
     .accept 52 >> Accept Protect the Frontier
 step
-    #sticky
-    #completewith Prowlers
+    #completewith Bears
     >>Kill Prowlers as you do other quests
     .complete 52,1 --Kill Prowler (x8)
+    .mob Prowler
 step
-    #sticky
     #completewith Bears
     >>Kill Bears as you do other quests. Kill any you see
     .complete 52,2 --Kill Young Forest Bear (x5)
+    .mob Young Forest Bear
 step
     .goto Elwynn Forest,72.7,60.3
     .turnin 37 >> Turn in Find the Lost Guards
@@ -2787,9 +3484,6 @@ step
 >>Talk to |cFF00FF25Supervisor Raelen|r
     .turnin 5545 >> Turn in A Bundle of Trouble
 step
-    #label Prowlers
-    .xp 9 >> Grind to 9
-step
     #label Bears
     .goto Elwynn Forest,79.457,68.789
 .target Sara Timberlain
@@ -2835,6 +3529,7 @@ step
     .goto Elwynn Forest,69.53,79.47
     >>Start circling the farm, killing Defias and looting them for Bandanas
     .complete 83,1 --Collect Red Linen Bandana (x6)
+    .isOnQuest 83
 step << Warrior
     .goto Elwynn Forest,69.4,79.2
     >>Pool Rage, then kill Princess. Use a Lesser Heal Potion from before if needed. Loot her for the Collar
@@ -2863,6 +3558,7 @@ step
 .target Sara Timberlain
 >>Talk to |cFF00FF25Sara Timberlain|r
     .turnin 83 >> Turn in Red Linen Goods
+    .isQuestComplete 83
 step << !Warlock
     #softcore
     .goto Elwynn Forest,83.3,66.1

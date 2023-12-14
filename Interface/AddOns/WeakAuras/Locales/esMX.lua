@@ -30,6 +30,8 @@ L["|cffeda55fShift-Click|r to pause addon execution."] = "|cffeda55fShift-Click|
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "|cFFFF0000Not|r Item Bonus Id Equipped"
 --[[Translation missing --]]
+L["|cFFFF0000Not|r Item Equipped"] = "|cFFFF0000Not|r Item Equipped"
+--[[Translation missing --]]
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Player Name/Realm"
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
@@ -150,6 +152,8 @@ L["Anchoring"] = "Anchoring"
 --[[Translation missing --]]
 L["And Talent"] = "And Talent"
 --[[Translation missing --]]
+L["Angle and Radius"] = "Angle and Radius"
+--[[Translation missing --]]
 L["Animations"] = "Animations"
 L["Anticlockwise"] = "Izquierda"
 --[[Translation missing --]]
@@ -256,7 +260,8 @@ L["Background"] = "Fondo"
 L["Background Color"] = "Color de fondo"
 --[[Translation missing --]]
 L["Baltharus the Warborn"] = "Baltharus the Warborn"
-L["Bar Color"] = "Color de la barra"
+--[[Translation missing --]]
+L["Bar Color/Gradient Start"] = "Bar Color/Gradient Start"
 --[[Translation missing --]]
 L["Baron Geddon"] = "Baron Geddon"
 --[[Translation missing --]]
@@ -483,6 +488,8 @@ L["Crowd Controlled"] = "Bajo control"
 L["Crushing"] = "Golpe aplastador"
 L["C'thun"] = "C'thun"
 --[[Translation missing --]]
+L["Current Combo Point charged"] = "Current Combo Point charged"
+--[[Translation missing --]]
 L["Current Essence"] = "Current Essence"
 --[[Translation missing --]]
 L["Current Experience"] = "Current Experience"
@@ -695,6 +702,8 @@ L["Encounter ID(s)"] = "Encounter ID(s)"
 L["Energize"] = "Vigorizar"
 L["Enrage"] = "Enfurecer"
 --[[Translation missing --]]
+L["Enter a name or a spellId"] = "Enter a name or a spellId"
+--[[Translation missing --]]
 L["Enter static or relative values with %"] = "Enter static or relative values with %"
 L["Entering"] = "Entrando"
 L["Entering/Leaving Combat"] = "Entrando/abandonando batalla"
@@ -894,9 +903,9 @@ L["Golemagg the Incinerator"] = "Golemagg the Incinerator"
 L["Gothik the Harvester"] = "Gothik the Harvester"
 L["Gradient"] = "Degradado"
 --[[Translation missing --]]
-L["Gradient Color"] = "Gradient Color"
---[[Translation missing --]]
 L["Gradient Enabled"] = "Gradient Enabled"
+--[[Translation missing --]]
+L["Gradient End"] = "Gradient End"
 --[[Translation missing --]]
 L["Gradient Orientation"] = "Gradient Orientation"
 L["Gradient Pulse"] = "Degradado pulsante"
@@ -927,6 +936,8 @@ L["Group Finder Poke End"] = "Group Finder Poke End"
 L["Group Finder Poke Initial"] = "Group Finder Poke Initial"
 --[[Translation missing --]]
 L["Group Leader/Assist"] = "Group Leader/Assist"
+--[[Translation missing --]]
+L["Group Size"] = "Group Size"
 --[[Translation missing --]]
 L["Group Type"] = "Group Type"
 L["Grow"] = "Crecer"
@@ -1186,6 +1197,8 @@ L["Location"] = "Location"
 L["Looking for Raid"] = "Looking for Raid"
 --[[Translation missing --]]
 L["Loop"] = "Loop"
+--[[Translation missing --]]
+L["Loot"] = "Loot"
 --[[Translation missing --]]
 L["Lord Jaraxxus"] = "Lord Jaraxxus"
 --[[Translation missing --]]
@@ -2132,6 +2145,8 @@ L["Tracking Charge CDs"] = "Tracking Charge CDs"
 L["Tracking Only Cooldown"] = "Tracking Only Cooldown"
 L["Transmission error"] = "Error de transmición"
 --[[Translation missing --]]
+L["Treat charged combo point as 7 combo points"] = "Treat charged combo point as 7 combo points"
+--[[Translation missing --]]
 L["Trial of the Crusader"] = "Trial of the Crusader"
 --[[Translation missing --]]
 L["Trigger"] = "Trigger"
@@ -2182,6 +2197,10 @@ L["Unit Name"] = "Unit Name"
 L["Unit Name/Realm"] = "Unit Name/Realm"
 --[[Translation missing --]]
 L["Units Affected"] = "Units Affected"
+--[[Translation missing --]]
+L["Units of affected Players in a table format"] = "Units of affected Players in a table format"
+--[[Translation missing --]]
+L["Units of unaffected Players in a table format"] = "Units of unaffected Players in a table format"
 --[[Translation missing --]]
 L["unknown location"] = "unknown location"
 --[[Translation missing --]]

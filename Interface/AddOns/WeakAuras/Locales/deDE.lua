@@ -36,6 +36,8 @@ L["|cffeda55fShift-Click|r to pause addon execution."] = "|cffeda55fShift-Click|
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "|cFFFF0000Not|r Item Bonus Id Equipped"
 --[[Translation missing --]]
+L["|cFFFF0000Not|r Item Equipped"] = "|cFFFF0000Not|r Item Equipped"
+--[[Translation missing --]]
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Player Name/Realm"
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
@@ -147,6 +149,8 @@ L["Amount"] = "Anzahl"
 --[[Translation missing --]]
 L["Anchoring"] = "Anchoring"
 L["And Talent"] = "Und Talent"
+--[[Translation missing --]]
+L["Angle and Radius"] = "Angle and Radius"
 L["Animations"] = "Animationen"
 L["Anticlockwise"] = "Im Gegenuhrzeigersinn"
 --[[Translation missing --]]
@@ -241,7 +245,8 @@ L["Background"] = "Hintergrund"
 L["Background Color"] = "Hintergrundfarbe"
 --[[Translation missing --]]
 L["Baltharus the Warborn"] = "Baltharus the Warborn"
-L["Bar Color"] = "Balkenfarbe"
+--[[Translation missing --]]
+L["Bar Color/Gradient Start"] = "Bar Color/Gradient Start"
 --[[Translation missing --]]
 L["Baron Geddon"] = "Baron Geddon"
 --[[Translation missing --]]
@@ -461,6 +466,8 @@ L["Crushing"] = "Zerschmettern"
 --[[Translation missing --]]
 L["C'thun"] = "C'thun"
 --[[Translation missing --]]
+L["Current Combo Point charged"] = "Current Combo Point charged"
+--[[Translation missing --]]
 L["Current Essence"] = "Current Essence"
 --[[Translation missing --]]
 L["Current Experience"] = "Current Experience"
@@ -653,6 +660,8 @@ L["Encounter ID(s)"] = "Encounter ID(s)"
 L["Energize"] = "Aufladen (ENERGIZE)"
 L["Enrage"] = "Wut"
 --[[Translation missing --]]
+L["Enter a name or a spellId"] = "Enter a name or a spellId"
+--[[Translation missing --]]
 L["Enter static or relative values with %"] = "Enter static or relative values with %"
 L["Entering"] = "Betreten"
 L["Entering/Leaving Combat"] = "Kampf Betreten/Verlassen"
@@ -838,9 +847,9 @@ L["Golemagg the Incinerator"] = "Golemagg the Incinerator"
 L["Gothik the Harvester"] = "Gothik the Harvester"
 L["Gradient"] = "Gradient"
 --[[Translation missing --]]
-L["Gradient Color"] = "Gradient Color"
---[[Translation missing --]]
 L["Gradient Enabled"] = "Gradient Enabled"
+--[[Translation missing --]]
+L["Gradient End"] = "Gradient End"
 --[[Translation missing --]]
 L["Gradient Orientation"] = "Gradient Orientation"
 L["Gradient Pulse"] = "Gradient Pulse"
@@ -870,6 +879,8 @@ L["Group Finder Poke End"] = "Group Finder Poke End"
 L["Group Finder Poke Initial"] = "Group Finder Poke Initial"
 --[[Translation missing --]]
 L["Group Leader/Assist"] = "Group Leader/Assist"
+--[[Translation missing --]]
+L["Group Size"] = "Group Size"
 --[[Translation missing --]]
 L["Group Type"] = "Group Type"
 L["Grow"] = "Wachsen"
@@ -1111,6 +1122,8 @@ L["Location"] = "Location"
 --[[Translation missing --]]
 L["Looking for Raid"] = "Looking for Raid"
 L["Loop"] = "Schleife"
+--[[Translation missing --]]
+L["Loot"] = "Loot"
 --[[Translation missing --]]
 L["Lord Jaraxxus"] = "Lord Jaraxxus"
 --[[Translation missing --]]
@@ -2013,6 +2026,8 @@ L["Tracking Charge CDs"] = "Tracking Charge CDs"
 L["Tracking Only Cooldown"] = "Tracking Only Cooldown"
 L["Transmission error"] = "Übertragungsfehler"
 --[[Translation missing --]]
+L["Treat charged combo point as 7 combo points"] = "Treat charged combo point as 7 combo points"
+--[[Translation missing --]]
 L["Trial of the Crusader"] = "Trial of the Crusader"
 L["Trigger"] = "Auslöser"
 --[[Translation missing --]]
@@ -2059,6 +2074,10 @@ L["Unit Name"] = "Unit Name"
 L["Unit Name/Realm"] = "Unit Name/Realm"
 --[[Translation missing --]]
 L["Units Affected"] = "Units Affected"
+--[[Translation missing --]]
+L["Units of affected Players in a table format"] = "Units of affected Players in a table format"
+--[[Translation missing --]]
+L["Units of unaffected Players in a table format"] = "Units of unaffected Players in a table format"
 --[[Translation missing --]]
 L["unknown location"] = "unknown location"
 L["Unlimited"] = "Unbegrenzt"

@@ -152,6 +152,8 @@ Enable this setting if you want this timer to be hidden, or when using a WeakAur
 	L["and rotated right"] = "并且向右旋转"
 	L["and with width |cFFFF0000%s|r and %s"] = "并且宽度|cFFFF0000%s|r 并且%s"
 	L["Angle"] = "角度"
+	--[[Translation missing --]]
+	L["Angle Between Auras"] = "Angle Between Auras"
 	L["Animate"] = "动画"
 	L["Animated Expand and Collapse"] = "展开折叠动画"
 	L["Animates progress changes"] = "进度变化动画"
@@ -401,7 +403,8 @@ UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Fallback"] = "后备"
 	L["Fallback Icon"] = "后备图标"
 	L["False"] = "假"
-	L["Fetch Affected/Unaffected Names"] = "获取受影响的/未受影响的名称"
+	--[[Translation missing --]]
+	L["Fetch Affected/Unaffected Names and Units"] = "Fetch Affected/Unaffected Names and Units"
 	L["Fetch Raid Mark Information"] = "获取团队标记信息"
 	L["Fetch Role Information"] = "获取职责信息"
 	L["Fetch Tooltip Information"] = "获取鼠标提示信息"
@@ -844,6 +847,8 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件发�
 	L["Stop Sound"] = "停止播放声音"
 	L["Sub Elements"] = "子元素"
 	L["Sub Option %i"] = "子选项 %i"
+	--[[Translation missing --]]
+	L["Supports multiple entries, separated by commas"] = "Supports multiple entries, separated by commas"
 	L["Swipe Overlay Settings"] = "冷却刷覆盖层设置"
 	L["Templates could not be loaded, the addon is %s"] = "无法载入Templates：%s"
 	L["Temporary Group"] = "临时组"
@@ -871,6 +876,10 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件发�
 	L["This adds %tooltip, %tooltip1, %tooltip2, %tooltip3 and %tooltip4 as text replacements and also allows filtering based on the tooltip content/values."] = "这将添加 %tooltip, %tooltip1, %tooltip2, %tooltip3, %tooltip4 作为文本替换，同时允许根据这些内容/值进行过滤。"
 	L[ [=[This aura contains custom Lua code.
 Make sure you can trust the person who sent it!]=] ] = "此光环包含自定义Lua代码。请确认你可以信任发送它的人！"
+	--[[Translation missing --]]
+	L["This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to an aura '%s', but cannot be used to update that aura. This usually happens if an aura is moved out of a group."
+	--[[Translation missing --]]
+	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = "此光环在一个不同版本（%s）的魔兽世界中创建。它可能无法正常工作！"
 	L[ [=[This aura was created with a newer version of WeakAuras.

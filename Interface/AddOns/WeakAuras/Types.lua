@@ -35,6 +35,7 @@ Private.glow_frame_types = {
 
 --- @type table<dynamicGroupCircularTypes, string>
 Private.circular_group_constant_factor_types = {
+  ANGLE = L["Angle and Radius"],
   RADIUS = L["Radius"],
   SPACING = L["Spacing"]
 }
@@ -1397,8 +1398,9 @@ local function update_specs()
       if tabName then
         tinsert(WeakAuras.spec_types_specific[classFileName], "|T"..(icon or "error")..":0|t "..(tabName or "error"));
         if WeakAuras.IsRetail() then
+          local classColor = WA_GetClassColor(classFileName)
           Private.spec_types_all[specId] = CreateAtlasMarkup(GetClassAtlas(classFileName:lower()))
-          .. "|T"..(icon or "error")..":0|t "..(tabName or "error");
+          .. "|T"..(icon or "error")..":0|t "..(WrapTextInColorCode(tabName, classColor) or "error");
         end
       end
     end
@@ -2518,7 +2520,8 @@ Private.chat_message_types = {
   CHAT_MSG_SAY = L["Say"],
   CHAT_MSG_WHISPER = L["Whisper"],
   CHAT_MSG_YELL = L["Yell"],
-  CHAT_MSG_SYSTEM = L["System"]
+  CHAT_MSG_SYSTEM = L["System"],
+  CHAT_MSG_LOOT = L["Loot"],
 }
 
 Private.send_chat_message_types = {

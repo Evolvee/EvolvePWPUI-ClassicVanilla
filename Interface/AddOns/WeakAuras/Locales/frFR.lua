@@ -22,6 +22,8 @@ L["|cffeda55fMiddle-Click|r to toggle the minimap icon on or off."] = "|cffeda55
 L["|cffeda55fRight-Click|r to toggle performance profiling window."] = "|cffeda55fClic-Droit|r pour basculer la fenêtre de profilage des performances."
 L["|cffeda55fShift-Click|r to pause addon execution."] = "|cffeda55fMaj-Clic|r Pour suspendre l'exécution de l'addon."
 L["|cFFFF0000Not|r Item Bonus Id Equipped"] = "ID du bonus de l'objet |cFFFF0000non|r équipé"
+--[[Translation missing --]]
+L["|cFFFF0000Not|r Item Equipped"] = "|cFFFF0000Not|r Item Equipped"
 L["|cFFFF0000Not|r Player Name/Realm"] = "|cFFFF0000Not|r Nom du joueur / serveur"
 --[[Translation missing --]]
 L["|cFFFF0000Not|r Spell Known"] = "|cFFFF0000Not|r Spell Known"
@@ -124,6 +126,8 @@ L["Amount"] = "Quantité"
 L["Anchoring"] = "Anchoring"
 --[[Translation missing --]]
 L["And Talent"] = "And Talent"
+--[[Translation missing --]]
+L["Angle and Radius"] = "Angle and Radius"
 L["Animations"] = "Animations"
 L["Anticlockwise"] = "Sens anti-horaire"
 --[[Translation missing --]]
@@ -204,7 +208,8 @@ L["Background"] = "Arrière-plan"
 L["Background Color"] = "Couleur d'arrière-plan"
 --[[Translation missing --]]
 L["Baltharus the Warborn"] = "Baltharus the Warborn"
-L["Bar Color"] = "Couleur de barre"
+--[[Translation missing --]]
+L["Bar Color/Gradient Start"] = "Bar Color/Gradient Start"
 L["Baron Geddon"] = "Baron Geddon"
 --[[Translation missing --]]
 L["Battle for Azeroth"] = "Battle for Azeroth"
@@ -299,21 +304,14 @@ L["Caster's Target"] = "Cible du Lanceur de sort"
 L["Cataclysm"] = "Cataclysm"
 L["Ceil"] = "Cellule"
 L["Center"] = "Centre"
---[[Translation missing --]]
-L["Center, then alternating bottom and top"] = "Center, then alternating bottom and top"
---[[Translation missing --]]
-L["Center, then alternating left and right"] = "Center, then alternating left and right"
---[[Translation missing --]]
-L["Center, then alternating right and left"] = "Center, then alternating right and left"
---[[Translation missing --]]
-L["Center, then alternating top and bottom"] = "Center, then alternating top and bottom"
-L["Centered Horizontal"] = "Centré horizontalement"
---[[Translation missing --]]
-L["Centered Horizontal, then Centered Vertical"] = "Centered Horizontal, then Centered Vertical"
---[[Translation missing --]]
-L["Centered Horizontal, then Down"] = "Centered Horizontal, then Down"
---[[Translation missing --]]
-L["Centered Horizontal, then Up"] = "Centered Horizontal, then Up"
+L["Center, then alternating bottom and top"] = "Centrer, puis alterner bas et haut"
+L["Center, then alternating left and right"] = "Centrer, puis alterner gauche et droite"
+L["Center, then alternating right and left"] = "Centrer, puis alterner droite et gauche"
+L["Center, then alternating top and bottom"] = "Centrer, puis alterner haut et bas"
+L["Centered Horizontal"] = "Centrer horizontalement"
+L["Centered Horizontal, then Centered Vertical"] = "Centrer horizontalement, puis centrer verticalement"
+L["Centered Horizontal, then Down"] = "Centrer horizontalement, puis vers le haut"
+L["Centered Horizontal, then Up"] = "Centrer horizontalement, puis vers le bas"
 L["Centered Vertical"] = "Centré verticalement"
 --[[Translation missing --]]
 L["Centered Vertical, then Centered Horizontal"] = "Centered Vertical, then Centered Horizontal"
@@ -400,6 +398,8 @@ L["Critical Rating"] = "Évaluation Critique"
 L["Crowd Controlled"] = "Contrôlé"
 L["Crushing"] = "Ecrasant"
 L["C'thun"] = "C'thun"
+--[[Translation missing --]]
+L["Current Combo Point charged"] = "Current Combo Point charged"
 --[[Translation missing --]]
 L["Current Essence"] = "Current Essence"
 --[[Translation missing --]]
@@ -581,9 +581,11 @@ L["Encounter ID(s)"] = "ID de la Rencontre"
 L["Energize"] = "Gain d'énergie"
 L["Enrage"] = "Enrager"
 --[[Translation missing --]]
+L["Enter a name or a spellId"] = "Enter a name or a spellId"
+--[[Translation missing --]]
 L["Enter static or relative values with %"] = "Enter static or relative values with %"
 L["Entering"] = "Entrer"
-L["Entering/Leaving Combat"] = "Entrer/Sortir de Combat"
+L["Entering/Leaving Combat"] = "Entrer / sortir de combat"
 --[[Translation missing --]]
 L["Entering/Leaving Encounter"] = "Entering/Leaving Encounter"
 --[[Translation missing --]]
@@ -759,9 +761,9 @@ L["Golemagg the Incinerator"] = "Golemagg the Incinerator"
 L["Gothik the Harvester"] = "Gothik the Harvester"
 L["Gradient"] = "Dégradé"
 --[[Translation missing --]]
-L["Gradient Color"] = "Gradient Color"
---[[Translation missing --]]
 L["Gradient Enabled"] = "Gradient Enabled"
+--[[Translation missing --]]
+L["Gradient End"] = "Gradient End"
 --[[Translation missing --]]
 L["Gradient Orientation"] = "Gradient Orientation"
 L["Gradient Pulse"] = "Pulsation dégradée"
@@ -790,6 +792,8 @@ L["Group Finder Poke End"] = "Group Finder Poke End"
 L["Group Finder Poke Initial"] = "Group Finder Poke Initial"
 --[[Translation missing --]]
 L["Group Leader/Assist"] = "Group Leader/Assist"
+--[[Translation missing --]]
+L["Group Size"] = "Group Size"
 --[[Translation missing --]]
 L["Group Type"] = "Group Type"
 L["Grow"] = "Grandir"
@@ -1008,6 +1012,8 @@ L["Location"] = "Location"
 --[[Translation missing --]]
 L["Looking for Raid"] = "Looking for Raid"
 L["Loop"] = "Boucle"
+--[[Translation missing --]]
+L["Loot"] = "Loot"
 --[[Translation missing --]]
 L["Lord Jaraxxus"] = "Lord Jaraxxus"
 --[[Translation missing --]]
@@ -1426,8 +1432,7 @@ L["Resting"] = "Repos"
 L["Resurrect"] = "Résurrection"
 L["Right"] = "Droite"
 L["Right to Left"] = "Droite à Gauche"
---[[Translation missing --]]
-L["Right, then Centered Vertical"] = "Right, then Centered Vertical"
+L["Right, then Centered Vertical"] = "Droite, puis centrer verticalement"
 L["Right, then Down"] = "Droite, puis bas"
 L["Right, then Up"] = "Droite, puis haut"
 L["Role"] = "Rôle"
@@ -1802,6 +1807,8 @@ L["Tracking Charge CDs"] = "Suivi des CD de charge"
 L["Tracking Only Cooldown"] = "Suivi du temps de recharge"
 L["Transmission error"] = "Erreur de transmission"
 --[[Translation missing --]]
+L["Treat charged combo point as 7 combo points"] = "Treat charged combo point as 7 combo points"
+--[[Translation missing --]]
 L["Trial of the Crusader"] = "Trial of the Crusader"
 L["Trigger"] = "Déclencheur"
 --[[Translation missing --]]
@@ -1846,13 +1853,16 @@ L["Unit Name"] = "Nom de l'Unité"
 L["Unit Name/Realm"] = "Unit Name/Realm"
 L["Units Affected"] = "Unités Concernés"
 --[[Translation missing --]]
+L["Units of affected Players in a table format"] = "Units of affected Players in a table format"
+--[[Translation missing --]]
+L["Units of unaffected Players in a table format"] = "Units of unaffected Players in a table format"
+--[[Translation missing --]]
 L["unknown location"] = "unknown location"
 L["Unlimited"] = "Illimité"
 --[[Translation missing --]]
 L["Untrigger %s"] = "Untrigger %s"
 L["Up"] = "Haut"
---[[Translation missing --]]
-L["Up, then Centered Horizontal"] = "Up, then Centered Horizontal"
+L["Up, then Centered Horizontal"] = "Haut, puis centrer horizontalement"
 L["Up, then Left"] = "Haut, puis gauche"
 L["Up, then Right"] = "Haut, puis droite"
 --[[Translation missing --]]
