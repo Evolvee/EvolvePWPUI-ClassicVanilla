@@ -1,91 +1,131 @@
 
 BugGrabberDB = {
 	["lastSanitation"] = 3,
-	["session"] = 7257,
+	["session"] = 7473,
 	["errors"] = {
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
-			["time"] = "2023/11/11 13:00:11",
-			["locals"] = "",
-			["stack"] = "",
-			["session"] = 7252,
-			["counter"] = 1,
+			["message"] = "Interface/AddOns/LoseControl/LoseControl.lua:5825: attempt to perform arithmetic on local 'duration' (a table value)",
+			["time"] = "2023/12/09 19:22:59",
+			["locals"] = "self = LoseControltarget {\n 0 = <userdata>\n drawlayer = \"BORDER\"\n iconInterruptFrost = LoseControltargetInterruptIconFrost {\n }\n lastTimeUnitAuraEvent = 351527.520000\n iconInterruptNature = LoseControltargetInterruptIconNature {\n }\n iconInterruptQueue06 = LoseControltargetInterruptIconQueue06 {\n }\n iconInterruptHoly = LoseControltargetInterruptIconHoly {\n }\n iconInterruptList = <table> {\n }\n interruptIconOrderPos = <table> {\n }\n unitId = \"target\"\n iconInterruptQueue04 = LoseControltargetInterruptIconQueue04 {\n }\n iconInterruptQueue01 = LoseControltargetInterruptIconQueue01 {\n }\n _occ_kind = \"default\"\n maxExpirationTime = 0\n defaultFrameStrata = \"LOW\"\n iconInterruptQueue07 = LoseControltargetInterruptIconQueue07 {\n }\n iconInterruptQueue03 = LoseControltargetInterruptIconQueue03 {\n }\n iconInterruptBackground = LoseControltargetInterruptIconBackground {\n }\n iconInterruptArcane = LoseControltargetInterruptIconArcane {\n }\n iconInterruptQueue09 = LoseControltargetInterruptIconQueue09 {\n }\n iconInterruptQueue05 = LoseControltargetInterruptIconQueue05 {\n }\n _occ_show = true\n _occ_priority = 1\n texture = Texture {\n }\n _occ_start = 351220.704000\n _occ_settings = <table> {\n }\n text = FontString {\n }\n iconInterruptPhysical = LoseControltargetInterruptIconPhysical {\n }\n _occ_gcd = false\n textureicon = 135848\n drawanchor = TargetFramePortrait {\n }\n parent = LoseControlButtonParenttarget {\n }\n iconInterruptShadow = LoseControltargetInterruptIconShadow {\n }\n iconInterruptFire = LoseControltargetInterruptIconFire {\n }\n anchor = TargetFramePortrait {\n }\n _occ_duration = 8\n iconInterruptQueue02 = LoseControltargetInterruptIconQueue02 {\n }\n frame = <table> {\n }\n iconQueueInterruptList = <table> {\n }\n iconInterruptQueue08 = LoseControltargetInterruptIconQueue08 {\n }\n}\n_ = 1702146178.655000\nevent = \"SPELL_INTERRUPT\"\n_ = false\nsourceGUID = \"Player-5827-01D32B86\"\n_ = \"Paip\"\n_ = 1304\n_ = 0\ndestGUID = \"Player-5827-01DDD0C6\"\n_ = \"Billybats\"\n_ = 1304\n_ = 0\nspellId = 8046\n_ = \"Earth Shock\"\n_ = 8\nexSpellId = 0\n_ = \"Scorch\"\nspellSchool = 4\nduration = <table> {\n 1 = 2\n 2 = 4\n}\n(*temporary) = 351639.227000\n(*temporary) = 351639.227000\n(*temporary) = \"^Player-\"\n(*temporary) = 1\n(*temporary) = 5\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to perform arithmetic on local 'duration' (a table value)\"\nCombatLogGetCurrentEventInfo = <function> defined =[C]:-1\ninterruptsIds = <table> {\n 13491 = <table> {\n }\n 1766 = <table> {\n }\n 19675 = <table> {\n }\n 25788 = <table> {\n }\n 29443 = <table> {\n }\n 1672 = <table> {\n }\n 27620 = <table> {\n }\n 2139 = <table> {\n }\n 19244 = <table> {\n }\n 8042 = <table> {\n }\n 15610 = <table> {\n }\n 1767 = <table> {\n }\n 10414 = <table> {\n }\n 10887 = <table> {\n }\n 8714 = <table> {\n }\n 8044 = <table> {\n }\n 15614 = <table> {\n }\n 19129 = <table> {\n }\n 15615 = <table> {\n }\n 8045 = <table> {\n }\n 8046 = <table> {\n }\n 13728 = <table> {\n }\n 1768 = <table> {\n }\n 5133 = <table> {\n }\n 24685 = <table> {\n }\n 25025 = <table> {\n }\n 19647 = <table> {\n }\n 6552 = <table> {\n }\n 23114 = <table> {\n }\n 15122 = <table> {\n }\n 22885 = <table> {\n }\n 19715 = <table> {\n }\n 26194 = <table> {\n }\n 20788 = <table> {\n }\n 20537 = <table> {\n }\n 6554 = <table> {\n }\n 1769 = <table> {\n }\n 15501 = <table> {\n }\n 13281 = <table> {\n }\n 72 = <table> {\n }\n 19639 = <table> {\n }\n 12555 = <table> {\n }\n 27814 = <table> {\n }\n 1671 = <table> {\n }\n 27613 = <table> {\n }\n 11972 = <table> {\n }\n 21832 = <table> {\n }\n 11978 = <table> {\n }\n 10413 = <table> {\n }\n 10412 = <table> {\n }\n}\nstrfind = <function> defined =[C]:-1\nplayerGUID = \"Player-5827-01D3AE9F\"\nGetInventoryItemID = <function> defined =[C]:-1\nplayerClass = 8\nGetTalentInfo = <function> defined =[C]:-1\nUnitAura = <function> defined =[C]:-1\nGetTime ",
+			["stack"] = "[string \"@Interface/AddOns/LoseControl/LoseControl.lua\"]:5825: in function `?'\n[string \"@Interface/AddOns/LoseControl/LoseControl.lua\"]:4370: in function <Interface/AddOns/LoseControl/LoseControl.lua:4369>",
+			["session"] = 7404,
+			["counter"] = 90,
 		}, -- [1]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Config.lua:1: Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.",
-			["time"] = "2023/11/11 13:00:11",
-			["locals"] = "(*temporary) = \"Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.\"\n",
-			["stack"] = "[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/DeBuffFilter/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:151: in function `GetAddon'\n[string \"@Interface/AddOns/DragonflightUI/Config.lua\"]:1: in main chunk",
-			["session"] = 7252,
-			["counter"] = 1,
+			["message"] = "Interface/AddOns/DragonflightUI/Modules/Castbar.lua:185: attempt to call method 'SetShowTicks' (a nil value)",
+			["time"] = "2023/12/14 11:24:14",
+			["locals"] = "self = <table> {\n SetDefaultModuleLibraries = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:363\n AddNewCastbar = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:264\n OnInitialize = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:154\n RegisterChatCommand = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceConsole-3.0/AceConsole-3.0.lua:81\n EnableModule = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:328\n modules = <table> {\n }\n GetModule = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:206\n IterateEmbeds = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:438\n ChannelTicks = <table> {\n }\n defaultModuleLibraries = <table> {\n }\n UnregisterChatCommand = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceConsole-3.0/AceConsole-3.0.lua:107\n Castbar = DragonflightUIPlayerCastbar {\n }\n Printf = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceConsole-3.0/AceConsole-3.0.lua:65\n SetDefaultModulePrototype = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:405\n name = \"DragonflightUI_Castbar\"\n IsEnabled = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:447\n orderedModules = <table> {\n }\n DisableModule = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:346\n GetArgs = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceConsole-3.0/AceConsole-3.0.lua:140\n Print = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceConsole-3.0/AceConsole-3.0.lua:50\n IsModule = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:213\n db = <table> {\n }\n SetDefaultModuleState = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:383\n baseName = \"DragonflightUI\"\n SetEnabledState = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:420\n Era = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:306\n enabledState = true\n NewModule = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:231\n ChangeDefaultCastbar = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:193\n frame = DragonflightUICastbarFrame {\n }\n ApplySettings = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:176\n OnDisable = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:173\n Enable = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:290\n IterateModules = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:433\n Wrath = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:291\n OnEnable = <function> defined @Interface/AddOns/DragonflightUI/Modules/Castbar.lua:163\n GetName = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:275\n moduleName = \"Castbar\"\n defaultModuleState = true\n Disable = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:310\n}\n(*temporary) = nil\n(*temporary) = DragonflightUIPlayerCastbar {\n 0 = <userdata>\n SetCastTimeTextShown = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:462\n CastTimeText = FontString {\n }\n HideSpark = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:381\n ChargeFlash = Texture {\n }\n Border = Texture {\n }\n Flash = Texture {\n }\n HandleInterruptOrSpellFailed = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:340\n SetUnit = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:207\n AddTickTable = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:536\n OnUpdate = <function> defined @Interface/AddOns/DragonflightUI/Mixin/Castbar.mixin.lua:256\n TextCompact = FontString {\n }\n showCastTimeMaxSett",
+			["stack"] = "[string \"@Interface/AddOns/DragonflightUI/Modules/Castbar.lua\"]:185: in function `ApplySettings'\n[string \"@Interface/AddOns/DragonflightUI/Modules/Castbar.lua\"]:170: in function <Interface/AddOns/DragonflightUI/Modules/Castbar.lua:163>\n[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:66: in function <...ns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:61>\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:523: in function `EnableAddon'\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:536: in function `EnableAddon'\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:626: in function <...ns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:611>",
+			["session"] = 7421,
+			["counter"] = 2,
 		}, -- [2]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Modules/Castbar.lua:1: Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.",
-			["time"] = "2023/11/11 13:00:11",
-			["locals"] = "(*temporary) = \"Usage: GetAddon(name): 'name' - Cannot find an AceAddon 'DragonflightUI'.\"\n",
-			["stack"] = "[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/DeBuffFilter/Libs/AceAddon-3.0-13/AceAddon-3.0.lua\"]:151: in function `GetAddon'\n[string \"@Interface/AddOns/DragonflightUI/Modules/Castbar.lua\"]:1: in main chunk",
-			["session"] = 7252,
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:333 Frame BindPadFrameTab1: Unknown method OnLoad in element OnLoad",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [3]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Core.lua:1 Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:334 Frame BindPadFrameTab1: Unknown method OnShow in element OnShow",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [4]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Modules/Actionbar.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Actionbar.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:355 Frame BindPadFrameTab2: Unknown method OnLoad in element OnLoad",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [5]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Modules/Chat.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Chat.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:356 Frame BindPadFrameTab2: Unknown method OnShow in element OnShow",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [6]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Modules/Minimap.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Minimap.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:377 Frame BindPadFrameTab3: Unknown method OnLoad in element OnLoad",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [7]
 		{
-			["message"] = "Interface/AddOns/DragonflightUI/Modules/Unitframe.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Unitframe.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:378 Frame BindPadFrameTab3: Unknown method OnShow in element OnShow",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [8]
 		{
-			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Core.lua:1 Interface/AddOns/DragonflightUI/Core.lua:10: '=' expected near '}'",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:399 Frame BindPadFrameTab4: Unknown method OnLoad in element OnLoad",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [9]
 		{
-			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Actionbar.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Actionbar.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/BindPad/BindPad.xml:400 Frame BindPadFrameTab4: Unknown method OnShow in element OnShow",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [10]
 		{
-			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Chat.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Chat.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/BindPad/BindPad.xml:333 Frame BindPadFrameTab1: Unknown method OnLoad in element OnLoad",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [11]
 		{
-			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Minimap.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Minimap.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/BindPad/BindPad.xml:334 Frame BindPadFrameTab1: Unknown method OnShow in element OnShow",
+			["session"] = 7424,
+			["time"] = "2023/12/14 11:32:29",
 			["counter"] = 1,
 		}, -- [12]
 		{
-			["message"] = "Interface\\FrameXML\\FrameXML_Vanilla.toc:1 Interface/AddOns/DragonflightUI/Modules/Unitframe.lua:1 Error loading Interface/AddOns/DragonflightUI/Modules/Unitframe.lua",
-			["session"] = 7252,
-			["time"] = "2023/11/11 13:00:12",
+			["message"] = "Interface/AddOns/RXPGuides/Timers.lua:177: attempt to perform arithmetic on field 'startFlight' (a nil value)",
+			["time"] = "2023/12/15 22:54:17",
+			["locals"] = "self = <table> {\n QuestAutoAccept = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:170\n ReloadGuide = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:1652\n modules = <table> {\n }\n introUI = <table> {\n }\n RemoveGuide = <function> defined @Interface/AddOns/RXPGuides/GuideLoader.lua:173\n IsOnTurnInGuide = <function> defined @Interface/AddOns/RXPGuides/functions.lua:719\n dungeonProfessions = <table> {\n }\n UpdateLoop = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1312\n icons = <table> {\n }\n dangerousMobs = <table> {\n }\n dungeonStats = <table> {\n }\n SKILL_LINES_CHANGED = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1173\n GetOrphanedQuests = <function> defined @Interface/AddOns/RXPGuides/QuestLog.lua:292\n dungeonScoreSC = <table> {\n }\n errors = <table> {\n }\n itemQueryList = <table> {\n }\n VendorTreasures = <table> {\n }\n GetCreatureName = <function> defined @Interface/AddOns/RXPGuides/locale/NPCnames.lua:4\n db = <table> {\n }\n SetEnabledState = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:420\n LoadActiveTheme = <function> defined @Interface/AddOns/RXPGuides/Themes.lua:128\n DisplayLines = <function> defined @Interface/AddOns/RXPGuides/map.lua:980\n SetupGuideWindow = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:136\n GetDungeonName = <function> defined @Interface/AddOns/RXPGuides/DB/classic/db.lua:134\n FPDB = <table> {\n }\n release = \"v4.5.37\"\n AbandonOrphanedQuests = <function> defined @Interface/AddOns/RXPGuides/QuestLog.lua:351\n InsertQuestGuide = <function> defined @Interface/AddOns/RXPGuides/functions.lua:707\n QUEST_TURNED_IN = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1159\n ImportString = <function> defined @Interface/AddOns/RXPGuides/GuideLoader.lua:440\n TRAINER_CLOSED = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1186\n base = <table> {\n }\n dungeonWeights = <table> {\n }\n GetThemeOptions = <function> defined @Interface/AddOns/RXPGuides/Themes.lua:173\n GetName = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:275\n dungeons = <table> {\n }\n defaultGroupHC = \"RestedXP Survival Guide (H)\"\n name = \"RXPGuides\"\n GetMapInfo = <function> defined @Interface/AddOns/RXPGuides/map.lua:1250\n statWeights = <table> {\n }\n Disable = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:310\n LoadGuideTable = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:1395\n importBufferSize = 0\n PLAYER_CONTROL_LOST = <function> defined @Interface/AddOns/RXPGuides/Timers.lua:174\n PLAYER_LEVEL_UP = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1188\n themes = <table> {\n }\n Call = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:147\n IsItemNotInBank = <function> defined @Interface/AddOns/RXPGuides/functions.lua:3636\n updateInactiveQuest = <table> {\n }\n functions = <table> {\n }\n FetchGuide = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:1358\n IsOnQuest = <function> defined @Interface/AddOns/RXPGuides/functions.lua:198\n read = <function> defined @Interface/AddOns/RXPGuides/libs/plc/base64.lua:20\n colors = <table> {\n }\n lastCall = \"updateQuest\"\n CanPlayerFly = <function> defined @Interface/AddOns/RXPGuides/functions.lua:4576\n SetDefaultModuleLibraries = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:363\n StartTimer = <function> defined @Interface/AddOns/RXPGuides/Timers.lua:109\n guides = <table> {\n }\n GetItemCooldown = <function> defined =[C]:-1\n IsStepShown = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:1565\n IterateEmbeds = <function> defined @Interface/AddOns/DragonflightUI/Libs/AceAddon-3.0/AceAddon-3.0.lua:438\n GetGuideName = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:1309\n ProcessGeneratedSteps = <function> defined @Interface/AddOns/RXPGuides/GuideWindow.lua:401\n skipPreReq = <table> {\n }\n ProcessMessageQueue = <function> defined @Interface/AddOns/RXPGuides/RXPGuides.lua:68\n IsFreshAccount = <function> d",
+			["stack"] = "[string \"@Interface/AddOns/RXPGuides/Timers.lua\"]:177: in function `?'\n[string \"@Interface/AddOns/AtlasLootClassic/Libs/CallbackHandler-1.0-8/CallbackHandler-1.0.lua\"]:109: in function <...sic/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua:109>\n[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/AtlasLootClassic/Libs/CallbackHandler-1.0-8/CallbackHandler-1.0.lua\"]:19: in function <...sic/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua:15>\n[string \"@Interface/AddOns/AtlasLootClassic/Libs/CallbackHandler-1.0-8/CallbackHandler-1.0.lua\"]:54: in function `Fire'\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceEvent-3.0-4/AceEvent-3.0.lua\"]:120: in function <...ns/DragonflightUI/Libs/AceEvent-3.0/AceEvent-3.0.lua:119>",
+			["session"] = 7432,
 			["counter"] = 1,
 		}, -- [13]
+		{
+			["message"] = "...terface/AddOns/Questie/Modules/QuestieDebugOffer.lua:133: attempt to compare nil with number",
+			["time"] = "2023/12/14 13:14:43",
+			["locals"] = "itemID = nil\nitemInfo = nil\ncontainerGUID = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = nil\n(*temporary) = \"attempt to compare nil with number\"\nitemWhitelist = <table> {\n 1 = 208609\n 2 = 206469\n}\nitemTripCodes = <table> {\n MissingDropFromNPC = 3\n MissingDropFromObject = 4\n ContainerMissingFromItemDB = 8\n StartQuestIDMismatch = 2\n MissingDropFromItem = 5\n ContainerMissingFromNPCDB = 6\n ContainerMissingFromObjectDB = 7\n ItemMissingFromDB = 1\n ItemWhitelisted = 0\n}\nitemBlacklist = <table> {\n 1 = 210771\n 2 = 211315\n 3 = 211316\n 4 = 211317\n 5 = 211318\n 6 = 211319\n 7 = 211320\n 8 = 211321\n 9 = 211322\n 10 = 211323\n 11 = 211324\n 12 = 211325\n 13 = 211326\n 14 = 211327\n 15 = 211328\n 16 = 211329\n 17 = 211330\n 18 = 211331\n 19 = 211332\n 20 = 211819\n 21 = 211820\n 22 = 211821\n 23 = 211822\n 24 = 211823\n 25 = 211824\n 26 = 211825\n 27 = 211826\n 28 = 211827\n 29 = 211828\n 30 = 211829\n 31 = 211830\n 32 = 211831\n 33 = 211832\n 34 = 211833\n 35 = 211834\n 36 = 211835\n 37 = 211836\n 38 = 211837\n 39 = 211838\n 40 = 211933\n 41 = 211934\n 42 = 211935\n 43 = 203753\n 44 = 203752\n 45 = 208754\n 46 = 208854\n 47 = 203751\n 48 = 209028\n 49 = 210655\n 50 = 210179\n 51 = 211786\n 52 = 211785\n 53 = 211787\n 54 = 211780\n 55 = 211784\n 56 = 211854\n 57 = 211855\n 58 = 211853\n}\nplayer = \"player\"\nminLevelForDebugOffers = 10\nQuestieCorrections = <table> {\n questNPCBlacklist = <table> {\n }\n CLASSIC_ONLY = 2\n hiddenQuests = <table> {\n }\n OptimizeWaypoints = <function> defined @Interface/AddOns/Questie/Database/Corrections/QuestieCorrections.lua:350\n questItemBlacklist = <table> {\n }\n SOD_ONLY = 5\n MinimalInit = <function> defined @Interface/AddOns/Questie/Database/Corrections/QuestieCorrections.lua:148\n TBC_AND_WOTLK = 4\n TBC_ONLY = 1\n Initialize = <function> defined @Interface/AddOns/Questie/Database/Corrections/QuestieCorrections.lua:252\n private = <table> {\n }\n WOTLK_ONLY = 3\n killCreditObjectiveFirst = <table> {\n }\n PreCompile = <function> defined @Interface/AddOns/Questie/Database/Corrections/QuestieCorrections.lua:393\n}\nQuestieDB = <table> {\n itemClasses = <table> {\n }\n waypointPresets = <table> {\n }\n objectCompilerOrder = <table> {\n }\n questDataOverrides = <table> {\n }\n IsSoDRuneQuest = <function> defined @Interface/AddOns/Questie/Database/Corrections/SeasonOfDiscovery.lua:31\n itemCompilerOrder = <table> {\n }\n questKeys = <table> {\n }\n npcFlags = <table> {\n }\n objectDataOverrides = <table> {\n }\n _npcAdapterQueryOrder = <table> {\n }\n specialFlags = <table> {\n }\n IsActiveEventQuest = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:396\n IsWeeklyQuest = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:340\n IsComplete = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:813\n factionTemplate = <table> {\n }\n IsParentQuestActive = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:470\n objectKeys = <table> {\n }\n questCompilerTypes = <table> {\n }\n GetQuestIDFromName = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:1344\n activeChildQuests = <table> {\n }\n objectKeysReversed = <table> {\n }\n QueryNPC = <function> defined @Interface/AddOns/Questie/Database/compiler.lua:1324\n _QueryQuestSingle = <function> defined @Interface/AddOns/Questie/Database/compiler.lua:1294\n QuestPointers = <table> {\n }\n GetQuestsByZoneId = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:1238\n itemKeys = <table> {\n }\n GetNPC = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:1198\n _itemAdapterQueryOrder = <table> {\n }\n IsRaidQuest = <function> defined @Interface/AddOns/Questie/Database/QuestieDB.lua:355\n npcDataOverrides = ",
+			["stack"] = "[string \"@Interface/AddOns/Questie/Modules/QuestieDebugOffer.lua\"]:133: in function <...terface/AddOns/Questie/Modules/QuestieDebugOffer.lua:131>\n[string \"@Interface/AddOns/Questie/Modules/QuestieDebugOffer.lua\"]:280: in function <...terface/AddOns/Questie/Modules/QuestieDebugOffer.lua:263>\n[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/AtlasLootClassic/Libs/CallbackHandler-1.0-8/CallbackHandler-1.0.lua\"]:19: in function <...sic/Libs/CallbackHandler-1.0/CallbackHandler-1.0.lua:15>\n[string \"@Interface/AddOns/AtlasLootClassic/Libs/CallbackHandler-1.0-8/CallbackHandler-1.0.lua\"]:54: in function `Fire'\n[string \"@Interface/AddOns/DragonflightUI/Libs/AceEvent-3.0-4/AceEvent-3.0.lua\"]:120: in function <...ns/DragonflightUI/Libs/AceEvent-3.0/AceEvent-3.0.lua:119>",
+			["session"] = 7436,
+			["counter"] = 5,
+		}, -- [14]
+		{
+			["message"] = "[ADDON_ACTION_FORBIDDEN] AddOn 'RXPGuides' tried to call the protected function 'TargetUnit()'.",
+			["time"] = "2023/12/13 14:00:38",
+			["locals"] = "_ = Frame {\n RegisterEvent = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:487\n 0 = <userdata>\n UnregisterEvent = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:487\n SetScript = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:487\n}\nevent = \"ADDON_ACTION_FORBIDDEN\"\nevents = <table> {\n ADDON_ACTION_BLOCKED = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:553\n ADDON_ACTION_FORBIDDEN = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:553\n PLAYER_LOGIN = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:547\n LUA_WARNING = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:562\n ADDON_LOADED = <function> defined @Interface/AddOns/!BugGrabber/BugGrabber.lua:507\n}\n",
+			["stack"] = "[string \"@Interface/AddOns/!BugGrabber/BugGrabber.lua\"]:481: in function <Interface/AddOns/!BugGrabber/BugGrabber.lua:481>\n[string \"=[C]\"]: ?\n[string \"@Interface/AddOns/RXPGuides/Targeting.lua\"]:501: in function <Interface/AddOns/RXPGuides/Targeting.lua:471>\n[string \"=[C]\"]: ?\n[string \"=[C]\"]: ?",
+			["session"] = 7437,
+			["counter"] = 9,
+		}, -- [15]
+		{
+			["message"] = "Interface/AddOns/TextureScript/TextureScript.lua:1745: attempt to call global 'string_format' (a nil value)",
+			["time"] = "2023/12/17 20:59:21",
+			["locals"] = "event = \"CHAT_MSG_YELL\"\narg1 = \"{skull}Geared warrior LFG WSG{skull}\"\narg2 = \"Fungifury\"\narg3 = \"Orcish\"\narg4 = \"\"\narg5 = \"Fungifury\"\narg6 = \"\"\narg7 = 0\narg8 = 0\narg9 = \"\"\narg10 = 1\narg11 = 13\narg12 = \"Player-5827-01D21DCF\"\nchatType = \"YELL\"\ninfo = <table> {\n colorNameByClass = true\n flashTab = false\n b = 0.250980\n r = 1\n id = 7\n sticky = 0\n flashTabOnGeneral = false\n g = 0.250980\n}\n_ = \"Warrior\"\nenglishClass = \"WARRIOR\"\nclassColorTable = <table> {\n a = 1\n colorStr = \"ffc79c6e\"\n GetRGB = <function> defined @Interface/SharedXML/Color.lua:21\n OnLoad = <function> defined @Interface/SharedXML/Color.lua:10\n b = 0.430000\n GenerateHexColorMarkup = <function> defined @Interface/SharedXML/Color.lua:52\n WrapTextInColorCode = <function> defined @Interface/SharedXML/Color.lua:56\n GenerateHexColor = <function> defined @Interface/SharedXML/Color.lua:48\n GetRGBA = <function> defined @Interface/SharedXML/Color.lua:29\n IsEqualTo = <function> defined @Interface/SharedXML/Color.lua:14\n g = 0.610000\n r = 0.780000\n SetRGBA = <function> defined @Interface/SharedXML/Color.lua:37\n GetRGBAsBytes = <function> defined @Interface/SharedXML/Color.lua:25\n SetRGB = <function> defined @Interface/SharedXML/Color.lua:44\n GetRGBAAsBytes = <function> defined @Interface/SharedXML/Color.lua:33\n}\n(*temporary) = nil\n(*temporary) = \"|cff%.2x%.2x%.2x\"\n(*temporary) = 198.900000\n(*temporary) = 155.550000\n(*temporary) = 109.650000\n(*temporary) = \"attempt to call global 'string_format' (a nil value)\"\nRAID_CLASS_COLORS = <table> {\n HUNTER = <table> {\n }\n WARRIOR = <table> {\n }\n PALADIN = <table> {\n }\n MAGE = <table> {\n }\n PRIEST = <table> {\n }\n SHAMAN = <table> {\n }\n WARLOCK = <table> {\n }\n DEMONHUNTER = <table> {\n }\n DEATHKNIGHT = <table> {\n }\n DRUID = <table> {\n }\n MONK = <table> {\n }\n ROGUE = <table> {\n }\n}\n",
+			["stack"] = "[string \"@Interface/AddOns/TextureScript/TextureScript.lua\"]:1745: in function `GetColoredName'\n[string \"@Interface/FrameXML/ChatFrame.lua\"]:3339: in function `ChatFrame_MessageEventHandler'\n[string \"@Interface/FrameXML/ChatFrame.lua\"]:3031: in function `ChatFrame_OnEvent'\n[string \"*FloatingChatFrame.xml:769_OnEvent\"]:1: in function <[string \"*FloatingChatFrame.xml:769_OnEvent\"]:1>",
+			["session"] = 7443,
+			["counter"] = 112,
+		}, -- [16]
+		{
+			["message"] = "Interface/AddOns/TextureScript/TextureScript.lua:1743: attempt to call global 'string_format' (a nil value)",
+			["time"] = "2023/12/17 21:03:21",
+			["locals"] = "event = \"CHAT_MSG_RAID\"\narg1 = \"hi!\"\narg2 = \"Jorm\"\narg3 = \"\"\narg4 = \"\"\narg5 = \"Jorm\"\narg6 = \"\"\narg7 = 0\narg8 = 0\narg9 = \"\"\narg10 = 0\narg11 = 582\narg12 = \"Player-5827-01D2610C\"\nchatType = \"RAID\"\ninfo = <table> {\n colorNameByClass = true\n flashTab = false\n b = 0\n r = 1\n id = 4\n sticky = 1\n flashTabOnGeneral = false\n g = 0.498039\n}\n_ = \"Shaman\"\nenglishClass = \"SHAMAN\"\nclassColorTable = <table> {\n a = 1\n colorStr = \"fff58cba\"\n GetRGB = <function> defined @Interface/SharedXML/Color.lua:21\n OnLoad = <function> defined @Interface/SharedXML/Color.lua:10\n b = 0.730000\n GenerateHexColorMarkup = <function> defined @Interface/SharedXML/Color.lua:52\n WrapTextInColorCode = <function> defined @Interface/SharedXML/Color.lua:56\n GenerateHexColor = <function> defined @Interface/SharedXML/Color.lua:48\n GetRGBA = <function> defined @Interface/SharedXML/Color.lua:29\n IsEqualTo = <function> defined @Interface/SharedXML/Color.lua:14\n g = 0.550000\n r = 0.960000\n SetRGBA = <function> defined @Interface/SharedXML/Color.lua:37\n GetRGBAsBytes = <function> defined @Interface/SharedXML/Color.lua:25\n SetRGB = <function> defined @Interface/SharedXML/Color.lua:44\n GetRGBAAsBytes = <function> defined @Interface/SharedXML/Color.lua:33\n}\n(*temporary) = nil\n(*temporary) = \"|cff%.2x%.2x%.2x\"\n(*temporary) = 0\n(*temporary) = 112.200000\n(*temporary) = 221.850000\n(*temporary) = \"attempt to call global 'string_format' (a nil value)\"\nRAID_CLASS_COLORS = <table> {\n HUNTER = <table> {\n }\n WARRIOR = <table> {\n }\n PALADIN = <table> {\n }\n MAGE = <table> {\n }\n PRIEST = <table> {\n }\n SHAMAN = <table> {\n }\n WARLOCK = <table> {\n }\n DEMONHUNTER = <table> {\n }\n DEATHKNIGHT = <table> {\n }\n DRUID = <table> {\n }\n MONK = <table> {\n }\n ROGUE = <table> {\n }\n}\n",
+			["stack"] = "[string \"@Interface/AddOns/TextureScript/TextureScript.lua\"]:1743: in function `GetColoredName'\n[string \"@Interface/FrameXML/ChatFrame.lua\"]:3339: in function `ChatFrame_MessageEventHandler'\n[string \"@Interface/FrameXML/ChatFrame.lua\"]:3031: in function `ChatFrame_OnEvent'\n[string \"*FloatingChatFrame.xml:769_OnEvent\"]:1: in function <[string \"*FloatingChatFrame.xml:769_OnEvent\"]:1>",
+			["session"] = 7443,
+			["counter"] = 8,
+		}, -- [17]
+		{
+			["message"] = "Interface/AddOns/TextureScript/TextureScript.lua:1756: hooksecurefunc(): RaidGroupFrame_Update is not a function",
+			["time"] = "2023/12/17 21:24:58",
+			["locals"] = "",
+			["stack"] = "[string \"=[C]\"]: in function `hooksecurefunc'\n[string \"@Interface/AddOns/TextureScript/TextureScript.lua\"]:1756: in main chunk",
+			["session"] = 7446,
+			["counter"] = 2,
+		}, -- [18]
 	},
 }

@@ -3,18 +3,15 @@
 local _G = getfenv(0)
 local CombatLogGetCurrentEventInfo = _G.CombatLogGetCurrentEventInfo
 local UnitGUID, UnitIsPlayer, UnitIsConnected, UnitClass, UnitClassification = _G.UnitGUID, _G.UnitIsPlayer, _G.UnitIsConnected, _G.UnitClass, _G.UnitClassification
-local UnitIsEnemy, UnitName = _G.UnitIsEnemy, _G.UnitName
-local select, string_format, string_split = _G.select, _G.string.format, _G.string.split
+local UnitName = _G.UnitName
+local select, string_split = _G.select, _G.string.split
 local pairs, ipairs, tostring = _G.pairs, _G.ipairs, _G.tostring
-local GetGuildRosterInfo = _G.GetGuildRosterInfo
-local GuildListScrollFrame = _G.GuildListScrollFrame
 local RAID_CLASS_COLORS = _G.RAID_CLASS_COLORS
 local mmin, mmax, mabs = _G.math.min, _G.math.max, _G.math.abs
 local floor, strfind = _G.math.floor, _G.string.find
 local GetFramerate = _G.GetFramerate
-local UnitExists, UnitIsFriend, UnitPowerType = _G.UnitExists, _G.UnitIsFriend, _G.UnitPowerType
+local UnitExists, UnitPowerType = _G.UnitExists, _G.UnitPowerType
 local PlaySound, C_NamePlate = _G.PlaySound, C_NamePlate
-local SetCVar, GetCVar = _G.SetCVar, _G.GetCVar
 
 --dark theme
 local function DarkenFrames(addon)
@@ -92,11 +89,37 @@ local function DarkenFrames(addon)
         end
     end
 
-    local a, b, c, d, e, f, _, _, _, _, _, l = WorldStateScoreFrame:GetRegions()
-    for _, v in pairs({ a, b, c, d, e, f, l }) do
+    local a, b, c, d, e, f, g, h, i, j, k = WorldStateScoreFrame:GetRegions()
+    for _, v in pairs({ a, b, c, d, e, f, h}) do
         if v then
             v:SetVertexColor(0.15, 0.15, 0.15)
         end
+    end
+
+    if addon == "Blizzard_RaidUI" then
+        print("hooking raid group frame update")
+        hooksecurefunc("RaidGroupFrame_Update", function()
+            local isRaid = IsInRaid();
+            local numRaidMembers = GetNumGroupMembers();
+
+            if not isRaid then
+                return
+            end
+            for i = 1, MAX_RAID_MEMBERS do
+                if isRaid and (i <= numRaidMembers) then
+                    local _, _, _, _, class, fileName, _, online, isDead = GetRaidRosterInfo(i);
+                    local color = (class == "Shaman") and { r = 0, g = 0.44, b = 0.87 } or RAID_CLASS_COLORS[fileName]
+                    if color and class and online and not isDead then
+                        local button = _G["RaidGroupButton" .. i]
+                        if button then
+                            button.subframes.name:SetTextColor(color.r, color.g, color.b)
+                            button.subframes.class.text:SetTextColor(color.r, color.g, color.b)
+                            button.subframes.level:SetTextColor(color.r, color.g, color.b)
+                        end
+                    end
+                end
+            end
+        end)
     end
 end
 
@@ -141,7 +164,14 @@ local function ColorGuildTabs()
             break
         end
         color = RAID_CLASS_COLORS[class]
-        _G["GuildFrameButton" .. i .. "Class"]:SetTextColor(color.r, color.g, color.b)
+        local button = _G["GuildFrameButton" .. i .. "Class"]
+        if class and color and button then
+            if class == "SHAMAN" then
+                button:SetTextColor(0, 0.44, 0.87)
+            else
+                button:SetTextColor(color.r, color.g, color.b)
+            end
+        end
     end
 end
 
@@ -152,19 +182,6 @@ local sounds = {
     569775, -- sound/spells/fizzle/fizzlefrosta.ogg
     569776, -- sound/spells/fizzle/fizzleshadowa.ogg
     567407, -- sound/interface/uchatscrollbutton.ogg annoying clicking sound when you press a spell on action bar
-    598127, -- DalaranArena_WaterIncoming
-    565772, -- DalaranSewer_ArenaWaterFall_Closed
-    569506, -- DalaranSewer_ArenaWaterFall_Close
-    598178, -- Orgrimmar_Arena_PillarWarning
-    545431, -- sound/creature/brann/ur_brann_dalaran01.ogg (dalaran cancer)
-    559130, -- sound/creature/rhonin/ur_rhonin_event01.ogg
-    559131, -- sound/creature/rhonin/ur_rhonin_event02.ogg
-    559126, -- sound/creature/rhonin/ur_rhonin_event03.ogg
-    559128, -- sound/creature/rhonin/ur_rhonin_event04.ogg
-    559133, -- sound/creature/rhonin/ur_rhonin_event05.ogg
-    559129, -- sound/creature/rhonin/ur_rhonin_event06.ogg
-    559132, -- sound/creature/rhonin/ur_rhonin_event07.ogg
-    559127, -- sound/creature/rhonin/ur_rhonin_event08.ogg
     538978, -- Greenslime
     538976, -- Greenslime
     1229, -- crab sounds (Blizzard is too dogshit to fix this themselves, as usual)
@@ -202,8 +219,8 @@ local tooltipOwnerBlacklist = {
     "AchievementMicroButton",
     "QuestLogMicroButton",
     "SocialsMicroButton",
-	"MainMenuMicroButton", -- vanilla
-	"WorldMapMicroButton", -- vanilla
+    "MainMenuMicroButton", -- vanilla
+    "WorldMapMicroButton", -- vanilla
     --"PVPMicroButton",
     "LFGMicroButton",
     "HelpMicroButton",
@@ -255,7 +272,11 @@ hooksecurefunc("PartyMemberFrame_UpdateMemberHealth", function(self)
     local _, class = UnitClass(self.unit)
     local c = RAID_CLASS_COLORS[class]
     if c then
-        _G[prefix .. "HealthBar"]:SetStatusBarColor(c.r, c.g, c.b)
+        if class == "SHAMAN" then
+            _G[prefix .. "HealthBar"]:SetStatusBarColor(0, 0.44, 0.87)
+        else
+            _G[prefix .. "HealthBar"]:SetStatusBarColor(c.r, c.g, c.b)
+        end
     end
 
     if hp ~= healthbar.lastTextValue then
@@ -289,7 +310,7 @@ hooksecurefunc(PartyMemberFrame4Status, "Show", PartyMemberFrame4Status.Hide)
 
 local function OnInit()
     --minimap buttons, horde/alliance icons on target/focus/player,minimap city location, minimap sun/clock, minimap text frame,minimap zoomable with mousewheel etc
-	MinimapToggleButton:Hide()
+    MinimapToggleButton:Hide()
     MinimapZoomIn:Hide()
     MinimapZoomOut:Hide()
     Minimap:EnableMouseWheel(true)
@@ -308,7 +329,7 @@ local function OnInit()
     MiniMapMailFrame:ClearAllPoints()
     MiniMapMailFrame:SetPoint('BOTTOMRIGHT', 0, -10)
     MinimapZoneTextButton:Hide()
-	PlayerPVPTimerText:SetAlpha(0)
+    PlayerPVPTimerText:SetAlpha(0)
 
     -- MiniMapWorldMapButton:Hide() needs to be done like this since patch 2.5.3 for some reason
     hooksecurefunc(MiniMapWorldMapButton, "Show", MiniMapWorldMapButton.Hide)
@@ -584,9 +605,9 @@ local function OnInit()
 
     texture = HelpMicroButton:GetHighlightTexture()
     texture:SetAlpha(0)
-	
-	texture = WorldMapMicroButton:GetHighlightTexture() -- vanilla
-	texture:SetAlpha(0) -- vanilla
+
+    texture = WorldMapMicroButton:GetHighlightTexture() -- vanilla
+    texture:SetAlpha(0) -- vanilla
 
     -- Remove Fizzle sounds (this was previously done by replacing the actual sound in Data/Sounds)
     for _, fdid in pairs(sounds) do
@@ -641,7 +662,7 @@ local function OnInit()
     --end)
 end
 
--- SpeedyActions level: Garage clicker & Pro Gaymer
+-- SpeedyActions level: Garage clicker & Pro Gamer
 local GetBindingKey, SetOverrideBindingClick = _G.GetBindingKey, _G.SetOverrideBindingClick
 local InCombatLockdown = _G.InCombatLockdown
 local tonumber = _G.tonumber
@@ -672,23 +693,33 @@ local function WAHK(button, ok)
             btn:RegisterForClicks("AnyDown", "AnyUp")
             wahk:SetAttribute("type", "macro")
             wahk:SetAllPoints(btn)
-            local onclick = string.format([[ local id = tonumber(self:GetName():match("(%d+)")) if down then if HasVehicleActionBar() then self:SetAttribute("macrotext", "/click OverrideActionBarButton" .. id) else self:SetAttribute("macrotext", "/click ActionButton" .. id) end else if HasVehicleActionBar() then self:SetAttribute("macrotext", "/click OverrideActionBarButton" .. id) else self:SetAttribute("macrotext", "/click ActionButton" .. id) end end]], id, id, id)
+            local onclick = string.format([[ local id = tonumber(self:GetName():match("(%d+)")) if down then self:SetAttribute("macrotext", "/click [vehicleui] OverrideActionBarButton" .. id .. "; ActionButton" .. id) else self:SetAttribute("macrotext", "/click [vehicleui] OverrideActionBarButton" .. id .. "; ActionButton" .. id) end]], id, id, id)
             SecureHandlerWrapScript(wahk, "OnClick", wahk, onclick)
             if key then
                 SetOverrideBindingClick(wahk, true, key, wahk:GetName())
             end
             wahk:SetScript("OnMouseDown", function()
-                if HasVehicleActionBar() then
-                    _G["OverrideActionBarButton" .. id]:SetButtonState("PUSHED")
+                if OverrideActionBar and OverrideActionBar:IsShown() and id then
+                    local obtn = _G["OverrideActionBarButton" .. id]
+                    if obtn then
+                        obtn:SetButtonState("PUSHED")
+                    end
                 else
-                    btn:SetButtonState("PUSHED")
+                    if btn then
+                        btn:SetButtonState("PUSHED")
+                    end
                 end
             end)
             wahk:SetScript("OnMouseUp", function()
-                if HasVehicleActionBar() then
-                    _G["OverrideActionBarButton" .. id]:SetButtonState("NORMAL")
+                if OverrideActionBar and OverrideActionBar:IsShown() and id then
+                    local obtn = _G["OverrideActionBarButton" .. id]
+                    if obtn then
+                        obtn:SetButtonState("NORMAL")
+                    end
                 else
-                    btn:SetButtonState("NORMAL")
+                    if btn then
+                        btn:SetButtonState("NORMAL")
+                    end
                 end
             end)
         else
@@ -895,11 +926,11 @@ local function SmoothBar(bar)
 end
 
 smoothframe:SetScript("OnUpdate", function()
-        for _, plate in pairs(C_NamePlate.GetNamePlates(true)) do
-            if not plate:IsForbidden() and plate:IsVisible() and plate.UnitFrame:IsShown() then
-                SmoothBar(plate.UnitFrame.healthBar)
-            end
+    for _, plate in pairs(C_NamePlate.GetNamePlates(true)) do
+        if not plate:IsForbidden() and plate:IsVisible() and plate.UnitFrame:IsShown() then
+            SmoothBar(plate.UnitFrame.healthBar)
         end
+    end
     AnimationTick()
 end)
 
@@ -918,52 +949,61 @@ local function SetSmooth()
     end
 end
 
+local function GradientHealth(statusbar)
+    if (not statusbar or statusbar.disconnected) then
+        return
+    end
+
+    local min, max = statusbar:GetMinMaxValues()
+    if (max <= min) then
+        return
+    end
+
+    local value = statusbar:GetValue()
+    if ((value < min) or (value > max)) then
+        return
+    end
+
+    value = (value - min) / (max - min)
+
+    local r, g
+    if value > 0.5 then
+        r = (1.0 - value) * 2
+        g = 1.0
+    elseif value > 0.25 and value < 0.5 then
+        r = 1.0
+        g = value * 1.75
+    else
+        r = 1.0
+        g = 0.0
+    end
+    statusbar:SetStatusBarColor(r, g, 0.0)
+
+    return
+end
+
 -- statusbar.lockColor causes taints
 local function colour(statusbar, unit)
-    if (not statusbar or statusbar.lockValues) then
+    if not statusbar then
         return
     end
 
     if unit then
         if UnitIsPlayer(unit) and unit == statusbar.unit then
-            if (UnitIsConnected(unit) and UnitClass(unit) and unit ~= "player" and not statusbar.lockColor) then
+            if (UnitIsConnected(unit) and UnitClass(unit) and (unit ~= "player")) then
                 -- ArenaFrames lock/unlock color
                 local _, class = UnitClass(unit)
                 local c = RAID_CLASS_COLORS[class]
                 if c then
                     if class == "SHAMAN" then
-                         -- classic vanilla ass client doesnt have proper shaman colours (default is paladin pink) so adding more appropriate one...
+                        -- classic vanilla ass client doesnt have proper shaman colours (default is paladin pink) so adding more appropriate one...
                         statusbar:SetStatusBarColor(0, 0.44, 0.87)
                     else
                         statusbar:SetStatusBarColor(c.r, c.g, c.b)
                     end
                 end
-            elseif unit == "player" then
-                local value = UnitHealth("player")
-                local _, max = PlayerFrameHealthBar:GetMinMaxValues()
-                local r, g
-
-                if ((value < 0) or (value > max)) then
-                    return
-                end
-
-                if max > 0 then
-                    value = value / max
-                else
-                    value = 0
-                end
-
-                if value > 0.5 then
-                    r = (1.0 - value) * 2;
-                    g = 1.0;
-                elseif value > 0.25 and value < 0.5 then
-                    r = 1.0;
-                    g = value * 1.75;
-                else
-                    r = 1.0;
-                    g = 0.0;
-                end
-                PlayerFrameHealthBar:SetStatusBarColor(r, g, 0.0)
+            elseif statusbar == PlayerFrameHealthBar then
+                GradientHealth(statusbar)
             else
                 statusbar:SetStatusBarColor(0.5, 0.5, 0.5)
             end
@@ -994,7 +1034,7 @@ local function ChangeAlpha(self, a)
     end
 end
 hooksecurefunc(TargetFramePortrait, "SetAlpha", ChangeAlpha)
-      
+
 for _, i in pairs({ TargetFramePortrait, TargetFrameToTPortrait }) do
     if i then
         hooksecurefunc(i, "SetVertexColor", RemovePortraitFlash)
@@ -1007,7 +1047,7 @@ local function ChangeAlpha(self, a)
     end
 end
 hooksecurefunc(TargetFramePortrait, "SetAlpha", ChangeAlpha)
-      
+
 
 -- Blacklist of frames where tooltip mouseover is hidden
 GameTooltip:HookScript("OnShow", function(self, ...)
@@ -1093,7 +1133,7 @@ GameTooltip:HookScript("OnTooltipSetUnit", function(self)
 
         -- Add class-coloured names on mouseover tooltips
         local _, class = UnitClass(unit)
-        local color = class and (CUSTOM_CLASS_COLORS or RAID_CLASS_COLORS)[class]
+        local color = class and RAID_CLASS_COLORS[class]
         if color then
             local text = GameTooltipTextLeft1:GetText()
             if text then
@@ -1180,13 +1220,13 @@ local function HandleNewNameplate(nameplate, unit)
 
     local creatureType, _, _, _, _, npcId = string_split("-", UnitGUID(unit))
     -- the rest of nameplate stuff
-    if name:match("Totem") and not name:match("Tremor Totem") then
+    if name:match("Totem") and not name:match("Tremor Totem") and (UnitCreatureType(unit) == "Totem") then
         HideNameplate(nameplate)
-   -- elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
-   --         or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
-   --     HideNameplate(nameplate)
-   -- elseif ShrinkPlates[name] then
-   --     nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
+        -- elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
+        --         or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
+        --     HideNameplate(nameplate)
+        -- elseif ShrinkPlates[name] then
+        --     nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
     elseif name == "Tremor Totem" then
         local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
         local guid = UnitGUID(unit)
@@ -1200,9 +1240,9 @@ local function HandleNewNameplate(nameplate, unit)
             nameplate.tremorTotemGuid = guid
             texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-TREMOR.blp")
         end
-    --elseif name == "Ebon Gargoyle" then
-    --    local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
-    --    texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-GARGOYLE.blp")
+        --elseif name == "Ebon Gargoyle" then
+        --    local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
+        --    texture:SetTexture("Interface/Addons/TextureScript/Nameplate-Border-GARGOYLE.blp")
     end
 end
 
@@ -1218,9 +1258,8 @@ local function plateOnUpdateFrame()
         plateEventFrame:Hide()
     end
 end
-  
+
 plateEventFrame:SetScript("OnUpdate", plateOnUpdateFrame)
--- PlaySound whenever an enemy casts Tremor Totem in arena (previously handled in a standalone addon "EvolveAlert" - https://github.com/Evolvee/EvolvePWPUI-ClassicTBC/tree/main/Interface/AddOns/EvolveAlert)
 
 local COMBATLOG_FILTER_HOSTILE_PLAYERS = COMBATLOG_FILTER_HOSTILE_PLAYERS;
 local CombatLog_Object_IsA = CombatLog_Object_IsA
@@ -1230,9 +1269,8 @@ local eventRegistered = {
     ["SWING_DAMAGE"] = true,
     ["RANGE_DAMAGE"] = true,
     ["SPELL_DAMAGE"] = true,
-    ["SPELL_HEAL"] = true,
-    ["SPELL_PERIODIC_HEAL"] = true,
-
+    --["SPELL_HEAL"] = true,
+    --["SPELL_PERIODIC_HEAL"] = true,
 }
 
 plateEventFrame:SetScript("OnEvent", function(_, event)
@@ -1247,35 +1285,36 @@ plateEventFrame:SetScript("OnEvent", function(_, event)
             return
         end
 
+        -- PlaySound whenever an enemy casts Tremor Totem (previously handled in a standalone addon "EvolveAlert" - https://github.com/Evolvee/EvolvePWPUI-ClassicTBC/tree/main/Interface/AddOns/EvolveAlert)
         if isSourceEnemy and ex1 == 8143 and action == "SPELL_CAST_SUCCESS" then
             PlaySound(12889)
         end
 
-        if action == "SPELL_PERIODIC_HEAL" then
-            if ex1 == 15290 then
-                COMBAT_TEXT_TYPE_INFO.PERIODIC_HEAL.show = nil
-                if GetCVar("floatingCombatTextCombatHealing") ~= "0" then
-                    SetCVar("floatingCombatTextCombatHealing", 0)
-                end
-            else
-                COMBAT_TEXT_TYPE_INFO.PERIODIC_HEAL.show = 1
-                if GetCVar("floatingCombatTextCombatHealing") ~= "1" then
-                    SetCVar("floatingCombatTextCombatHealing", 1)
-                end
-            end
-        elseif action == "SPELL_HEAL" then
-            if ex1 == 48300 or ex1 == 75999 then
-                COMBAT_TEXT_TYPE_INFO.HEAL.show = nil
-                if GetCVar("floatingCombatTextCombatHealing") ~= "0" then
-                    SetCVar("floatingCombatTextCombatHealing", 0)
-                end
-            else
-                COMBAT_TEXT_TYPE_INFO.HEAL.show = 1
-                if GetCVar("floatingCombatTextCombatHealing") ~= "1" then
-                    SetCVar("floatingCombatTextCombatHealing", 1)
-                end
-            end
-        end
+        --if action == "SPELL_PERIODIC_HEAL" then
+        --    if ex1 == 15290 then
+        --        COMBAT_TEXT_TYPE_INFO.PERIODIC_HEAL.show = nil
+        --        if GetCVar("floatingCombatTextCombatHealing") ~= "0" then
+        --            SetCVar("floatingCombatTextCombatHealing", 0)
+        --        end
+        --    else
+        --        COMBAT_TEXT_TYPE_INFO.PERIODIC_HEAL.show = 1
+        --        if GetCVar("floatingCombatTextCombatHealing") ~= "1" then
+        --            SetCVar("floatingCombatTextCombatHealing", 1)
+        --        end
+        --    end
+        -- elseif action == "SPELL_HEAL" then
+        --    if ex1 == 48300 or ex1 == 75999 then
+        --        COMBAT_TEXT_TYPE_INFO.HEAL.show = nil
+        --        if GetCVar("floatingCombatTextCombatHealing") ~= "0" then
+        --            SetCVar("floatingCombatTextCombatHealing", 0)
+        --        end
+        --    else
+        --        COMBAT_TEXT_TYPE_INFO.HEAL.show = 1
+        --        if GetCVar("floatingCombatTextCombatHealing") ~= "1" then
+        --            SetCVar("floatingCombatTextCombatHealing", 1)
+        --        end
+        --    end
+        --end
 
         if destName == "Tremor Totem" then
             if action == "SPELL_SUMMON" then
@@ -1534,6 +1573,7 @@ end)
 -- Since we disabled macro & keybind text above, there is no way to tell when target is too far to cast on, so adding this mechanic instead... (colouring action bar buttons that are out of range & out of mana to be casted...)
 local IsActionInRange = IsActionInRange
 local IsUsableAction = IsUsableAction
+local RANGE_INDICATOR = RANGE_INDICATOR
 
 local function Usable(button)
     local isUsable, notEnoughMana = IsUsableAction(button.action)
@@ -1580,7 +1620,6 @@ end)
 
 -- Remove debuffs from Target of Target frame
 
-
 --for _, totFrame in ipairs({ TargetFrameToT, FocusFrameToT }) do
 --    totFrame:HookScript("OnShow", function()
 --        for i = 1, 4 do
@@ -1592,19 +1631,11 @@ end)
 --    end)
 --end
 
-
-
-
-
-for _, totFrame in ipairs({ TargetFrameToT }) do
-    --totFrame:HookScript("OnShow", function()
-        for i = 1, 4 do
-            local dbf = _G[totFrame:GetName() .. "Debuff" .. i]
-            if dbf and dbf:GetAlpha() > 0 then
-                dbf:SetAlpha(0)
-            end
-        end
-    --end)
+for i = 1, 4 do
+    local dbf = _G[TargetFrameToT:GetName() .. "Debuff" .. i]
+    if dbf then
+        dbf:SetAlpha(0)
+    end
 end
 
 -- Change position of widget showing below minimap
@@ -1613,15 +1644,6 @@ hooksecurefunc(widget, "SetPoint", function(self, _, parent)
     if parent and (parent == "MinimapCluster" or parent == _G["MinimapCluster"]) then
         widget:ClearAllPoints()
         widget:SetPoint("TOPRIGHT", UIWidgetTopCenterContainerFrame, "BOTTOMRIGHT", 580, -345)
-    end
-end)
-
--- Right click interface menu class colouring (vanilla)
-DropDownList1Button1NormalText:HookScript("OnShow", function()
-    local text = DropDownList1Button1NormalText:GetText()
-    if text:find("cfff58cba") then
-        local newText = string.gsub(text, "|cfff58cba", "|cff0070de")
-        DropDownList1Button1NormalText:SetText(newText)
     end
 end)
 
@@ -1698,22 +1720,96 @@ local function PlateNames(frame)
         elseif npcId == "417" then
             frame.name:SetText("Felhunter")
         elseif npcId == "185317" then
-            frame.name:SetText("Succubus")
+            frame.name:SetText("Fagpet") -- Incubus?
         end
 
         if UnitIsPlayer(frame.unit) then
             frame.name:SetText((UnitName(frame.unit)):gsub("%-.*", "")) -- not sure if UnitName() adds the realm so :gsub() might not be needed
             --if UnitIsEnemy("player", frame.unit) then
-             --   local _, _, class = UnitClass(frame.unit)
-              --  if (class == 6) then
-                    -- Only actual retards play this dogshit broken class that has nothing to do with World of Warcraft design
-               --     frame.name:SetText("I AM RETARDED")
-              --  end
+            --   local _, _, class = UnitClass(frame.unit)
+            --  if (class == 6) then
+            -- Only actual retards play this dogshit broken class that has nothing to do with World of Warcraft design
+            --     frame.name:SetText("I AM RETARDED")
+            --  end
             --end
         end
     end
 end
 --@@ Wrath end
+
+-- Right click interface menu class colouring (vanilla)
+DropDownList1Button1NormalText:HookScript("OnShow", function()
+    local text = DropDownList1Button1NormalText:GetText()
+    if text:find("cfff58cba") then
+        local newText = string.gsub(text, "|cfff58cba", "|cff0070de")
+        DropDownList1Button1NormalText:SetText(newText)
+    end
+end)
+
+-- Make shaman blue in chat... jfc I cant believe I am actually doing this... dogshit fucking client.. 2k24 btw
+
+function GetColoredName(event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11, arg12)
+    local chatType = strsub(event, 10);
+    if (strsub(chatType, 1, 7) == "WHISPER") then
+        chatType = "WHISPER";
+    end
+    if (strsub(chatType, 1, 7) == "CHANNEL") then
+        chatType = "CHANNEL" .. arg8;
+    end
+    local info = ChatTypeInfo[chatType];
+
+    --ambiguate guild chat names
+    if (chatType == "GUILD") then
+        arg2 = Ambiguate(arg2, "guild")
+    else
+        arg2 = Ambiguate(arg2, "none")
+    end
+
+    if (info and info.colorNameByClass and arg12 and arg12 ~= "") then
+        local _, englishClass = GetPlayerInfoByGUID(arg12)
+
+        if (englishClass) then
+            local classColorTable = RAID_CLASS_COLORS[englishClass];
+            if (not classColorTable) then
+                return arg2;
+            end
+            if englishClass == "SHAMAN" then
+                return "\124cff0070de" .. arg2 .. "\124r"
+            else
+                return string.format("\124cff%.2x%.2x%.2x", classColorTable.r * 255, classColorTable.g * 255, classColorTable.b * 255) .. arg2 .. "\124r"
+            end
+        end
+    end
+
+    return arg2;
+end
+
+-- class colors in BG window
+
+local function ColorScoreBoard()
+    local _, instanceType = IsInInstance()
+    if (instanceType ~= "pvp") then
+        return
+    end
+    for i = 1, 22 do
+        local ScoreBoard = _G["WorldStateScoreButton" .. i]
+
+        if ScoreBoard and ScoreBoard.index then
+            local _, _, _, _, _, _, _, _, _, filename = GetBattlefieldScore(ScoreBoard.index)
+            local text = ScoreBoard.name.text:GetText()
+
+            if text and filename then
+                local color = GetClassColorObj(filename)
+                if (filename == "SHAMAN") then
+                    color = CreateColor(0.0, 0.44, 0.87)
+                end
+                ScoreBoard.name.text:SetText(color:WrapTextInColorCode(text))
+            end
+        end
+    end
+end
+hooksecurefunc("WorldStateScoreFrame_Update", ColorScoreBoard)
+
 
 --
 local supaFrame = CreateFrame("Frame")
@@ -1754,6 +1850,18 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
     end
 end)
 
+-- support for shaman colouring for other addons 
+FIXED_CLASS_COLORS = {
+    ["HUNTER"] = CreateColor(0.67, 0.83, 0.45),
+    ["WARLOCK"] = CreateColor(0.53, 0.53, 0.93),
+    ["PRIEST"] = CreateColor(1.0, 1.0, 1.0),
+    ["PALADIN"] = CreateColor(0.96, 0.55, 0.73),
+    ["MAGE"] = CreateColor(0.25, 0.78, 0.92),
+    ["ROGUE"] = CreateColor(1.0, 0.96, 0.41),
+    ["DRUID"] = CreateColor(1.0, 0.49, 0.04),
+    ["SHAMAN"] = CreateColor(0.0, 0.44, 0.87),
+    ["WARRIOR"] = CreateColor(0.78, 0.61, 0.43)
+};
 
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
 -- ^^ current value: 130 (100+ latency)

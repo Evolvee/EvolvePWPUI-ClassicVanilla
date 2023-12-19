@@ -50,7 +50,7 @@ Tool.RoleIcon = {
   
 Tool.Classes=CLASS_SORT_ORDER
 Tool.ClassName=LOCALIZED_CLASS_NAMES_MALE
-Tool.ClassColor=RAID_CLASS_COLORS
+Tool.ClassColor=FIXED_CLASS_COLORS
 
 Tool.NameToClass={}
 for eng,name in pairs(LOCALIZED_CLASS_NAMES_MALE) do

@@ -361,8 +361,8 @@ local function CreateItem(yy,i,doCompact,req,forceHight)
 
 	if req and req.name ~= nil then
 		local prefix
-		if GBB.DB.ColorByClass and req.class and RAID_CLASS_COLORS[req.class].colorStr then
-			prefix="|c"..RAID_CLASS_COLORS[req.class].colorStr
+		if GBB.DB.ColorByClass and req.class and FIXED_CLASS_COLORS[req.class].colorStr then
+			prefix="|c"..FIXED_CLASS_COLORS[req.class].colorStr
 		else
 			prefix="|r"
 		end

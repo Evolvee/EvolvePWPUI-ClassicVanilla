@@ -1,14 +1,15 @@
 
 DeBuffFilterDB = {
 	["profileKeys"] = {
-		["Evolvebanned - Firemaw"] = "Default",
-		["Evolvepwp - Stitches"] = "Default",
-		["Evolvepwe - Firemaw"] = "Default",
 		["Evolvepwe - Gehennas"] = "Default",
-		["Evolvepwp - Firemaw"] = "Default",
-		["Evolvebank - Gehennas"] = "Default",
 		["Evolvepwp - Gehennas"] = "Default",
+		["Evolve - Living Flame"] = "Default",
+		["Evolvebanned - Firemaw"] = "Default",
 		["Evolvepwp - Classic Era PTR"] = "Default",
+		["Evolvepwe - Firemaw"] = "Default",
+		["Evolvebank - Gehennas"] = "Default",
+		["Evolvepwp - Stitches"] = "Default",
+		["Evolvepwp - Firemaw"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -113,21 +114,21 @@ DeBuffFilterDB = {
 			["customHighlightColors"] = {
 				["Aegis of Dalaran"] = {
 					["a"] = 1,
-					["b"] = 0.01960784383118153,
-					["g"] = 1,
 					["r"] = 0,
+					["g"] = 1,
+					["b"] = 0.01960784383118153,
 				},
 				["Predator's Swiftness"] = {
 					["a"] = 1,
-					["r"] = 1,
-					["g"] = 0.003921568859368563,
 					["b"] = 0,
+					["g"] = 0.003921568859368563,
+					["r"] = 1,
 				},
 				["Hardened Skin"] = {
 					["a"] = 1,
-					["b"] = 0.8078432083129883,
-					["g"] = 0,
 					["r"] = 1,
+					["g"] = 0,
+					["b"] = 0.8078432083129883,
 				},
 			},
 		},

@@ -162,8 +162,8 @@ local function CreateItem(yy,i,doCompact,req,forceHight)
 
 	if req then
 		local prefix
-		if GBB.DB.ColorByClass and req.class and RAID_CLASS_COLORS[req.class].colorStr then
-			prefix="|c"..RAID_CLASS_COLORS[req.class].colorStr
+		if GBB.DB.ColorByClass and req.class and FIXED_CLASS_COLORS[req.class].colorStr then
+			prefix="|c"..FIXED_CLASS_COLORS[req.class].colorStr
 		else
 			prefix="|r"
 		end
@@ -744,7 +744,7 @@ function GBB.ParseMessage(msg,name,guid,channel)
 			local FriendIcon=(C_FriendList.IsFriend(guid) and string.format(GBB.TxtEscapePicture,GBB.FriendIcon) or "") ..
 						 ((IsInGuild() and IsGuildMember(guid)) and string.format(GBB.TxtEscapePicture,GBB.GuildIcon) or "") ..
 						 (GBB.GroupTrans[name]~=nil and string.format(GBB.TxtEscapePicture,GBB.PastPlayerIcon) or "" )
-			local linkname=	"|Hplayer:"..name.."|h[|c"..RAID_CLASS_COLORS[engClass].colorStr ..name.."|r]|h"
+			local linkname=	"|Hplayer:"..name.."|h[|c"..FIXED_CLASS_COLORS[engClass].colorStr ..name.."|r]|h"
 			if GBB.DB.OneLineNotification then
 				DEFAULT_CHAT_FRAME:AddMessage(GBB.MSGPREFIX..linkname..FriendIcon..": "..msg,GBB.DB.NotifyColor.r,GBB.DB.NotifyColor.g,GBB.DB.NotifyColor.b)
 			else

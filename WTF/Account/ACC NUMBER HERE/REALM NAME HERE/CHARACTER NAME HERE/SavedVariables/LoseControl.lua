@@ -1,8 +1,10 @@
 
 LoseControlDB = {
+	["noLossOfControlCooldown"] = false,
 	["disablePlayerTargetTarget"] = false,
 	["disableRaidInArena"] = true,
 	["disableTargetDeadTargetTarget"] = true,
+	["noBlizzardCooldownCount"] = true,
 	["frames"] = {
 		["player2"] = {
 			["enabled"] = false,
@@ -137,11 +139,11 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 40,
 			["interruptMiniIconsAlpha"] = 0.8,
-			["anchor"] = "Blizzard",
 			["compactFrame"] = {
 				["frameLevel"] = 0,
 				["size"] = 36,
 			},
+			["swipeAlpha"] = 0.9,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,
@@ -175,7 +177,7 @@ LoseControlDB = {
 					},
 				},
 			},
-			["swipeAlpha"] = 0.9,
+			["anchor"] = "Blizzard",
 			["interruptBackgroundVertexColor"] = {
 				["r"] = 1,
 				["g"] = 1,
@@ -2467,11 +2469,11 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 40,
 			["interruptMiniIconsAlpha"] = 0.8,
-			["anchor"] = "Blizzard",
 			["compactFrame"] = {
 				["frameLevel"] = 0,
 				["size"] = 36,
 			},
+			["swipeAlpha"] = 0.9,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,
@@ -2505,7 +2507,7 @@ LoseControlDB = {
 					},
 				},
 			},
-			["swipeAlpha"] = 0.9,
+			["anchor"] = "Blizzard",
 			["interruptBackgroundVertexColor"] = {
 				["r"] = 1,
 				["g"] = 1,
@@ -3703,11 +3705,11 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 40,
 			["interruptMiniIconsAlpha"] = 0.8,
-			["anchor"] = "Blizzard",
 			["compactFrame"] = {
 				["frameLevel"] = 0,
 				["size"] = 36,
 			},
+			["swipeAlpha"] = 0.9,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,
@@ -3741,7 +3743,7 @@ LoseControlDB = {
 					},
 				},
 			},
-			["swipeAlpha"] = 0.9,
+			["anchor"] = "Blizzard",
 			["interruptBackgroundVertexColor"] = {
 				["r"] = 1,
 				["g"] = 1,
@@ -4397,12 +4399,12 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 40,
 			["interruptMiniIconsAlpha"] = 0.8,
-			["anchor"] = "None",
 			["compactFrame"] = {
 				["anchor"] = "None",
 				["frameLevel"] = 0,
 				["size"] = 36,
 			},
+			["swipeAlpha"] = 0.9,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,
@@ -4436,7 +4438,7 @@ LoseControlDB = {
 					},
 				},
 			},
-			["swipeAlpha"] = 0.9,
+			["anchor"] = "None",
 			["interruptBackgroundVertexColor"] = {
 				["r"] = 1,
 				["g"] = 1,
@@ -4601,7 +4603,7 @@ LoseControlDB = {
 			["point"] = "LEFT",
 			["interruptBackgroundAlpha"] = 0.7,
 		},
-		["raid17"] = {
+		["raid36"] = {
 			["enabled"] = false,
 			["useSpellInsteadSchoolMiniIcon"] = false,
 			["size"] = 20,
@@ -4709,11 +4711,11 @@ LoseControlDB = {
 			["alpha"] = 1,
 			["size"] = 40,
 			["interruptMiniIconsAlpha"] = 0.8,
-			["anchor"] = "Blizzard",
 			["compactFrame"] = {
 				["frameLevel"] = 0,
 				["size"] = 36,
 			},
+			["swipeAlpha"] = 0.9,
 			["categoriesEnabled"] = {
 				["interrupt"] = {
 					["friendly"] = false,
@@ -4747,7 +4749,7 @@ LoseControlDB = {
 					},
 				},
 			},
-			["swipeAlpha"] = 0.9,
+			["anchor"] = "Blizzard",
 			["interruptBackgroundVertexColor"] = {
 				["r"] = 1,
 				["g"] = 1,
@@ -5065,57 +5067,6 @@ LoseControlDB = {
 			["frameLevel"] = 0,
 			["interruptBackgroundAlpha"] = 0.7,
 		},
-		["raid36"] = {
-			["enabled"] = false,
-			["useSpellInsteadSchoolMiniIcon"] = false,
-			["size"] = 20,
-			["alpha"] = 1,
-			["interruptMiniIconsAlpha"] = 0.8,
-			["y"] = 1,
-			["x"] = 0,
-			["anchor"] = "BlizzardRaidFrames",
-			["categoriesEnabled"] = {
-				["interrupt"] = {
-					["friendly"] = true,
-				},
-				["debuff"] = {
-					["friendly"] = {
-						["Other"] = true,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-				["buff"] = {
-					["friendly"] = {
-						["Other"] = false,
-						["CC"] = true,
-						["Snare"] = true,
-						["Disarm"] = true,
-						["ImmuneSpell"] = true,
-						["PvE"] = true,
-						["Immune"] = true,
-						["ImmunePhysical"] = true,
-						["Silence"] = true,
-						["Root"] = true,
-					},
-				},
-			},
-			["swipeAlpha"] = 0.8,
-			["interruptBackgroundVertexColor"] = {
-				["r"] = 1,
-				["g"] = 1,
-				["b"] = 1,
-			},
-			["frameLevel"] = 0,
-			["interruptBackgroundAlpha"] = 0.7,
-		},
 		["nameplate32"] = {
 			["enabled"] = true,
 			["useSpellInsteadSchoolMiniIcon"] = false,
@@ -5192,6 +5143,57 @@ LoseControlDB = {
 				["b"] = 1,
 			},
 			["point"] = "LEFT",
+			["interruptBackgroundAlpha"] = 0.7,
+		},
+		["raid17"] = {
+			["enabled"] = false,
+			["useSpellInsteadSchoolMiniIcon"] = false,
+			["size"] = 20,
+			["alpha"] = 1,
+			["interruptMiniIconsAlpha"] = 0.8,
+			["y"] = 1,
+			["x"] = 0,
+			["anchor"] = "BlizzardRaidFrames",
+			["categoriesEnabled"] = {
+				["interrupt"] = {
+					["friendly"] = true,
+				},
+				["debuff"] = {
+					["friendly"] = {
+						["Other"] = true,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+				["buff"] = {
+					["friendly"] = {
+						["Other"] = false,
+						["CC"] = true,
+						["Snare"] = true,
+						["Disarm"] = true,
+						["ImmuneSpell"] = true,
+						["PvE"] = true,
+						["Immune"] = true,
+						["ImmunePhysical"] = true,
+						["Silence"] = true,
+						["Root"] = true,
+					},
+				},
+			},
+			["swipeAlpha"] = 0.8,
+			["interruptBackgroundVertexColor"] = {
+				["r"] = 1,
+				["g"] = 1,
+				["b"] = 1,
+			},
+			["frameLevel"] = 0,
 			["interruptBackgroundAlpha"] = 0.7,
 		},
 		["arena2"] = {
@@ -6120,10 +6122,27 @@ LoseControlDB = {
 		},
 	},
 	["showPartyplayerIcon"] = false,
-	["disableRaidInBG"] = false,
+	["showNPCInterruptsFocus"] = true,
+	["disableFocusFocusTarget"] = false,
 	["disablePartyInArena"] = false,
 	["disableTargetTargetTarget"] = false,
-	["noLossOfControlCooldown"] = false,
+	["showNPCInterruptsTarget"] = true,
+	["noGetExtraAuraDurationInformation"] = false,
+	["disablePlayerFocusTarget"] = false,
+	["disablePartyInBG"] = true,
+	["lastIncompatibilitiesAskedTimestamp"] = 1702549076,
+	["disablePartyInRaid"] = true,
+	["showNPCInterruptsTargetTarget"] = true,
+	["noCooldownCount"] = false,
+	["customSpellIds"] = {
+	},
+	["noGetEnemiesBuffsInformation"] = false,
+	["disableArenaInBG"] = true,
+	["showNPCInterruptsFocusTarget"] = true,
+	["disableFocusDeadFocusTarget"] = true,
+	["showNPCInterruptsNameplate"] = false,
+	["version"] = 1.7,
+	["disablePlayerFocusPlayerFocusTarget"] = true,
 	["priority"] = {
 		["Other"] = 20,
 		["CC"] = 100,
@@ -6137,23 +6156,7 @@ LoseControlDB = {
 		["Disarm"] = 30,
 		["Root"] = 65,
 	},
-	["disablePlayerFocusTarget"] = false,
-	["noBlizzardCooldownCount"] = true,
-	["disablePlayerFocusPlayerFocusTarget"] = true,
-	["disableFocusFocusTarget"] = false,
-	["disableFocusDeadFocusTarget"] = true,
-	["disableArenaInBG"] = true,
-	["disablePartyInBG"] = true,
-	["disablePartyInRaid"] = true,
-	["noCooldownCount"] = false,
-	["customSpellIds"] = {
-	},
-	["showNPCInterruptsNameplate"] = false,
-	["showNPCInterruptsTargetTarget"] = true,
-	["version"] = 3,
-	["showNPCInterruptsFocusTarget"] = true,
-	["showNPCInterruptsTarget"] = true,
 	["duplicatePlayerPortrait"] = false,
-	["showNPCInterruptsFocus"] = true,
+	["disableRaidInBG"] = false,
 	["disablePlayerTargetPlayerTargetTarget"] = true,
 }

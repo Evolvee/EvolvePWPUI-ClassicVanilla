@@ -1,16 +1,18 @@
 
 AtlasLootClassicDB = {
 	["profileKeys"] = {
-		["Evolvebanned - Firemaw"] = "Evolvebanned - Firemaw",
 		["Evolvebanned - Gehennas"] = "Evolvebanned - Gehennas",
 		["Evolvepwp - Stitches"] = "Evolvepwp - Stitches",
-		["Evolvepwe - Firemaw"] = "Evolvepwe - Firemaw",
-		["Evolvepwp - Classic Era PTR"] = "Evolvepwp - Classic Era PTR",
 		["Evolvepwp - Gehennas"] = "Evolvepwp - Gehennas",
+		["Evolve - Living Flame"] = "Evolve - Living Flame",
+		["Evolvebanned - Firemaw"] = "Evolvebanned - Firemaw",
+		["Evolvepwp - Living Flame"] = "Evolvepwp - Living Flame",
+		["Evolvepwp - Classic Era PTR"] = "Evolvepwp - Classic Era PTR",
 		["Evolvepwp - Firemaw"] = "Evolvepwp - Firemaw",
+		["Evolvepwe - Firemaw"] = "Evolvepwe - Firemaw",
 	},
 	["global"] = {
-		["__addonrevision"] = 3010003,
+		["__addonrevision"] = 3020000,
 		["VendorPrice"] = {
 			[40724] = "EmblemOfValor:25",
 			[51407] = "arena:1215",
@@ -866,11 +868,11 @@ AtlasLootClassicDB = {
 			[48716] = "EmblemOfHeroism:40",
 			[45114] = "EmblemOfConquest:19",
 			[28312] = "honor:4750",
-			[51525] = "arena:911",
+			[35149] = "honor:7600",
 			[51333] = "honor:29862",
 			[51397] = "arena:2126",
 			[35085] = "honor:9500",
-			[18606] = "honor:7500",
+			[51525] = "arena:911",
 			[45448] = "SiderealEssence:25",
 			[41854] = "EmblemOfTriumph:75",
 			[42255] = "honor:5600",
@@ -974,9 +976,9 @@ AtlasLootClassicDB = {
 			[33681] = "honor:4275",
 			[45963] = "arena:1350",
 			[45835] = "EmblemOfConquest:28",
-			[33745] = "honor:8550",
+			[41933] = "EmblemOfConquest:46",
 			[41869] = "EmblemOfTriumph:50",
-			[48074] = "EmblemOfTriumph:50",
+			[33745] = "honor:8550",
 			[28314] = "honor:4750",
 			[42061] = "honor:8295",
 			[34577] = "honor:3990",
@@ -991,7 +993,7 @@ AtlasLootClassicDB = {
 			[50975] = "EmblemOfFrost:95",
 			[40718] = "EmblemOfValor:25",
 			[33801] = "honor:8550",
-			[41933] = "EmblemOfConquest:46",
+			[48074] = "EmblemOfTriumph:50",
 			[24557] = "honor:9500",
 			[47713] = "EmblemOfTriumph:45",
 			[27710] = "honor:3800",
@@ -1047,7 +1049,7 @@ AtlasLootClassicDB = {
 			[28120] = "honor:1425",
 			[28300] = "honor:9500",
 			[42319] = "arena:2025",
-			[35149] = "honor:7600",
+			[18606] = "honor:7500",
 			[44419] = "honor:19000",
 			[42511] = "honor:3115",
 			[42575] = "honor:3115",
@@ -1185,8 +1187,6 @@ AtlasLootClassicDB = {
 		},
 	},
 	["profiles"] = {
-		["Evolvebanned - Firemaw"] = {
-		},
 		["Evolvebanned - Gehennas"] = {
 			["minimap"] = {
 				["minimapPos"] = 193.3749684930681,
@@ -1210,49 +1210,6 @@ AtlasLootClassicDB = {
 		},
 		["Evolvepwp - Stitches"] = {
 		},
-		["Evolvepwe - Firemaw"] = {
-			["GUI"] = {
-				["classFilter"] = true,
-				["selected"] = {
-					nil, -- [1]
-					"TrialoftheCrusader", -- [2]
-					6, -- [3]
-					10, -- [4]
-					0, -- [5]
-				},
-				["point"] = {
-					"RIGHT", -- [1]
-					nil, -- [2]
-					"RIGHT", -- [3]
-					-41.11113739013672, -- [4]
-					15.22221946716309, -- [5]
-				},
-			},
-			["minimap"] = {
-				["minimapPos"] = 184.3464791213659,
-			},
-		},
-		["Evolvepwp - Classic Era PTR"] = {
-			["minimap"] = {
-				["minimapPos"] = 172.8344715929677,
-			},
-			["GUI"] = {
-				["point"] = {
-					nil, -- [1]
-					nil, -- [2]
-					"CENTER", -- [3]
-					0, -- [4]
-					-2.33428454521345e-05, -- [5]
-				},
-				["selected"] = {
-					nil, -- [1]
-					"Ragefire", -- [2]
-					nil, -- [3]
-					1, -- [4]
-					0, -- [5]
-				},
-			},
-		},
 		["Evolvepwp - Gehennas"] = {
 			["minimap"] = {
 				["minimapPos"] = 201.2423687792321,
@@ -1272,6 +1229,53 @@ AtlasLootClassicDB = {
 					"TOP", -- [3]
 					35.79980087280273, -- [4]
 					-23.95545387268066, -- [5]
+				},
+			},
+		},
+		["Evolve - Living Flame"] = {
+			["minimap"] = {
+				["minimapPos"] = 196.8262669566863,
+			},
+			["GUI"] = {
+				["classFilter"] = true,
+				["point"] = {
+					"RIGHT", -- [1]
+					nil, -- [2]
+					"RIGHT", -- [3]
+					-92.73355865478516, -- [4]
+					-27.55541229248047, -- [5]
+				},
+				["selected"] = {
+					"AtlasLootClassic_Crafting", -- [1]
+					"Tailoring", -- [2]
+					11, -- [3]
+					1, -- [4]
+					0, -- [5]
+				},
+			},
+		},
+		["Evolvebanned - Firemaw"] = {
+		},
+		["Evolvepwp - Living Flame"] = {
+		},
+		["Evolvepwp - Classic Era PTR"] = {
+			["minimap"] = {
+				["minimapPos"] = 162.1710005478386,
+			},
+			["GUI"] = {
+				["point"] = {
+					nil, -- [1]
+					nil, -- [2]
+					"CENTER", -- [3]
+					0, -- [4]
+					-2.33428454521345e-05, -- [5]
+				},
+				["selected"] = {
+					nil, -- [1]
+					"Ragefire", -- [2]
+					nil, -- [3]
+					1, -- [4]
+					0, -- [5]
 				},
 			},
 		},
@@ -1295,7 +1299,7 @@ AtlasLootClassicDB = {
 				},
 			},
 			["minimap"] = {
-				["minimapPos"] = 194.4825312085811,
+				["minimapPos"] = 186.312757615769,
 			},
 			["Addons"] = {
 				["Favourites"] = {
@@ -1308,6 +1312,28 @@ AtlasLootClassicDB = {
 						},
 					},
 				},
+			},
+		},
+		["Evolvepwe - Firemaw"] = {
+			["GUI"] = {
+				["classFilter"] = true,
+				["selected"] = {
+					nil, -- [1]
+					"TrialoftheCrusader", -- [2]
+					6, -- [3]
+					10, -- [4]
+					0, -- [5]
+				},
+				["point"] = {
+					"RIGHT", -- [1]
+					nil, -- [2]
+					"RIGHT", -- [3]
+					-41.11113739013672, -- [4]
+					15.22221946716309, -- [5]
+				},
+			},
+			["minimap"] = {
+				["minimapPos"] = 184.3464791213659,
 			},
 		},
 	},

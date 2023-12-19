@@ -1,14 +1,16 @@
 
 jpcbDB = {
 	["profileKeys"] = {
-		["Evolvebanned - Firemaw"] = "Default",
-		["Evolvepwe - Firemaw"] = "Default",
 		["Evolvepwe - Gehennas"] = "Default",
+		["Evolvepwp - Gehennas"] = "Default",
+		["Evolve - Living Flame"] = "Default",
+		["Evolvebanned - Firemaw"] = "Default",
+		["Evolvepwp - Living Flame"] = "Default",
 		["Evolvepwp - Classic Era PTR"] = "Default",
 		["Evolvepwp - Firemaw"] = "Default",
 		["Evolvebank - Gehennas"] = "Default",
-		["Evolvepwp - Gehennas"] = "Default",
 		["Evolvepwp - Stitches"] = "Default",
+		["Evolvepwe - Firemaw"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {
