@@ -124,8 +124,8 @@ NWB.options = {
 			name = L["timeStampFormatTitle"],
 			desc = L["timeStampFormatDesc"],
 			values = {
-				[12] = "12 hour",
-				[24] = "24 hour",
+				[12] = L["12 hour"],
+				[24] = L["24 hour"],
 			},
 			sorting = {
 				[1] = 12,
@@ -140,8 +140,8 @@ NWB.options = {
 			name = L["timeStampZoneTitle"],
 			desc = L["timeStampZoneDesc"],
 			values = {
-				["local"] = "Local Time",
-				["server"] = "Server Time",
+				["local"] = L["Local Time"],
+				["server"] = L["Server Time"],
 			},
 			sorting = {
 				[1] = "local",
@@ -280,11 +280,49 @@ NWB.options = {
 			set = "setShowNaxxMinimapMarkers",
 		},
 		--Shat world markers TBC order = 133.
+		minimapLayerFont = {
+			type = "select",
+			name = L["minimapLayerFontTitle"],
+			desc = L["minimapLayerFontDesc"],
+			values = NWB.LSM:HashTable("font"),
+			dialogControl = "LSM30_Font",
+			order = 134,
+			get = "getMinimapLayerFont",
+			set = "setMinimapLayerFont",
+		},
+		minimapLayerFontSize = {
+			type = "range",
+			name = L["minimapLayerFontSizeTitle"],
+			desc = L["minimapLayerFontSizeDesc"],
+			order = 135,
+			get = "getMinimapLayerFontSize",
+			set = "setMinimapLayerFontSize",
+			min = 6,
+			max = 20,
+			softMin = 6,
+			softMax = 20,
+			step = 1,
+			width = 1.5,
+		},
+		--This needs further work since changing the scale messes up the position.
+		--[[minimapLayerScale = {
+			type = "range",
+			name = L["minimapLayerScaleTitle"],
+			desc = L["minimapLayerScaleDesc"],
+			order = 136,
+			get = "getMinimapLayerScale",
+			set = "setMinimapLayerScale",
+			min = 0.3,
+			max = 2,
+			softMin = 0.3,
+			softMax = 2,
+			step = 0.1,
+		},]]
 		bigWigsSupport = {
 			type = "toggle",
 			name = L["bigWigsSupportTitle"],
 			desc = L["bigWigsSupportDesc"],
-			order = 134,
+			order = 137,
 			get = "getBigWigsSupport",
 			set = "setBigWigsSupport",
 		},
@@ -1332,13 +1370,13 @@ function NWB:loadSpecificOptions()
 			type = "description",
 			name = "|cFF50D050" .. L["tbcHeaderText"],
 			fontSize = "large",
-			order = 5,
+			order = 45,
 		};
 		NWB.options.args["disableSoundsAboveMaxBuffLevel"] = {
 			type = "toggle",
 			name = L["disableSoundsAboveMaxBuffLevelTitle"],
 			desc = L["disableSoundsAboveMaxBuffLevelDesc"],
-			order = 10,
+			order = 50,
 			get = "getDisableSoundsAboveMaxBuffLevel",
 			set = "setDisableSoundsAboveMaxBuffLevel",
 			width = 1.5,
@@ -1347,7 +1385,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableSoundsAllLevelsTitle"],
 			desc = L["disableSoundsAllLevelsDesc"],
-			order = 11,
+			order = 51,
 			get = "getDisableSoundsAllLevels",
 			set = "setDisableSoundsAllLevels",
 			width = 1.5,
@@ -1356,7 +1394,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableMiddleAboveMaxBuffLevelTitle"],
 			desc = L["disableMiddleAboveMaxBuffLevelDesc"],
-			order = 12,
+			order = 52,
 			get = "getDisableMiddleAboveMaxBuffLevel",
 			set = "setDisableMiddleAboveMaxBuffLevel",
 			width = 1.5,
@@ -1365,7 +1403,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableMiddleAllLevelsTitle"],
 			desc = L["disableMiddleAllLevelsDesc"],
-			order = 13,
+			order = 53,
 			get = "getDisableMiddleAllLevels",
 			set = "setDisableMiddleAllLevels",
 			width = 1.5,
@@ -1374,7 +1412,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableChatAboveMaxBuffLevelTitle"],
 			desc = L["disableChatAboveMaxBuffLevelDesc"],
-			order = 14,
+			order = 54,
 			get = "getDisableChatAboveMaxBuffLevel",
 			set = "setDisableChatAboveMaxBuffLevel",
 			width = 1.5,
@@ -1383,7 +1421,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableChatAllLevelsTitle"],
 			desc = L["disableChatAllLevelsDesc"],
-			order = 15,
+			order = 55,
 			get = "getDisableChatAllLevels",
 			set = "setDisableChatAllLevels",
 			width = 1.5,
@@ -1392,7 +1430,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableFlashAboveMaxBuffLevelTitle"],
 			desc = L["disableFlashAboveMaxBuffLevelDesc"],
-			order = 16,
+			order = 56,
 			get = "getDisableFlashAboveMaxBuffLevel",
 			set = "setDisableFlashAboveMaxBuffLevel",
 			width = 1.5,
@@ -1401,7 +1439,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableFlashAllLevelsTitle"],
 			desc = L["disableFlashAllLevelsDesc"],
-			order = 17,
+			order = 57,
 			get = "getDisableFlashAllLevels",
 			set = "setDisableFlashAllLevels",
 			width = 1.5,
@@ -1410,7 +1448,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableLogonAboveMaxBuffLevelTitle"],
 			desc = L["disableLogonAboveMaxBuffLevelDesc"],
-			order = 23,
+			order = 63,
 			get = "getDisableLogonAboveMaxBuffLevel",
 			set = "setDisableLogonAboveMaxBuffLevel",
 			width = 1.5,
@@ -1419,7 +1457,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableLogonAllLevelsTitle"],
 			desc = L["disableLogonAllLevelsDesc"],
-			order = 24,
+			order = 64,
 			get = "getDisableLogonAllLevels",
 			set = "setDisableLogonAllLevels",
 			width = 1.5,
@@ -1428,7 +1466,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["disableBuffTimersMaxBuffLevelTitle"],
 			desc = L["disableBuffTimersMaxBuffLevelDesc"],
-			order = 25,
+			order = 65,
 			width = 1.5,
 			get = "getDisableBuffTimersMaxBuffLevel",
 			set = "setDisableBuffTimersMaxBuffLevel",
@@ -1437,7 +1475,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["hideMinimapBuffTimersTitle"],
 			desc = L["hideMinimapBuffTimersDesc"],
-			order = 26,
+			order = 66,
 			width = 1.5,
 			get = "getHideMinimapBuffTimers",
 			set = "setHideMinimapBuffTimers",
@@ -1446,7 +1484,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["showShatWorldmapMarkersTitle"],
 			desc = L["showShatWorldmapMarkersDesc"],
-			order = 27,
+			order = 67,
 			width = 1.5,
 			get = "getShowShatWorldmapMarkers",
 			set = "setShowShatWorldmapMarkers",
@@ -1455,7 +1493,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["showShatWorldmapMarkersTerokTitle"],
 			desc = L["showShatWorldmapMarkersTerokDesc"],
-			order = 28,
+			order = 68,
 			width = 1.5,
 			get = "getShowShatWorldmapMarkersTerok",
 			set = "setShowShatWorldmapMarkersTerok",
@@ -1464,7 +1502,7 @@ function NWB:loadSpecificOptions()
 			type = "toggle",
 			name = L["guildTerok10Title"],
 			desc = L["guildTerok10Desc"],
-			order = 29,
+			order = 69,
 			width = 1.5,
 			get = "getGuildTerok10",
 			set = "setGuildTerok10",
@@ -1473,7 +1511,7 @@ function NWB:loadSpecificOptions()
 			type = "description",
 			name = "|cFF50D050" .. L["tbcNoteText"],
 			fontSize = "medium",
-			order = 30,
+			order = 70,
 		};]]
 	end
 	if (NWB.isWrath or NWB.isTBC or NWB.realmsTBC) then
@@ -1528,6 +1566,110 @@ function NWB:loadSpecificOptions()
 			desc = L["minimapLayerFrameResetDesc"],
 			func = "resetMinimapLayerFrame",
 			order = 119,
+		};
+	end
+	if (NWB.isSOD) then
+		NWB.options.args["sodHeader"] = {
+			type = "header",
+			name = NWB.prefixColor .. L["sodHeaderText"],
+			order = 20,
+		};
+		NWB.options.args["disableOnlyNefRendBelowMaxLevel"] = {
+			type = "toggle",
+			name = L["disableOnlyNefRendBelowMaxLevelTitle"],
+			desc = L["disableOnlyNefRendBelowMaxLevelDesc"],
+			order = 21,
+			get = "getDisableOnlyNefRendBelowMaxLevel",
+			set = "setDisableOnlyNefRendBelowMaxLevel",
+			width = 1.5,
+		};
+		NWB.options.args["disableOnlyNefRendBelowMaxLevelNum"] = {
+			type = "range",
+			name = L["disableOnlyNefRendBelowMaxLevelNumTitle"],
+			desc = L["disableOnlyNefRendBelowMaxLevelNumDesc"],
+			order = 22,
+			get = "getDisableOnlyNefRendBelowMaxLevelNum",
+			set = "setDisableOnlyNefRendBelowMaxLevelNum",
+			min = 1,
+			max = 61,
+			softMin = 1,
+			softMax = 61,
+			step = 1,
+			width = 1.2,
+		};
+		NWB.options.args["soundsBlackfathomBoon"] = {
+			type = "select",
+			name = L["soundsBlackfathomBoonTitle"],
+			desc = L["soundsBlackfathomBoonDesc"],
+			values = function()
+				return NWB:getSounds("blackfathomBoon");
+			end,
+			order = 24,
+			get = "getSoundsBlackfathomBoon",
+			set = "setSoundsBlackfathomBoon",
+		};
+		NWB.options.args["soundsAshenvaleStartsSoon"] = {
+			type = "select",
+			name = L["soundsAshenvaleStartsSoonTitle"],
+			desc = L["soundsAshenvaleStartsSoonDesc"],
+			values = function()
+				return NWB:getSounds("ashenvaleStartSoon");
+			end,
+			order = 26,
+			get = "getSoundsAshenvaleStartsSoon",
+			set = "setSoundsAshenvaleStartsSoon",
+		};
+		NWB.options.args["ashenvaleOverlayText"] = {
+			type = "description",
+			name = "|cFF9CD6DE" .. L["ashenvaleOverlayText"],
+			fontSize = "medium",
+			order = 27,
+		};
+		NWB.options.args["showAshenvaleOverlay"] = {
+			type = "toggle",
+			name = L["showAshenvaleOverlayTitle"],
+			desc = L["showAshenvaleOverlayDesc"],
+			order = 28,
+			get = "getShowAshenvaleOverlay",
+			set = "setShowAshenvaleOverlay",
+		};
+		NWB.options.args["lockAshenvaleOverlay"] = {
+			type = "toggle",
+			name = L["lockAshenvaleOverlayTitle"],
+			desc = L["lockAshenvaleOverlayDesc"],
+			order = 29,
+			get = "getLockAshenvaleOverlay",
+			set = "setLockAshenvaleOverlay",
+		};
+		NWB.options.args["ashenvaleOverlayScale"] = {
+			type = "range",
+			name = L["ashenvaleOverlayScaleTitle"],
+			desc = L["ashenvaleOverlayScaleDesc"],
+			order = 30,
+			get = "getAshenvaleOverlayScale",
+			set = "setAshenvaleOverlayScale",
+			min = 0.3,
+			max = 2,
+			softMin = 0.3,
+			softMax = 2,
+			step = 0.1,
+			width = 1.2,
+		};
+		NWB.options.args["ashenvaleOverlayFont"] = {
+			type = "select",
+			name = L["ashenvaleOverlayFontTitle"],
+			desc = L["ashenvaleOverlayFontDesc"],
+			values = NWB.LSM:HashTable("font"),
+			dialogControl = "LSM30_Font",
+			order = 31,
+			get = "getAshenvaleOverlayFont",
+			set = "setAshenvaleOverlayFont",
+		};
+		NWB.options.args["layersNoteText"] = {
+			type = "description",
+			name = "|cFF9CD6DE" .. L["layersNoteText"],
+			fontSize = "medium",
+			order = 32,
 		};
 	end
 end
@@ -1667,9 +1809,9 @@ NWB.optionDefaults = {
 		copyFormatDiscord = false,
 		trimDataBelowLevel = 1,
 		showUnbuffedAlts = false,
-		timerWindowWidth = 450,
-		timerWindowHeight = 300,
-		buffWindowWidth = 475,
+		timerWindowWidth = 525,
+		timerWindowHeight = 400,
+		buffWindowWidth = 550,
 		buffWindowHeight = 400,
 		ignoreKillData = false,
 		noOverwrite = false,
@@ -1709,7 +1851,9 @@ NWB.optionDefaults = {
 		showShatWorldmapMarkersTerok = true,
 		hideMinimapBuffTimers = false,
 		disableBuffTimersMaxBuffLevel = true,
-		
+		minimapLayerFont = "NWB Default",
+		minimapLayerFontSize = 10,
+		minimapLayerScale = 1,
 		
 		--TBC options
 		disableSoundsAboveMaxBuffLevel = true,
@@ -1724,6 +1868,17 @@ NWB.optionDefaults = {
 		disableLogonAllLevels = false,
 		guildTerok10 = 1,
 		showExpiredTimersTerok = true,
+		
+		
+		--SoD options.
+		disableOnlyNefRendBelowMaxLevel = true,
+		disableOnlyNefRendBelowMaxLevelNum = 60,
+		soundsBlackfathomBoon = "NWB - Zelda",
+		soundsAshenvaleStartsSoon = "None",
+		showAshenvaleOverlay = false,
+		lockAshenvaleOverlay = false,
+		ashenvaleOverlayScale = 1,
+		ashenvaleOverlayFont = "NWB Default",
 	},
 };
 
@@ -1818,6 +1973,9 @@ function NWB:buildRealmFactionData()
 	if (not self.db.global[NWB.realm][NWB.faction].dmfBuffSettings) then
 		self.db.global[NWB.realm][NWB.faction].dmfBuffSettings = {};
 	end
+	if (not self.db.global.versions) then
+		self.db.global.versions = {};
+	end
 	local localizedClass, englishClass = UnitClass("player");
 	self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].localizedClass = localizedClass;
 	self.db.global[NWB.realm][NWB.faction].myChars[UnitName("player")].englishClass = englishClass;
@@ -1879,6 +2037,169 @@ function NWB:convertSettings()
 			NWB.db.global.disableAllGuildMsgs = 0;
 		end
 		NWB.db.global.convertSettings = false;
+	end
+end
+
+local linesVersion, newVersionFrame;
+local function loadNewVersionFrame()
+	if (not newVersionFrame) then
+		local frame = CreateFrame("Frame", "NWB_NewVersionFrame", UIParent, "BackdropTemplate");
+		frame.scrollFrame = CreateFrame("ScrollFrame", "$parentScrollFrame", frame, "UIPanelScrollFrameTemplate");
+		--frame.scrollFrame:SetAllPoints();
+		frame.scrollChild = CreateFrame("Frame", "$parentScrollChild", frame.scrollFrame);
+		frame.scrollFrame:SetScrollChild(frame.scrollChild);
+		--frame.scrollChild:SetWidth(frame:GetWidth() - 30);
+		frame.scrollChild:SetAllPoints();
+		frame.scrollChild:SetPoint("RIGHT", -40, 0);
+		frame.scrollChild:SetPoint("TOP", 0, -20);
+		frame.scrollChild:SetHeight(1);
+		frame.scrollChild:SetScript("OnSizeChanged", function(self,event)
+			frame.scrollChild:SetWidth(self:GetWidth())
+		end)
+		frame.scrollFrame:SetPoint("TOPLEFT", frame, "TOPLEFT", 0, -8);
+		frame.scrollFrame:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, 8);
+		
+		frame:SetBackdrop({
+			bgFile = "Interface\\Buttons\\WHITE8x8",
+			insets = {top = 4, left = 4, bottom = 4, right = 4},
+			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+			tileEdge = true,
+			edgeSize = 16,
+		});
+		frame:SetBackdropColor(0, 0, 0, 0.9);
+		frame:SetBackdropBorderColor(1, 1, 1, 0.7);
+		frame.scrollFrame.ScrollBar:ClearAllPoints();
+		frame.scrollFrame.ScrollBar:SetPoint("TOPRIGHT", -5, -(frame.scrollFrame.ScrollBar.ScrollDownButton:GetHeight()) + 1);
+		frame.scrollFrame.ScrollBar:SetPoint("BOTTOMRIGHT", -5, frame.scrollFrame.ScrollBar.ScrollUpButton:GetHeight());
+		frame:SetToplevel(true);
+		frame:SetMovable(true);
+		frame:EnableMouse(true);
+		frame:SetUserPlaced(false);
+		frame:SetPoint("CENTER", UIParent, 0, 100);
+		frame:SetSize(600, 670);
+		frame:SetFrameStrata("HIGH");
+		frame:SetFrameLevel(140);
+		frame:SetScript("OnMouseDown", function(self, button)
+			if (button == "LeftButton" and not self.isMoving) then
+				self:StartMoving();
+				self.isMoving = true;
+				if (notSpecialFrames) then
+					self:SetUserPlaced(false);
+				end
+			end
+		end)
+		frame:SetScript("OnMouseUp", function(self, button)
+			if (button == "LeftButton" and self.isMoving) then
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			end
+		end)
+		frame:SetScript("OnHide", function(self)
+			if (self.isMoving) then
+				self:StopMovingOrSizing();
+				self.isMoving = false;
+			end
+		end)
+		frame.scrollChild:EnableMouse(true);
+		--frame.scrollChild:SetHyperlinksEnabled(true);
+		--frame.scrollChild:SetScript("OnHyperlinkClick", ChatFrame_OnHyperlinkShow);
+		--Set all fonts in the module using the frame.
+		--Header string.
+		frame.scrollChild.fs = frame.scrollChild:CreateFontString("NWB_NewVersionFrameFS", "ARTWORK");
+		frame.scrollChild.fs:SetPoint("TOP", 0, -0);
+		--The main display string.
+		frame.scrollChild.fs2 = frame.scrollChild:CreateFontString("NWB_NewVersionFrameFS2", "ARTWORK");
+		frame.scrollChild.fs2:SetPoint("TOPLEFT", 10, -24);
+		frame.scrollChild.fs2:SetJustifyH("LEFT");
+		--Bottom string.
+		frame.scrollChild.fs3 = frame.scrollChild:CreateFontString("NWB_NewVersionFrameFS3", "ARTWORK");
+		frame.scrollChild.fs3:SetPoint("BOTTOM", 0, -20);
+		--frame.scrollChild.fs3:SetFont(NWB.regionFont, 14);
+		--Top right X close button.
+		frame.close = CreateFrame("Button", "NWB_NewVersionFrameClose", frame, "UIPanelCloseButton");
+		frame.close:SetPoint("TOPRIGHT", -22, -4);
+		frame.close:SetWidth(20);
+		frame.close:SetHeight(20);
+		frame.close:SetScript("OnClick", function(self, arg)
+			frame:Hide();
+		end)
+		frame.close:GetNormalTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+		frame.close:GetHighlightTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+		frame.close:GetPushedTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+		frame.close:GetDisabledTexture():SetTexCoord(0.1875, 0.8125, 0.1875, 0.8125);
+		frame:SetFrameStrata("HIGH");
+		frame:SetClampedToScreen(true);
+		frame.scrollChild.fs:SetFont(NWB.regionFont, 14);
+		frame.scrollChild.fs2:SetFontObject(Game15Font);
+		frame.scrollChild.fs3:SetFont(NWB.regionFont, 14);
+		frame.scrollChild.fs:ClearAllPoints();
+		frame.scrollChild.fs2:ClearAllPoints();
+		frame.scrollChild.fs3:ClearAllPoints();
+		frame.scrollChild.fs:SetPoint("TOP", 0, -5);
+		frame.scrollChild.fs2:SetPoint("TOP", 0, -25);
+		frame.scrollChild.fs3:SetPoint("TOPLEFT", 10, -48);
+		frame.scrollChild.fs3:SetPoint("RIGHT", 0, -48);
+		frame.scrollChild.fs3:SetJustifyH("LEFT");
+		frame.scrollChild.fs3:CanWordWrap(true);
+		frame.scrollChild.fs3:CanNonSpaceWrap(true);
+		frame.scrollChild.fs3:SetNonSpaceWrap(true);
+		frame.scrollChild.fs3:SetWordWrap(true);
+		frame.scrollChild.fs:SetText("|TInterface\\Icons\\inv_misc_head_dragon_01:14:14:0:0|t  |cFFFFFF00Nova World Buffs");
+		frame.scrollChild.fs2:SetText("|cFFFFFF00New in version|r |cFFFF6900" .. string.format("%.2f", NWB.version));
+		frame:Hide();
+		newVersionFrame = frame;
+	end
+	linesVersion = 2.66;
+	local lines = {
+		"-Added DMF map markers back to SoD with the new 2 week rotation, using original classic spawn times so please tell me if it isn't right for your region.",
+		"-Added tracking of offline time in the /buffs window, if DMF is up and an alt is on buff cooldown there will be text beside the name showing how long it's been offline.",
+		"-If an alt has been offline for 8+ hours in a rested area you will be told at logon that the DMF cooldown has reset.",
+		"-Added font options for the Ashenvale overlay.",
+		"-Added font and text size options for the minimap layer text under General Options (keep in mind some fonts won't fit properly in the small area).",
+		"-Increased the main timers window and buffs window default sizes a bit (reminder both these windows can be resized in options).",
+		"-Increased cooldown between guild msgs for ashenvale starts soon to 20mins (since now it's get stuck at 99% and doesn't actually start soon...)",
+		"-Increased cooldown between blackfathom boon dropped sound msgs to 5mins, it drops so often now and the sound is kinda spammy.",
+		"-Added esES Spanish and esMX Spanish (Latin America) locale translations thanks to Spanish user Cruzluz.",
+	};
+	local text = "";
+	--Seperator lines couldn't be used because the wow client won't render 1 pixel frames if they are in certain posotions.
+	--Not sure what causes some frame lines to render thicker than others and some not render at all.
+	local separatorText = "-";
+	while (newVersionFrame.scrollFrame:GetWidth() - 55 > newVersionFrame.scrollChild.fs3:GetStringWidth()) do
+		separatorText = separatorText .. "-";
+		newVersionFrame.scrollChild.fs3:SetText(separatorText);
+	end
+	text = text .. separatorText .. "\n";
+	if (lines) then
+		for k, v in ipairs(lines) do
+			if (k % 2 == 0) then
+				text = text .. "|cFFFFFFFF" .. v .. "|r\n";
+			else
+				text = text .. "|cFF9CD6DE" .. v .. "|r\n";
+			end
+			--text = text .. separatorText .. "\n";
+			newVersionFrame.scrollChild.fs3:SetText(text);
+		end
+	end
+	newVersionFrame:SetSize(600, 50 + newVersionFrame.scrollChild.fs:GetStringHeight() + newVersionFrame.scrollChild.fs2:GetStringHeight() + newVersionFrame.scrollChild.fs3:GetStringHeight());
+	if (text ~= "" and linesVersion == NWB.version) then
+		newVersionFrame.scrollChild.fs3:SetText(text);
+		newVersionFrame:Show();
+	end
+end
+
+function NWB:checkNewVersion()
+	--loadNewVersionFrame();
+	if (NWB.version and NWB.version ~= 9999) then
+		if (not NWB.db.global.versions[NWB.version]) then
+			if (NWB.isSOD) then
+				loadNewVersionFrame();
+			end
+			--Wipe old data.
+			NWB.db.global.versions = {};
+			--Set this version has been loaded before.
+			NWB.db.global.versions[NWB.version] = GetServerTime();
+		end
 	end
 end
 
@@ -3148,7 +3469,7 @@ NWBDMFListDragFrame.tooltip:SetAlpha(.8);
 NWBDMFListDragFrame.tooltip.fs = NWBDMFListDragFrame.tooltip:CreateFontString("NWBDMFListDragTooltipFS", "ARTWORK");
 NWBDMFListDragFrame.tooltip.fs:SetPoint("CENTER", 0, 0.5);
 NWBDMFListDragFrame.tooltip.fs:SetFont(NWB.regionFont, 12);
-NWBDMFListDragFrame.tooltip.fs:SetText("Hold to drag");
+NWBDMFListDragFrame.tooltip.fs:SetText(L["Hold to drag"]);
 NWBDMFListDragFrame.tooltip:SetWidth(NWBDMFListDragFrame.tooltip.fs:GetStringWidth() + 16);
 NWBDMFListDragFrame.tooltip:SetHeight(NWBDMFListDragFrame.tooltip.fs:GetStringHeight() + 10);
 NWBDMFListDragFrame:SetScript("OnEnter", function(self)
@@ -3238,8 +3559,8 @@ function NWB:recalcDMFListFrame()
 	NWBDMFListFrame.fs:SetText(NWB.prefixColor .. L["autoDmfBuffCharsText"]);
 	NWBDMFListFrame.EditBox:SetText("\n\n");
 	if (not next(NWB.data.dmfBuffSettings)) then
-		NWBDMFListFrame.EditBox:Insert("|cffDEDE42No character specific buffs set yet.\n\n");
-		NWBDMFListFrame.EditBox:Insert("|cffDEDE42All characters are using default |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.\n");
+		NWBDMFListFrame.EditBox:Insert("|cffDEDE42" .. L["No character specific buffs set yet."] .. "\n\n");
+		NWBDMFListFrame.EditBox:Insert("|cffDEDE42" .. L["All characters are using default"] .. " |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.\n");
 	else
 		local text = "";
 		if (NWB.data.dmfBuffSettings and next(NWB.data.dmfBuffSettings)) then
@@ -3250,11 +3571,11 @@ function NWB:recalcDMFListFrame()
 				end
 				text = text .. "|c" .. classColorHex .. k .. " |cFFFFFFFF->|cFF9CD6DE " .. buffs[v] .. "\n";
 			end
-			text = text .. "\n|cffDEDE42All other alts using default |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.";
+			text = text .. "\n|cffDEDE42" .. L["All other alts using default"] .. ": |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.";
 			NWBDMFListFrame.EditBox:Insert(text);
 		else
-			NWBDMFListFrame.EditBox:Insert("|cffDEDE42No character specific buffs set yet.\n\n");
-			NWBDMFListFrame.EditBox:Insert("|cffDEDE42All characters are using default |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.\n");
+			NWBDMFListFrame.EditBox:Insert("|cffDEDE42" .. L["No character specific buffs set yet."] .. "\n\n");
+			NWBDMFListFrame.EditBox:Insert("|cffDEDE42" .. L["All characters are using default"] .. " |cFF9CD6DE" .. buffs[NWB.db.global.autoDmfBuffType] .. "|cffDEDE42.\n");
 		end
 	end
 end
@@ -3704,4 +4025,108 @@ end
 
 function NWB:getDisableBuffTimersMaxBuffLevel(info)
 	return self.db.global.disableBuffTimersMaxBuffLevel;
+end
+
+--SoD.
+function NWB:setDisableOnlyNefRendBelowMaxLevel(info, value)
+	self.db.global.disableOnlyNefRendBelowMaxLevel = value;
+	NWB:refreshAshenvaleMarkers();
+end
+
+function NWB:getDisableOnlyNefRendBelowMaxLevel(info)
+	return self.db.global.disableOnlyNefRendBelowMaxLevel;
+end
+
+function NWB:setDisableOnlyNefRendBelowMaxLevelNum(info, value)
+	self.db.global.disableOnlyNefRendBelowMaxLevelNum = value;
+	NWB:refreshAshenvaleMarkers();
+end
+
+function NWB:getDisableOnlyNefRendBelowMaxLevelNum(info)
+	return self.db.global.disableOnlyNefRendBelowMaxLevelNum;
+end
+
+function NWB:setSoundsBlackfathomBoon(info, value)
+	self.db.global.soundsBlackfathomBoon = value;
+	local soundFile = NWB.LSM:Fetch("sound", value);
+	PlaySoundFile(soundFile);
+end
+
+function NWB:getSoundsBlackfathomBoon(info)
+	return self.db.global.soundsBlackfathomBoon;
+end
+
+function NWB:setSoundsAshenvaleStartsSoon(info, value)
+	self.db.global.soundsAshenvaleStartsSoon = value;
+	local soundFile = NWB.LSM:Fetch("sound", value);
+	PlaySoundFile(soundFile);
+end
+
+function NWB:getSoundsAshenvaleStartsSoon(info)
+	return self.db.global.soundsAshenvaleStartsSoon;
+end
+
+function NWB:setShowAshenvaleOverlay(info, value)
+	self.db.global.showAshenvaleOverlay = value;
+	NWB:setAshenvaleOverlayState();
+end
+
+function NWB:getShowAshenvaleOverlay(info)
+	return self.db.global.showAshenvaleOverlay;
+end
+
+function NWB:setLockAshenvaleOverlay(info, value)
+	self.db.global.lockAshenvaleOverlay = value;
+	NWB:setAshenvaleOverlayState();
+end
+
+function NWB:getLockAshenvaleOverlay(info)
+	return self.db.global.lockAshenvaleOverlay;
+end
+
+function NWB:setAshenvaleOverlayScale(info, value)
+	self.db.global.ashenvaleOverlayScale = value;
+	NWB:refreshAshenvaleOverlay();
+end
+
+function NWB:getAshenvaleOverlayScale(info)
+	return self.db.global.ashenvaleOverlayScale;
+end
+
+--Ashenvale overlay font.
+function NWB:setAshenvaleOverlayFont(info, value)
+	self.db.global.ashenvaleOverlayFont = value;
+	NWB:refreshAshenvaleOverlay();
+end
+
+function NWB:getAshenvaleOverlayFont(info)
+	return self.db.global.ashenvaleOverlayFont;
+end
+
+--Minimap layer display font.
+function NWB:setMinimapLayerFont(info, value)
+	self.db.global.minimapLayerFont = value;
+	NWB:refreshMinimapLayerFrame();
+end
+
+function NWB:getMinimapLayerFont(info)
+	return self.db.global.minimapLayerFont;
+end
+
+function NWB:setMinimapLayerFontSize(info, value)
+	self.db.global.minimapLayerFontSize = value;
+	NWB:refreshMinimapLayerFrame();
+end
+
+function NWB:getMinimapLayerFontSize(info)
+	return self.db.global.minimapLayerFontSize;
+end
+
+function NWB:setMinimapLayerScale(info, value)
+	self.db.global.minimapLayerScale = value;
+	NWB:refreshMinimapLayerFrame();
+end
+
+function NWB:getMinimapLayerScale(info)
+	return self.db.global.minimapLayerScale;
 end

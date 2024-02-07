@@ -511,7 +511,7 @@ do -- AB imptext action type
 		end
 		return L"Custom Macro", "", ico or "interface/icons/inv_misc_questionmark"
 	end
-	AB:RegisterActionType("imptext", createImpMacro, describeImpMacro)
+	AB:RegisterActionType("imptext", createImpMacro, describeImpMacro, 1)
 end
 do -- Editor UI
 	local multilineInput do

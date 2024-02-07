@@ -4,7 +4,8 @@ local IM = T.ActionBook:compatible("Imp", 1,0)
 assert(RW and IM, "Incompatible library bundle")
 
 local core, cenv = CreateFrame("Frame", nil, nil, "SecureHandlerBaseTemplate")
-core:Execute("qsState = newtable()")
+core:SetFrameRef('RW', RW:seclib())
+core:Execute("qsState, RW = newtable(), self:GetFrameRef('RW')")
 cenv = GetManagedEnvironment(core)
 core:SetAttribute("RunSlashCmd", [=[-- M6:qsequence-RunSlashCmd
 	local slash, clause, target = ...
@@ -21,7 +22,7 @@ core:SetAttribute("RunSlashCmd", [=[-- M6:qsequence-RunSlashCmd
 		end
 		nextCast, st[0] = st[ni], (ni % #st) + 1
 		if nextCast then
-			return (target and "/cast [@" .. target .. "] " or "/cast ") .. nextCast
+			return RW:RunAttribute("RunSlashCmd", "/cast", nextCast, target)
 		end
 	end
 ]=])

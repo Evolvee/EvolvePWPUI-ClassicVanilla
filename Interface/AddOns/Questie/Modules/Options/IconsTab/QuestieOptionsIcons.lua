@@ -282,13 +282,13 @@ function QuestieOptions.tabs.icons:Initialize()
                         desc = function() return l10n('When this is enabled, the locations of Season of Discovery Runes and Rune quests will be shown on the map/minimap.'); end,
                         width = 1.595,
                         disabled = function()
-                            if SeasonOfDiscovery.currentPhase == 1 then return true end;
                             return (not Questie.db.profile.enabled);
                             end,
                         get = function(info) return Questie.db.profile.showSoDRunes end,
                         set = function(info, value)
                             Questie.db.profile.showSoDRunes = value
                             QuestieQuest:ToggleNotes(value)
+                            QuestieQuest:SmoothReset()
                         end,
                     },
                     townsfolk_options = {

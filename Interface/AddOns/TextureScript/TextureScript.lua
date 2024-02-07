@@ -1,6 +1,5 @@
 --EVOLVE PWP UI
 
-local _G = getfenv(0)
 local CombatLogGetCurrentEventInfo = _G.CombatLogGetCurrentEventInfo
 local UnitGUID, UnitIsPlayer, UnitIsConnected, UnitClass, UnitClassification = _G.UnitGUID, _G.UnitIsPlayer, _G.UnitIsConnected, _G.UnitClass, _G.UnitClassification
 local UnitName = _G.UnitName
@@ -94,32 +93,6 @@ local function DarkenFrames(addon)
         if v then
             v:SetVertexColor(0.15, 0.15, 0.15)
         end
-    end
-
-    if addon == "Blizzard_RaidUI" then
-        print("hooking raid group frame update")
-        hooksecurefunc("RaidGroupFrame_Update", function()
-            local isRaid = IsInRaid();
-            local numRaidMembers = GetNumGroupMembers();
-
-            if not isRaid then
-                return
-            end
-            for i = 1, MAX_RAID_MEMBERS do
-                if isRaid and (i <= numRaidMembers) then
-                    local _, _, _, _, class, fileName, _, online, isDead = GetRaidRosterInfo(i);
-                    local color = (class == "Shaman") and { r = 0, g = 0.44, b = 0.87 } or RAID_CLASS_COLORS[fileName]
-                    if color and class and online and not isDead then
-                        local button = _G["RaidGroupButton" .. i]
-                        if button then
-                            button.subframes.name:SetTextColor(color.r, color.g, color.b)
-                            button.subframes.class.text:SetTextColor(color.r, color.g, color.b)
-                            button.subframes.level:SetTextColor(color.r, color.g, color.b)
-                        end
-                    end
-                end
-            end
-        end)
     end
 end
 
@@ -1222,11 +1195,11 @@ local function HandleNewNameplate(nameplate, unit)
     -- the rest of nameplate stuff
     if name:match("Totem") and not name:match("Tremor Totem") and (UnitCreatureType(unit) == "Totem") then
         HideNameplate(nameplate)
-        -- elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
-        --         or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
-        --     HideNameplate(nameplate)
-        -- elseif ShrinkPlates[name] then
-        --     nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
+         elseif (HideNameplateUnits[name] or HideNameplateUnits[npcId])
+                 or (creatureType == "Pet" and not ShowNameplatePetIds[npcId]) then
+             HideNameplate(nameplate)
+         elseif ShrinkPlates[name] then
+             nameplate.UnitFrame:SetScale(0.6) -- smaller snake trap plates
     elseif name == "Tremor Totem" then
         local texture = (nameplate.UnitFrame.healthBar.border:GetRegions())
         local guid = UnitGUID(unit)
@@ -1720,7 +1693,7 @@ local function PlateNames(frame)
         elseif npcId == "417" then
             frame.name:SetText("Felhunter")
         elseif npcId == "185317" then
-            frame.name:SetText("Fagpet") -- Incubus?
+            frame.name:SetText("Succubus") -- Incubus?
         end
 
         if UnitIsPlayer(frame.unit) then
@@ -1829,13 +1802,41 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
         SetSmooth() -- SmoothBar init
         hooksecurefunc("CompactUnitFrame_UpdateName", PlateNames) -- has to be called after event
         UpdateBinds(self)
+
         self:UnregisterEvent("PLAYER_LOGIN")
     elseif event == "UPDATE_BINDINGS" then
         UpdateBinds(self)
     elseif event == "ADDON_LOADED" then
         local addon = ...
         DarkenFrames(addon)
-        self:UnregisterEvent("ADDON_LOADED")
+        if not RaidGroupFrame_Update then
+            LoadAddOn("Blizzard_RaidUI")
+        else
+            if addon == "Blizzard_RaidUI" then
+                hooksecurefunc("RaidGroupFrame_Update", function()
+                    local isRaid = IsInRaid();
+                    local numRaidMembers = GetNumGroupMembers();
+
+                    if not isRaid then
+                        return
+                    end
+                    for i = 1, MAX_RAID_MEMBERS do
+                        if isRaid and (i <= numRaidMembers) then
+                            local _, _, _, _, class, fileName, _, online, isDead = GetRaidRosterInfo(i);
+                            local color = (class == "Shaman") and { r = 0, g = 0.44, b = 0.87 } or RAID_CLASS_COLORS[fileName]
+                            if color and class and online and not isDead then
+                                local button = _G["RaidGroupButton" .. i]
+                                if button then
+                                    button.subframes.name:SetTextColor(color.r, color.g, color.b)
+                                    button.subframes.class.text:SetTextColor(color.r, color.g, color.b)
+                                    button.subframes.level:SetTextColor(color.r, color.g, color.b)
+                                end
+                            end
+                        end
+                    end
+                end)
+            end
+        end
     elseif event == "PLAYER_ENTERING_WORLD" then
         -- clear the totems on loading screens
         tremorTotems = {}
@@ -1850,7 +1851,7 @@ supaFrame:SetScript("OnEvent", function(self, event, ...)
     end
 end)
 
--- support for shaman colouring for other addons 
+-- support for shaman colouring for other addons
 FIXED_CLASS_COLORS = {
     ["HUNTER"] = CreateColor(0.67, 0.83, 0.45),
     ["WARLOCK"] = CreateColor(0.53, 0.53, 0.93),
@@ -1863,6 +1864,10 @@ FIXED_CLASS_COLORS = {
     ["WARRIOR"] = CreateColor(0.78, 0.61, 0.43)
 };
 
+for k, v in pairs(FIXED_CLASS_COLORS) do
+    v.colorStr = v:GenerateHexColor();
+end
+
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
 -- ^^ current value: 130 (100+ latency)
 
@@ -1872,6 +1877,7 @@ FIXED_CLASS_COLORS = {
 
 -- Disable the ability to scroll chat with mouse wheel (fucks binds with the mouse-wheel-up/down): /console chatMouseScroll 0
 
+-- SOD: possible "nameplate extender" hackfix - increase name visibility atleast: /console WorldTextMinSize 5
 
 --Login message informing all scripts of this file were properly executed
 ChatFrame1:AddMessage("EvolvePWPUI-ClassicVanilla v0.1 Loaded successfully!", 255, 255, 0)

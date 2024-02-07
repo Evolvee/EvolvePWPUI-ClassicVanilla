@@ -5,7 +5,7 @@ local function load(ab)
 		T.ActionBook, T.SkipLocalActionBook = ab, true
 	end
 end
-local s = IsAddOnLoaded("OPie") and GetAddOnMetadata("OPie", "X-M6-AB")
+local s = IsAddOnLoaded("OPie") and C_AddOns.GetAddOnMetadata("OPie", "X-M6-AB")
 if s then
 	pcall(function()
 		local t = _G

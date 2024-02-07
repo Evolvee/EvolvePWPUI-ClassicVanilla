@@ -72,12 +72,25 @@ function QuestieTBCObjectFixes:Load()
             [objectKeys.name] = "Ethereum Prison",
             [objectKeys.spawns] = {[zoneIDs.NETHERSTORM] = {{54.52,39.93},{54.53,40.28},{54.28,40.29},{54.53,40.6},{54.77,40.28},{54.76,39.91},{54.46,46.37},{54.82,46.79},{54.63,46.76},{54.45,46.73},{54.73,46.57},{54.54,46.55},{54.38,46.53},{54.64,46.39}}},
         },
+        [185001] = {
+            [objectKeys.name] = "Ethereum Stasis Chamber",
+            [objectKeys.spawns] = {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{52.5,20.43},{52.68,20.25},{52.87,20.08},{49.62,21.42},{49.39,21.3},{49.15,21.13},{49.63,15.76},{49.48,15.54}}},
+            [objectKeys.zoneID] = zoneIDs.BLADES_EDGE_MOUNTAINS,
+        },
+        [185002] = {
+            [objectKeys.name] = "Mana-Tombs Stasis Chamber",
+            [objectKeys.spawns] = {[zoneIDs.MANA_TOMBS] = {{-1,-1}}},
+            [objectKeys.zoneID] = zoneIDs.MANA_TOMBS,
+        },
         [185015] = {
             [objectKeys.spawns] = {[zoneIDs.THE_MECHANAR]={{-1,-1}}},
             [objectKeys.zoneID] = zoneIDs.THE_MECHANAR,
         },
         [185033] = {
             [objectKeys.spawns] = {[zoneIDs.BLADES_EDGE_MOUNTAINS] = {{66.39,44.08}}},
+        },
+        [185144] = {
+            [objectKeys.name] = "Bleeding Hollow Forge",
         },
         [185200] = {
             [objectKeys.spawns] = {[zoneIDs.TEROKKAR_FOREST] = {{50.12,19.37}}},
@@ -685,6 +698,11 @@ function QuestieTBCObjectFixes:LoadFactionFixes()
                 [zoneIDs.EVERSONG_WOODS]={{47.58,46.24}},
             },
         },
+        [187236] = {
+            [objectKeys.spawns] = {
+                [zoneIDs.ORGRIMMAR]={{52.43,69.27}},
+            },
+        },
     }
 
     local objectFixesAlliance = {
@@ -693,6 +711,11 @@ function QuestieTBCObjectFixes:LoadFactionFixes()
                 [zoneIDs.ELWYNN_FOREST]={{42.5,65.8}},
                 [zoneIDs.DUN_MOROGH]={{46.4,52.2}},
                 [zoneIDs.AZUREMYST_ISLE]={{48.99,51.02}},
+            },
+        },
+        [187236] = {
+            [objectKeys.spawns] = {
+                [zoneIDs.IRONFORGE]={{33.71,65.85}},
             },
         },
     }

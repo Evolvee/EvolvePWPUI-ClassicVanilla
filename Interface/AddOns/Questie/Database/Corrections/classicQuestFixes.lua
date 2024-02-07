@@ -15,7 +15,7 @@ local l10n = QuestieLoader:ImportModule("l10n")
 -- Further information on how to use this can be found at the wiki
 -- https://github.com/Questie/Questie/wiki/Corrections
 
-function QuestieQuestFixes:Load()
+function QuestieQuestFixes:LoadMissingQuests()
     QuestieDB.questData[5640] = {} -- Desperate Prayer
     QuestieDB.questData[5678] = {} -- Arcane Feedback
 
@@ -30,12 +30,15 @@ function QuestieQuestFixes:Load()
     QuestieDB.questData[65603] = {} -- The Binding
     QuestieDB.questData[65604] = {} -- The Binding
     QuestieDB.questData[65610] = {} -- Wish You Were Here
+end
 
+function QuestieQuestFixes:Load()
     local questKeys = QuestieDB.questKeys
     local zoneIDs = ZoneDB.zoneIDs
     local raceIDs = QuestieDB.raceKeys
     local classIDs = QuestieDB.classKeys
     local sortKeys = QuestieDB.sortKeys
+    local factionIDs = QuestieDB.factionIDs
     local profKeys = QuestieProfessions.professionKeys
     local specKeys = QuestieProfessions.specializationKeys
 
@@ -74,6 +77,9 @@ function QuestieQuestFixes:Load()
         [29] = {
             [questKeys.triggerEnd] = {"Complete the Trial of the Lake.", {[zoneIDs.MOONGLADE]={{36.17,41.67}}}},
         },
+        [30] = {
+            [questKeys.extraObjectives] = {{{[zoneIDs.MOONGLADE]={{36.5,41.7}}}, Questie.ICON_TYPE_EVENT, l10n("Combine the Pendant halves at the Shrine of Remulos.")}},
+        },
         [33] = {
             [questKeys.preQuestSingle] = {},
         },
@@ -92,6 +98,9 @@ function QuestieQuestFixes:Load()
         [117] = {
             [questKeys.name] = "Thunderbrew",
         },
+        [136] = {
+            [questKeys.startedBy] = {{513,515,126,171,456,127,517,458,391},nil,{1357}},
+        },
         [148] = {
             [questKeys.preQuestSingle] = {}, -- #1173
         },
@@ -106,6 +115,10 @@ function QuestieQuestFixes:Load()
         },
         [165] = {
             [questKeys.exclusiveTo] = {148}, --#1173
+        },
+        [178] = {
+            [questKeys.startedBy] = {{429,431,432,433,434,568,579,703,947},nil,{1962}},
+            [questKeys.objectivesText] = {"Bring the Faded Shadowhide Pendant to Theocritus the Mage. NOTE: This is a very rare drop!"},
         },
         [201] = {
             [questKeys.triggerEnd] = {"Locate the hunters' camp", {[zoneIDs.STRANGLETHORN_VALE]={{35.65,10.59}}}},
@@ -127,6 +140,9 @@ function QuestieQuestFixes:Load()
             [questKeys.specialFlags] = 1,
             [questKeys.exclusiveTo] = {253}, --#2173
             [questKeys.preQuestSingle] = {252},
+        },
+        [272] = {
+            [questKeys.extraObjectives] = {{{[zoneIDs.MOONGLADE]={{36.5,41.7}}}, Questie.ICON_TYPE_EVENT, l10n("Combine the Pendant halves at the Shrine of Remulos.")}},
         },
         [273] = {
             [questKeys.triggerEnd] = {"Find Huldar, Miran, and Saean",{[zoneIDs.LOCH_MODAN]={{51.16, 68.96}}}},
@@ -563,7 +579,7 @@ function QuestieQuestFixes:Load()
             [questKeys.parentQuest] = 950, -- workaround, can't mimic ingame 100%
         },
         [968] = {
-            [questKeys.startedBy] = {{2338,2339},nil,{5352}}, -- temp correction for item start
+            [questKeys.startedBy] = {{2338,2339},nil,{5352}},
         },
         [976] = {
             [questKeys.triggerEnd] = {"Protect Feero Ironhand", {[zoneIDs.DARKSHORE]={{43.54,94.39}}}},
@@ -774,6 +790,7 @@ function QuestieQuestFixes:Load()
         },
         [1361] = {
             [questKeys.exclusiveTo] = {1362},
+            [questKeys.startedBy] = {{2229,4485}},
         },
         [1364] = {
             [questKeys.preQuestSingle] = {1363}, -- #1674
@@ -828,6 +845,7 @@ function QuestieQuestFixes:Load()
             [questKeys.triggerEnd] = {"Rescue Dalinda Malem", {[zoneIDs.DESOLACE]={{58.27,30.91}}}},
         },
         [1442] = {
+            [questKeys.specialFlags] = 1,
             [questKeys.parentQuest] = 1654,
         },
         [1447] = {
@@ -859,6 +877,9 @@ function QuestieQuestFixes:Load()
         },
         [1479] = {
             [questKeys.triggerEnd] = {"Go to the bank in Darnassus, otherwise known as the Bough of the Eternals.", {[zoneIDs.DARNASSUS]={{41.31,43.54}}}},
+        },
+        [1480] = {
+            [questKeys.startedBy] = {{4663,4664,4665,4666,4667,4668,4705,13019},nil,{20310}},
         },
         [1483] = {
             [questKeys.exclusiveTo] = {1093},
@@ -924,14 +945,19 @@ function QuestieQuestFixes:Load()
         [1599] = {
             [questKeys.exclusiveTo] = {1598}, -- #999
         },
+        [1618] = {
+            [questKeys.requiredSkill] = {profKeys.BLACKSMITHING, 60},
+        },
         [1638] = {
             [questKeys.exclusiveTo] = {1666,1678,1680,1683,1686},
         },
         [1639] = {
-            [questKeys.exclusiveTo] = {1678},
+            [questKeys.exclusiveTo] = {1678,1683},
+            [questKeys.preQuestSingle] = {1638,1679,1684},
         },
         [1640] = {
             [questKeys.triggerEnd] = {"Beat Bartleby", {[zoneIDs.STORMWIND_CITY]={{73.7,36.85}}}},
+            [questKeys.preQuestSingle] = {1638,1679,1684},
         },
         [1641] = { -- This is repeatable giving an item starting 1642
             [questKeys.exclusiveTo] = {1642,1646,2997,2998,2999,3000,3681},
@@ -952,33 +978,27 @@ function QuestieQuestFixes:Load()
             [questKeys.childQuests] = {1442,1655},
         },
         [1655] = {
+            [questKeys.specialFlags] = 1,
             [questKeys.parentQuest] = 1654,
         },
         [1661] = {
             [questKeys.exclusiveTo] = {4485,4486},
         },
-        [1666] = {
-            [questKeys.preQuestSingle] = {1639,1678,1683},
-        },
         [1678] = {
-            [questKeys.exclusiveTo] = {1639},
+            [questKeys.preQuestSingle] = {1638,1679,1684},
         },
         [1679] = {
             [questKeys.exclusiveTo] = {1639,1666,1680,1683,1686}, -- #1724
         },
-        [1680] = {
-            [questKeys.preQuestSingle] = {1639,1678,1683},
-            [questKeys.exclusiveTo] = {1681}, -- #1724
-        },
         [1681] = {
-            [questKeys.preQuestSingle] = {},
+            [questKeys.preQuestSingle] = {1678},
+        },
+        [1683] = {
+            [questKeys.preQuestSingle] = {1638,1679,1684},
         },
         [1684] = {
             [questKeys.startedBy] = {{2151,3598,3657},nil,nil},
             [questKeys.exclusiveTo] = {1639,1666,1678,1686,1680},
-        },
-        [1686] = {
-            [questKeys.preQuestSingle] = {1639,1678,1683},
         },
         [1687] = {
             [questKeys.triggerEnd] = {"Go to the Westfall Lighthouse.", {[zoneIDs.WESTFALL]={{30.41,85.61}}}},
@@ -1126,6 +1146,9 @@ function QuestieQuestFixes:Load()
         [2300] = {
             [questKeys.preQuestSingle] = {}, -- #1825
             [questKeys.exclusiveTo] = {2281}, -- #1817
+        },
+        [2318] = {
+            [questKeys.requiredRaces] = raceIDs.ALL_HORDE,
         },
         [2358] = {
             [questKeys.requiredRaces] = raceIDs.ALL_ALLIANCE,
@@ -1566,6 +1589,9 @@ function QuestieQuestFixes:Load()
         [4361] = {
             [questKeys.preQuestSingle] = {4342},
         },
+        [4451] = {
+            [questKeys.startedBy] = {{8566,5840,5844,5846,15692,8504},nil,{11818}},
+        },
         [4485] = {
             [questKeys.startedBy] = {{6179},nil,nil},
             [questKeys.exclusiveTo] = {1661,4486},
@@ -1644,6 +1670,7 @@ function QuestieQuestFixes:Load()
             [questKeys.finishedBy] = {{10299}},
         },
         [4743] = {
+            [questKeys.requiredSourceItems] = {12339,12300,12323},
             [questKeys.startedBy] = {{10299}},
             [questKeys.finishedBy] = {{10299}},
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_OBJECT, l10n("Beat Emberstrife till his will is broken, then place the Unforged Seal of Ascension before him and use the Orb of Draconic Energy."), 0, {{"monster", 10321}}},
@@ -1959,7 +1986,7 @@ function QuestieQuestFixes:Load()
         },
         [5678] = {
             [questKeys.name] = "Arcane Feedback",
-            [questKeys.startedBy] = {{376,5489,11406},nil,nil},
+            [questKeys.startedBy] = {{11401},nil,nil},
             [questKeys.finishedBy] = {{376},nil},
             [questKeys.requiredLevel] = 20,
             [questKeys.questLevel] = 20,
@@ -2078,12 +2105,11 @@ function QuestieQuestFixes:Load()
         [5928] = {
             [questKeys.startedBy] = {{3064},nil,nil},
         },
-        -----------------------
         [5929] = {
-            [questKeys.triggerEnd] = {"Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear.", {[zoneIDs.MOONGLADE]={{39.25,27.73}}}},
+            [questKeys.objectives] = {{{11956,"Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear."}}},
         },
         [5930] = {
-            [questKeys.triggerEnd] = {"Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear.", {[zoneIDs.MOONGLADE]={{39.25,27.73}}}},
+            [questKeys.objectives] = {{{11956,"Seek out the Great Bear Spirit and learn what it has to share with you about the nature of the bear."}}},
         },
         [5931] = {
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_TALK, l10n("Talk to Silva Fil'naveth to fly back to Darnassus"), 0, {{"monster", 11800}}}},
@@ -2239,7 +2265,7 @@ function QuestieQuestFixes:Load()
         },
         [6382] = {
             [questKeys.preQuestSingle] = {882},
-            [questKeys.exclusiveTo] = {235,742},
+            [questKeys.exclusiveTo] = {235,742,6383},
         },
         [6383] = {
             [questKeys.preQuestSingle] = {},
@@ -2356,12 +2382,18 @@ function QuestieQuestFixes:Load()
             [questKeys.exclusiveTo] = {7021,7024},
             [questKeys.nextQuestInChain] = 6962,
         },
+        [6962] = {
+            [questKeys.objectivesText] = {"Bring 5 Gingerbread Cookies and an Ice Cold Milk to Greatfather Winter in Orgrimmar."},
+        },
         [6981] = {
             [questKeys.startedBy] = {{3654},nil,{10441}},
             [questKeys.objectives] = {{{3442,"Speak with someone in Ratchet about the Glowing Shard"}},nil,nil,nil},
         },
         [6982] = {
             [questKeys.questLevel] = 55,
+        },
+        [6984] = {
+            [questKeys.name] = "A Smokywood Pastures' Thank You!",
         },
         [6985] = {
             [questKeys.questLevel] = 55,
@@ -2397,6 +2429,15 @@ function QuestieQuestFixes:Load()
             [questKeys.triggerEnd] = {"Ram Collared and Returned", {
                 [zoneIDs.ALTERAC_MOUNTAINS]={{34.58,74.94}}},
             },
+        },
+        [7042] = {
+            [questKeys.finishedBy] = {{13636}},
+        },
+        [7043] = {
+            [questKeys.objectivesText] = {"Locate and return the Stolen Treats to Wulmort Jinglepocket in Ironforge. It was last thought to be in the possession of the Abominable Greench, found somewhere in the snowy regions of the Alterac Mountains."},
+        },
+        [7045] = {
+            [questKeys.name] = "A Smokywood Pastures' Thank You!",
         },
         [7046] = {
             [questKeys.triggerEnd] = {"Create the Scepter of Celebras", {[zoneIDs.DESOLACE]={{35.97,64.41}}}},
@@ -2538,6 +2579,9 @@ function QuestieQuestFixes:Load()
         [7622] = {
             [questKeys.triggerEnd] = {"The Balance of Light and Shadow", {[zoneIDs.EASTERN_PLAGUELANDS]={{21.19,17.79}}}}, -- #2332
         },
+        [7631] = {
+            [questKeys.requiredSourceItems] = {18663,18629,18670,18818},
+        },
         [7632] = {
             [questKeys.startedBy] = {{12018},{179703},{18703}},
         },
@@ -2610,9 +2654,6 @@ function QuestieQuestFixes:Load()
         },
         [7787] = {
             [questKeys.requiredClasses] = classIDs.WARRIOR + classIDs.PALADIN + classIDs.HUNTER + classIDs.ROGUE,
-        },
-        [7795] = {
-            [questKeys.preQuestSingle] = {7794},
         },
         [7816] = {
             [questKeys.preQuestSingle] = {}, -- #2247
@@ -3215,6 +3256,9 @@ function QuestieQuestFixes:Load()
         [8737] = {
             [questKeys.extraObjectives] = {{nil, Questie.ICON_TYPE_EVENT, l10n("Summon a Templar using a full Twilight set."),0,{{"object", 180456},{"object", 180518},{"object", 180529},{"object", 180544},{"object", 180549},{"object", 180564},}}},
         },
+        [8746] = {
+            [questKeys.requiredSourceItems] = {21314},
+        },
         [8747] = {
             [questKeys.exclusiveTo] = {8752,8753,8754,8755,8756,8757,8758,8759,8760,8761}, --protector neutral
         },
@@ -3260,14 +3304,17 @@ function QuestieQuestFixes:Load()
         [8761] = {
             [questKeys.exclusiveTo] = {8747,8748,8749,8750,8751,8752,8753,8754,8755,8756}, --invoker exalted
         },
+        [8762] = {
+            [questKeys.requiredSourceItems] = {21314},
+        },
         [8767] = {
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.requiredClasses] = classIDs.ROGUE + classIDs.WARRIOR + classIDs.HUNTER + classIDs.PALADIN,
             [questKeys.exclusiveTo] = {8788},
         },
         [8788] = {
             [questKeys.requiredRaces] = raceIDs.NONE,
-            [questKeys.requiredClasses] = classIDs.NONE,
+            [questKeys.requiredClasses] = classIDs.PRIEST + classIDs.WARLOCK + classIDs.MAGE + classIDs.SHAMAN + classIDs.DRUID,
             [questKeys.exclusiveTo] = {8767},
         },
         [8791] = {
@@ -3375,6 +3422,7 @@ function QuestieQuestFixes:Load()
         },
         [8867] = {
             [questKeys.requiredSourceItems] = {21557,21558,21559,21571,21574,21576},
+            [questKeys.objectives] = {nil,{{180771,"Lunar Fireworks Fired"},{180772,"Lunar Fireworks Cluster Fired"}}},
         },
         [8868] = {
             [questKeys.triggerEnd] = {"Receive Elune's Blessing.", {[zoneIDs.MOONGLADE]={{63.89,62.5}}}},
@@ -3684,6 +3732,9 @@ function QuestieQuestFixes:Load()
         },
         [9120] = {
             [questKeys.startedBy] = {{15990},nil,{22520}},
+        },
+        [9121] = {
+            [questKeys.requiredMinRep] = {529,0},
         },
         [9124] = {
             [questKeys.requiredMinRep] = {529,3000},

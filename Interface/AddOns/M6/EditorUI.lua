@@ -1,5 +1,5 @@
-local addonName, T = ...
-local MODERN = select(4,GetBuildInfo()) >= 8e4
+local COMPAT, addonName, T = select(4, GetBuildInfo()), ...
+local MODERN, CI_ERA = COMPAT >= 10e4, COMPAT < 2e4
 local AB = T.ActionBook:compatible(2, 35)
 local KR = T.ActionBook:compatible("Kindred", 1, 11)
 local IM = T.ActionBook:compatible("Imp", 1, 0)
@@ -695,6 +695,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			bind:SetWidth(260)
 			bind:SetPoint("LEFT", editPanel, "TOPLEFT", 120-6, -54)
 			bind:RegisterForClicks("AnyUp")
+			bind:SetFrameLevel(bind:GetFrameLevel()+20)
 			local lab = bind:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 			lab:SetText(L"Binding:")
 			lab:SetPoint("LEFT", editPanel, "TOPLEFT", 8, -54)
@@ -789,6 +790,12 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					return Deactivate(self)
 				elseif unbindableKeys[bind] then
 					return
+				elseif bind and bind:match("PAD") and (
+				         bind == GetCVar("GamePadEmulateAlt") or
+				         bind == GetCVar("GamePadEmulateCtrl") or
+				         bind == GetCVar("GamePadEmulateShift")
+				       ) then
+					return
 				elseif GetCurrentKeyBoardFocus() then
 					self.oldFocus = nil
 					return Deactivate(self)
@@ -831,11 +838,13 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 						self:SetScript("OnKeyDown", SetBind)
 						self:SetScript("OnGamePadButtonDown", SetBind)
 						self:SetScript("OnMouseWheel", SetWheelBind)
+						editPanel.icon:HideSelectorPanel()
 						local kf = GetCurrentKeyBoardFocus()
 						if kf and kf.ClearFocus and kf.SetFocus then
 							kf:ClearFocus()
 							self.oldFocus = kf
 						end
+						
 					end
 				elseif button == "RightButton" then
 					if self.capture then
@@ -846,17 +855,25 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				end
 			end)
 			local specialSymbolMap = {OPEN="[", CLOSE="]", SEMICOLON=";"}
-			local function bindNameLookup(c)
-				return GetBindingText(specialSymbolMap[c] or c)
+			local function FormatBindingText(bind)
+				local bindText = bind and bind ~= "" and GetBindingText((bind:gsub("[^%-]+$", specialSymbolMap)))
+				if CI_ERA and bindText and bind:match("PAD") then
+					for ai in bindText:gmatch("|A:([^:]+)") do
+						if not C_Texture.GetAtlasInfo(ai) then -- BUG[1.14.4/2310]
+							bindText = bind:gsub("[^%-]+$", specialSymbolMap)
+							break
+						end
+					end
+				end
+				return bindText or NONE_KEY
 			end
 			function bind:SetBinding(bind)
 				self.value = bind ~= "" and bind or nil
 				if self.value and bind:match("%[.*%]") then
 					local cv = KR:EvaluateCmdOptions(self.value)
-					local text = cv and cv:gsub("[^%-]+$", bindNameLookup) or NONE_KEY
-					self:SetText(text .. " |cff20ff20[+]")
+					self:SetText(FormatBindingText(cv) .. " |cff20ff20[+]")
 				else
-					self:SetText(self.value and self.value:gsub("[^%-]+$", bindNameLookup) or NONE_KEY)
+					self:SetText(FormatBindingText(self.value))
 				end
 				Deactivate(self)
 			end
@@ -893,11 +910,13 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			end
 			editPanel.icon = ico
 			do
+				local ROWS, COLS, ADVANCE, OFS_X, OFS_Y, PAD_X, PAD_Y = 7, 12, 34, 14, -13, 44, 44
 				local frame = CreateFrame("Frame", nil, ico)
 				SetBackdrop(frame, {bgFile = "Interface/ChatFrame/ChatFrameBackground", edgeFile = "Interface/DialogFrame/UI-DialogBox-Border", tile = true, tileSize = 32, edgeSize = 32, insets = { left = 11, right = 11, top = 12, bottom = 10 }}, 0)
-				frame:SetSize(314, 19+34*7+20) frame:SetPoint("TOPRIGHT", ico, "BOTTOMRIGHT", 4, 4)
+				frame:SetSize(PAD_X + COLS*ADVANCE, PAD_Y + ROWS*ADVANCE)
+				frame:SetHitRectInsets(-98, -16, 4, -10)
+				frame:SetPoint("TOPLEFT", ico, "BOTTOMLEFT", -16, 4)
 				frame:EnableMouse(1) frame:SetToplevel(true) frame:Hide()
-				frame:SetHitRectInsets(-10, 0,0, -10)
 				ico:SetScript("OnClick", function() frame:SetShown(not frame:IsShown()) PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON) end)
 				M:EscapeCallback(frame, function(self, key)
 					if key == "ESCAPE" then
@@ -912,8 +931,8 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					selectedIconButton = self:GetChecked() and self or nil
 					PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON)
 				end
-				do
-					local ed = lineInput(frame, false, 269)
+				do -- frame.textInput
+					local ed = lineInput(frame, false, 0)
 					local hint = ed:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
 					hint:SetPoint("CENTER")
 					hint:SetText("|cffa0a0a0" .. L"(enter an icon name or path here)")
@@ -922,6 +941,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					bg:SetPoint("TOPLEFT", -3, 3)
 					bg:SetPoint("BOTTOMRIGHT", 3, -3)
 					ed:SetPoint("BOTTOMLEFT", 11, 8)
+					ed:SetPoint("BOTTOMRIGHT", -34, 8)
 					ed:SetTextInsets(2, 0, 0, 0)
 					ed:SetFrameLevel(ed:GetFrameLevel()+5)
 					ed:SetScript("OnEditFocusGained", function() hint:Hide() end)
@@ -965,16 +985,16 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					f:SetID(id or 0)
 					return f
 				end
-				for i=0,55 do
+				for i=0, ROWS*COLS-1 do
 					local j = createIconButton(nil, frame, i)
-					j:SetPoint("TOPLEFT", (i % 8)*34+12, -11 - 34*math.floor(i / 8))
+					j:SetPoint("TOPLEFT", OFS_X + (i % COLS)*ADVANCE, OFS_Y - math.floor(i / COLS)*ADVANCE)
 					j:SetScript("OnClick", onClick)
 					icons[i] = j
 				end
 				local icontex = {}
-				local slider = CreateFrame("Slider", nil, frame, "UIPanelScrollBarTemplate")
+				local slider = CreateFrame("Slider", nil, frame, "UIPanelScrollBarTemplate") do
 					slider:SetPoint("TOPRIGHT",-10, -27) slider:SetPoint("BOTTOMRIGHT", -10, 27)
-					slider:SetValueStep(8) slider:SetObeyStepOnDrag(true)
+					slider:SetValueStep(COLS) slider:SetObeyStepOnDrag(true)
 					local t = slider:CreateTexture()
 					t:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
 					t:SetSize(24,48)
@@ -1002,6 +1022,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 							selectedIconButton = isSelected and icons[i] or selectedIconButton
 						end
 					end)
+				end
 				frame:SetScript("OnShow", function(self)
 					self:SetFrameLevel(math.min(9990, self:GetParent():GetFrameLevel()+200))
 					icontex = GetMacroIcons()
@@ -1014,8 +1035,11 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					end
 				end)
 				frame:SetScript("OnMouseWheel", function(_, delta)
-					slider:SetValue(slider:GetValue()-delta*15)
+					slider:SetValue(slider:GetValue()-delta*COLS*3)
 				end)
+				function ico:HideSelectorPanel()
+					frame:Hide()
+				end
 			end
 		end
 		local save = CreateFrame("Button", nil, editPanel, "UIPanelButtonTemplate")
@@ -1046,6 +1070,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 		{text="Deactivate", notCheckable=true, func=function(_, id) MC:DeactivateAction(id) slate:SyncContent() end},
 		{text="|cffff0000Delete", notCheckable=true, func=function(_, id) MC:DeleteAction(id) slate:ReFilter() end},
 	}, CreateFrame("Frame", "M6ActionsDropDown", slate, "UIDropDownMenuTemplate")
+	
 	local function Button_OnClick(self, button)
 		local id = self:GetID()
 		if id == 0 or button == "LeftButton" then
@@ -1308,9 +1333,9 @@ end
 
 SLASH_M61, SlashCmdList.M6 = "/m6", function(arg)
 	local av, ar = (arg or ""):match("^%s*(%S+)%s*(.-)$")
-	if av == "vers" then
-		print(("|cffa526ff[%s] |cffffffff%s|cfff8a800%s"):format(
-			addonName, GetAddOnMetadata(addonName, "Version") or "?",
+	if av == "vers" or av == "version" then
+		print(("|cff0077dd[%s] |cffffffff%s|cfff8a800%s"):format(
+			addonName, C_AddOns.GetAddOnMetadata(addonName, "Version") or "?",
 			T.SkipLocalActionBook and "+sha" or "+int"
 		))
 		return

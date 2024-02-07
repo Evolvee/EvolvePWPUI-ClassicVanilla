@@ -183,15 +183,11 @@ function Auctionator.Tooltip.AddVendorTip(tooltipFrame, vendorPrice, countString
 end
 
 function Auctionator.Tooltip.AddAuctionTip (tooltipFrame, auctionPrice, countString, cannotAuction)
+  if cannotAuction then
+    return
+  end
   if Auctionator.Config.Get(Auctionator.Config.Options.AUCTION_TOOLTIPS) then
-    if cannotAuction then
-      tooltipFrame:AddDoubleLine(
-        L("AUCTION") .. countString,
-        WHITE_FONT_COLOR:WrapTextInColorCode(
-          L("CANNOT_AUCTION") .. "  "
-        )
-      )
-    elseif (auctionPrice ~= nil) then
+    if (auctionPrice ~= nil) then
       tooltipFrame:AddDoubleLine(
         L("AUCTION") .. countString,
         WHITE_FONT_COLOR:WrapTextInColorCode(
@@ -330,10 +326,12 @@ function Auctionator.Tooltip.AddPetTip(
         Auctionator.Utilities.CreatePaddedMoneyString(price)
       )
     )
-    if auctionAge ~= nil then
-      BattlePetTooltip:AddLine(AUCTIONATOR_L_AUCTION_AGE .. PET_TOOLTIP_SPACING .. WHITE_FONT_COLOR:WrapTextInColorCode(AUCTIONATOR_L_X_DAYS:format(tostring(auctionAge))))
-    elseif auctionPrice ~= nil then
-      BattlePetTooltip:AddDoubleLine(AUCTIONATOR_L_AUCTION_AGE .. PET_TOOLTIP_SPACING .. AUCTIONATOR_L_UNKNOWN)
+    if Auctionator.Config.Get(Auctionator.Config.Options.AUCTION_AGE_TOOLTIPS) then
+      if auctionAge ~= nil then
+        BattlePetTooltip:AddLine(AUCTIONATOR_L_AUCTION_AGE .. PET_TOOLTIP_SPACING .. WHITE_FONT_COLOR:WrapTextInColorCode(AUCTIONATOR_L_X_DAYS:format(tostring(auctionAge))))
+      elseif price ~= nil then
+        BattlePetTooltip:AddDoubleLine(AUCTIONATOR_L_AUCTION_AGE .. PET_TOOLTIP_SPACING .. AUCTIONATOR_L_UNKNOWN)
+      end
     end
   else
     BattlePetTooltip:AddLine(

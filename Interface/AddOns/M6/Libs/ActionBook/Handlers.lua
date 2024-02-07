@@ -100,7 +100,7 @@ if MODERN_MOUNTS then -- mount: mount ID
 		end
 		return L"Mount", name, icon, nil, callMethod.SetMountBySpellID, sid
 	end
-	AB:RegisterActionType("mount", createMount, describeMount)
+	AB:RegisterActionType("mount", createMount, describeMount, 1)
 	if MODERN then -- random
 		local mjID, rname, _, ricon = C_MountJournal.GetMountFromSpell(150544), GetSpellInfo(150544)
 		actionMap[0] = AB:CreateActionSlot(function()
@@ -199,14 +199,14 @@ do -- spell: spell ID + mount spell ID
 		spellMap[sname] = spellId or spellMap[sname] or getSpellIDFromName(sname)
 		return spellHint(sname, nil, target)
 	end
-	local function createSpell(id, optToken)
+	local function createSpell(id, flags)
 		if type(id) ~= "number" then return end
 		local mjID = getSpellMountID(id)
 		if mjID then
 			return AB:GetActionSlot("mount", mjID)
 		end
 		
-		local laxRank, action = CF_CLASSIC and optToken ~= "lock-rank" and "lax-rank"
+		local laxRank, action = CF_CLASSIC and flags ~= 16 and "lax-rank"
 		local castable, rwCastType = RW:IsSpellCastable(id, nil, laxRank)
 		if not castable then
 			return
@@ -238,9 +238,9 @@ do -- spell: spell ID + mount spell ID
 		end
 		return actionMap[action]
 	end
-	local function describeSpell(q, id, optToken)
+	local function describeSpell(q, id, flags)
 		local name2, sid2, icon2, rank, name, _, icon, _, _, _, _, icon1 = nil, nil, nil, GetSpellSubtext(id), GetSpellInfo(id)
-		local laxRank = CF_CLASSIC and optToken ~= "lock-rank" and "lax-rank"
+		local laxRank = CF_CLASSIC and flags ~= 16 and "lax-rank"
 		local _, castType = RW:IsSpellCastable(id, nil, laxRank)
 		if name and castType ~= "forced-id-cast" then
 			local qRank = (MODERN or q == "list-query" or not laxRank) and rank or nil
@@ -254,7 +254,7 @@ do -- spell: spell ID + mount spell ID
 		local mjID = getSpellMountID(id)
 		return mjID and L"Mount" or (L"Spell" .. ts), (name2 or name or "?") .. ns, icon2 or icon, nil, SetSpellByExactID, id
 	end
-	AB:RegisterActionType("spell", createSpell, describeSpell, nil, true)
+	AB:RegisterActionType("spell", createSpell, describeSpell, 2, true)
 	if MODERN then -- specials
 		local gab = GetSpellInfo(161691)
 		actionMap[gab] = AB:CreateActionSlot(spellHint, gab, "conditional", "[outpost]", "attribute", "type","spell", "spell",gab)
@@ -325,7 +325,7 @@ do -- item: items ID/inventory slot
 			local time = GetTime()
 			cdLeft = (cdStart or 0) > 0 and (enabled ~= 0) and (cdStart + cdLen - time)
 		end
-		local inRange, hasRange = NormalizeInRange[IsItemInRange(ident, target or "target")]
+		local inRange, hasRange = NormalizeInRange[(not (MODERN and InCombatLockdown()) or nil) and IsItemInRange(ident, target or "target")]
 		inRange, hasRange = inRange ~= 0, inRange ~= nil
 		if ibag and islot then
 			bag, slot = ibag, islot
@@ -347,8 +347,12 @@ do -- item: items ID/inventory slot
 		return not not (usable and inRange and (cdLen or 0) == 0), state, icon or GetItemIcon(ident), name or ident, nCharge,
 			cdLeft or 0, cdLen or 0, tip, tipArg
 	end
-	local function createItem(id, byName, forceShow, onlyEquipped)
+	local function createItem(id, flags)
+		local byName, forceShow, onlyEquipped
 		if type(id) ~= "number" then return end
+		if type(flags) == "number" then
+			byName, forceShow, onlyEquipped = flags % 4 >= 2, flags % 2 >= 1, flags % 8 >= 4
+		end
 		local name = id <= lastSlot and id or (byName and GetItemInfo(id) or ("item:" .. id))
 		if not forceShow and onlyEquipped and not ((id > lastSlot and IsEquippedItem(name)) or (id <= lastSlot and GetInventoryItemLink("player", id))) then return end
 		if not forceShow and GetItemCount(name) == 0 then return end
@@ -357,12 +361,12 @@ do -- item: items ID/inventory slot
 		end
 		return actionMap[name]
 	end
-	local function describeItem(id)
+	local function describeItem(id, _flags)
 		local cat, cq = L"Item", MODERN and id and (C_TradeSkillUI.GetItemReagentQualityByItemInfo(id) or C_TradeSkillUI.GetItemCraftedQualityByItemInfo(id))
 		cat = cq and cat .. "|A:Professions-Icon-Quality-Tier" .. cq .. "-Small:0:0:2:0|a" or cat
 		return cat, GetItemInfo(id), GetItemIcon(id), nil, callMethod.SetItemByID, tonumber(id)
 	end
-	AB:RegisterActionType("item", createItem, describeItem, {"byName", "forceShow", "onlyEquipped"})
+	AB:RegisterActionType("item", createItem, describeItem, 2)
 	function EV.BAG_UPDATE()
 		AB:NotifyObservers("item")
 	end
@@ -395,7 +399,7 @@ do -- macrotext
 		local _, _, ico = RW:GetMacroAction(macrotext)
 		return L"Custom Macro", "", ico
 	end
-	AB:RegisterActionType("macrotext", createMacrotext, describeMacrotext)
+	AB:RegisterActionType("macrotext", createMacrotext, describeMacrotext, 1)
 	local function checkReturn(pri, ...)
 		if select("#", ...) > 0 then return pri, ... end
 	end
@@ -537,7 +541,8 @@ do -- macro: name
 	local function namedMacroHint(name, cndState)
 		return RW:GetNamedMacroAction(name, cndState)
 	end
-	local function createNamedMacro(name, forceShow)
+	local function createNamedMacro(name, flags)
+		local forceShow = flags == 1
 		if type(name) == "string" and (forceShow or RW:IsNamedMacroKnown(name)) then
 			if not map[name] then
 				map[name] = AB:CreateActionSlot(namedMacroHint, name, "recall", RW:seclib(), "RunSlashCmd", "/runmacro", name)
@@ -552,7 +557,7 @@ do -- macro: name
 		end
 		return L"Macro", name, ico
 	end
-	AB:RegisterActionType("macro", createNamedMacro, describeMacro, {"forceShow"})
+	AB:RegisterActionType("macro", createNamedMacro, describeMacro, 2)
 end
 if MODERN then -- battlepet: pet ID, species ID
 	local petAction, special = {}, {}
@@ -628,7 +633,7 @@ if MODERN then -- battlepet: pet ID, species ID
 		if (cn or n) and ((lvl or 0) > 1) then cn = "[" .. lvl .. "] " .. (cn or n) end
 		return L"Battle Pet", cn or n or ("#" .. tostring(rpid)), tex, nil, SetBattlePetByID, rpid
 	end
-	AB:RegisterActionType("battlepet", createBattlePet, describeBattlePet)
+	AB:RegisterActionType("battlepet", createBattlePet, describeBattlePet, 2)
 	RW:SetCommandHint(SLASH_SUMMON_BATTLE_PET1, 60, function(_, _, clause)
 		if clause and clause ~= "" then
 			local _, petID = C_PetJournal.FindPetIDByName(clause:trim())
@@ -674,7 +679,7 @@ if MODERN or CF_WRATH then -- equipmentset: equipment sets by name
 		local _, ico = C_EquipmentSet.GetEquipmentSetInfo(esid)
 		return L"Equipment Set", name, ico and resolveIcon(ico) or "Interface/Icons/INV_Misc_QuestionMark", nil, callMethod.SetEquipmentSet, esid
 	end
-	AB:RegisterActionType("equipmentset", createEquipSet, describeEquipSet)
+	AB:RegisterActionType("equipmentset", createEquipSet, describeEquipSet, 1)
 	RW:SetCommandHint(SLASH_EQUIP_SET1, 80, function(_, _, clause)
 		if clause and clause ~= "" then
 			return true, equipmentsetHint(clause)
@@ -725,7 +730,7 @@ do -- raidmark
 		if id == 0 then return L"Raid Marker", REMOVE_WORLD_MARKERS, "Interface/Icons/INV_Gauntlets_02" end
 		return L"Raid Marker", _G["RAID_TARGET_" .. id], "Interface/TargetingFrame/UI-RaidTargetingIcon_" .. id
 	end
-	AB:RegisterActionType("raidmark", createRaidMark, describeRaidMark)
+	AB:RegisterActionType("raidmark", createRaidMark, describeRaidMark, 1)
 	RW:ImportSlashCmd("TARGET_MARKER", true, false, 40, function(_, _, clause, target)
 		clause = tonumber(clause)
 		if clause == 0 then
@@ -763,7 +768,7 @@ if MODERN then -- worldmarker
 	local function describeWorldmark(id)
 		return L"Raid World Marker", id == 0 and REMOVE_WORLD_MARKERS or _G["WORLD_MARKER" .. id], icons[id]
 	end
-	AB:RegisterActionType("worldmark", createWorldmark, describeWorldmark)
+	AB:RegisterActionType("worldmark", createWorldmark, describeWorldmark, 1)
 	RW:SetCommandHint(SLASH_WORLD_MARKER1, 40, function(_, _, clause)
 		clause = tonumber(clause)
 		if clause and clause >= 1 and clause <= 8 then
@@ -795,7 +800,8 @@ do -- extrabutton
 	end
 	local aid = MODERN and AB:CreateActionSlot(extrabuttonHint, nil, "conditional", "[extrabar]", "attribute", "type","action", "action",slot)
 	local aid2 = MODERN and AB:CreateActionSlot(extrabuttonHint, nil, "attribute", "type","action", "action",slot)
-	local function createExtraButton(id, forceShow)
+	local function createExtraButton(id, flags)
+		local forceShow = flags == 1
 		return id == 1 and (forceShow and aid2 or aid) or nil
 	end
 	local function describeExtraButton(_id)
@@ -806,7 +812,7 @@ do -- extrabutton
 		end
 		return L"Extra Action Button", name, tex
 	end
-	AB:RegisterActionType("extrabutton", createExtraButton, describeExtraButton, {"forceShow"})
+	AB:RegisterActionType("extrabutton", createExtraButton, describeExtraButton, 2)
 	if MODERN then
 		RW:SetClickHint("ExtraActionButton1", 95, function()
 			if HasExtraActionBar() then
@@ -847,7 +853,7 @@ do -- zoneability auto-collection
 		end
 	end
 	colId = MODERN and AB:CreateActionSlot(nil,nil, "collection",col)
-	AB:RegisterActionType("zoneability", createZoneAbility, describeZoneAbility)
+	AB:RegisterActionType("zoneability", createZoneAbility, describeZoneAbility, 1)
 	if MODERN then
 		AB:AddObserver("internal.collection.preopen", onZoneCollectionOpen)
 		function EV:PLAYER_REGEN_DISABLED()
@@ -929,7 +935,7 @@ do -- petspell: spell ID
 			return MODERN and st or L"Pet Ability", name, icon, nil, tipf, tipa
 		end
 	end
-	AB:RegisterActionType("petspell", createPetAction, describePetAction)
+	AB:RegisterActionType("petspell", createPetAction, describePetAction, 1)
 	do
 		local cnd, macroMap = "[petcontrol,@pet,help,novehicleui]", {}
 		local function check(...)
@@ -963,7 +969,7 @@ do -- petspell: spell ID
 		end
 	end
 end
-if MODERN or CF_WRATH then -- toy: item ID, forceShow
+if MODERN or CF_WRATH then -- toy: item ID, flags[FORCE_SHOW]
 	local map, lastUsability, uq, whinedAboutGIIR = {}, {}, {}
 	local OVERRIDE_TOY_ACQUIRED, IGNORE_TOY_USABILITY = {}, {
 		[129149]=1, [129279]=1, [129367]=1, [130157]="[in:broken isles]", [130158]=1, [130170]=1,
@@ -1015,7 +1021,8 @@ if MODERN or CF_WRATH then -- toy: item ID, forceShow
 			return "conditional", cnd, ...
 		end
 	end
-	local function createToy(id, forceShow)
+	local function createToy(id, flags)
+		local forceShow = flags == 1
 		local mid, ignUse = map[id], IGNORE_TOY_USABILITY[id]
 		if not (mid or ignUse or type(id) == "number") or not (forceShow or playerHasToy(id)) then
 			return
@@ -1038,9 +1045,9 @@ if MODERN or CF_WRATH then -- toy: item ID, forceShow
 	local function describeToy(id)
 		if type(id) ~= "number" then return end
 		local _, name, tex = C_ToyBox.GetToyInfo(id)
-		return L"Toy", name, tex, nil, callMethod.SetToyByItemID, id
+		return L"Toy", name, tex or GetItemIcon(id), nil, callMethod.SetToyByItemID, id
 	end
-	AB:RegisterActionType("toy", createToy, describeToy, {"forceShow"})
+	AB:RegisterActionType("toy", createToy, describeToy, 2)
 	RW:SetCommandHint(SLASH_USE_TOY1, 60, function(_, _, clause, target)
 		if clause and clause ~= "" then
 			local _, link = GetItemInfo(clause)
@@ -1115,7 +1122,7 @@ do -- disenchant: iid
 		local icon, name = GetItemIcon(iid), GetItemInfo(iid)
 		return DISENCHANT_SN, name or ("item:" .. iid), icon, nil, disenchantTip, iid
 	end
-	AB:RegisterActionType("disenchant", createDisenchant, describeDisenchant)
+	AB:RegisterActionType("disenchant", createDisenchant, describeDisenchant, 1)
 end
 if MODERN then -- /ping
 	local TOKENS, INFO = {}, {
@@ -1359,5 +1366,5 @@ do -- uipanel: token
 		end
 		return L"Interface Panel"
 	end
-	AB:RegisterActionType("uipanel", createPanel, describePanel)
+	AB:RegisterActionType("uipanel", createPanel, describePanel, 1)
 end

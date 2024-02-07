@@ -942,7 +942,7 @@ data["TheStockade"] = {
 
 data["Gnomeregan"] = {
 	MapID = 721,
-	InstanceID = 90,
+	InstanceID = 200,
 	AtlasModule = ATLAS_MODULE_NAME,
 	AtlasMapID = "Gnomeregan",
 	AtlasMapFile = {"CL_Gnomeregan", "CL_GnomereganEnt"},
@@ -1233,6 +1233,9 @@ data["ScarletMonasteryGraveyard"] = {
 				{ 1,  7709 }, -- Blighted Leggings
 				{ 2,  7708 }, -- Necrotic Wand
 				{ 3,  7731 }, -- Ghostshard Talisman
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217295 }, -- Necrotic Wand
+				{ 18, 217296 }, -- Ghostshard Talisman			
 			},
 		},
 		{ -- SMFallenChampion
@@ -1246,6 +1249,8 @@ data["ScarletMonasteryGraveyard"] = {
 				{ 1,  7691 }, -- Embalmed Shroud
 				{ 2,  7690 }, -- Ebon Vise
 				{ 3,  7689 }, -- Morbid Dawn
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217294 }, -- Embalmed Shroud
 			},
 		},
 		{ -- SMIronspine
@@ -1374,7 +1379,11 @@ data["ScarletMonasteryLibrary"] = {
 				{ 2,  7713 }, -- Illusionary Rod
 				{ 4,  7712 }, -- Mantle of Doan
 				{ 5,  7711 }, -- Robe of Doan
-				AtlasLoot:GameVersion_GE(AtlasLoot.BC_VERSION_NUM, { 16,  34227 }), -- Deadman's Hand
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217299 }, -- Illusionary Rod
+				{ 19, 217298 }, -- Mantle of Doan
+				{ 20, 217297 }, -- Robe of Doan
+				AtlasLoot:GameVersion_GE(AtlasLoot.BC_VERSION_NUM, { 22,  34227 }), -- Deadman's Hand
 			},
 		},
 		{ -- SMLTrash
@@ -1517,6 +1526,8 @@ data["ScarletMonasteryCathedral"] = {
 				{ 2,  10330 }, -- Scarlet Leggings
 				{ 3,  7726 }, -- Aegis of the Scarlet Commander
 				{ 4,  7723 }, -- Mograine's Might
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217302 }, -- Mograine's Might
 			},
 		},
 		{ -- SMWhitemane
@@ -1529,6 +1540,10 @@ data["ScarletMonasteryCathedral"] = {
 				{ 1,  7720 }, -- Whitemane's Chapeau
 				{ 2,  7722 }, -- Triune Amulet
 				{ 3,  7721 }, -- Hand of Righteousness
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217300 }, -- Whitemane's Chapeau
+				{ 18, 217301 }, -- Triune Amulet
+
 			},
 		},
 		{ -- SMCTrash
@@ -1588,6 +1603,8 @@ data["RazorfenDowns"] = {
 				{ 1,  10776 }, -- Silky Spider Cape
 				{ 2,  10775 }, -- Carapace of Tuten'kash
 				{ 3,  10777 }, -- Arachnid Gloves
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217293 }, -- Silky Spider Cape
 			},
 		},
 		{ -- RFDMordreshFireEye
@@ -1600,6 +1617,11 @@ data["RazorfenDowns"] = {
 				{ 1,  10769 }, -- Glowing Eye of Mordresh
 				{ 2,  10771 }, -- Deathmage Sash
 				{ 3,  10770 }, -- Mordresh's Lifeless Skull
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217290 }, -- Glowing Eye of Mordresh
+				{ 18, 217292 }, -- Deathmage Sash
+				{ 19, 217291 }, -- Mordresh's Lifeless Skull
+
 			},
 		},
 		{ -- RFDGlutton
@@ -1638,6 +1660,9 @@ data["RazorfenDowns"] = {
 				{ 3,  10764 }, -- Deathchill Armor
 				{ 4,  10761 }, -- Coldrage Dagger
 				{ 6,  10765 }, -- Bonefingers
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217288 }, -- Robes of the Lich
+				{ 18, 217289 }, -- Deathchill Armor
 			},
 		},
 		{ -- RFDPlaguemaw
@@ -1755,6 +1780,11 @@ data["Uldaman"] = {
 				{ 3,  9390 }, -- Revelosh's Gloves
 				{ 4,  9387 }, -- Revelosh's Boots
 				{ 6,  7741 }, -- The Shaft of Tsol
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217304 }, -- Revelosh's Gloves
+				{ 18, 217307 }, -- Revelosh's Spaulders
+				{ 19, 217305 }, -- Revelosh's Armguards
+				{ 20, 217306 }, -- Revelosh's Boots
 			},
 		},
 		{ -- UldIronaya
@@ -1767,6 +1797,8 @@ data["Uldaman"] = {
 				{ 1,  9409 }, -- Ironaya's Bracers
 				{ 2,  9407 }, -- Stoneweaver Leggings
 				{ 3,  9408 }, -- Ironshod Bludgeon
+				{ 16, "INV_Box_01", nil, AL["Updated in SoD"], nil },
+				{ 17, 217303 }, -- Whitemane's Chapeau
 			},
 		},
 		{ -- UldObsidianSentinel
@@ -7244,5 +7276,204 @@ data["BlackfathomDeeps2"] = {
 				{ 11, 2271 }, -- Staff of the Blessed Seer
 			},
 		},
+	},
+}
+data["Gnomeregan2"] = {
+	MapID = 721,
+	InstanceID = 90,
+	AtlasModule = ATLAS_MODULE_NAME,
+	AtlasMapID = "Gnomeregan",
+	AtlasMapFile = {"CL_Gnomeregan", "CL_GnomereganEnt"},
+	AtlasMapFile_AL = {"Gnomeregan", "GnomereganEnt"},
+	ContentType = RAID_CONTENT,
+	LoadDifficulty = NORMAL_DIFF,
+	LevelRange = {40, 40, 40},
+	items = {
+		{
+			name = AL["Level 40 Gear pg 1"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 2, "INV_Box_01", nil, AL["Stay tuned"], nil },
+				{ 4, "INV_Box_01", nil, AL["2h Weapons"], nil },
+				{ 5,  213353 }, -- Defibrillating Staff
+				{ 6,  213416 }, -- Thermaplugg's Rocket Cleaver
+				{ 7,  213289 }, -- Hydrostaff
+				{ 8,  213292 }, -- Gizmotron Gigachopper
+				{ 9,  213296 }, -- Supercharged Headchopper
+				{ 10,  213354 }, -- Staff of the Evil Genius
+				{ 11,  213408 }, -- Gyromatic Macro-Adjustor
+				{ 12,  210741 }, -- Automatic Crowd Pummeler
+				{ 16, "INV_Box_01", nil, AL["Main Hand Weapons"], nil },
+				{ 17,  213286 }, -- Electrocutioner's Needle
+				{ 18,  213409 }, -- Mekkatorque's Arcano-Shredder
+				{ 19,  213410 }, -- Glimmering Gizmoblade
+				{ 20,  213352 }, -- Gear-Mender's Grace
+				{ 22, "INV_Box_01", nil, AL["1h Weapons"], nil },
+				{ 23,  213291 }, -- Toxic Revenger II
+				{ 24,  213295 }, -- Ultrasonic Vibroblade
+				{ 25,  213297 }, -- Oscillating Blasthammer
+				{ 26,  213560 }, -- Mechanostrider Muffler
+			},
+		},
+		{
+			name = AL["Level 40 Gear pg 2"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4, "INV_Box_01", nil, AL["Off Hand"], nil },
+				{ 5,  213419 }, -- 9-60 Repair Manual
+				{ 6,  213442 }, -- Cogmaster's Claw
+				{ 7,  213542 }, -- The Necro-Gnomicon
+				{ 8,  216679 }, -- Shoni's Dismantling Tool
+				{ 10, "INV_Box_01", nil, AL["Ranged"], nil },
+				{ 11,  213356 }, -- Thermaplugg's Custom Blaster
+				{ 12,  213293 }, -- Hi-tech Supergun Mk.VII
+				{ 13,  213355 }, -- Falco's Sting
+				{ 14,  213411 }, -- Izzleflick's Inextinguishable Igniter
+				{ 15,  213559 }, -- Mechanostrider Gear Shifter
+				{ 16, "INV_Box_01", nil, AL["Neck"], nil },
+				{ 17,  213343 }, -- Justice Badge
+				{ 18,  213344 }, -- Gnomeregan Peace Officer's Torque
+				{ 19,  213345 }, -- Piston Pendant
+				{ 20,  213346 }, -- Pendant of Homecoming
+				{ 22, "INV_Box_01", nil, AL["Back"], nil },
+				{ 23,  213306 }, -- Ingenuity's Cover
+				{ 24,  213307 }, -- Drape of Dismantling
+				{ 25,  213308 }, -- Prototype Parachute Cloak
+				{ 26,  213309 }, -- Cloak of Invention
+				{ 27,  215112 }, -- UNUSED - Cloak of Arcane Insulation
+				{ 28,  217005 }, -- Repairman's Cape
+			},
+		},
+		{
+			name = AL["Level 40 Gear pg 3"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4, "INV_Box_01", nil, AL["Ring"], nil },
+				{ 5,  213282 }, -- Hypercharged Gear of Innovation
+				{ 6,  213283 }, -- Hypercharged Gear of Conflagration
+				{ 7,  213284 }, -- Hypercharged Gear of Devastation
+				{ 8,  213287 }, -- Electrocutioner Hexnut
+				{ 9,  216673 }, -- Talvash's Brilliant Gold Ring
+				{ 10,  216674 }, -- Nogg's Brilliant Gold Ring
+				{ 16, "INV_Box_01", nil, AL["Trinket"], nil },
+				{ 17,  213347 }, -- Miniaturized Combustion Chamber
+				{ 18,  213348 }, -- Gyromatic Experiment 420b
+				{ 19,  213349 }, -- Gniodine Pill Bottle
+				{ 20,  213350 }, -- Wirdal's Hardened Core
+				{ 21,  215437 }, -- Trogg Transfigurator 3000
+				{ 22,  215461 }, -- Domesticated Attack Chicken
+			},
+		},
+{
+			name = AL["Level 40 Gear: Cloth"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4,  213301 }, -- Synthetic Mantle
+				{ 6,  213298 }, -- Mechbuilder's Overalls
+				{ 7,  213310 }, -- Hyperconductive Shimmershirt
+				{ 8,  213311 }, -- Hyperconductive Robe
+				{ 9,  215377 }, -- Irradiated Robe
+				{ 10,  216675 }, -- Prestine Civinad Robes
+				{ 12,  213285 }, -- Lev's Oil-Stained Bindings
+				{ 13,  213415 }, -- Tinker's Wrist Wraps
+				{ 16,  213300 }, -- Fighter Ace Gloves
+				{ 17,  216680 }, -- Shilly Mittens
+				{ 19,  213321 }, -- Volatile Concoction Belt
+				{ 21,  213328 }, -- Hyperconductive Pantaloons
+				{ 22,  213329 }, -- Hyperconductive Skirt
+				{ 23,  215379 }, -- Irradiated Trousers
+				{ 25,  213290 }, -- Acidic Waders
+				{ 26,  213336 }, -- Hyperconductive Walkers
+				{ 27,  213337 }, -- Hyperconductive Sandals
+				{ 28,  215378 }, -- Irradiated Boots
+			},
+		},
+{
+			name = AL["Level 40 Gear: Leather"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4,  213302 }, -- Mantle of the Cunning Negotiator
+				{ 5,  213413 }, -- Generously Padded Shoulderpads
+				{ 7,  213312 }, -- Insulated Apron
+				{ 8,  213313 }, -- Insulated Chestguard
+				{ 10,  213318 }, -- Ornate Dark Iron Bangles
+				{ 12,  213319 }, -- Lev's Oil-Stained Bindings
+				{ 14,  213322 }, -- Skullduggery Waistband
+				{ 15,  213323 }, -- Cord of Deep Earth
+				{ 16,  213299 }, -- Petrolspill Pants
+				{ 17,  213331 }, -- Insulated Leggings
+				{ 18,  213332 }, -- Insulated Legguards
+				{ 19,  216676 }, -- Nimble Triprunner Dungarees
+				{ 21,  213340 }, -- Gnomebot Operators Boots
+				{ 22,  213341 }, -- Insulated Workboots
+				{ 23,  213342 }, -- Insulated Galoshes
+			},
+		},
+{
+			name = AL["Level 40 Gear: Mail"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4,  213303 }, -- Lightning Rod Spaulders
+				{ 5,  213304 }, -- Troggslayer Pauldrons
+				{ 7,  213314 }, -- Electromantic Chainmail
+				{ 8,  213315 }, -- Electromantic Chainshirt
+				{ 10,  213317 }, -- Experimental Aim Stabilizers
+				{ 12,  213320 }, -- Fingers of Arcane Accuracy
+				{ 16,  215380 }, -- Power-Assisted Lifting Belt
+				{ 17,  213324 }, -- Electromagnetic Waistcord
+				{ 18,  213325 }, -- Darkvision Girdle
+				{ 20,  213333 }, -- Electromantic Chausses
+				{ 21,  213334 }, -- Electromantic Gambeson
+				{ 22,  216678 }, -- Treble Reinforced Leggings
+				{ 24,  213338 }, -- Electromantic Grounding Boots
+				{ 25,  213339 }, -- Electromantic Grounding Sabatons
+			},
+		},
+{
+			name = AL["Level 40 Gear: Plate"],
+			[NORMAL_DIFF] = {
+				{ 1, "INV_Box_01", nil, AL["Boss drops currently unknown"], nil },
+				{ 4,  213305 }, -- Machined Alloy Shoulderplates
+				{ 6,  213316 }, -- H.A.Z.A.R.D. Breastplate
+				{ 7,  216485 }, -- Shockforged Breastplate
+				{ 9,  213418 }, -- Welded Truesilver Ringlets
+				{ 11,  213288 }, -- Grubbis Grubby Gauntlets
+				{ 13,  213326 }, -- Girdle of Reclamation
+				{ 14,  213327 }, -- Belt of the Trogg Berserker
+				{ 16,  213330 }, -- H.A.Z.A.R.D. Legplates
+				{ 17,  216486 }, -- Shockforged Legplates
+				{ 19,  213294 }, -- Caverndeep Sabatons
+				{ 20,  216484 }, -- Shockforged Battleboots
+				{ 21,  213335 }, -- Gnomebot Operators Boots
+			},
+		},
+		{ -- GnTrash
+			name = AL["Trash"],
+			ExtraList = true,
+			[NORMAL_DIFF] = {
+				{ 1,  9508 }, -- Mechbuilder's Overalls
+				{ 2,  9491 }, -- Hotshot Pilot's Gloves
+				{ 3,  9509 }, -- Petrolspill Leggings
+				{ 4,  9510 }, -- Caverndeep Trudgers
+				{ 5,  9487 }, -- Hi-tech Supergun
+				{ 6,  9485 }, -- Vibroblade
+				{ 7,  9488 }, -- Oscillating Power Hammer
+				{ 8,  9486 }, -- Supercharger Battle Axe
+				{ 9,  9490 }, -- Gizmotron Megachopper
+				{ 11, 9489 }, -- Gyromatic Icemaker
+				{ 12, 11827 }, -- Schematic: Lil' Smoky
+				--{ 15, 11826 }, -- Lil' Smoky
+				{ 16, 9327 }, -- Security DELTA Data Access Card
+				{ 18, 7191 }, -- Fused Wiring
+				{ 19, 9308 }, -- Grime-Encrusted Object
+				{ 20, 9326 }, -- Grime-Encrusted Ring
+				{ 22, 9279 }, -- White Punch Card
+				{ 23, 9280 }, -- Yellow Punch Card
+				{ 24, 9282 }, -- Blue Punch Card
+				{ 25, 9281 }, -- Red Punch Card
+				{ 26, 9316 }, -- Prismatic Punch Card
+			},
+		},
+
 	},
 }

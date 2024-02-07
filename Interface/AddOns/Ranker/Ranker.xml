@@ -1,0 +1,15 @@
+<Ui>
+    <Script file="Libraries\LibStub\LibStub.lua"/>
+    <Script file="Libraries\LibUIDropDownMenu\LibUIDropDownMenu.lua"/>
+    <Script file="Ranker.lua"/>
+    <Frame name="RankerFrame">
+        <Scripts>
+            <OnLoad>
+                Ranker:OnLoadHandler(self)
+            </OnLoad>
+            <OnEvent>
+                Ranker:OnEventHandler(self, event, arg1, ...)
+            </OnEvent>
+        </Scripts>
+    </Frame>
+</Ui>

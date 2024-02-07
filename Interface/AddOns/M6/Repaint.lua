@@ -488,7 +488,7 @@ do -- Cursor Icons
 	local function cueCheckCursor()
 		T.After0(checkCursor)
 	end
-	EV.CURSOR_CHANGED, EV.CURSOR_UPDATE = cueCheckCursor, cueCheckCursor
+	EV.CURSOR_CHANGED = cueCheckCursor
 end
 
 function EV.M6_EXTERNAL_LISTENER_ADDED()
