@@ -280,7 +280,7 @@ RXPGuides.RegisterGuide([[
 << Alliance Warrior SoD
 #group RestedXP Rune Guide
 #subgroup Gloves
-#name Endless Rage - 10 (Westfall)
+#name Endless Rage - 20 (Westfall)
 
 step << Warrior
     #season 2
@@ -307,7 +307,7 @@ RXPGuides.RegisterGuide([[
 << Alliance Warrior SoD
 #group RestedXP Rune Guide
 #subgroup Gloves
-#name Endless Rage - 10 (Darkshore)
+#name Endless Rage - 16 (Darkshore)
 
 step << Warrior
     #season 2
@@ -510,7 +510,7 @@ RXPGuides.RegisterGuide([[
 step << Orc/Troll
     #season 2
     .goto Durotar,42.89,69.44
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Frang|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frang|r
     .accept 77588 >>Accept A Trial of Fitness << Troll
     .accept 77582 >>Accept A Trial of Fitness << Orc
     .target Frang
@@ -518,18 +518,18 @@ step
     #season 2
     .goto Durotar,43.27,69.51
     >>Loot the |cRXP_PICK_Hidden Cache|r for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
-    >>|cRXP_WARN_Walk around past|r |cFFFF5722Sarkoth|r |cRXP_WARN_and jump down to reach the chest|r
+    >>|cRXP_WARN_Walk around past|r |cRXP_ENEMY_Sarkoth|r |cRXP_WARN_and jump down to reach the chest|r
     .collect 204806,1 --Rune of Victory Rush (1)
     .train 403470,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    .train 403470 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
     .use 204806
-    .train 403470,1
+    .itemcount 204806,1
 step << Orc/Troll
     #season 2
     .goto Durotar,42.89,69.44
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Frang|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frang|r
     .turnin 77588 >>Turn in A Trial of Fitness << Troll
     .turnin 77582 >>Turn in A Trial of Fitness << Orc
     .target Frang
@@ -562,9 +562,9 @@ step
     .train 403470,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    .train 403470 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
     .use 204806
-    .train 403470,1
+    .itemcount 204806,1
 step << Tauren
     #season 2
     .goto Mulgore,44.02,76.14
@@ -588,7 +588,7 @@ RXPGuides.RegisterGuide([[
 step << Undead
     #season 2
     .goto Tirisfal Glades,32.68,65.56
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Dannal|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dannal|r
     .accept 77668 >>Accept The Lost Rune
     .target Dannal Stern
 step
@@ -599,13 +599,13 @@ step
     .train 403470,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
+    .train 403470 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Victory Rush|r]
     .use 204806
-    .train 403470,1
+    .itemcount 204806,1
 step << Undead
     #season 2
     .goto Tirisfal Glades,32.68,65.56
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Dannal|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Dannal|r
     .turnin 77668 >>Turn in The Lost Rune
     .target Dannal Stern
 
@@ -625,15 +625,15 @@ RXPGuides.RegisterGuide([[
 step
     #season 2
     .goto Durotar,40.60,66.80
-    >>Kill |cFFFF5722Sarkoth|r. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
+    >>Kill |cRXP_ENEMY_Sarkoth|r. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
     .collect 204809,1 --Rune of Furious Thunder(1)
     .mob Sarkoth
     .train 403476,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
+    .train 403476 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
     .use 204809
-    .train 403476,1
+    .itemcount 204809,1
 
 ]])
 
@@ -658,9 +658,9 @@ step
     .train 403476,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
+    .train 403476 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Furious Thunder|r]
     .use 204809
-    .train 403476,1
+    .itemcount 204809,1
 
     ]])
 
@@ -697,9 +697,9 @@ step
     .skipgossip
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
+    .train 425447 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
     .use 204716
-    .train 425447,1
+    .itemcount 204716,1
 
 ]])
 
@@ -736,9 +736,9 @@ step
     .skipgossip
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
+    .train 425447 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
     .use 204716
-    .train 425447,1
+    .itemcount 204716,1
 
 ]])
 
@@ -774,9 +774,9 @@ step
     .skipgossip
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
+    .train 425447 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Frenzied Assault|r]
     .use 204716
-    .train 425447,1
+    .itemcount 204716,1
 
     ]])
 
@@ -811,10 +811,12 @@ step
     .goto Durotar,52.13,20.77,40,0
     .goto Durotar,51.26,19.19,40,0
     .goto Durotar,53.98,23.70
-    >>Kill |cRXP_ENEMY_Dustwind Savages|r and |cRXP_ENEMY_Dustwind Storm Witches|r. Loot them for a |cRXP_LOOT_Severed Harpy Head|r
+    >>Kill |cRXP_ENEMY_Dustwind Harpies|r. Loot them for a |cRXP_LOOT_Severed Harpy Head|r
     .collect 206995,1 ---Severed Harpy Head (1)
     .mob Dustwind Savage
     .mob Dustwind Storm Witch
+    .mob Dustwind Pillager
+    .mob Dustwind Harpy
     .train 403475,1
 step
     #season 2
@@ -850,9 +852,9 @@ step
     .train 403475,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
+    .train 403475 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
     .use 204703
-    .train 403475,1
+    .itemcount 204703,1
 
 ]])
 
@@ -913,9 +915,9 @@ step
     .train 403475,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
+    .train 403475 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
     .use 204703
-    .train 403475,1
+    .itemcount 204703,1
 
 ]])
 
@@ -994,9 +996,9 @@ step
     .train 403475,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
+    .train 403475 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Devastate|r]
     .use 204703
-    .train 403475,1
+    .itemcount 204703,1
 
 ]])
 
@@ -1031,9 +1033,9 @@ step
     .train 403474,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
+    .train 403474 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
     .use 204441
-    .train 403474,1
+    .itemcount 204441,1
 
 ]])
 
@@ -1066,9 +1068,9 @@ step
     .train 403474,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
+    .train 403474 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
     .use 204441
-    .train 403474,1
+    .itemcount 204441,1
 
 ]])
 
@@ -1093,9 +1095,9 @@ step
     .train 403474,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
+    .train 403474 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Blood Frenzy|r]
     .use 204441
-    .train 403474,1
+    .itemcount 204441,1
 
 ]])
 
@@ -1123,6 +1125,102 @@ step << Warrior
 step << Warrior
     .use 208848 >>|cRXP_WARN_Use the|r |T236489:0|t[|cRXP_LOOT_Cracked Skull-Shaped Geode|r] |cRXP_WARN_to receive the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Quick Strike|r]
     .collect 208778,1 -- Rune of Quick Strike (1)
+    .train 425443,1
+step << Warrior
+    .train 425443 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Quick Strike|r] |cRXP_WARN_to train|r |T132394:0|t[Quick Strike]
+    .use 208778
+    .itemcount 208778,1
+]])
+
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Warrior SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Endless Rage - 15 (The Barrens)
+
+
+    --Rune of Endless Rage
+
+step
+    #season 2
+    .goto The Barrens,52.27,31.08,
+    .aura 420667 >>Click the |cRXP_PICK_Horde Warbanner|r
+    .train 403489,1
+step
+    #season 2
+    #completewith next
+    .goto The Barrens,51.50,30.34
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Devrak|r
+    .fly Ratchet >> Fly to Ratchet
+    .target Devrak
+step
+    #completewith next
+    .subzone 385 >>Travel to Northwatch Hold
+step
+    #season 2
+    .goto The Barrens,62.55,56.31
+    >>Click the |cRXP_PICK_Alliance Warbanner|r
+    >>Kill |cRXP_ENEMY_Lieutenant Stonebrew|r as he spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Endless Rage|r]
+    .collect 208741,1 --Rune of Endless Rage (1)
+    .mob Lieutenant Stonebrew
+    .train 403489,1
+step
+    #season 2
+    .train 403489 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Endless Rage|r] |cRXP_WARN_to train|r |T132347:0|t[Endless Rage]
+    .use 208741
+    .itemcount 208741,1
+
+    ]])
+
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Warrior SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Endless Rage - 15 (Silverpine Forest)
+
+
+    --Rune of Endless Rage
+
+step
+    #season 2
+    #completewith next
+    +|cRXP_WARN_Grouping up is recommended as you have to kill a level 17 elite|r
+step
+    #season 2
+    .goto Silverpine Forest,35.03,7.73
+    >>Attack the |cRXP_ENEMY_Webbed Victim|r and kill the |cRXP_ENEMY_Lost Adventurer|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Endless Rage|r]
+    >>|cRXP_WARN_You have to burst the|r |cRXP_ENEMY_Webbed Victim|r |cRXP_WARN_since he regains health every few seconds|r
+    .collect 208741,1 --Rune of Endless Rage (1)
+    .mob Webbed Victim
+    .mob Lost Adventurer
+    .train 403489,1
+step
+    #season 2
+    .train 403489 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Endless Rage|r] |cRXP_WARN_to train|r |T132347:0|t[Endless Rage]
+    .use 208741
+    .itemcount 208741,1
+
+    ]])
+
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Warrior SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Quick Strike - 20 (Darkshore)
+
+step << Warrior
+    .goto Darkshore,48.2,15.6,70,0
+    .goto Darkshore,50.2,12.6
+    >>Kill |cRXP_ENEMY_Paxnozz|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Quick Strike|r]
+    >>|cRXP_ENEMY_Paxnozz|r |cRXP_WARN_is a level 20 elite found patrolling in the water. Look for help before attemping to kill it|r
+    .collect 208778,1 -- Rune of Quick Strike (1)
+    .unitscan Paxnozz
     .train 425443,1
 step << Warrior
     .train 425443 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Quick Strike|r] |cRXP_WARN_to train|r |T132394:0|t[Quick Strike]

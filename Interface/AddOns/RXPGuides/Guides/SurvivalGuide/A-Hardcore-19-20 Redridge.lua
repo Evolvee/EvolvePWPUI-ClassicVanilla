@@ -46,12 +46,37 @@ step
     .target Wilder Thistlenettle
     .target Shoni the Shilent
 step << Hunter
+    #ssf
+    #completewith ExitSW
     .goto StormwindClassic,49.990,57.641
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frederick Stover|r
-    >>|cRXP_BUY_Buy a|r |T135489:0|t[Heavy Recurve Bow] |cRXP_BUY_and|r |T132382:0|t[Sharp Arrows]
+    >>|cRXP_BUY_Buy a|r |T135489:0|t[Heavy Recurve Bow]
     .collect 3027,1 -- Heavy Recurve Bow (1)
+    .target Frederick Stover
+    .money <0.6722
+    .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<9.20
+step << Hunter
+    #ah
+    #completewith ExitSW
+    .goto StormwindClassic,49.990,57.641
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frederick Stover|r
+    >>|cRXP_BUY_Buy a|r |T135489:0|t[Heavy Recurve Bow] |cRXP_BUY_or something better from the Auction House|r
+    .collect 3027,1 -- Heavy Recurve Bow (1)
+    .target Frederick Stover
+    .money <0.6722
+    .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<9.20  
+step << Hunter
+    .goto StormwindClassic,49.990,57.641
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Frederick Stover|r
+    >>|cRXP_BUY_Buy|r |T132382:0|t[Sharp Arrows]
     .collect 2515,1800 --Sharp Arrow (1800)
     .target Frederick Stover
+step << Hunter
+    +|cRXP_WARN_Equip the|r |T135489:0|t[Heavy Recurve Bow]
+    .use 3027
+    .itemcount 3027,1
+    .itemStat 18,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<9.19
+    .xp <20,1
 step << Mage
     #completewith next
     .goto StormwindClassic,37.69,82.09,10 >> Travel to the Mage Tower
@@ -145,6 +170,7 @@ step << !NightElf
     .fly Redridge >> Fly to Redridge
     .target Dungar Longdrink
 step << NightElf
+    #label ExitSW
     .goto StormwindClassic,73.2,92.1
     .zone Elwynn Forest >> Exit Stormwind
     .zoneskip Redridge Mountains
@@ -1074,11 +1100,8 @@ step
 step << Rogue
 	>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lucius|r
 	.target Lucius
-    .goto Redridge Mountains,28.06,52.32
+    .goto Redridge Mountains,28.07,52.02
     .turnin 2282 >> Turn in Alther's Mill
-step << Rogue
-	#completewith next
-	.destroy 7907 >> Destroy the Certificate of Thievery. You don't need it
 step << NightElf Rogue
     #hardcore
     #completewith next
@@ -1212,4 +1235,7 @@ step << Rogue
     .target Doc Mixilpixil
     .turnin 2607 >> Turn in The Touch of Zanzil
     .isQuestTurnedIn 2359
+step << Rogue
+	#optional
+	.destroy 7907 >> Destroy the |T134328:0|t[Certificate of Thievery]. You don't need it
 ]])

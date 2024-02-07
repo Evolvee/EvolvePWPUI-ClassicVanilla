@@ -2,12 +2,13 @@ RXPGuides.RegisterGuide([[
 #df
 #version 2
 #group RestedXP Starting Zones
+#groupweight 8
 #name 1Retail_Exile's Reach
 #displayname Exile's Reach
 #next RestedXP Alliance 10-60\1A_Elwynn Forest << Alliance
 #next RestedXP Horde 10-60\1 BfA Intro << Horde
 
-<<!DemonHunter !DK !Kultiran !DarkIronDwarf !LightforgedDraenei !Mechagnome !VoidElf !NightBorne !HighmountainTauren !Vulpera !MagharOrc !ZandalariTroll
+<< !DemonHunter !DK !Kultiran !DarkIronDwarf !LightforgedDraenei !Mechagnome !VoidElf !NightBorne !HighmountainTauren !Vulpera !MagharOrc !ZandalariTroll
 
 step << Alliance/Horde
 	#completewith next
@@ -982,8 +983,8 @@ step << Horde Mage
 step << Mage
     .goto 1409,51.95,49.84
 	>>Loot the |cRXP_PICK_Spell Book|r underwater
-    .complete 59352 << Alliance --1/1 Meredy's Spell Book
-    .complete 59954 << Horde --1/1 Herbert's Spell Book
+    .complete 59352,1 << Alliance --1/1 Meredy's Spell Book
+    .complete 59954,1 << Horde --1/1 Herbert's Spell Book
 step << Alliance Mage
     .goto 1409,52.28,55.47
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Meredy|r

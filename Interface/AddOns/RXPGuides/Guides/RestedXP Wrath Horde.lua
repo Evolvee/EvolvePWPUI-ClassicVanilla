@@ -1,5 +1,1329 @@
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
+#wotlk
+#group RestedXP Dungeon Cleave 70-80
+<< Horde
+#name 070-80 Horde Dungeon Cleave
+#displayname 70-80 Horde Dungeon Cleave
+step << !Mage
+#completewith next
+.zone Orgrimmar >> Travel or get Mage teleported to Orgrimmar
+.zoneskip Durotar
+step << !Mage !DK !Druid
+#completewith ALFP
+.goto Orgrimmar,54.10,68.37
+.home >> Set your Hearthstone to Orgrimmar
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <71,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 43023 >> Train your class spells
+.xp <71,1
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 58699 >> Train your class spells
+.xp <71,1
+step << Paladin
+.goto Orgrimmar,32.3,35.7
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 54428 >> Train your class spells
+.xp <71,1
+step << Warlock
+.goto Orgrimmar,48.0,46.0
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 47812 >> Train your class spells
+.xp <71,1
+step << Hunter
+.goto Orgrimmar,66.1,18.5
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 49051 >> Train your class spells
+.xp <71,1
+step << Mage
+#completewith next
+.zone Orgrimmar >> Teleport to Orgrimmar
+.zoneskip BoreanTundra
+.zoneskip Durotar
+step << Shaman/Priest/Druid/Mage/Paladin
+.goto Orgrimmar,45.43,56.54
+>>Purchase Reagents from Horthus inside the building
+.collect 17030,20 << Shaman 
+.collect 17029,40 << Priest 
+.collect 22148,40 << Druid 
+.collect 22147,40 << Druid 
+.collect 17032,40 << Mage 
+.collect 17020,40 << Mage 
+.collect 21177,100 << Paladin 
+.xp >72,1
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>If you pre-quested to 71, get your training
+>>Go to Moonglade. Make sure your party can summon you via summoning stone to The Nexus/Ragefire Chasm or Warlock summon
+.train 48442 >> Train your class spells
+.xp <71,1
+step << Druid/Shaman/Paladin/Hunter/Warlock
+#completewith next
+.hs >> Hearth to Orgrimmar, or get teleported/summoned to Borean Tundra/The Nexus/the Zeppelin to Borean Tundra
+.zoneskip Durotar
+.zoneskip BoreanTundra
+.xp <71,1
+step
+#label Zeppelin
+.goto Durotar,41.6,18.2,30,0
+.goto Durotar,41.26,17.45
+.zone BoreanTundra >>Take the Zeppelin from Durotar to Borean Tundra
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 129 
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+step
+.goto BoreanTundra,41.62,53.98
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Warsong Recruitment Officer next to the zeppelin
+.accept 11585 >>Accept Hellscream's Vigil
+.xp >72,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|t Go to the bottom floor of Warsong Hold. Talk to Garrosh and then Saurfang
+.turnin 11585 >>Turn in Hellscream's Vigil
+.goto BoreanTundra,41.35,53.60
+.accept 11596 >>Accept The Defense of Warsong Hold
+.goto BoreanTundra,41.43,53.67
+.xp >72,1
+step
+.goto BoreanTundra,41.92,54.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Williamson
+.vendor 25278 >> Buy a LOT of the new food. You'll be doing dungeons for the next 3 levels until your next break << Warrior/Rogue/DK
+.vendor 25278 >> Buy a LOT of the new food/water. You'll be doing dungeons for 3 levels until your next break << !Warrior !Rogue !DK
+.isOnQuest 11596
+step
+.groundgoto BoreanTundra,40.72,52.54,20,0
+.goto BoreanTundra,40.36,51.39
+>>Take the ramp up, and then the elevator to the top of the building
+.fp Warsong Hold >>Get the Warsong Hold Flight Path
+step << Mage/Priest
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump down outside, then use Slow Fall before reaching the bottom. You can also use Slow Fall on your party. Talk to Razgor inside the hut << Mage
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump down outside, then use Levitate before reaching the bottom. You can also use Levitate on your party. Talk to Razgor inside the hut << Priest
+.turnin 11596 >>Turn in The Defense of Warsong Hold
+
+.goto BoreanTundra,43.19,54.98
+.itemcount 17056,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the elevator back down, then head outside. Talk to Razgor inside the hut << !Paladin
+>>Jump down outside, then use Divine Shield to avoid taking fall damage << Paladin
+.turnin 11596 >>Turn in The Defense of Warsong Hold
+
+.goto BoreanTundra,43.19,54.98
+.xp >72,1
+step
+#completewith next
+#label ALFP
+.goto BoreanTundra,45.33,34.62
+>>Travel to Amber Ledge
+.fp Amber Ledge >>Get the Amber Ledge Flight Path
+step
+#completewith next
+.goto BoreanTundra,45.33,34.62
+.fly Coldarra >> Fly to Coldarra
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 129 
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand inside, then Talk to Raelorasz and Serrah outside
+
+.accept 11900 >>Accept Reading the Meters
+.accept 11910 >>Accept Secrets of the Ancients
+.goto BoreanTundra,32.94,34.40
+.accept 11918 >>Accept Basic Training
+.goto BoreanTundra,33.32,34.54
+.accept 13095 >>Accept Have They No Shame?
+.accept 11912 >>Accept Nuts for Berries
+.goto BoreanTundra,33.49,34.38
+.xp >74,1
+step
+.goto BoreanTundra,28.31,28.46
+>>Click on the small orb next to The Nexus meeting stone
+.complete 11900,1 
+.isOnQuest 11900
+step
+#completewith next
+.goto Borean Tundra,27.63,25.50
+.zone 129 >> Enter The Nexus
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13095,1 
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#label Nexus
+.xp 71 >> Grind The Nexus to level 71
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48442 >> Train your class spells
+.xp <71,1
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <71,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43023 >> Train your class spells
+.xp <71,1
+step << Shaman/Paladin/Warlock/Hunter
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 58699 >> Train your class spells
+.xp <71,1
+step << Paladin
+.goto Orgrimmar,32.3,35.7
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 54428 >> Train your class spells
+.xp <71,1
+step << Warlock
+.goto Orgrimmar,48.0,46.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47812 >> Train your class spells
+.xp <71,1
+step << Hunter
+.goto Orgrimmar,66.1,18.5
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49051 >> Train your class spells
+.xp <71,1
+step << DK/Mage
+#completewith Nexus2
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13095,1 
+step << DK/Mage
+#completewith Nexus2
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step << DK/Mage
+#completewith Nexus2
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step << DK/Mage
+#label Nexus2
+.groundgoto Borean Tundra,27.75,28.43,40,0
+.goto Borean Tundra,27.63,25.09
+.xp 72 >> Grind The Nexus to level 72
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49940 >> Train your class spells from Amal'Thazad in Acherus
+.xp <72,1
+.xp >78,1
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <72,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42930 >> Train your class spells
+.xp <72,1
+step
+#completewith Nexus3
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13095,1 
+step
+#completewith Nexus3
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step
+#completewith Nexus3
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step
+#label Nexus3
+.groundgoto Borean Tundra,27.75,28.43,40,0
+.goto Borean Tundra,27.63,25.09
+.xp 73 >> Grind The Nexus to level 73
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+step << Rogue/Hunter/Warrior/Shaman/Paladin
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <72,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43019 >> Train your class spells
+.xp <73,1
+step << Rogue
+.goto Orgrimmar,44.0,54.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48667 >> Train your class spells
+.xp <73,1
+step << Hunter/Warrior
+#completewith next
+.goto Orgrimmar,63.6,38.2,30 >> Enter the Valley of Honor
+.xp <73,1
+step << Hunter
+.goto Orgrimmar,66.1,18.5
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49044 >> Train your class spells
+.xp <73,1
+step << Warrior
+#label HuWaTraining
+.goto Orgrimmar,76.9,32.6,30,0
+.goto Orgrimmar,79.8,31.4
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47470 >> Train your class spells
+.xp <73,1
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49237 >> Train your class spells
+.xp <73,1
+step << Paladin
+.goto Orgrimmar,32.3,35.7
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48931 >> Train your class spells
+.xp <73,1
+step
+#completewith Berinand
+.goto BoreanTundra,33.49,34.38,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
+.turnin 13095 >>Turnin Have They No Shame?
+.isQuestComplete 13095
+step
+#completewith AmberL
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.vendor 25314 >> Vendor and Repair
+step
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11911 >>Turnin Quickening
+.turnin 11905 >>Turnin Postponing the Inevitable
+.isQuestComplete 11911
+.isQuestComplete 11905
+step
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11911 >>Turnin Quickening
+.isQuestComplete 11911
+step
+#label Berinand
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11905 >>Turnin Postponing the Inevitable
+.isQuestComplete 11905
+step
+.goto BoreanTundra,33.49,34.38
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
+.turnin 13095 >>Turnin Have They No Shame?
+.isQuestComplete 13095
+step
+#label AmberL
+#completewith next
+.goto BoreanTundra,33.13,34.45
+.fly Amber Ledge >>Fly to Amber Ledge
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+step
+#completewith next
+.goto BoreanTundra,46.62,32.75
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Fraser inside the tower
+.vendor 27137 >> Buy a LOT of the food. You'll be doing dungeons for the next 2 levels << Warrior/Rogue/DK
+.vendor 27137 >> Buy a LOT of the food/water. You'll be doing dungeons for the next 2 levels << !Warrior !Rogue !DK
+.xp >74,1
+step
+#completewith next
+.goto Dragonblight,12.27,55.25
+.zone Dragonblight >> Travel to Dragonblight
+step
+#completewith next
+.goto Dragonblight,26.15,49.48,20 >> Jump down into The Pit of Narjun
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.accept 13187 >>Accept The Faceless Ones
+.accept 13167 >>Accept Death to the Traitor King
+.accept 13182 >>Accept Don't Forget the Eggs
+.accept 12040 >>Accept An Enemy in Arthas
+.xp >76,1
+step
+#completewith next
+.goto Dragonblight,25.61,51.30
+.zone 159 >>Enter Azjol'Nerub
+step
+>>Clear Azjol'nerub once. Destroy the eggs throughout Azjol'Nerub
+.complete 13182,1 
+step
+.goto 157,62.27,48.55
+>>Clear Azjol'nerub once. Kill Anub'arak. Loot him for his Husk
+.complete 13167,1 
+step
+#completewith KilixT
+.goto 157,89.25,77.99
+.zone Dragonblight >> Exit Azjol'nerub through the back entrance
+step
+.goto Dragonblight,25.68,48.35,30,0
+.goto Dragonblight,26.23,49.33,30,0
+.goto Dragonblight,28.58,49.89,30,0
+.goto Dragonblight,28.58,47.39,30,0
+.goto Dragonblight,25.68,48.35,30,0
+.goto Dragonblight,26.23,49.33,30,0
+.goto Dragonblight,28.58,49.89,30,0
+.goto Dragonblight,28.58,47.39
+>>Kill Anub'ar Underlords inside the Pit of Narjun
+.complete 12040,1 
+step
+#label KilixT
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13167 >>Turn in Death to the Traitor King
+.turnin 13182 >>Turn in Don't Forget the Eggs
+.turnin 12040 >>Turn in An Enemy in Arthas
+.accept 12041 >>Accept The Lost Empire
+.xp >76,1
+step
+#completewith next
+.goto Dragonblight,28.61,51.79
+.zone 132 >>Enter Ahn'kahet: The Old Kingdom
+step
+#completewith AhnKahet1
+.goto 132,33.38,49.79,40,0
+.goto 132,27.61,50.24
+>>Kill the Faceless Ones just before Herald Volazj
+.complete 13187,1 
+step
+#completewith AhnKahet1
+.goto 132,23.00,50.81
+>>Kill Herald Volazj
+.complete 13187,2 
+step
+#label AhnKahet1
+.xp 74 >> Grind Ahn'Kahet: The Old Kingdom to level 74
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <73,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 53307 >> Train your class spells
+.xp <74,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <74,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49929 >> Train your class spells from Amal'Thazad in Acherus
+.xp <74,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <74,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42939 >>Train your class spells
+.xp <74,1
+step << Shaman/Paladin/Priest/Warlock/Hunter
+#completewith next
+.hs >> Hearth to Orgrimmar << !Priest
+.hs >> Hearth to Orgrimmar. Skip this step if you're Holy or Discipline specced << Priest
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49270 >> Train your class spells
+.xp <74,1
+step << Paladin
+.goto Orgrimmar,32.3,35.7
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48805 >> Train your class spells
+.xp <74,1
+step << Priest
+.goto Orgrimmar,35.6,87.8
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48126 >> Train your class spells. Skip this step if you're Holy or Discipline specced
+.xp <74,1
+
+step << Warlock
+.goto Orgrimmar,48.0,46.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47892 >> Train your class spells
+.xp <74,1
+step << Hunter
+.goto Orgrimmar,66.1,18.5
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 61846 >> Train your class spells
+.xp <74,1
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13187 >>Turn in The Faceless Ones
+.isQuestComplete 13187
+
+step
+#completewith AhnKahet2
+.goto 132,33.38,49.79,40,0
+.goto 132,27.61,50.24
+>>Kill the Faceless Ones just before Herald Volazj
+.complete 13187,1 
+step
+#completewith AhnKahet2
+.goto 132,23.00,50.81
+>>Kill Herald Volazj
+.complete 13187,2 
+step
+#label AhnKahet2
+.xp 75 >>Grind Ahn'Kahet: The Old Kingdom to level 75
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <75,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48440 >> Train your class spells
+.xp <75,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <75,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49923 >> Train your class spells from Amal'Thazad in Acherus
+.xp <75,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <75,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42955 >> Train your class spells
+.xp <75,1
+step << Shaman/Paladin/Priest/Hunter/Warrior
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Shaman
+.goto Orgrimmar,38.6,36.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49280 >> Train your class spells
+.xp <75,1
+step << Paladin
+.goto Orgrimmar,32.3,35.7
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48818 >> Train your class spells
+.xp <75,1
+step << Priest
+.goto Orgrimmar,35.6,87.8
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48124 >> Train your class spells
+.xp <75,1
+step << Hunter
+.goto Orgrimmar,66.1,18.5
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 61005 >> Train your class spells
+.xp <75,1
+step << Warrior
+.goto Orgrimmar,76.9,32.6,30,0
+.goto Orgrimmar,79.8,31.4
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 55694 >> Train your class spells
+.xp <75,1
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13187 >>Turn in The Faceless Ones
+.isQuestComplete 13187
+step << skip
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk the Wanted Poster, then Talk to Agmar
+.accept 12091 >>Accept Wanted: Dreadtalon
+.goto Dragonblight,37.67,46.55
+.turnin 12041 >>Turn in The Lost Empire
+.goto Dragonblight,38.16,46.33
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Agmar
+.turnin 12041 >>Turn in The Lost Empire
+.goto Dragonblight,38.16,46.33
+step
+#completewith end
+#label AgmarFP
+.goto Dragonblight,37.51,45.77
+.fp Agmar's Hammer >> Get the Agmar's Hammer flight path
+step << skip
+.goto Dragonblight,45.84,44.52
+>>Kill Dreadtalon atop the mountain
+.complete 12091,1 
+step << skip
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo inside and Talk to Gort
+.turnin 12091 >>Turn in Wanted: Dreadtalon
+.goto Dragonblight,35.81,48.39
+.isQuestComplete 12091
+step
+#completewith next
+.goto Zul'Drak,18.29,84.66
+.zone Zul'Drak >> Travel to Zul'Drak
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Light's Breach. Talk to Moky, Lantinga, Rageclaw, and the Wanted Poster. Skip these quests if you wish, but it's recommended you complete them
+.accept 12859 >>Accept This Just In: Fire Still Hot!
+.goto ZulDrak,32.02,75.60
+.accept 12902 >>Accept In Search Of Answers
+.goto ZulDrak,32.15,75.74
+.accept 12861 >>Accept Trolls Is Gone Crazy!
+.goto ZulDrak,32.17,75.64
+.accept 12857 >>Accept Wanted: Ragemane's Flipper
+.goto ZulDrak,32.26,75.68
+.xp >76,1
+step
+#completewith Ragemane
+.goto ZulDrak,34.8,85.1,0
+.goto ZulDrak,34.7,80.6,0
+.use 41131 >>Spam use the Rageclaw Fire Extinguisher in your bags when next to huts that are on fire.
+.complete 12859,1 
+.isOnQuest 12859
+step
+#completewith Fires
+.goto ZulDrak,34.8,85.1,0
+.goto ZulDrak,34.7,80.6,0
+>>Kill Undead Trolls in the area. Loot them for their Lock Openers
+.use 41161 >>Use them on Captured Rageclaws to free them
+.collect 41161,8,12861,1,-1
+.complete 12861,1 
+.isOnQuest 12861
+step
+.goto ZulDrak,34.94,83.90
+>>Click the floating scroll
+.turnin 12902 >>Turn in In Search Of Answers
+.accept 12883 >>Accept Orders From Drakuru
+.isOnQuest 12902
+step
+.goto ZulDrak,34.94,83.90
+>>Click the floating scroll
+.accept 12883 >>Accept Orders From Drakuru
+.isQuestTurnedIn 12902
+step
+#label Ragemane
+.goto ZulDrak,38.29,84.93
+>>Go out into the water. Kill Ragemane. Loot him for his Flipper
+.complete 12857,1 
+.isOnQuest 12857
+step
+#label Fires
+.goto ZulDrak,34.8,85.1,80,0
+.goto ZulDrak,34.7,80.6
+.use 41131 >>Use the Rageclaw Fire Extinguisher when next to a hut that's on fire
+.complete 12859,1 
+.isOnQuest 12859
+step
+.goto ZulDrak,34.8,85.1,80,0
+.goto ZulDrak,34.7,80.6
+>>Kill Undead Trolls in the area. Loot them for their Lock Openers (that go into your bag)
+.use 41161 >>Use them on Captured Rageclaws to free them
+.collect 41161,8,12861,1,-1
+.complete 12861,1 
+.isOnQuest 12861
+step
+#completewith end
+#label Langtina1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
+.turnin 12883 >>Turn in Orders From Drakuru
+.accept 12884 >>Accept The Ebon Watch
+.accept 12894 >>Accept Crusader Forward Camp
+.goto ZulDrak,32.15,75.74
+.isQuestComplete 12883
+
+step
+#completewith end
+#requires Langtina1
+#label Langtina2
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
+.accept 12884 >>Accept The Ebon Watch
+.accept 12894 >>Accept Crusader Forward Camp
+.goto ZulDrak,32.15,75.74
+.isQuestTurnedIn 12883
+step
+#completewith end
+#label Rageclaw1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
+.turnin 12861 >>Turn in Trolls Is Gone Crazy!
+.goto ZulDrak,32.2,75.7
+.isQuestComplete 12857
+.isQuestComplete 12861
+step
+#completewith end
+#requires Rageclaw1
+#label Rageclaw2
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
+.goto ZulDrak,32.17,75.64
+.isQuestComplete 12857
+step
+#completewith end
+#requires Rageclaw2
+#label Rageclaw3
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12861 >>Turn in Trolls Is Gone Crazy!
+.goto ZulDrak,32.17,75.64
+.isQuestComplete 12861
+step
+#completewith end
+#label Moky
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Moky
+.turnin 12859 >>Turn in This Just In: Fire Still Hot!
+.goto ZulDrak,32.02,75.60
+.isQuestComplete 12859
+step
+#hidewindow
+#requires Langtina2
+step
+#hidewindow
+#requires Rageclaw3
+step
+#requires Moky
+.goto ZulDrak,32.18,74.39
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Danica
+.fp Light's Breach >>Get the Light's Breach Flight Path
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRide to the Crusader Forward Camp. Talk to Mackeller
+.turnin 12894 >>Turn in Crusader Forward Camp
+.accept 12903 >>Accept That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+
+
+.isQuestTurnedIn 12883
+step
+.goto ZulDrak,25.05,51.61
+>>Travel close to Crusader Dargath until the objective completes
+.complete 12903,1 
+.isOnQuest 12903
+step
+.goto ZulDrak,19.78,56.35
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gymer in the giant cage. Try to avoid killing the Vargul in the area
+.accept 12912 >>Accept A Great Storm Approaches
+.isOnQuest 12903
+step
+.goto ZulDrak,17.64,57.55
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk in the plague tank. Try to avoid killing the Vargul in the area
+.complete 12903,2 
+.accept 12904 >>Accept Light Won't Grant Me Vengeance
+.isOnQuest 12903
+step
+#completewith next
+.goto ZulDrak,19.8,56.9,0
+.goto ZulDrak,23.2,54.7,0
+.goto ZulDrak,21.4,51.3,0
+.goto ZulDrak,15.0,61.3,0
+>>Kill any Vargul humanoid in the area
+.complete 12904,1 
+.isOnQuest 12904
+step << skip
+#completewith next
+.goto ZulDrak,19.5,58.9,0
+.goto ZulDrak,15.3,62.2,0
+.goto ZulDrak,13.3,59.9,0
+.goto ZulDrak,18.7,54.5,0
+>>Collect pieces of Scrap Metal scattered throughout the area
+.complete 12901,1 
+step
+.goto ZulDrak,15.67,59.41
+>>Travel close to Burr until the objective completes
+.complete 12903,3 
+.isOnQuest 12903
+step << skip
+#label Metal
+.goto ZulDrak,19.1,61.8,70,0
+.goto ZulDrak,15.3,62.2,70,0
+.goto ZulDrak,13.3,59.9,70,0
+.goto ZulDrak,18.7,54.5
+>>Collect pieces of Scrap Metal scattered throughout the area
+.complete 12901,1 
+step
+.goto ZulDrak,19.8,56.9,70,0
+.goto ZulDrak,23.2,54.7,70,0
+.goto ZulDrak,21.4,51.3,70,0
+.goto ZulDrak,15.0,61.3
+>>Kill any Vargul humanoid in the area
+.complete 12904,1 
+.isOnQuest 12904
+step
+.goto ZulDrak,17.64,57.55
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk
+.turnin 12904 >>Turn in Light Won't Grant Me Vengeance
+.isQuestComplete 12904
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed and MacKellar
+.turnin 12912 >>Turn in A Great Storm Approaches
+
+
+
+.turnin 12903 >>Turn in That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+.isQuestComplete 12903
+.isOnQuest 12912
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to MacKellar
+
+
+
+.turnin 12903 >>Turn in That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+.isQuestComplete 12903
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed
+.turnin 12912 >>Turn in A Great Storm Approaches
+.goto ZulDrak,25.22,63.88
+
+
+.isOnQuest 12912
+step
+.goto ZulDrak,39.43,66.96
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to The Argent Stand. Talk to Falstaav
+
+.accept 12503 >>Accept Defend the Stand
+
+.xp >78,1
+step
+.goto ZulDrak,40.53,65.61
+>>If you think you'll have at least 10 Drakkari Offerings amongst yourselves, trade them all to someone and then accept this quest for one person so they can turn it in. This gives them 1 hour of Blessing of Might (Attack Power)
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ubungo
+.accept 12565 >>Accept The Blessing of Zim'Abwa
+.xp >78,1
+step << skip
+#completewith next
+.goto ZulDrak,36.6,67.7,0
+.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
+.complete 12740,1 
+step
+.goto ZulDrak,35.8,66.6
+>>Kill undead mobs in the area
+.complete 12503,1 
+.isOnQuest 12503
+step << skip
+.goto ZulDrak,36.6,67.7
+.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
+.complete 12740,1 
+step << skip
+.goto ZulDrak,35.8,66.6
+>>Kill undead mobs in the area. Loot them for Drakkari Offerings
+.collect 38551,10 
+step
+.goto ZulDrak,36.70,72.72
+>>Click the statue
+.turnin 12565 >>Turn in The Blessing of Zim'Abwa
+.isQuestComplete 12565
+step
+.goto ZulDrak,39.43,66.96
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Falstaav
+
+.turnin 12503 >>Turn in Defend the Stand
+
+.isQuestComplete 12503
+step
+#completewith next
+.goto ZulDrak,40.83,66.25
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
+.vendor 28791 >>Buy a LOT of the new food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
+.vendor 28791 >>Buy a LOT of the new food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
+.xp >78,1
+step
+#completewith next
+.goto ZulDrak,41.09,65.15
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
+.vendor 28800 >>Vendor and Repair
+.xp >78,1
+step
+.goto ZulDrak,41.55,64.43
+.fp The Argent Stand >>Get the The Argent Stand Flight Path
+step
+>>Complete the Amphitheater of Anguish Questline. There are 6 elite quests that give a LOT of fast xp and a weapon that'll last you to 80. Only accept this when your party is ready and on the same quest progression as you. (Auto-accept is disabled for this questline)
+.goto ZulDrak,46.3,57.9,50,0
+.goto ZulDrak,48.43,56.36
+.accept 12932,0 >>Accept The Amphitheater of Anguish: Yggdras!
+.xp >78,1
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Yggdras in the Amphitheater of Anguish
+.complete 12932,1 
+.isOnQuest 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12932 >>Turn in The Amphitheater of Anguish: Yggdras!
+.isQuestComplete 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12933,0 >>Accept The Amphitheater of Anguish: Magnataur!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Stinkbeard in the Amphitheater of Anguish
+.complete 12933,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12933 >>Turn in The Amphitheater of Anguish: Magnataur!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12934,0 >>Accept The Amphitheater of Anguish: From Beyond!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill the Elemental Lord in the Amphitheater of Anguish
+.complete 12934,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12934 >>Turn in The Amphitheater of Anguish: From Beyond!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12935,0 >>Accept The Amphitheater of Anguish: Tuskarrmageddon!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Orinoko in the Amphitheater of Anguish
+.complete 12935,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12935 >>Turn in The Amphitheater of Anguish: Tuskarrmageddon!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12936,0 >>Accept The Amphitheater of Anguish: Korrak the Bloodrager!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Korrak in the Amphitheater of Anguish
+.complete 12936,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12936 >>Turn in The Amphitheater of Anguish: Korrak the Bloodrager!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12948,0 >>Accept The Champion of Anguish
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Vladof in the Amphitheater of Anguish
+.complete 12948,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12948 >>Turn in The Champion of Anguish
+.isQuestTurnedIn 12932
+step
+.groundgoto ZulDrak,51.20,54.32,60,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the stairs behind you up toward Zim'Torga. Talk to To'kini
+.accept 13099 >>Accept Just Checkin'
+.goto ZulDrak,59.98,57.93
+.xp >78,1
+step
+.groundgoto ZulDrak,65.47,44.23,60,0
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Bah'kini
+.turnin 13099 >> Turn in Just Checkin'
+.accept 13098 >> Accept For Posterity
+.accept 13111 >> Accept One of a Kind
+.xp >78,1
+step
+#completewith next
+.goto Zul'Drak,76.02,20.79
+.zone 154 >> Enter Gundrak
+step
+#completewith Gundrak1
+.goto 154,56.80,41.61
+.goto 154,52.28,68.79
+.goto 154,48.64,78.52
+.goto 154,49.42,81.91
+.goto 154,48.27,71.79
+.goto 154,44.95,67.51
+.goto 154,47.97,63.31
+.goto 154,46.23,52.77
+.goto 154,41.46,72.29
+.goto 154,30.61,76.64
+.goto 154,31.80,69.53
+.goto 154,32.28,65.89
+.goto 154,33.63,58.70
+.goto 154,36.22,58.40
+.goto 154,36.24,56.40
+.goto 154,32.53,56.32
+.goto 154,31.81,49.55
+.goto 154,31.77,45.85
+.goto 154,40.21,51.56
+.goto 154,39.94,47.99
+.goto 154,38.92,47.34
+.goto 154,43.93,31.06
+.goto 154,41.51,25.48
+.goto 154,39.40,21.64
+.goto 154,40.03,16.82
+.goto 154,46.31,22.51
+.goto 154,49.21,30.61
+.goto 154,49.74,27.77
+.goto 154,53.08,17.08
+>>Loot the Drakkari History Tablets found throughout Gundrak
+.complete 13098,1 
+step
+#completewith Gundrak1
+.goto 154,46.60,65.71
+>>Kill the Drakkari Colossus. Loot it for its Fragment
+.complete 13111,1 
+step << DK/Mage/Shaman/Hunter/Rogue
+#label Gundrak1
+.xp 76 >>Grind Gundrak to level 76
+>>If you reach your hourly lockout, switch to the Gundrak Lockout guide
+
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <76,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49894 >> Train your class spells from Amal'Thazad in Acherus
+.xp <76,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Undercity >> Teleport to Undercity
+.xp <76,1
+step << Mage
+.goto Undercity,85.1,10.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42920 >> Train your class spells
+.xp <76,1
+step << Shaman/Hunter/Rogue
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Shaman
+.goto Orgrimmar,40.5,36.9,25,0
+.goto Orgrimmar,38.6,36.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 58803 >> Train your class spells
+.xp <76,1
+step << Hunter
+.goto Orgrimmar,63.6,38.2,30,0
+.goto Orgrimmar,66.1,18.5
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 53338 >> Train your class spells
+.xp <76,1
+step << Rogue
+.goto Orgrimmar,40.4,54.5,30,0
+.goto Orgrimmar,44.0,54.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48637 >> Train your class spells
+.xp <76,1
+step
+#completewith Gundrak2
+.goto 154,56.80,41.61
+.goto 154,52.28,68.79
+.goto 154,48.64,78.52
+.goto 154,49.42,81.91
+.goto 154,48.27,71.79
+.goto 154,44.95,67.51
+.goto 154,47.97,63.31
+.goto 154,46.23,52.77
+.goto 154,41.46,72.29
+.goto 154,30.61,76.64
+.goto 154,31.80,69.53
+.goto 154,32.28,65.89
+.goto 154,33.63,58.70
+.goto 154,36.22,58.40
+.goto 154,36.24,56.40
+.goto 154,32.53,56.32
+.goto 154,31.81,49.55
+.goto 154,31.77,45.85
+.goto 154,40.21,51.56
+.goto 154,39.94,47.99
+.goto 154,38.92,47.34
+.goto 154,43.93,31.06
+.goto 154,41.51,25.48
+.goto 154,39.40,21.64
+.goto 154,40.03,16.82
+.goto 154,46.31,22.51
+.goto 154,49.21,30.61
+.goto 154,49.74,27.77
+.goto 154,53.08,17.08
+>>Loot the Drakkari History Tablets found throughout Gundrak
+.complete 13098,1 
+step
+#completewith Gundrak2
+.goto 154,46.60,65.71
+>>Kill the Drakkari Colossus. Loot it for its Fragment
+.complete 13111,1 
+step
+#label Gundrak2
+.xp 77 >>Grind Gundrak to level 77
+>>If you reach your hourly lockout, switch to the Gundrak Lockout guide
+step << Warlock
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Warlock
+.goto Orgrimmar,40.4,54.5,30,0
+.goto Orgrimmar,48.0,46.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47813 >> Train your class spells
+.xp <77,1
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.turnin 13111 >> Turn in One of a Kind
+.isQuestComplete 13098
+.isQuestComplete 13111
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.isQuestComplete 13098
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.isQuestComplete 13098
+step
+#completewith next
+.goto ZulDrak,70.47,23.30
+.fp Dubra'Jin >> Get the Dubra'Jin flight path
+step
+#completewith next
+.goto ZulDrak,70.47,23.30
+.fly The Argent Stand >> Fly to The Argent Stand
+step
+.goto ZulDrak,40.83,66.25
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
+.vendor 25245 >>Buy a LOT of the food. You'll be doing dungeons for the last 3 levels << Warrior/Rogue/DK
+.vendor 28791 >>Buy a LOT of the food/water. You'll be doing dungeons for the last 3 levels << !Warrior !Rogue !DK
+.xp >78,1
+step
+.goto ZulDrak,41.09,65.15
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
+.vendor 28800 >>Vendor and Repair
+.xp >78,1
+step
+#completewith next
+.goto ZulDrak,40.63,66.90
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Teronus
+.accept 12796 >>Accept The Magical Kingdom of Dalaran
+.zoneskip Orgrimmar
+.zoneskip Dalaran
+.xp >78,1
+step
+.goto ZulDrak,40.63,66.90
+.zone Dalaran >>Ask Teronus to be teleported to Dalaran
+.skipgossip
+.xp >78,1
+step
+.abandon 12796 >> Abandon The Magical Kingdom of Dalaran. DO NOT TURN THIS IN
+step << Mage
+.goto Dalaran,56.3,46.7
+.trainer >>Go inside the building. Train your Dalaran Portals
+step << Mage
+.goto Dalaran,55.0,46.2
+.train 42985 >> Train your class spells
+.xp <77,1
+step
+.goto Dalaran,69.81,45.45
+.train 54197 >> Train Cold Weather Flying from Hira Snowdawn
+step << skip
+.goto The Storm Peaks,65.3,60.2
+.accept 13109 >>Accept Diametrically Opposed
+.accept 13108 >>Accept Whatever it Takes
+step
+#completewith next
+.goto The Storm Peaks,45.56,21.10
+.zone 138 >>Enter the Halls of Lightning
+step << Warrior/Druid/DK/Mage
+.xp 78 >>Grind the Halls of Lightning to level 78
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <78,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48465 >> Train your class spells
+.xp <78,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <78,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49941 >> Train your class spells from Amal'Thazad in Acherus. Runeforge your weapon downstairs if needed
+.xp <78,1
+step << Mage
+#completewith next
+.zone Dalaran >> Teleport to Dalaran
+.xp <78,1
+step << Mage
+.goto Dalaran,55.0,46.2
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42914 >> Train your class spells
+.xp <78,1
+step << Warrior
+#completewith next
+.hs >> Hearth to Orgrimmar
+step << Warrior
+.goto Orgrimmar,63.6,38.2,30,0
+.goto Orgrimmar,76.9,32.6,20,0
+.goto Orgrimmar,79.8,31.4
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47436 >> Train your class spells
+.xp <78,1
+step << Mage/Druid/DK
+.xp 79 >>Grind the Halls of Lightning to level 79
+step << Mage
+#completewith next
+.zone Dalaran >> Teleport to Dalaran
+.xp <79,1
+step << Mage
+.goto Dalaran,55.0,46.2
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43046 >> Train your class spells
+.xp <79,1
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <79,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48378 >> Train your class spells
+.xp <79,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <79,1
+step << DK
+#label DKTrain1
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 55271 >> Train your class spells from Amal'Thazad in Acherus
+.xp <79,1
+step
+.xp 80 >>Grind the Halls of Lightning to level 80
+step << skip
+.goto The Storm Peaks,65.3,60.2
+.turnin 13109 >>Turn in Diametrically Opposed
+.turnin 13108 >>Turn in Whatever it Takes
+>>Ding Level 80 - Congratulations!
+]])
+RXPGuides.RegisterGuide([[
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -889,7 +2213,7 @@ step
 .accept 1184 >> Accept Parts of the Swarm
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -1050,7 +2374,7 @@ step
 .zoneskip Orgrimmar
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -1707,6 +3031,7 @@ step
 .turnin 570 >> Turn in Mok'thardin's Enchantment
 .target Far Seer Mok'thardin
 .accept 572 >> Accept Mok'thardin's Enchantment
+
 step
 .isQuestTurnedIn 192
 #completewith next
@@ -2177,7 +3502,7 @@ step
 
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -3134,7 +4459,7 @@ step << wotlk
 .accept 669 >> Accept Sunken Treasure
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -4202,7 +5527,7 @@ step
 .abandon 1173
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 30-45
@@ -4976,7 +6301,7 @@ step
 .turnin 208 >> Turn in Big Game Hunter
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -6316,7 +7641,7 @@ step
 .turnin 32 >> Turn in Rise of the Silithid
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -7032,7 +8357,7 @@ step
 .turnin 580 >> Turn in Whiskey Slim's Lost Grog
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -7577,7 +8902,7 @@ step
 .turnin 3444 >> Turn in The Stone Circle
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -8098,7 +9423,7 @@ step
 .fly Splintertree Post >> Fly to Splintertree Post
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -8588,7 +9913,7 @@ step
 .turnin 4300 >>Turn in Bone-Bladed Weapons
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 45-60
@@ -9373,7 +10698,7 @@ step
 .accept 9407 >>Accept Through the Dark Portal
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -12402,7 +13727,7 @@ step
 >>You are now attuned to Karazhan - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -13711,7 +15036,7 @@ step
 .target Warden Hamoot
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -15575,7 +16900,7 @@ step
 .zone Shattrath City >> Travel to Shattrath
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -17445,7 +18770,7 @@ step
 .target Hemet Nesingwary
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -19427,7 +20752,7 @@ step
 .abandon 10912 >> Abandon The Hound-Master
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 60-70
 << Horde
@@ -20269,7 +21594,7 @@ step
 .target A'dal
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #tbc
 #group RestedXP Horde 60-70
 << Horde
@@ -20784,7 +22109,7 @@ step
 .target Evergrove Druid
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #tbc
 #group RestedXP Horde 60-70
 << Horde
@@ -24262,7 +25587,7 @@ step
 .target Voren'thal the Seer
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80
 #name 68-71 Howling Fjord
@@ -27620,7 +28945,7 @@ step << Warrior
 .target Zel'mak
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -28201,7 +29526,7 @@ step
 .target Tobias the Filth Gorger
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Horde 60-70
@@ -28770,7 +30095,7 @@ step
 .target Tobias the Filth Gorger
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80
 #defaultfor None
@@ -30974,1330 +32299,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
-#wotlk
-#group RestedXP Dungeon Cleave 70-80
-<< Horde
-#name 70-80 Horde Dungeon Cleave
-step << !Mage
-#completewith next
-.zone Orgrimmar >> Travel or get Mage teleported to Orgrimmar
-.zoneskip Durotar
-step << !Mage !DK !Druid
-#completewith ALFP
-.goto Orgrimmar,54.10,68.37
-.home >> Set your Hearthstone to Orgrimmar
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <71,1
-step << Mage
-.goto Undercity,85.1,10.0
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 43023 >> Train your class spells
-.xp <71,1
-step << Shaman
-.goto Orgrimmar,38.6,36.0
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 58699 >> Train your class spells
-.xp <71,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 54428 >> Train your class spells
-.xp <71,1
-step << Warlock
-.goto Orgrimmar,48.0,46.0
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 47812 >> Train your class spells
-.xp <71,1
-step << Hunter
-.goto Orgrimmar,66.1,18.5
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 49051 >> Train your class spells
-.xp <71,1
-step << Mage
-#completewith next
-.zone Orgrimmar >> Teleport to Orgrimmar
-.zoneskip BoreanTundra
-.zoneskip Durotar
-step << Shaman/Priest/Druid/Mage/Paladin
-.goto Orgrimmar,45.43,56.54
->>Purchase Reagents from Horthus inside the building
-.collect 17030,20 << Shaman 
-.collect 17029,40 << Priest 
-.collect 22148,40 << Druid 
-.collect 22147,40 << Druid 
-.collect 17032,40 << Mage 
-.collect 17020,40 << Mage 
-.collect 21177,100 << Paladin 
-.xp >72,1
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>If you pre-quested to 71, get your training
->>Go to Moonglade. Make sure your party can summon you via summoning stone to The Nexus/Ragefire Chasm or Warlock summon
-.train 48442 >> Train your class spells
-.xp <71,1
-step << Druid/Shaman/Paladin/Hunter/Warlock
-#completewith next
-.hs >> Hearth to Orgrimmar, or get teleported/summoned to Borean Tundra/The Nexus/the Zeppelin to Borean Tundra
-.zoneskip Durotar
-.zoneskip BoreanTundra
-.xp <71,1
-step
-#label Zeppelin
-.goto Durotar,41.6,18.2,30,0
-.goto Durotar,41.26,17.45
-.zone BoreanTundra >>Take the Zeppelin from Durotar to Borean Tundra
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 129 
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-step
-.goto BoreanTundra,41.62,53.98
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Warsong Recruitment Officer next to the zeppelin
-.accept 11585 >>Accept Hellscream's Vigil
-.xp >72,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|t Go to the bottom floor of Warsong Hold. Talk to Garrosh and then Saurfang
-.turnin 11585 >>Turn in Hellscream's Vigil
-.goto BoreanTundra,41.35,53.60
-.accept 11596 >>Accept The Defense of Warsong Hold
-.goto BoreanTundra,41.43,53.67
-.xp >72,1
-step
-.goto BoreanTundra,41.92,54.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Williamson
-.vendor 25278 >> Buy a LOT of the new food. You'll be doing dungeons for the next 3 levels until your next break << Warrior/Rogue/DK
-.vendor 25278 >> Buy a LOT of the new food/water. You'll be doing dungeons for 3 levels until your next break << !Warrior !Rogue !DK
-.isOnQuest 11596
-step
-.groundgoto BoreanTundra,40.72,52.54,20,0
-.goto BoreanTundra,40.36,51.39
->>Take the ramp up, and then the elevator to the top of the building
-.fp Warsong Hold >>Get the Warsong Hold Flight Path
-step << Mage/Priest
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump down outside, then use Slow Fall before reaching the bottom. You can also use Slow Fall on your party. Talk to Razgor inside the hut << Mage
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump down outside, then use Levitate before reaching the bottom. You can also use Levitate on your party. Talk to Razgor inside the hut << Priest
-.turnin 11596 >>Turn in The Defense of Warsong Hold
-
-.goto BoreanTundra,43.19,54.98
-.itemcount 17056,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the elevator back down, then head outside. Talk to Razgor inside the hut << !Paladin
->>Jump down outside, then use Divine Shield to avoid taking fall damage << Paladin
-.turnin 11596 >>Turn in The Defense of Warsong Hold
-
-.goto BoreanTundra,43.19,54.98
-.xp >72,1
-step
-#completewith next
-#label ALFP
-.goto BoreanTundra,45.33,34.62
->>Travel to Amber Ledge
-.fp Amber Ledge >>Get the Amber Ledge Flight Path
-step
-#completewith next
-.goto BoreanTundra,45.33,34.62
-.fly Coldarra >> Fly to Coldarra
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 129 
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand inside, then Talk to Raelorasz and Serrah outside
-
-.accept 11900 >>Accept Reading the Meters
-.accept 11910 >>Accept Secrets of the Ancients
-.goto BoreanTundra,32.94,34.40
-.accept 11918 >>Accept Basic Training
-.goto BoreanTundra,33.32,34.54
-.accept 13095 >>Accept Have They No Shame?
-.accept 11912 >>Accept Nuts for Berries
-.goto BoreanTundra,33.49,34.38
-.xp >74,1
-step
-.goto BoreanTundra,28.31,28.46
->>Click on the small orb next to The Nexus meeting stone
-.complete 11900,1 
-.isOnQuest 11900
-step
-#completewith next
-.goto Borean Tundra,27.63,25.50
-.zone 129 >> Enter The Nexus
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13095,1 
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#label Nexus
-.xp 71 >> Grind The Nexus to level 71
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48442 >> Train your class spells
-.xp <71,1
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <71,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43023 >> Train your class spells
-.xp <71,1
-step << Shaman/Paladin/Warlock/Hunter
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Shaman
-.goto Orgrimmar,38.6,36.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 58699 >> Train your class spells
-.xp <71,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 54428 >> Train your class spells
-.xp <71,1
-step << Warlock
-.goto Orgrimmar,48.0,46.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47812 >> Train your class spells
-.xp <71,1
-step << Hunter
-.goto Orgrimmar,66.1,18.5
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49051 >> Train your class spells
-.xp <71,1
-step << DK/Mage
-#completewith Nexus2
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13095,1 
-step << DK/Mage
-#completewith Nexus2
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step << DK/Mage
-#completewith Nexus2
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step << DK/Mage
-#label Nexus2
-.groundgoto Borean Tundra,27.75,28.43,40,0
-.goto Borean Tundra,27.63,25.09
-.xp 72 >> Grind The Nexus to level 72
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49940 >> Train your class spells from Amal'Thazad in Acherus
-.xp <72,1
-.xp >78,1
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <72,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42930 >> Train your class spells
-.xp <72,1
-step
-#completewith Nexus3
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13095,1 
-step
-#completewith Nexus3
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step
-#completewith Nexus3
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step
-#label Nexus3
-.groundgoto Borean Tundra,27.75,28.43,40,0
-.goto Borean Tundra,27.63,25.09
-.xp 73 >> Grind The Nexus to level 73
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-step << Rogue/Hunter/Warrior/Shaman/Paladin
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <72,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43019 >> Train your class spells
-.xp <73,1
-step << Rogue
-.goto Orgrimmar,44.0,54.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48667 >> Train your class spells
-.xp <73,1
-step << Hunter/Warrior
-#completewith next
-.goto Orgrimmar,63.6,38.2,30 >> Enter the Valley of Honor
-.xp <73,1
-step << Hunter
-.goto Orgrimmar,66.1,18.5
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49044 >> Train your class spells
-.xp <73,1
-step << Warrior
-#label HuWaTraining
-.goto Orgrimmar,76.9,32.6,30,0
-.goto Orgrimmar,79.8,31.4
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47470 >> Train your class spells
-.xp <73,1
-step << Shaman
-.goto Orgrimmar,38.6,36.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49237 >> Train your class spells
-.xp <73,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48931 >> Train your class spells
-.xp <73,1
-step
-#completewith Berinand
-.goto BoreanTundra,33.49,34.38,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
-.turnin 13095 >>Turnin Have They No Shame?
-.isQuestComplete 13095
-step
-#completewith AmberL
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.vendor 25314 >> Vendor and Repair
-step
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11911 >>Turnin Quickening
-.turnin 11905 >>Turnin Postponing the Inevitable
-.isQuestComplete 11911
-.isQuestComplete 11905
-step
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11911 >>Turnin Quickening
-.isQuestComplete 11911
-step
-#label Berinand
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11905 >>Turnin Postponing the Inevitable
-.isQuestComplete 11905
-step
-.goto BoreanTundra,33.49,34.38
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
-.turnin 13095 >>Turnin Have They No Shame?
-.isQuestComplete 13095
-step
-#label AmberL
-#completewith next
-.goto BoreanTundra,33.13,34.45
-.fly Amber Ledge >>Fly to Amber Ledge
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-step
-#completewith next
-.goto BoreanTundra,46.62,32.75
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Fraser inside the tower
-.vendor 27137 >> Buy a LOT of the food. You'll be doing dungeons for the next 2 levels << Warrior/Rogue/DK
-.vendor 27137 >> Buy a LOT of the food/water. You'll be doing dungeons for the next 2 levels << !Warrior !Rogue !DK
-.xp >74,1
-step
-#completewith next
-.goto Dragonblight,12.27,55.25
-.zone Dragonblight >> Travel to Dragonblight
-step
-#completewith next
-.goto Dragonblight,26.15,49.48,20 >> Jump down into The Pit of Narjun
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.accept 13187 >>Accept The Faceless Ones
-.accept 13167 >>Accept Death to the Traitor King
-.accept 13182 >>Accept Don't Forget the Eggs
-.accept 12040 >>Accept An Enemy in Arthas
-.xp >76,1
-step
-#completewith next
-.goto Dragonblight,25.61,51.30
-.zone 159 >>Enter Azjol'Nerub
-step
->>Clear Azjol'nerub once. Destroy the eggs throughout Azjol'Nerub
-.complete 13182,1 
-step
-.goto 157,62.27,48.55
->>Clear Azjol'nerub once. Kill Anub'arak. Loot him for his Husk
-.complete 13167,1 
-step
-#completewith KilixT
-.goto 157,89.25,77.99
-.zone Dragonblight >> Exit Azjol'nerub through the back entrance
-step
-.goto Dragonblight,25.68,48.35,30,0
-.goto Dragonblight,26.23,49.33,30,0
-.goto Dragonblight,28.58,49.89,30,0
-.goto Dragonblight,28.58,47.39,30,0
-.goto Dragonblight,25.68,48.35,30,0
-.goto Dragonblight,26.23,49.33,30,0
-.goto Dragonblight,28.58,49.89,30,0
-.goto Dragonblight,28.58,47.39
->>Kill Anub'ar Underlords inside the Pit of Narjun
-.complete 12040,1 
-step
-#label KilixT
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13167 >>Turn in Death to the Traitor King
-.turnin 13182 >>Turn in Don't Forget the Eggs
-.turnin 12040 >>Turn in An Enemy in Arthas
-.accept 12041 >>Accept The Lost Empire
-.xp >76,1
-step
-#completewith next
-.goto Dragonblight,28.61,51.79
-.zone 132 >>Enter Ahn'kahet: The Old Kingdom
-step
-#completewith AhnKahet1
-.goto 132,33.38,49.79,40,0
-.goto 132,27.61,50.24
->>Kill the Faceless Ones just before Herald Volazj
-.complete 13187,1 
-step
-#completewith AhnKahet1
-.goto 132,23.00,50.81
->>Kill Herald Volazj
-.complete 13187,2 
-step
-#label AhnKahet1
-.xp 74 >> Grind Ahn'Kahet: The Old Kingdom to level 74
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <73,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 53307 >> Train your class spells
-.xp <74,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <74,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49929 >> Train your class spells from Amal'Thazad in Acherus
-.xp <74,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <74,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42939 >>Train your class spells
-.xp <74,1
-step << Shaman/Paladin/Priest/Warlock/Hunter
-#completewith next
-.hs >> Hearth to Orgrimmar << !Priest
-.hs >> Hearth to Orgrimmar. Skip this step if you're Holy or Discipline specced << Priest
-step << Shaman
-.goto Orgrimmar,38.6,36.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49270 >> Train your class spells
-.xp <74,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48805 >> Train your class spells
-.xp <74,1
-step << Priest
-.goto Orgrimmar,35.6,87.8
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48126 >> Train your class spells. Skip this step if you're Holy or Discipline specced
-.xp <74,1
-
-step << Warlock
-.goto Orgrimmar,48.0,46.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47892 >> Train your class spells
-.xp <74,1
-step << Hunter
-.goto Orgrimmar,66.1,18.5
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 61846 >> Train your class spells
-.xp <74,1
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13187 >>Turn in The Faceless Ones
-.isQuestComplete 13187
-
-step
-#completewith AhnKahet2
-.goto 132,33.38,49.79,40,0
-.goto 132,27.61,50.24
->>Kill the Faceless Ones just before Herald Volazj
-.complete 13187,1 
-step
-#completewith AhnKahet2
-.goto 132,23.00,50.81
->>Kill Herald Volazj
-.complete 13187,2 
-step
-#label AhnKahet2
-.xp 75 >>Grind Ahn'Kahet: The Old Kingdom to level 75
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <75,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48440 >> Train your class spells
-.xp <75,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <75,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49923 >> Train your class spells from Amal'Thazad in Acherus
-.xp <75,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <75,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42955 >> Train your class spells
-.xp <75,1
-step << Shaman/Paladin/Priest/Hunter/Warrior
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Shaman
-.goto Orgrimmar,38.6,36.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49280 >> Train your class spells
-.xp <75,1
-step << Paladin
-.goto Orgrimmar,32.3,35.7
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48818 >> Train your class spells
-.xp <75,1
-step << Priest
-.goto Orgrimmar,35.6,87.8
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48124 >> Train your class spells
-.xp <75,1
-step << Hunter
-.goto Orgrimmar,66.1,18.5
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 61005 >> Train your class spells
-.xp <75,1
-step << Warrior
-.goto Orgrimmar,76.9,32.6,30,0
-.goto Orgrimmar,79.8,31.4
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 55694 >> Train your class spells
-.xp <75,1
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13187 >>Turn in The Faceless Ones
-.isQuestComplete 13187
-step << skip
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk the Wanted Poster, then Talk to Agmar
-.accept 12091 >>Accept Wanted: Dreadtalon
-.goto Dragonblight,37.67,46.55
-.turnin 12041 >>Turn in The Lost Empire
-.goto Dragonblight,38.16,46.33
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Agmar
-.turnin 12041 >>Turn in The Lost Empire
-.goto Dragonblight,38.16,46.33
-step
-#completewith end
-#label AgmarFP
-.goto Dragonblight,37.51,45.77
-.fp Agmar's Hammer >> Get the Agmar's Hammer flight path
-step << skip
-.goto Dragonblight,45.84,44.52
->>Kill Dreadtalon atop the mountain
-.complete 12091,1 
-step << skip
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo inside and Talk to Gort
-.turnin 12091 >>Turn in Wanted: Dreadtalon
-.goto Dragonblight,35.81,48.39
-.isQuestComplete 12091
-step
-#completewith next
-.goto Zul'Drak,18.29,84.66
-.zone Zul'Drak >> Travel to Zul'Drak
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Light's Breach. Talk to Moky, Lantinga, Rageclaw, and the Wanted Poster. Skip these quests if you wish, but it's recommended you complete them
-.accept 12859 >>Accept This Just In: Fire Still Hot!
-.goto ZulDrak,32.02,75.60
-.accept 12902 >>Accept In Search Of Answers
-.goto ZulDrak,32.15,75.74
-.accept 12861 >>Accept Trolls Is Gone Crazy!
-.goto ZulDrak,32.17,75.64
-.accept 12857 >>Accept Wanted: Ragemane's Flipper
-.goto ZulDrak,32.26,75.68
-.xp >76,1
-step
-#completewith Ragemane
-.goto ZulDrak,34.8,85.1,0
-.goto ZulDrak,34.7,80.6,0
-.use 41131 >>Spam use the Rageclaw Fire Extinguisher in your bags when next to huts that are on fire.
-.complete 12859,1 
-.isOnQuest 12859
-step
-#completewith Fires
-.goto ZulDrak,34.8,85.1,0
-.goto ZulDrak,34.7,80.6,0
->>Kill Undead Trolls in the area. Loot them for their Lock Openers
-.use 41161 >>Use them on Captured Rageclaws to free them
-.collect 41161,8,12861,1,-1
-.complete 12861,1 
-.isOnQuest 12861
-step
-.goto ZulDrak,34.94,83.90
->>Click the floating scroll
-.turnin 12902 >>Turn in In Search Of Answers
-.accept 12883 >>Accept Orders From Drakuru
-.isOnQuest 12902
-step
-.goto ZulDrak,34.94,83.90
->>Click the floating scroll
-.accept 12883 >>Accept Orders From Drakuru
-.isQuestTurnedIn 12902
-step
-#label Ragemane
-.goto ZulDrak,38.29,84.93
->>Go out into the water. Kill Ragemane. Loot him for his Flipper
-.complete 12857,1 
-.isOnQuest 12857
-step
-#label Fires
-.goto ZulDrak,34.8,85.1,80,0
-.goto ZulDrak,34.7,80.6
-.use 41131 >>Use the Rageclaw Fire Extinguisher when next to a hut that's on fire
-.complete 12859,1 
-.isOnQuest 12859
-step
-.goto ZulDrak,34.8,85.1,80,0
-.goto ZulDrak,34.7,80.6
->>Kill Undead Trolls in the area. Loot them for their Lock Openers (that go into your bag)
-.use 41161 >>Use them on Captured Rageclaws to free them
-.collect 41161,8,12861,1,-1
-.complete 12861,1 
-.isOnQuest 12861
-step
-#completewith end
-#label Langtina1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
-.turnin 12883 >>Turn in Orders From Drakuru
-.accept 12884 >>Accept The Ebon Watch
-.accept 12894 >>Accept Crusader Forward Camp
-.goto ZulDrak,32.15,75.74
-.isQuestComplete 12883
-
-step
-#completewith end
-#requires Langtina1
-#label Langtina2
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
-.accept 12884 >>Accept The Ebon Watch
-.accept 12894 >>Accept Crusader Forward Camp
-.goto ZulDrak,32.15,75.74
-.isQuestTurnedIn 12883
-step
-#completewith end
-#label Rageclaw1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
-.turnin 12861 >>Turn in Trolls Is Gone Crazy!
-.goto ZulDrak,32.2,75.7
-.isQuestComplete 12857
-.isQuestComplete 12861
-step
-#completewith end
-#requires Rageclaw1
-#label Rageclaw2
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
-.goto ZulDrak,32.17,75.64
-.isQuestComplete 12857
-step
-#completewith end
-#requires Rageclaw2
-#label Rageclaw3
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12861 >>Turn in Trolls Is Gone Crazy!
-.goto ZulDrak,32.17,75.64
-.isQuestComplete 12861
-step
-#completewith end
-#label Moky
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Moky
-.turnin 12859 >>Turn in This Just In: Fire Still Hot!
-.goto ZulDrak,32.02,75.60
-.isQuestComplete 12859
-step
-#hidewindow
-#requires Langtina2
-step
-#hidewindow
-#requires Rageclaw3
-step
-#requires Moky
-.goto ZulDrak,32.18,74.39
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Danica
-.fp Light's Breach >>Get the Light's Breach Flight Path
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRide to the Crusader Forward Camp. Talk to Mackeller
-.turnin 12894 >>Turn in Crusader Forward Camp
-.accept 12903 >>Accept That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-
-
-.isQuestTurnedIn 12883
-step
-.goto ZulDrak,25.05,51.61
->>Travel close to Crusader Dargath until the objective completes
-.complete 12903,1 
-.isOnQuest 12903
-step
-.goto ZulDrak,19.78,56.35
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gymer in the giant cage. Try to avoid killing the Vargul in the area
-.accept 12912 >>Accept A Great Storm Approaches
-.isOnQuest 12903
-step
-.goto ZulDrak,17.64,57.55
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk in the plague tank. Try to avoid killing the Vargul in the area
-.complete 12903,2 
-.accept 12904 >>Accept Light Won't Grant Me Vengeance
-.isOnQuest 12903
-step
-#completewith next
-.goto ZulDrak,19.8,56.9,0
-.goto ZulDrak,23.2,54.7,0
-.goto ZulDrak,21.4,51.3,0
-.goto ZulDrak,15.0,61.3,0
->>Kill any Vargul humanoid in the area
-.complete 12904,1 
-.isOnQuest 12904
-step << skip
-#completewith next
-.goto ZulDrak,19.5,58.9,0
-.goto ZulDrak,15.3,62.2,0
-.goto ZulDrak,13.3,59.9,0
-.goto ZulDrak,18.7,54.5,0
->>Collect pieces of Scrap Metal scattered throughout the area
-.complete 12901,1 
-step
-.goto ZulDrak,15.67,59.41
->>Travel close to Burr until the objective completes
-.complete 12903,3 
-.isOnQuest 12903
-step << skip
-#label Metal
-.goto ZulDrak,19.1,61.8,70,0
-.goto ZulDrak,15.3,62.2,70,0
-.goto ZulDrak,13.3,59.9,70,0
-.goto ZulDrak,18.7,54.5
->>Collect pieces of Scrap Metal scattered throughout the area
-.complete 12901,1 
-step
-.goto ZulDrak,19.8,56.9,70,0
-.goto ZulDrak,23.2,54.7,70,0
-.goto ZulDrak,21.4,51.3,70,0
-.goto ZulDrak,15.0,61.3
->>Kill any Vargul humanoid in the area
-.complete 12904,1 
-.isOnQuest 12904
-step
-.goto ZulDrak,17.64,57.55
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk
-.turnin 12904 >>Turn in Light Won't Grant Me Vengeance
-.isQuestComplete 12904
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed and MacKellar
-.turnin 12912 >>Turn in A Great Storm Approaches
-
-
-
-.turnin 12903 >>Turn in That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-.isQuestComplete 12903
-.isOnQuest 12912
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to MacKellar
-
-
-
-.turnin 12903 >>Turn in That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-.isQuestComplete 12903
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed
-.turnin 12912 >>Turn in A Great Storm Approaches
-.goto ZulDrak,25.22,63.88
-
-
-.isOnQuest 12912
-step
-.goto ZulDrak,39.43,66.96
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to The Argent Stand. Talk to Falstaav
-
-.accept 12503 >>Accept Defend the Stand
-
-.xp >78,1
-step
-.goto ZulDrak,40.53,65.61
->>If you think you'll have at least 10 Drakkari Offerings amongst yourselves, trade them all to someone and then accept this quest for one person so they can turn it in. This gives them 1 hour of Blessing of Might (Attack Power)
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ubungo
-.accept 12565 >>Accept The Blessing of Zim'Abwa
-.xp >78,1
-step << skip
-#completewith next
-.goto ZulDrak,36.6,67.7,0
-.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
-.complete 12740,1 
-step
-.goto ZulDrak,35.8,66.6
->>Kill undead mobs in the area
-.complete 12503,1 
-.isOnQuest 12503
-step << skip
-.goto ZulDrak,36.6,67.7
-.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
-.complete 12740,1 
-step << skip
-.goto ZulDrak,35.8,66.6
->>Kill undead mobs in the area. Loot them for Drakkari Offerings
-.collect 38551,10 
-step
-.goto ZulDrak,36.70,72.72
->>Click the statue
-.turnin 12565 >>Turn in The Blessing of Zim'Abwa
-.isQuestComplete 12565
-step
-.goto ZulDrak,39.43,66.96
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Falstaav
-
-.turnin 12503 >>Turn in Defend the Stand
-
-.isQuestComplete 12503
-step
-#completewith next
-.goto ZulDrak,40.83,66.25
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
-.vendor 28791 >>Buy a LOT of the new food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
-.vendor 28791 >>Buy a LOT of the new food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
-.xp >78,1
-step
-#completewith next
-.goto ZulDrak,41.09,65.15
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
-.vendor 28800 >>Vendor and Repair
-.xp >78,1
-step
-.goto ZulDrak,41.55,64.43
-.fp The Argent Stand >>Get the The Argent Stand Flight Path
-step
->>Complete the Amphitheater of Anguish Questline. There are 6 elite quests that give a LOT of fast xp and a weapon that'll last you to 80. Only accept this when your party is ready and on the same quest progression as you. (Auto-accept is disabled for this questline)
-.goto ZulDrak,46.3,57.9,50,0
-.goto ZulDrak,48.43,56.36
-.accept 12932,0 >>Accept The Amphitheater of Anguish: Yggdras!
-.xp >78,1
-step
-.goto ZulDrak,47.83,56.83
->>Kill Yggdras in the Amphitheater of Anguish
-.complete 12932,1 
-.isOnQuest 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12932 >>Turn in The Amphitheater of Anguish: Yggdras!
-.isQuestComplete 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12933,0 >>Accept The Amphitheater of Anguish: Magnataur!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Stinkbeard in the Amphitheater of Anguish
-.complete 12933,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12933 >>Turn in The Amphitheater of Anguish: Magnataur!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12934,0 >>Accept The Amphitheater of Anguish: From Beyond!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill the Elemental Lord in the Amphitheater of Anguish
-.complete 12934,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12934 >>Turn in The Amphitheater of Anguish: From Beyond!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12935,0 >>Accept The Amphitheater of Anguish: Tuskarrmageddon!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Orinoko in the Amphitheater of Anguish
-.complete 12935,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12935 >>Turn in The Amphitheater of Anguish: Tuskarrmageddon!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12936,0 >>Accept The Amphitheater of Anguish: Korrak the Bloodrager!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Korrak in the Amphitheater of Anguish
-.complete 12936,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12936 >>Turn in The Amphitheater of Anguish: Korrak the Bloodrager!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12948,0 >>Accept The Champion of Anguish
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Vladof in the Amphitheater of Anguish
-.complete 12948,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12948 >>Turn in The Champion of Anguish
-.isQuestTurnedIn 12932
-step
-.groundgoto ZulDrak,51.20,54.32,60,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the stairs behind you up toward Zim'Torga. Talk to To'kini
-.accept 13099 >>Accept Just Checkin'
-.goto ZulDrak,59.98,57.93
-.xp >78,1
-step
-.groundgoto ZulDrak,65.47,44.23,60,0
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Bah'kini
-.turnin 13099 >> Turn in Just Checkin'
-.accept 13098 >> Accept For Posterity
-.accept 13111 >> Accept One of a Kind
-.xp >78,1
-step
-#completewith next
-.goto Zul'Drak,76.02,20.79
-.zone 154 >> Enter Gundrak
-step
-#completewith Gundrak1
-.goto 154,56.80,41.61
-.goto 154,52.28,68.79
-.goto 154,48.64,78.52
-.goto 154,49.42,81.91
-.goto 154,48.27,71.79
-.goto 154,44.95,67.51
-.goto 154,47.97,63.31
-.goto 154,46.23,52.77
-.goto 154,41.46,72.29
-.goto 154,30.61,76.64
-.goto 154,31.80,69.53
-.goto 154,32.28,65.89
-.goto 154,33.63,58.70
-.goto 154,36.22,58.40
-.goto 154,36.24,56.40
-.goto 154,32.53,56.32
-.goto 154,31.81,49.55
-.goto 154,31.77,45.85
-.goto 154,40.21,51.56
-.goto 154,39.94,47.99
-.goto 154,38.92,47.34
-.goto 154,43.93,31.06
-.goto 154,41.51,25.48
-.goto 154,39.40,21.64
-.goto 154,40.03,16.82
-.goto 154,46.31,22.51
-.goto 154,49.21,30.61
-.goto 154,49.74,27.77
-.goto 154,53.08,17.08
->>Loot the Drakkari History Tablets found throughout Gundrak
-.complete 13098,1 
-step
-#completewith Gundrak1
-.goto 154,46.60,65.71
->>Kill the Drakkari Colossus. Loot it for its Fragment
-.complete 13111,1 
-step << DK/Mage/Shaman/Hunter/Rogue
-#label Gundrak1
-.xp 76 >>Grind Gundrak to level 76
->>If you reach your hourly lockout, switch to the Gundrak Lockout guide
-
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <76,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49894 >> Train your class spells from Amal'Thazad in Acherus
-.xp <76,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Undercity >> Teleport to Undercity
-.xp <76,1
-step << Mage
-.goto Undercity,85.1,10.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42920 >> Train your class spells
-.xp <76,1
-step << Shaman/Hunter/Rogue
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Shaman
-.goto Orgrimmar,40.5,36.9,25,0
-.goto Orgrimmar,38.6,36.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 58803 >> Train your class spells
-.xp <76,1
-step << Hunter
-.goto Orgrimmar,63.6,38.2,30,0
-.goto Orgrimmar,66.1,18.5
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 53338 >> Train your class spells
-.xp <76,1
-step << Rogue
-.goto Orgrimmar,40.4,54.5,30,0
-.goto Orgrimmar,44.0,54.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48637 >> Train your class spells
-.xp <76,1
-step
-#completewith Gundrak2
-.goto 154,56.80,41.61
-.goto 154,52.28,68.79
-.goto 154,48.64,78.52
-.goto 154,49.42,81.91
-.goto 154,48.27,71.79
-.goto 154,44.95,67.51
-.goto 154,47.97,63.31
-.goto 154,46.23,52.77
-.goto 154,41.46,72.29
-.goto 154,30.61,76.64
-.goto 154,31.80,69.53
-.goto 154,32.28,65.89
-.goto 154,33.63,58.70
-.goto 154,36.22,58.40
-.goto 154,36.24,56.40
-.goto 154,32.53,56.32
-.goto 154,31.81,49.55
-.goto 154,31.77,45.85
-.goto 154,40.21,51.56
-.goto 154,39.94,47.99
-.goto 154,38.92,47.34
-.goto 154,43.93,31.06
-.goto 154,41.51,25.48
-.goto 154,39.40,21.64
-.goto 154,40.03,16.82
-.goto 154,46.31,22.51
-.goto 154,49.21,30.61
-.goto 154,49.74,27.77
-.goto 154,53.08,17.08
->>Loot the Drakkari History Tablets found throughout Gundrak
-.complete 13098,1 
-step
-#completewith Gundrak2
-.goto 154,46.60,65.71
->>Kill the Drakkari Colossus. Loot it for its Fragment
-.complete 13111,1 
-step
-#label Gundrak2
-.xp 77 >>Grind Gundrak to level 77
->>If you reach your hourly lockout, switch to the Gundrak Lockout guide
-step << Warlock
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Warlock
-.goto Orgrimmar,40.4,54.5,30,0
-.goto Orgrimmar,48.0,46.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47813 >> Train your class spells
-.xp <77,1
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.turnin 13111 >> Turn in One of a Kind
-.isQuestComplete 13098
-.isQuestComplete 13111
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.isQuestComplete 13098
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.isQuestComplete 13098
-step
-#completewith next
-.goto ZulDrak,70.47,23.30
-.fp Dubra'Jin >> Get the Dubra'Jin flight path
-step
-#completewith next
-.goto ZulDrak,70.47,23.30
-.fly The Argent Stand >> Fly to The Argent Stand
-step
-.goto ZulDrak,40.83,66.25
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
-.vendor 25245 >>Buy a LOT of the food. You'll be doing dungeons for the last 3 levels << Warrior/Rogue/DK
-.vendor 28791 >>Buy a LOT of the food/water. You'll be doing dungeons for the last 3 levels << !Warrior !Rogue !DK
-.xp >78,1
-step
-.goto ZulDrak,41.09,65.15
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
-.vendor 28800 >>Vendor and Repair
-.xp >78,1
-step
-#completewith next
-.goto ZulDrak,40.63,66.90
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Teronus
-.accept 12796 >>Accept The Magical Kingdom of Dalaran
-.zoneskip Orgrimmar
-.zoneskip Dalaran
-.xp >78,1
-step
-.goto ZulDrak,40.63,66.90
-.zone Dalaran >>Ask Teronus to be teleported to Dalaran
-.skipgossip
-.xp >78,1
-step
-.abandon 12796 >> Abandon The Magical Kingdom of Dalaran. DO NOT TURN THIS IN
-step << Mage
-.goto Dalaran,56.3,46.7
-.trainer >>Go inside the building. Train your Dalaran Portals
-step << Mage
-.goto Dalaran,55.0,46.2
-.train 42985 >> Train your class spells
-.xp <77,1
-step
-.goto Dalaran,69.81,45.45
-.train 54197 >> Train Cold Weather Flying from Hira Snowdawn
-step << skip
-.goto The Storm Peaks,65.3,60.2
-.accept 13109 >>Accept Diametrically Opposed
-.accept 13108 >>Accept Whatever it Takes
-step
-#completewith next
-.goto The Storm Peaks,45.56,21.10
-.zone 138 >>Enter the Halls of Lightning
-step << Warrior/Druid/DK/Mage
-.xp 78 >>Grind the Halls of Lightning to level 78
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <78,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48465 >> Train your class spells
-.xp <78,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <78,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49941 >> Train your class spells from Amal'Thazad in Acherus. Runeforge your weapon downstairs if needed
-.xp <78,1
-step << Mage
-#completewith next
-.zone Dalaran >> Teleport to Dalaran
-.xp <78,1
-step << Mage
-.goto Dalaran,55.0,46.2
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42914 >> Train your class spells
-.xp <78,1
-step << Warrior
-#completewith next
-.hs >> Hearth to Orgrimmar
-step << Warrior
-.goto Orgrimmar,63.6,38.2,30,0
-.goto Orgrimmar,76.9,32.6,20,0
-.goto Orgrimmar,79.8,31.4
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47436 >> Train your class spells
-.xp <78,1
-step << Mage/Druid/DK
-.xp 79 >>Grind the Halls of Lightning to level 79
-step << Mage
-#completewith next
-.zone Dalaran >> Teleport to Dalaran
-.xp <79,1
-step << Mage
-.goto Dalaran,55.0,46.2
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43046 >> Train your class spells
-.xp <79,1
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <79,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48378 >> Train your class spells
-.xp <79,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <79,1
-step << DK
-#label DKTrain1
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 55271 >> Train your class spells from Amal'Thazad in Acherus
-.xp <79,1
-step
-.xp 80 >>Grind the Halls of Lightning to level 80
-step << skip
-.goto The Storm Peaks,65.3,60.2
-.turnin 13109 >>Turn in Diametrically Opposed
-.turnin 13108 >>Turn in Whatever it Takes
->>Ding Level 80 - Congratulations!
-]])
-RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Horde
@@ -32818,7 +32820,7 @@ step
 .xp <73,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -34438,7 +34440,7 @@ step
 .goto BoreanTundra,74.77,14.10,70 >> Enter the Den of Dying
 step
 .goto BoreanTundra,74.77,14.10
-.use 34913 >> |cRXP_WARN_Use|r |T133590:0|t[Bixie's Inhibiting Powder] |cRXP_WARN_on the|r |cRXP_PICK_Den of Dying Plague Cauldron|r
+.use 34913 >> |cRXP_WARN_Use|r |T133944:0|t[Highmesa's Cleansing Seeds] |cRXP_WARN_on the|r |cRXP_PICK_Den of Dying Plague Cauldron|r
 .complete 11677,1 
 step
 .goto BoreanTundra,74.67,23.67
@@ -36649,7 +36651,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #xprate <1.5
 #group RestedXP Horde 70-80
@@ -40179,7 +40181,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -42965,7 +42967,7 @@ step
 .target Makki Wintergale
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Horde
 #group RestedXP Horde 70-80
@@ -46677,7 +46679,7 @@ step
 .xp <77,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Horde
@@ -46690,7 +46692,7 @@ step
 .xp 77 >> Grind the mobs in Zol'Maz until your lockouts expire. Try to take one corner of the subzone each to force dynamic respawns
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Horde
 #group RestedXP Horde 70-80
@@ -48566,7 +48568,7 @@ step << !Druid !DK !Mage
 .zoneskip Dalaran
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80
 << Horde
@@ -50934,7 +50936,7 @@ step
 .zone Icecrown >>Fly to Icecrown
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Horde
 #group RestedXP Horde 70-80

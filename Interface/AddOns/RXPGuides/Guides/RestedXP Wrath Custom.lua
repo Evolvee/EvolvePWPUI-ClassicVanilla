@@ -1,5 +1,5 @@
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Mage AoE 68-80
 << Mage
@@ -439,7 +439,7 @@ step
 .xp 80 >> AoE the Undead to 80
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Completionist Guides
 #name Emblems of Heroism 1 - Dragonblight/Zul'Drak
@@ -1647,7 +1647,7 @@ step
 .target Har'koa
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Completionist Guides
 #name Emblems of Heroism 2 - The Storm Peaks
@@ -4022,7 +4022,7 @@ step
 .isQuestComplete 13001
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Completionist Guides
 #name Emblems of Heroism 3 - Icecrown
@@ -8176,7 +8176,7 @@ RXPGuides.RegisterGuide([[
 #wotlk
 << Horde
 #name 30-32 Hillsbrad/Arathi JJ
-#version 24
+#version 25
 #group RestedXP Horde 30-45
 #next 32-32 Thousand Needles II JJ
 #xprate 1.48-1.68
@@ -8859,7 +8859,7 @@ step
 step
 #completewith TarrenMillF
 .goto Arathi Highlands,73.07,32.61
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FFUrda|r
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Urda|r
 .fly Tarren Mill >> Fly to Tarren Mill
 .target Urda
 step
@@ -9136,7 +9136,7 @@ RXPGuides.RegisterGuide([[
 #wotlk
 << Horde
 #name 32-32 Thousand Needles II JJ
-#version 24
+#version 25
 #group RestedXP Horde 30-45
 #next 32-34 Shimmering Flats JJ
 #xprate >1.4999
@@ -9815,7 +9815,7 @@ RXPGuides.RegisterGuide([[
 #wotlk
 << Horde
 #name 32-34 Shimmering Flats JJ
-#version 24
+#version 25
 #group RestedXP Horde 30-45
 #next 34-38 Stranglethorn Vale / Dustwallow
 #xprate >1.4999
@@ -10675,7 +10675,7 @@ step
 .zone Stranglethorn Vale >> Take the Boat to Stranglethorn Vale
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -10694,7 +10694,7 @@ step << skip
 +Once you finish the guide, it is highly recommended you copy your character over to the PTR and give the Turn in Guide a test whirl on the PTR so you know the route better!
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -11154,7 +11154,7 @@ step << Alliance
 .collect 29443,11,10511,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -13091,7 +13091,7 @@ step
 .complete 11008,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -13108,7 +13108,7 @@ step
 .show25quests >> CLICK HERE to see the list of 25 best quests for your character
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -15003,7 +15003,7 @@ step
 .accept 11016 >> Accept Nethermine Flayer Hide
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -15049,7 +15049,7 @@ step
 .collect 30542,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Wrath Preparation
@@ -16658,3 +16658,4 @@ step
 >> Enter The Black Morass and turn in the quest
 .turnin 10297 >> Turn in The Opening of the Dark Portal
 ]])
+

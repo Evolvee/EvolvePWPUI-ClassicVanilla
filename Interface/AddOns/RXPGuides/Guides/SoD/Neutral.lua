@@ -1,28 +1,44 @@
 RXPGuides.RegisterGuide([[
 #classic
-<< Warrior SoD
+<< Warrior SoD/Hunter SoD
 #group RestedXP Rune Guide
-#subgroup Legs
-#name Consumed by Rage - 25 (Wetlands)
+#subgroup Legs << Warrior
+#subgroup Chest << Hunter
+#name Consumed by Rage - 25 (Wetlands) << Warrior
+#name Aspect of the Lion - 25 (Wetlands) << Hunter
 
-step << Warrior
+step
+    #season 2
+    #completewith next
+    .zone Wetlands >>Travel to the Wetlands
+step
     #season 2
     #completewith next
     .goto Wetlands,51.914,62.692,30 >> Enter the Thelgen Rock cave
-    .train 425446,1
-step << Warrior
+    .train 425446,1 << Warrior
+    .train 410115,1 << Hunter
+step
     #season 2
-    .goto Wetlands,47.0,64.0
-    >>Kill |cRXP_ENEMY_Carrodin|r. Loot it for the |T136088:0|t[|cRXP_FRIENDLY_Rune of Consuming Rage|r]
-    .collect 210573,1 -- Rune of Consuming Rage (1)
+    .goto Wetlands,47.24,65.34
+    >>Kill |cRXP_ENEMY_Carrodin|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Consuming Rage|r] << Warrior
+    >>Kill |cRXP_ENEMY_Carrodin|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Aspect of the Lion|r] << Hunter
+    .collect 210573,1 << Warrior --Rune of Consuming Rage (1)
+    .collect 211205,1 << Hunter --Rune of Aspect of the Lion (1)
     .mob Carrodin
-    .train 425446,1
+    .train 425446,1 << Warrior
+    .train 410115,1 << Hunter
 step << Warrior
     #season 2
-    .train 425446 >>|cRXP_WARN_Use the|r |T136088:0|t[|cRXP_FRIENDLY_Rune of Consuming Rage|r] |cRXP_WARN_to train|r |T136088:0|t[Consumed by Rage]
+    .train 425446 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Consuming Rage|r] |cRXP_WARN_to train|r |T136088:0|t[Consumed by Rage]
     .use 210573
     .itemcount 210573,1
-]])
+step << Hunter
+    #season 2
+    .train 410115 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Aspect of the Lion|r] |cRXP_WARN_to train|r |T132185:0|t[Aspect of the Lion]
+    .use 211205
+    .itemcount 211205,1
+
+    ]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -53,16 +69,19 @@ step
     .collect 210329,1 --Hillsbrad Treasure Map (1)
     .train 400102,1
 step
+    #completewith next
+    .zone Western Plaguelands >>Travel to Western Plaguelands
+step
     #season 2
     .goto Western Plaguelands,59.4,84.5
-    >>Open the |cRXP_PICK_Rusty Safe|r in the water for |T134419:0|t[|cRXP_FRIENDLY_Rune of Envenom|r]
-    .collect 210322,1 --Rune of Envenom (1)
+    >>Open the |cRXP_PICK_Rusty Safe|r in the water for |T134419:0|t[|cRXP_FRIENDLY_Rune of Venom|r]
+    .collect 210322,1 --Rune of Venom (1)
     .train 400102,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Envenom|r]
+    .train 400102 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Venom|r]
     .use 210322
-    .train 400102,1
+    .itemcount 210322,1
 
     ]])
 
@@ -103,9 +122,9 @@ step
     .train 424988,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Shiving|r]
+    .train 424988 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Shiving|r]
     .use 210252
-    .train 424988,1
+    .itemcount 210252,1
 
     ]])
 
@@ -130,8 +149,14 @@ step << Druid
     .mob Grimtotem Ruffian
     .train 410021,1
 step << Druid
-    .train 410021 >> |cRXP_WARN_Use the|r |T134233:0|t[|cRXP_FRIENDLY_Idol of the Wild|r] |cRXP_WARN_to train|r |T132143:0|t[Wild Strikes]
+    .equip 18,210534 >> |cRXP_WARN_Equip the|r |T134233:0|t[|cRXP_FRIENDLY_Idol of the Wild|r]
     .use 210534
+    .itemcount 210534,1
+    .train 410021,1
+step << Druid
+    >>|cRXP_WARN_Cast|r |T136085:0|t[Regrowth] |cRXP_WARN_or|r |T136041:0|t[Healing Touch] |cRXP_WARN_on 10 different friendly Beasts such as Hunter Pets/Druids in Bear Form/Shamans in Ghost Wolf|r << Horde
+    >>|cRXP_WARN_Cast|r |T136085:0|t[Regrowth] |cRXP_WARN_or|r |T136041:0|t[Healing Touch] |cRXP_WARN_on 10 different friendly Beasts such as Hunter Pets or Druids in Bear Form|r << Alliance
+    .train 410021 >> |cRXP_WARN_Use the|r |T134233:0|t[|cRXP_FRIENDLY_Idol of the Wild|r] |cRXP_WARN_to train|r |T132143:0|t[Wild Strikes]
     .itemcount 210534,1
 ]])
 
@@ -183,12 +208,14 @@ RXPGuides.RegisterGuide([[
 #name Lone Wolf - 25 (Ratchet) << Hunter
 #name Survival of the Fittest - 25 (Ratchet) << Druid
 #name Warbringer - 25 (Ratchet) << Warrior
-#name Dual Wield - 25 (Ratchet) << Shaman
+#name Dual Wield Specialization - 25 (Ratchet) << Shaman
 #name Demonic Pact - 25 (Ratchet) << Warlock
 #name Divine Sacrifice - 25 (Ratchet) << Paladin
 #name Rewind Time - 25 (Ratchet) << Mage
 #name Main Gauche - 25 (Ratchet) << Rogue
-#next Divine Storm - 25 (Darkshore) << Paladin
+#next Crusader Strike - 4 (Elwynn Forest) << Human Paladin
+#next Crusader Strike - 4 (Dun Morogh) << Dwarf Paladin
+#next Lava Burst - 25 (Hillsbrad Foothills) << Shaman
 
 << SoD
 
@@ -265,6 +292,17 @@ step << Horde
     .goto Stonetalon Mountains,66.6,55.5
     .zone Stonetalon Mountains >>Travel to Stonetalon Mountains
 step << Horde
+    #loop
+    .goto Stonetalon Mountains,71.04,49.03,50,0
+    .goto Stonetalon Mountains,72.59,53.21,50,0
+    .goto Stonetalon Mountains,70.63,55.47,50,0
+    .goto Stonetalon Mountains,70.04,55.12,50,0
+    .goto Stonetalon Mountains,67.53,57.65,50,0
+    .goto Stonetalon Mountains,59.95,55.51,50,0
+    .goto Stonetalon Mountains,62.35,52.73,50,0
+    .goto Stonetalon Mountains,66.91,47.82,50,0
+    .goto Stonetalon Mountains,67.31,46.39,50,0
+    .goto Stonetalon Mountains,68.76,47.95,50,0
     .train 415995,1 << Priest
     .train 410010,1 << Paladin
     .train 401761,1 << Mage
@@ -274,11 +312,12 @@ step << Horde
     .train 425476,1 << Warlock
     .train 424990,1 << Rogue
     .train 410096,1 << Shaman
-    >>Kill the |cRXP_ENEMY_Venture Co. Light Shredders|r. Use the |T133870:0|t[Shredder Autosalvage Unit] on the corpse for the |cRXP_LOOT_Turbochargers|r
-    .goto Stonetalon Mountains,66.6,55.5
+    >>Kill |cRXP_ENEMY_Venture Co. Light Shredders|r, |cRXP_ENEMY_XT:4|r, and |cRXP_ENEMY_XT:9|r. Use the |T133870:0|t[Shredder Autosalvage Unit] on their corpse to loot them for a 66% chance of a |cRXP_LOOT_Shredder Turbocharger|r
     .collect 210146,16
     .use 210147
     .mob Venture Co. Light Shredder
+    .mob XT:4
+    .mob XT:9
 step << Horde
     .train 415995,1 << Priest
     .train 410010,1 << Paladin
@@ -352,6 +391,17 @@ step << Alliance
     .goto Stonetalon Mountains,66.6,55.5
     .zone Stonetalon Mountains >>Travel to Stonetalon Mountains (e.g. take the boat to Dustwallow Marsh -> fly to Ratchet or directly to Stonetalon Mountains)
 step << Alliance
+    #loop
+    .goto Stonetalon Mountains,71.04,49.03,50,0
+    .goto Stonetalon Mountains,72.59,53.21,50,0
+    .goto Stonetalon Mountains,70.63,55.47,50,0
+    .goto Stonetalon Mountains,70.04,55.12,50,0
+    .goto Stonetalon Mountains,67.53,57.65,50,0
+    .goto Stonetalon Mountains,59.95,55.51,50,0
+    .goto Stonetalon Mountains,62.35,52.73,50,0
+    .goto Stonetalon Mountains,66.91,47.82,50,0
+    .goto Stonetalon Mountains,67.31,46.39,50,0
+    .goto Stonetalon Mountains,68.76,47.95,50,0
     .train 415995,1 << Priest
     .train 410010,1 << Paladin
     .train 401761,1 << Mage
@@ -361,11 +411,12 @@ step << Alliance
     .train 425476,1 << Warlock
     .train 424990,1 << Rogue
     .train 410096,1 << Shaman
-    >>Kill the |cRXP_ENEMY_Venture Co. Light Shredders|r. Use the |T133870:0|t[Shredder Autosalvage Unit] on the corpse for the |cRXP_LOOT_Turbochargers|r
-    .goto Stonetalon Mountains,66.6,55.5
+    >>Kill |cRXP_ENEMY_Venture Co. Light Shredders|r, |cRXP_ENEMY_XT:4|r, and |cRXP_ENEMY_XT:9|r. Use the |T133870:0|t[Shredder Autosalvage Unit] on their corpse to loot them for a 66% chance of a |cRXP_LOOT_Shredder Turbocharger|r
     .collect 210146,16
     .use 210147
     .mob Venture Co. Light Shredder
+    .mob XT:4
+    .mob XT:9
 step << Horde
     .train 415995,1 << Priest
     .train 410010,1 << Paladin
@@ -403,15 +454,14 @@ step
     .train 424990,1 << Rogue
     .train 410096,1 << Shaman
     #label RuneRatchetGrizzby
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Grizzby|r and wait for the roleplay
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grizzby|r and wait for the roleplay
     .goto The Barrens,61.8,39.4
     .turnin 78625 >>Turn in Fish Oil
     .turnin 78266 >>Turn in Dark Iron Ordinance
     .turnin 78267 >>Turn in Shredder Turbochargers
     .target Grizzby
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Grizzby|r
-    .vendor
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Grizzby|r
     .use 210822 << Priest
     .use 210820 << Paladin
     .use 210654 << Mage
@@ -422,15 +472,30 @@ step
     .use 210653 << Rogue
     .use 210823 << Shaman
     .train 415995 >>|cRXP_WARN_Buy and use the|r |T135791:0|t[|cRXP_FRIENDLY_Harmonious Epiphany|r] |cRXP_WARN_to train|r |T237549:0|t[Serendipity] << Priest
-    .train 410010 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Sacrifice|r] |cRXP_WARN_to train|r |T253400:0|t[Divine Sacrifice] << Paladin
+    .train 410010 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Sacrifice|r] |cRXP_WARN_to train|r |T134596:0|t[Engrave Pants - Divine Sacrifice] << Paladin
     .train 401761 >>|cRXP_WARN_Buy and use the|r |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: Rewind Time|r] |cRXP_WARN_to train|r |T237538:0|t[Rewind Time] << Mage
     .train 410122 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Lone Wolf|r] |cRXP_WARN_to train|r |T132266:0|t[Lone Wolf] << Hunter
     .train 416042 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Survival|r] |cRXP_WARN_to train|r |T132126:0|t[Survival of the Fittest] << Druid
     .train 425445 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Warbringer|r] |cRXP_WARN_to train|r |T236319:0|t[Warbinger] << Warrior
     .train 425476 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Pact|r] |cRXP_WARN_to train|r |T237562:0|t[Demonic Pact] << Warlock
     .train 424990 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Main Gauche|r] |cRXP_WARN_to train|r |T237531:0|t[Main Gauche] << Rogue
-    .train 410096 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Dual Wield Specialization|r] |cRXP_WARN_to train |r |T132147:0|t[Dual Wield Specialization] << Shaman
+    .train 410096 >>|cRXP_WARN_Buy and use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Dual Wield Specialization|r] |cRXP_WARN_to train|r |T132686:0|t[Engrave Chest - Dual Wield Specialization] << Shaman
     .target Grizzby
+step << Paladin
+    +Congratulations! You have acquired all |T134419:0|t|cRXP_LOOT_[Runes]|r currently available.
+    .train 409999,3 --Beacon of Light
+    .train 410001,3 --Hand of Reckoning
+    .train 410002,3 --Crusader Strike
+    .train 410008,3 --Avenger's Shield
+    .train 410010,3 --Divine Sacrifice
+    .train 410011,3 --Inspiration Exemplar
+    .train 410014,3 --Divine Storm
+    .train 410015,3 --Seal of Martyrdom
+    .train 416037,3 --Exorcist
+    .train 425618,3 --Horn of Lordaeron
+    .train 425619,3 --Aegis
+    .train 425621,3 --Rebuke
+    .xp <25,1
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -457,17 +522,16 @@ RXPGuides.RegisterGuide([[
 step
     >>Go out and find |T132765:0|t[Waylaid Supplies]. Then go back into a capital city and deliver them. If you want to get the reputation faster buy the required items in the AH to upgrade them.
     *|cRXP_WARN_You can farm lower level mobs until you hit Friendly. Afterwards you have to farm high level mobs (>=17).|r Chests in the open world have a 90%+ chance to drop one of those items.
-    .reputation 2587,honored << Horde
-    .reputation 2586,honored << Alliance
+    .reputation 2587,friendly << Horde
+    .reputation 2586,friendly << Alliance
 step
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cFF00FF25Supply Officer|r in the nearest city
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the |cRXP_FRIENDLY_Supply Officer|r in the nearest city
     .goto Orgrimmar,51.6,64.6,-1 << Horde
     .goto Thunder Bluff,39.8,53.4,-1 << Horde
     .goto Undercity,64.6,38.2,-1 << Horde
     .goto Stormwind City,55.0,61.6,-1 << Alliance
     .goto Ironforge,24.6,67.2,-1 << Alliance
     .goto Darnassus,60.0,56.4,-1 << Alliance
-    .vendor
     .use 211386 << Mage
     .use 211387 << Paladin
     .use 211392 << Warlock
@@ -503,16 +567,6 @@ RXPGuides.RegisterGuide([[
 
 step << Druid
     #completewith next
-    .zone Moonglade >> Teleport to Moonglade
-    .train 410028,1
-step << Druid
-    .goto Moonglade,52.53,40.56
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Loganaar|r
-    .accept 78229 >> Accept Trial of The Owls
-    .target Loganaar
-    .train 410028,1
-step << Druid
-    #completewith next
     .zone Ashenvale >> Travel to Ashenvale
 step << Druid
     .goto Ashenvale,86.963,43.159
@@ -520,7 +574,7 @@ step << Druid
     >>|cRXP_WARN_You will need to defeat 3 waves of 2 mobs at a time ranging from levels 23-25|r
     >>|cRXP_WARN_Ensure the |cRXP_FRIENDLY_Summoned Wisp|r does not die. It is not possible to heal it, however it will heal to full between waves|r
     >>After defeating all waves, loot the |cRXP_PICK_Gift of the Wisp|r on the ground
-    .complete 78229,1 -- Symbol of the First Owl (1)
+    .collect 210044,1 -- Symbol of the First Owl (1)
     .train 410028,1
 step << Druid
     #completewith next
@@ -549,7 +603,7 @@ step << Druid
     >>Kill |cRXP_ENEMY_Agon|r. Loot it for the |cRXP_LOOT_Symbol of the Second Owl|r
     >>|cRXP_ENEMY_Agon|r |cRXP_WARN_patrols around slightly|r
     >>|cRXP_WARN_You must have the|r |T132150:0|t[Eyes of the Owl] |cRXP_WARN_buff to see|r |cRXP_ENEMY_Agon|r
-    .complete 78229,2 -- Symbol of the Second Owl (1)
+    .collect 210043,2 -- Symbol of the Second Owl (1)
     .train 410028,1
 step << Druid
     #completewith next
@@ -570,7 +624,11 @@ step << Druid
     >>Swim to the other island. Click the |cRXP_PICK_Twin Owl Statue|r within 1 min 40 sec
     >>|cRXP_WARN_Ensure you use|r |T132112:0|t[Aquatic Form]
     >>|cRXP_WARN_If you fail and lose the buff, click this |cRXP_PICK_Twin Owl Statue|r and return to the island you just came from|r
-    .complete 78229,3 -- Symbol of the Third Owl (1)
+    .collect 210026,3 -- Symbol of the Third Owl (1)
+    .train 410028,1
+step << Druid
+    #completewith next
+    .zone Moonglade >> Teleport to Moonglade
     .train 410028,1
 step << Druid
     #completewith next
@@ -579,6 +637,7 @@ step << Druid
 step << Druid
     .goto Moonglade,52.53,40.56
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Loganaar|r
+    .accept 78229 >> Accept Trial of The Owls
     .turnin 78229 >> Turn in Trial of The Owls
     .target Loganaar
     .train 410028,1
@@ -660,7 +719,7 @@ step << Warrior
     .accept 78134 >> Accept Dragonslayer's Lance
     .accept 78133 >> Accept Dragonslayer's Shield
     .target Alonso
-    .train 425444,1 
+    .train 425444,1
 step << Warrior
     #completewith next
     .goto Wetlands,49.40,16.98
@@ -706,20 +765,20 @@ step << Warrior
     .turnin 78134 >> Turn In Dragonslayer's Lance
     .turnin 78133 >> Turn In Dragonslayer's Shield
     .target Alonso
-    .train 425444,1 
+    .train 425444,1
 step << Warrior
     .goto Ashenvale,43.513,70.463
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alonso|r
     .accept 78144 >> Accept Alonso the Dragonslayer
     .target Alonso
-    .train 425444,1 
+    .train 425444,1
 step << Warrior
     .goto Ashenvale,42.029,68.999
     >>Kill the |cRXP_ENEMY_Green Dragon Whelp|r
     .complete 78144,1 -- Accompany Alonso to slay the dragon.
     .target Alonso
     .mob Green Dragon Whelp
-    .train 425444,1 
+    .train 425444,1
 step << Warrior
     .goto Ashenvale,42.053,69.187
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alonso|r
@@ -815,7 +874,7 @@ RXPGuides.RegisterGuide([[
 step << Priest
     .goto Duskwood,50.4,70.8,60,0
     .goto Duskwood,50.2,76.4
-    >>Kill |cRXP_ENEMY_Defias Night Runners|r, |cRXP_ENEMY_Defias Night Blades|r and |cRXP_ENEMY_Defias Enchanters|r. Loot them for the |T135736:0|t[|cRXP_LOOT_Dark Insight|r] 
+    >>Kill |cRXP_ENEMY_Defias Night Runners|r, |cRXP_ENEMY_Defias Night Blades|r and |cRXP_ENEMY_Defias Enchanters|r. Loot them for the |T135736:0|t[|cRXP_LOOT_Dark Insight|r]
     .collect 211528,1 -- Dark Insight (1)
     .mob Defias Night Runner
     .mob Defias Night Blade
@@ -839,4 +898,135 @@ step << Priest
     .train 402859 >> |cRXP_WARN_Once you have both|r |T237569:0|t|T136077:0|t[Meditation] |cRXP_WARN_buffs use the|r |T135975:0|t[|cRXP_FRIENDLY_Prophecy of a Thousand Lights]|r |cRXP_WARN_to learn|r |T135887:0|t[Circle of Healing] << Horde
     .use 211490
     .itemcount 211490,1
+]])
+
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Chest
+#name Cobra Strikes - 25 (Hillsbrad Foothills)
+
+
+    --Rune of Cobra Strikes
+
+step
+    #season 2
+    #completewith next
+    .zone Hillsbrad Foothills >>Travel to Hillsbrad Foothills (e.g. from Undercity through Silverpine Forest) << Horde
+    .zone Hillsbrad Foothills >>Travel to Hillsbrad Foothills (e.g. head North from Wetlands) << Alliance
+step
+    #season 2
+    #loop
+    .goto Hillsbrad Foothills,58.2,19.6,40,0
+    .goto Hillsbrad Foothills,57.5,36.4,50,0
+    .goto Hillsbrad Foothills,51.1,46.4,40,0
+    >>Look for |cRXP_FRIENDLY_Zixil|r. He patrolls between Tarren Mill and Southshore. Buy the |T134041:0|t[Freshwater Snapper Bait] from him
+    .collect 210410,1 --Freshwater Snapper Bait (1)
+    .target Zixil
+    .train 425759,1
+step
+    #season 2
+    .goto Hillsbrad Foothills,61.05,33.36
+    .use 210410 >>Use the |T134041:0|t[Freshwater Snapper Bait] on the boat in the middle of the pond
+    >>Kill |cRXP_ENEMY_Koartul|r (25 elite) as he spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Cobra Strikes|r]
+    .collect 210596,1 --Rune of Cobra Strikes (1)
+    .mob Koartul
+    .train 425759,1
+step
+    #season 2
+    .train 425759 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Cobra Strikes|r] |cRXP_WARN_to train|r |T236177:0|t[Cobra Strikes]
+    .use 210596
+    .itemcount 210596,1
+
+    ]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Kill Command - 25 (Multiple Zones)
+
+step
+    #completewith WyvernWrangling
+    >>|cRXP_BUY_Buy a|r |T135144:0|t[Greater Magic Wand] |cRXP_BUY_from the auction house|r
+    .collect 11288,1 --Greater Magic Wand (1)
+    .train 410111,1
+step
+    #season 2
+    #completewith next
+    +|cRXP_WARN_Start looking for a group for Wailing Caverns|r
+step
+    #season 2
+    #completewith next
+    .goto Kalimdor,51.89,54.77,20,0
+    .goto Kalimdor,51.95,54.56,20,0
+    .goto Kalimdor,52.27,54.65,30,0
+    .goto Kalimdor,52.40,55.18
+    .zone 279 >> Enter Wailing Caverns
+step
+    #season 2
+    >>Kill |cRXP_ENEMY_Mutanus the Devourer|r. Loot him for |T132775:0|t[|cRXP_LOOT_Hypnotic Crystal|r]
+    .collect 209838,1 --Hypnotic Crystal (1)
+    .mob Mutanus the Devourer
+    .train 410111,1
+step
+    #season 2
+    #completewith next
+    .zone Ashenvale >>Travel to Ashenvale
+step
+    #season 2
+    .goto Ashenvale,37.91,34.49,40,0
+    .goto Ashenvale,35.89,36.65,40,0
+    .goto Ashenvale,35.75,32.01,40,0
+    .goto Ashenvale,34.09,38.48,40,0
+    .goto Ashenvale,31.86,39.25,40,0
+    .goto Ashenvale,32.57,42.78,40,0
+    .goto Ashenvale,30.98,44.40,40,0
+    .goto Ashenvale,35.75,32.01
+    >>Kill |cRXP_ENEMY_Thistlefur Shamans|r. Loot them for |T237004:0|t[|cRXP_LOOT_Wild Magic Essence|r]
+    .collect 209841,1 --Wild Magic Essence (1)
+    .mob Thistlefur Shaman
+    .train 410111,1
+step
+    #season 2
+    .use 209841 >>Use the |T237004:0|t[|cRXP_LOOT_Wild Magic Essence|r] to create |T237489:0|t[|cRXP_LOOT_Gnarled Wand of Wild Magic|r]
+    .collect 209840,1 --Gnarled Wand of Wild Magic (1)
+    .train 410111,1
+step
+    #season 2
+    #completewith WyvernWrangling
+    .zone Stonetalon Mountains >>Travel to Stonetalon Mountains
+step
+    #season 2
+    .goto Stonetalon Mountains,60.71,62.30
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jixo Madrocket|r in Stonetalon Mountains
+    .accept 78114 >>Accept Wild Wyvern Wrangling
+    .target Jixo Madrocket
+    .train 410111,1
+step
+    #season 2
+    #label WyvernWrangling
+    .goto Stonetalon Mountains,60.71,62.30
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jixo Madrocket|r
+    .turnin 78114 >>Turn in Wild Wyvern Wrangling
+    .accept 78121 >>Accept Wrangling a Wild Wyvern
+    .target Jixo Madrocket
+    .train 410111,1
+step
+    #season 2
+    .goto Stonetalon Mountains,60.70,62.33
+    >>Stay with |cRXP_FRIENDLY_Jixo Madrocket|r and watch him tame a |cRXP_ENEMY_Wyvern|r
+    .turnin 78121 >>Turn in Wrangling a Wild Wyvern
+    .target Jixo Madrocket
+    .train 410111,1
+step
+    #season 2
+    .train 410111 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Kill Command|r] |cRXP_WARN_to train|r |T132176:0|t[Kill Command]
+    .use 209852
+    .itemcount 209852,1
+
+
 ]])

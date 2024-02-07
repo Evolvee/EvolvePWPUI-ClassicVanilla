@@ -1,5 +1,1729 @@
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
+#wotlk
+#group RestedXP Dungeon Cleave 70-80
+<< Alliance
+#name 070-80 Alliance Dungeon Cleave
+#displayname 70-80 Alliance Dungeon Cleave
+step << !Mage
+#completewith next
+.zone Stormwind City >> Travel or get Mage teleported to Stormwind City
+.zoneskip Elwynn Forest
+step << !Mage !DK !Druid
+#completewith ALFP
+.goto Stormwind City,60.39,75.27
+.home >> Set your Hearthstone to Stormwind City
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind City
+.xp <71,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 43023 >> Train your class spells
+.xp <71,1
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 58699 >> Train your class spells
+.xp <71,1
+step << Paladin
+.goto Stormwind City,49.60,49.83
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 54428 >> Train your class spells
+.xp <71,1
+step << Warlock
+#completewith next
+.goto Stormwind City,29.2,74.0,20,0
+.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
+step << Warlock
+.goto Stormwind City,39.89,84.19
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 47812 >> Train your class spells
+.xp <71,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>If you pre-quested to 71, get your training
+>>Make sure your party can summon you via summoning stone or Warlock summon
+.train 49051 >> Train your class spells
+.xp <71,1
+step << Shaman/Priest/Druid/Mage/Paladin
+.goto Stormwind City,63.20,74.92
+>>Purchase Reagents from Horthus inside the building
+.collect 17030,20 << Shaman 
+.collect 17029,40 << Priest 
+.collect 22148,40 << Druid 
+.collect 22147,40 << Druid 
+.collect 17032,40 << Mage 
+.collect 17020,40 << Mage 
+.collect 21177,100 << Paladin 
+.xp >72,1
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>If you pre-quested to 71, get your training
+>>Go to Moonglade. Make sure your party can summon you via summoning stone to The Nexus/Ragefire Chasm or Warlock summon
+.train 48442 >> Train your class spells
+.xp <71,1
+step << Druid/Shaman/Paladin/Hunter/Warlock
+#completewith next
+.hs >> Hearth to Stormwind City, or get teleported/summoned to Borean Tundra/The Nexus/the Boat to Borean Tundra
+.zoneskip Elwynn Forest
+.zoneskip Stormwind City
+.xp <71,1
+step
+#label Boat
+.goto Stormwind City,43.5,52.7,70,0
+.goto Stormwind City,17.7,25.5
+.zone BoreanTundra >>Travel to the Stormwind Harbor. Get onto the boat when it comes. Take it to Borean Tundra
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 129 
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+step
+.goto Stormwind City,43.5,52.7,70,0
+.goto Stormwind City,17.7,25.5
+.zone BoreanTundra >>Travel to the Stormwind Harbor. Get onto the boat when it comes. Take it to Borean Tundra
+.xp >72,1
+step
+.goto BoreanTundra,58.97,68.29
+.fp Valiance Keep >> Get the Valiance Keep flight path
+.xp >72,1
+step
+#completewith Hawthorn5
+.groundgoto BoreanTundra,58.5,68.3,15,0
+.goto BoreanTundra,58.29,68.05
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James
+.vendor 25245 >> Buy a LOT of the new food. You'll be doing dungeons for the next 3 levels until your next break << Warrior/Rogue/DK
+.vendor 25245 >> Buy a LOT of the new food/water. You'll be doing dungeons for the next 3 levels until your next break << !Warrior !Rogue !DK
+.xp >72,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Recruitment Officer, Rollick, then Arlos inside the Keep
+.accept 11672 >>Accept Enlistment Day
+.goto BoreanTundra,57.85,67.60
+.accept 13088 >> Accept Northern Cooking
+.goto BoreanTundra,57.93,71.54
+.turnin 11672 >>Turn in Enlistment Day
+.accept 11727 >>Accept A Time for Heroes
+.goto BoreanTundra,57.1,71.8,15,0
+.goto BoreanTundra,57.2,72.3,15,0
+.goto BoreanTundra,56.67,72.64
+.skill cooking,<350,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Recruitment Officer and then Arlos inside the Keep
+.accept 11672 >>Accept Enlistment Day
+.goto BoreanTundra,57.85,67.60
+.turnin 11672 >>Turn in Enlistment Day
+.accept 11727 >>Accept A Time for Heroes
+.goto BoreanTundra,57.1,71.8,15,0
+.goto BoreanTundra,57.2,72.3,15,0
+.goto BoreanTundra,56.67,72.64
+step
+#label Hawthorn5
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Hammerhill and Hawthorn
+.turnin 11727 >>Turn in A Time for Heroes
+.accept 11797 >>Accept The Siege
+.goto BoreanTundra,56.36,69.58
+.accept 11789 >>Accept A Soldier in Need
+.goto BoreanTundra,55.00,68.91
+step
+.goto BoreanTundra,53.5,69.1,70,0
+.goto BoreanTundra,53.1,72.8
+>>Kill Crypt Crawlers in the area
+.complete 11797,1 
+step
+.goto BoreanTundra,56.36,69.58
+>>Return to Hammerhill
+.turnin 11797 >>Turn in The Siege
+.accept 11889 >>Accept Death From Above
+step
+.goto BoreanTundra,54.8,70.2
+.use 35278 >>Use the Reinforced Net in your bags to bring down the Flamespitters flying nearby. Kill them
+.complete 11889,1 
+step
+.goto BoreanTundra,56.36,69.58
+>>Return to Hammerhill
+.turnin 11889 >>Turn in Death From Above
+.accept 11897 >>Accept Plug the Sinkholes
+step
+.goto BoreanTundra,56.96,68.75,10,0
+>>Go inside The Stormbreaker (the ship) in the middle of the town. Loot the chest and click on the altar at the back of the ship
+.complete 11789,1 
+.goto BoreanTundra,57.50,69.27
+.accept 11920 >>Accept Cultists Among Us
+.goto BoreanTundra,57.56,69.13
+step
+.goto BoreanTundra,56.96,68.75,10,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRun out of the ship. Talk to Captain "Lefty" and Admiral Cantlebree
+.turnin 11920 >>Turn in Cultists Among Us
+.goto BoreanTundra,57.83,69.20
+.accept 11791 >>Accept Notify Arlos
+.goto BoreanTundra,57.79,69.19
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Arlos, Talbot, and Vureen in Valiance's Keep. Then Talk to Hawthorn outside
+.turnin 11791 >>Turn in Notify Arlos
+.goto BoreanTundra,56.67,72.64
+.accept 12141 >>Accept A Diplomatic Mission
+.goto BoreanTundra,56.72,72.62
+.accept 11792 >>Accept Enemies of the Light
+.goto BoreanTundra,56.60,72.46
+.turnin 11789 >>Turn in A Soldier in Need
+.goto BoreanTundra,55.00,68.91
+step
+.goto BoreanTundra,54.08,63.73,-1
+.goto BoreanTundra,54.77,63.08,-1
+.use 35704 >> Use the Incendiary Explosives in your bag at the sinkhole to seal it
+.complete 11897,2 
+step
+.loop 40,BoreanTundra,54.04,62.42,53.84,60.33,55.25,63.43,54.04,62.42
+>>Kill the Cultist Necrolytes. Loot them for their Communique
+.complete 11792,1 
+step
+.goto BoreanTundra,50.46,71.38,-1
+.goto BoreanTundra,50.88,72.29,-1
+.use 35704 >> Use the Incendiary Explosives in your bag at the sinkhole to seal it
+.complete 11897,1 
+step
+#completewith Karuk5
++You may skip any of the Riplash Strand quests at any point if you wish
+step
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.turnin 12141 >>Turn in A Diplomatic Mission
+.accept 11613 >>Accept Karuk's Oath
+.isOnQuest 12141
+step
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.accept 11613 >>Accept Karuk's Oath
+.isQuestTurnedIn 12141
+step
+#requires Cruelty1
+>>Kill the Skadir Longboatsmen and Raiders in the area
+.complete 11613,2 
+.goto BoreanTundra,49.2,79.2
+.complete 11613,1 
+.goto BoreanTundra,44.6,80.5
+.isOnQuest 11613
+step
+#completewith Karuk2
+#label CTPrisoner2
+.goto BoreanTundra,44.10,77.90,50,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
+>>Ignore this if he isn't up right now
+.accept 12471 >>Accept Cruelty of the Kvaldir
+.unitscan Captured Tuskarr Prisoner
+.isOnQuest 11613
+step
+#completewith end
+#requires CTPrisoner2
+#label Cruelty2
+.goto BoreanTundra,47.13,75.49
+.turnin 12471 >>Turn in Cruelty of the Kvaldir
+.isOnQuest 12471
+step
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.turnin 11613 >>Turn in Karuk's Oath
+.accept 11619 >>Accept Gamel the Cruel
+.isQuestComplete 11613
+step
+#label Karuk2
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.accept 11619 >>Accept Gamel the Cruel
+.isQuestTurnedIn 11613
+step
+#requires Cruelty2
+.groundgoto BoreanTundra,46.3,78.8,20,0
+.goto BoreanTundra,46.42,78.23
+>>Enter the cave. Kill Gamel
+.complete 11619,1 
+.isOnQuest 11619
+step
+#completewith Karuk3
+#label CTPrisoner3
+.goto BoreanTundra,44.10,77.90,50,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
+>>Ignore this if he isn't up right now
+.accept 12471 >>Accept Cruelty of the Kvaldir
+.unitscan Captured Tuskarr Prisoner
+.isOnQuest 11619
+step
+#completewith end
+#requires CTPrisoner3
+#label Cruelty3
+.goto BoreanTundra,47.13,75.49
+.turnin 12471 >>Turn in Cruelty of the Kvaldir
+.isOnQuest 12471
+step
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.turnin 11619 >>Turn in Gamel the Cruel
+.accept 11620 >>Accept A Father's Words
+.isQuestComplete 11619
+step
+#label Karuk3
+.goto BoreanTundra,47.13,75.49
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
+.accept 11620 >>Accept A Father's Words
+.isQuestTurnedIn 11619
+step
+#completewith Veehja
+#label CTPrisoner4
+.goto BoreanTundra,44.10,77.90,50,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
+>>Ignore this if he isn't up right now
+.accept 12471 >>Accept Cruelty of the Kvaldir
+.unitscan Captured Tuskarr Prisoner
+.isOnQuest 11620
+step
+#completewith end
+#requires CTPrisoner4
+.goto BoreanTundra,47.13,75.49
+.turnin 12471 >>Turn in Cruelty of the Kvaldir
+.isOnQuest 12471
+step
+#completewith end
+#label Veehja2
+.goto BoreanTundra,43.60,80.53
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja. Only accept this quest if you have enough Water Walking Elixirs, are partied with a Shaman with Fish oil, or a Death Knight with Path of Frost
+.accept 11625 >>Accept The Trident of Naz'jan
+.isQuestTurnedIn 11619
+step
+#label Veehja
+.goto BoreanTundra,43.60,80.53
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja << !DK
+.turnin 11620 >>Turn in A Father's Words
+.isOnQuest 11620
+step
+#requires Veehja2
+.goto BoreanTundra,53.7,91.1,40,0
+.goto BoreanTundra,54.85,88.78
+>>Kill Ragnar Drakkarlund inside the temple. Loot him for the Trident
+.complete 11625,1 
+.isOnQuest 11625
+step
+.goto BoreanTundra,43.63,80.57
+>>Return to Veehja
+.turnin 11625 >>Turn in The Trident of Naz'jan
+.isQuestComplete 11625
+step
+.goto BoreanTundra,43.63,80.57
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja
+.accept 11626 >>Accept The Emissary
+.isQuestTurnedIn 11625
+step
+.goto BoreanTundra,51.90,88.46
+.use 35850 >> Go underwater to Leviroth. Use the Trident of Naz'jan in your bags to deal a lot of damage to him, then kill him
+.complete 11626,1 
+.isQuestTurnedIn 11625
+step
+#completewith Karuk5
+#label CTPrisoner5
+.goto BoreanTundra,44.10,77.90,50,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
+>>Ignore this if he isn't up right now
+.accept 12471 >>Accept Cruelty of the Kvaldir
+.unitscan Captured Tuskarr Prisoner
+.isQuestTurnedIn 11625
+step
+#completewith end
+#requires CTPrisoner5
+.goto BoreanTundra,47.13,75.49
+.turnin 12471 >>Turn in Cruelty of the Kvaldir
+.isOnQuest 12471
+step
+#label Karuk5
+.goto BoreanTundra,47.13,75.49
+>>Return to Karuk
+.turnin 11626 >>Turn in The Emissary
+.isQuestTurnedIn 11625
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Vureen in Valiance's Keep, then Rollick, Hammerhill, Mark, and Skyhopper outside
+.turnin 11792 >>Turn in Enemies of the Light
+.accept 11793 >>Accept Further Investigation
+.goto BoreanTundra,56.60,72.46
+.turnin 13088 >> Turn in Northern Cooking
+.goto BoreanTundra,57.93,71.54
+.turnin 11897 >>Turn in Plug the Sinkholes
+.accept 11928 >>Accept Farshire
+.goto BoreanTundra,56.36,69.58
+.accept 11927 >>Accept Word on the Street
+.goto BoreanTundra,56.77,69.51
+.accept 11707 >>Accept Distress Call
+.goto BoreanTundra,58.84,68.72
+.isQuestComplete 13088
+.skill cooking,<350,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Vureen in Valiance's Keep, then Hammerhill, Mark, and Skyhopperoutside
+.turnin 11792 >>Turn in Enemies of the Light
+.accept 11793 >>Accept Further Investigation
+.goto BoreanTundra,56.60,72.46
+.turnin 11897 >>Turn in Plug the Sinkholes
+.accept 11928 >>Accept Farshire
+.goto BoreanTundra,56.36,69.58
+.accept 11927 >>Accept Word on the Street
+.goto BoreanTundra,56.77,69.51
+.accept 11707 >>Accept Distress Call
+.goto BoreanTundra,58.84,68.72
+step
+.goto BoreanTundra,58.5,68.3,15,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo inside the Inn. Talk to Midge
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs. Talk to Leryssa, and Yaala
+.accept 11575 >>Accept Nick of Time
+.goto BoreanTundra,58.41,67.79
+.turnin 11927 >>Turn in Word on the Street
+.accept 11599 >>Accept Thassarian, My Brother
+.goto BoreanTundra,58.4,67.6,15,0
+.goto BoreanTundra,58.75,68.36
+.turnin 11793 >>Turn in Further Investigation
+.accept 11794 >>Accept The Hunt is On
+.goto BoreanTundra,58.55,67.29
+step
+>>Skip this quest if you wish
+.use 35125 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t Use the Oculus of the Exorcist in your bags. Talk to "Salty" John Thorpe in the Inn, Tom Hegger on the Dock, and Guard Mitchels in the prison below the keep. Kill them
+.complete 11794,3 
+.goto BoreanTundra,58.57,67.13
+.complete 11794,1 
+.goto BoreanTundra,59.26,68.19
+.complete 11794,2 
+.goto BoreanTundra,56.9,72.2,12,0
+.goto BoreanTundra,56.72,71.83
+.isOnQuest 11794
+.skipgossip
+step
+.goto BoreanTundra,58.21,62.82
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Farshire. Talk to Gerald
+.turnin 11928 >>Turn in Farshire
+.accept 11901 >>Accept Military? What Military?
+step
+.goto BoreanTundra,56.7,57.2,40,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tEnter Farshire's mine. Click the grain bag and Talk to William's corpse
+.turnin 11901 >>Turn in Military? What Military?
+.accept 11902 >>Accept Pernicious Evidence
+.goto BoreanTundra,56.81,55.56
+.turnin 11599 >>Turn in Thassarian, My Brother
+.accept 11600 >>Accept The Late William Allerton
+.goto BoreanTundra,56.04,55.42
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerald and Jeremiah
+.turnin 11902 >>Turn in Pernicious Evidence
+.accept 11903 >>Accept It's Time for Action
+.goto BoreanTundra,58.21,62.82
+.accept 11908 >>Accept Reference Material
+.goto BoreanTundra,58.19,62.98
+
+.goto BoreanTundra,58.28,62.77
+step
+#completewith next
+>> Kill Plagued Scavengers in the area
+.complete 11903,1 
+step
+.goto BoreanTundra,55.75,58.32
+>>Loot the small red book in the house
+.complete 11908,1 
+step
+.loop 50,BoreanTundra,56.84,61.57,55.59,62.11,54.56,60.67,55.89,60.80,55.32,59.32,55.81,57.69,56.83,58.39,56.84,61.57
+.use 35491 >>Kill Plagued Scavengers in the area
+.complete 11903,1 
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerald and Jeremiah
+.turnin 11903 >>Turn in It's Time for Action
+
+.goto BoreanTundra,58.21,62.82,-1
+.turnin 11908 >>Turn in Reference Material
+
+.goto BoreanTundra,58.19,62.98,-1
+step
+.goto BoreanTundra,58.75,68.42
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump up on the cart then onto the bottom of her window, then Talk to her
+.turnin 11600 >>Turn in The Late William Allerton
+.accept 11601 >>Accept Lost and Found
+step
+.goto BoreanTundra,58.29,68.05
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs and Talk to Yaala
+.turnin 11601 >>Turn in Lost and Found
+.accept 11603 >>Accept In Wine, Truth
+.goto BoreanTundra,58.29,68.05
+.turnin 11794 >>Turn in The Hunt is On
+.goto BoreanTundra,58.55,67.29
+.isQuestComplete 11794
+step
+.goto BoreanTundra,58.29,68.05
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
+.turnin 11601 >>Turn in Lost and Found
+.accept 11603 >>Accept In Wine, Truth
+.goto BoreanTundra,58.29,68.05
+step
+.goto BoreanTundra,61.9,65.7
+>>Skip this quest if you don't have enough Water Walking Elixirs, are NOT partied with a Shaman with Fish oil, or are NOT partied with a Death Knight with Path of Frost
+>>Loot the small chest underwater inside the ship
+.complete 11603,1 
+.isOnQuest 11603
+step
+.goto BoreanTundra,58.29,68.05
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
+.turnin 11603 >>Turn in In Wine, Truth
+.accept 11604 >>Accept A Deserter
+.isQuestComplete 11603
+step
+.goto BoreanTundra,58.29,68.05
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
+.accept 11604 >>Accept A Deserter
+.isQuestTurnedIn 11603
+step
+.goto BoreanTundra,56.9,72.2,10,0
+.goto BoreanTundra,56.68,71.44
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRun downstairs to the prison below the Keep. Talk to Brau
+.turnin 11604 >>Turn in A Deserter
+.accept 11932 >>Accept Cowards and Fools
+.isQuestTurnedIn 11603
+step
+#completewith next
+#label ALFP
+.goto BoreanTundra,45.33,34.62
+>>Travel to Amber Ledge
+.fp Amber Ledge >>Get the Amber Ledge Flight Path
+.xp >72,1
+step
+#completewith next
+.goto BoreanTundra,45.33,34.62
+.fly Coldarra >> Fly to Coldarra
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 129 
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+.xp >72,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand inside, then Talk to Raelorasz and Serrah outside
+
+.accept 11900 >>Accept Reading the Meters
+.accept 11910 >>Accept Secrets of the Ancients
+.goto BoreanTundra,32.94,34.40
+.accept 11918 >>Accept Basic Training
+.goto BoreanTundra,33.32,34.54
+.accept 13094 >>Accept Have They No Shame?
+.accept 11912 >>Accept Nuts for Berries
+.goto BoreanTundra,33.49,34.38
+.xp >74,1
+step
+.goto BoreanTundra,28.31,28.46
+>>Click on the small orb next to The Nexus meeting stone
+.complete 11900,1 
+.isOnQuest 11900
+step
+#completewith next
+.goto Borean Tundra,27.63,25.50
+.zone 129 >> Enter The Nexus
+.xp >74,1
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13094,1 
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#completewith Nexus
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
+#label Nexus
+.xp 71 >> Grind The Nexus to level 71
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <71,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48442 >> Train your class spells
+.xp <71,1
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind City
+.xp <71,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43023 >> Train your class spells
+.xp <71,1
+step << Shaman/Paladin/Warlock/Hunter
+#completewith next
+.hs >> Hearth to Stormwind
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 58699 >> Train your class spells
+.xp <71,1
+step << Paladin
+.goto Stormwind City,49.60,49.83
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 54428 >> Train your class spells
+.xp <71,1
+step << Warlock
+.goto Stormwind City,39.89,84.19
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47812 >> Train your class spells
+.xp <71,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49051 >> Train your class spells
+.xp <71,1
+step << DK/Mage
+#completewith Nexus2
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13094,1 
+step << DK/Mage
+#completewith Nexus2
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step << DK/Mage
+#completewith Nexus2
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step << DK/Mage
+#label Nexus2
+.groundgoto Borean Tundra,27.75,28.43,40,0
+.goto Borean Tundra,27.63,25.09
+.xp 72 >> Grind The Nexus to level 72
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49940 >> Train your class spells from Amal'Thazad in Acherus
+.xp <72,1
+.xp >78,1
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind
+.xp <72,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42930 >> Train your class spells
+.xp <72,1
+step
+#completewith Nexus3
+.goto 129,19.23,52.43
+>>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
+.complete 13094,1 
+step
+#completewith Nexus3
+.goto 129,65.19,21.67
+>>Use the Interdimensional Refabricator on the platform behind Anomalus
+.complete 11905,1 
+.isOnQuest 11905
+.use 35479
+step
+#completewith Nexus3
+.goto 129,54.43,55.35,0
+.goto 129,58.06,54.54,0
+.goto 129,64.85,51.62,0
+.goto 129,62.90,64.02,0
+.goto 129,49.80,67.54,0
+>>Kill Crystalline Protectors. Loot them for their Splinters
+.complete 11911,1 
+.isOnQuest 11911
+step
+#label Nexus3
+.groundgoto Borean Tundra,27.75,28.43,40,0
+.goto Borean Tundra,27.63,25.09
+.xp 73 >> Grind The Nexus to level 73
+>>If you reach your hourly lockout, switch to the Nexus Lockout guide
+step << Rogue/Hunter/Warrior/Shaman/Paladin
+#completewith next
+.hs >> Hearth to Stormwind
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind City
+.xp <73,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43019 >> Train your class spells
+.xp <73,1
+step << Rogue
+.goto Stormwind City,77.42,65.31
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48667 >> Train your class spells
+.xp <73,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49044 >> Train your class spells
+.xp <73,1
+step << Warrior
+.goto Stormwind City,77.65,64.31,15,0
+.goto Stormwind City,81.45,59.49,15,0
+.goto Stormwind City,80.56,59.88
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47470 >> Train your class spells
+.xp <73,1
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49237 >> Train your class spells
+.xp <73,1
+step << Paladin
+.goto Stormwind City,49.60,49.83
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48931 >> Train your class spells
+.xp <73,1
+step
+#completewith Berinand
+.goto BoreanTundra,33.49,34.38,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
+.turnin 13094 >>Turnin Have They No Shame?
+.isQuestComplete 13094
+step
+#completewith AmberL
+.goto BoreanTundra,32.94,34.40,-1
+.vendor 25314 >> Vendor and Repair at Berinand
+.xp >74,1
+step
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11911 >>Turnin Quickening
+.turnin 11905 >>Turnin Postponing the Inevitable
+.isQuestComplete 11911
+.isQuestComplete 11905
+step
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11911 >>Turnin Quickening
+.isQuestComplete 11911
+step
+#label Berinand
+.goto BoreanTundra,32.94,34.40,-1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
+.turnin 11905 >>Turnin Postponing the Inevitable
+.isQuestComplete 11905
+step
+.goto BoreanTundra,33.49,34.38
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
+.turnin 13094 >>Turnin Have They No Shame?
+.isQuestComplete 13094
+step
+#label AmberL
+#completewith next
+.goto BoreanTundra,33.13,34.45
+.fly Amber Ledge >>Fly to Amber Ledge
+.zoneskip Dragonblight
+.zoneskip ZulDrak
+.zoneskip The Storm Peaks
+.zoneskip Dalaran
+.zoneskip 159 
+.zoneskip 157 
+.zoneskip 132 
+.zoneskip 154 
+.zoneskip 138 
+step
+#completewith next
+.goto BoreanTundra,46.62,32.75
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Fraser inside the tower
+.vendor 27137 >> Buy a LOT of the food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
+.vendor 27137 >> Buy a LOT of the food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
+.xp >74,1
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Kaskala. Talk to Ataika and Utaik
+.turnin 11932 >>Turn in Cowards and Fools
+.accept 12086 >>Accept The Son of Karkut
+.accept 11949 >>Accept Not Without a Fight!
+.goto BoreanTundra,63.80,46.12
+.daily 11945 >>Accept Preparing for the Worst
+.goto BoreanTundra,63.95,45.72
+step
+#requires AbandonAss
+#completewith next
+.goto BoreanTundra,66.2,45.9,0
+.goto BoreanTundra,63.7,52.2,0
+>>Loot the small baskets all around the village. Skip this if you wish or let one of your other party members loot them
+.complete 11945,1 
+.isOnQuest 11945
+step
+#requires AbandonAss
+.goto BoreanTundra,67.3,47.7,60,0
+.goto BoreanTundra,63.61,53.93
+>>Kill the Raiders all around the village
+.complete 11949,1 
+step
+.goto BoreanTundra,66.2,45.9,60,0
+.goto BoreanTundra,63.7,52.2
+>>Loot the small baskets all around the village. Skip this if you wish or let one of your other party members loot them
+.complete 11945,1 
+.isOnQuest 11945
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ataika and Utaik
+.turnin 11949 >>Turn in Not Without a Fight!
+.accept 11950 >>Accept Muahit's Wisdom
+.goto BoreanTundra,63.80,46.12
+.turnin 11945 >>Turn in Preparing for the Worst
+.goto BoreanTundra,63.95,45.72
+.isQuestComplete 11945
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ataika
+.turnin 11949 >>Turn in Not Without a Fight!
+.accept 11950 >>Accept Muahit's Wisdom
+.goto BoreanTundra,63.80,46.12
+step
+.goto BoreanTundra,67.21,54.86
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Njord's Breath Bay. Talk to Muahit
+.turnin 11950 >>Turn in Muahit's Wisdom
+.accept 11961 >>Accept Spirits Watch Over Us
+step
+.goto BoreanTundra,67.65,50.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the corpse underwater
+.complete 11961,1 
+.skipgossip
+step
+.goto BoreanTundra,67.21,54.86
+>>Return to Muahit
+.turnin 11961 >>Turn in Spirits Watch Over Us
+.accept 11968 >>Accept The Tides Turn
+step
+.goto BoreanTundra,67.41,56.87
+>>Kill Heigarr the Horrible
+.complete 11968,1 
+.unitscan Heigarr the Horrible
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Muahit, then Hotawa
+.turnin 11968 >>Turn in The Tides Turn
+.goto BoreanTundra,67.21,54.86
+
+
+step << skip
+.goto BoreanTundra,78.5,51.5
+>>Travel to Unu'pe
+.fp Unu'pe >> Get the Unu'pe flight path
+step
+#completewith next
+.goto Dragonblight,12.27,55.25
+.zone Dragonblight >> Travel to Dragonblight
+step
+.goto Dragonblight,29.15,55.32
+>>Head east into Dragonblight
+.fp Stars' Rest >> Get the Stars' Rest Flight Path
+step
+#completewith next
+.goto Dragonblight,26.15,49.48,20 >> Jump down into The Pit of Narjun
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.accept 13187 >>Accept The Faceless Ones
+.accept 13167 >>Accept Death to the Traitor King
+.accept 13182 >>Accept Don't Forget the Eggs
+.xp >76,1
+step
+#completewith next
+.goto Dragonblight,25.61,51.30
+.zone 159 >>Enter Azjol'Nerub
+step
+>>Clear Azjol'nerub once. Destroy the eggs throughout Azjol'Nerub
+.complete 13182,1 
+step
+.goto 157,62.27,48.55
+>>Clear Azjol'nerub once. Kill Anub'arak. Loot him for his Husk
+.complete 13167,1 
+step
+#completewith KilixT
+.goto 157,89.25,77.99
+.zone Dragonblight >> Exit Azjol'nerub through the back entrance
+step
+#label KilixT
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13167 >>Turn in Death to the Traitor King
+.turnin 13182 >>Turn in Don't Forget the Eggs
+.xp >76,1
+step
+#completewith next
+.goto Dragonblight,28.61,51.79
+.zone 132 >>Enter Ahn'kahet: The Old Kingdom
+step
+#completewith AhnKahet1
+.goto 132,33.38,49.79,40,0
+.goto 132,27.61,50.24
+>>Kill the Faceless Ones just before Herald Volazj
+.complete 13187,1 
+step
+#completewith AhnKahet1
+.goto 132,23.00,50.81
+>>Kill Herald Volazj
+.complete 13187,2 
+step
+#label AhnKahet1
+.xp 74 >> Grind Ahn'Kahet: The Old Kingdom to level 74
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <73,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 53307 >> Train your class spells
+.xp <74,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <74,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49929 >> Train your class spells from Amal'Thazad in Acherus
+.xp <74,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind City
+.xp <74,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42939 >>Train your class spells
+.xp <74,1
+step << Shaman/Paladin/Priest/Warlock/Hunter
+#completewith next
+.hs >> Hearth to Stormwind << !Priest
+.hs >> Hearth to Stormwind. Skip this step if you're Holy or Discipline specced << Priest
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49270 >> Train your class spells
+.xp <74,1
+step << Paladin
+.goto Stormwind City,49.60,49.83
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48805 >> Train your class spells
+.xp <74,1
+step << Priest
+.goto Stormwind City,49.51,45.22
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48126 >> Train your class spells. Skip this step if you're Holy or Discipline specced
+.xp <74,1
+
+step << Warlock
+#completewith next
+.goto Stormwind City,29.2,74.0,20,0
+.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
+step << Warlock
+.goto Stormwind City,39.89,84.19
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47892 >> Train your class spells
+.xp <74,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 61846 >> Train your class spells
+.xp <74,1
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13187 >>Turn in The Faceless Ones
+.isQuestComplete 13187
+step
+#completewith AhnKahet2
+.goto 132,33.38,49.79,40,0
+.goto 132,27.61,50.24
+>>Kill the Faceless Ones just before Herald Volazj
+.complete 13187,1 
+step
+#completewith AhnKahet2
+.goto 132,23.00,50.81
+>>Kill Herald Volazj
+.complete 13187,2 
+step
+#label AhnKahet2
+.xp 75 >>Grind Ahn'Kahet: The Old Kingdom to level 75
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <75,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48440 >> Train your class spells
+.xp <75,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <75,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49923 >> Train your class spells from Amal'Thazad in Acherus
+.xp <75,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind
+.xp <75,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42955 >> Train your class spells
+.xp <75,1
+step << Shaman/Paladin/Priest/Hunter/Warrior
+#completewith next
+.hs >> Hearth to Stormwind
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49280 >> Train your class spells
+.xp <75,1
+step << Paladin
+.goto Stormwind City,49.60,49.83
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48818 >> Train your class spells
+.xp <75,1
+step << Priest
+.goto Stormwind City,49.51,45.22
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48124 >> Train your class spells
+.xp <75,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 61005 >> Train your class spells
+.xp <75,1
+step << Warrior
+.goto Stormwind City,77.65,64.31,15,0
+.goto Stormwind City,81.45,59.49,15,0
+.goto Stormwind City,80.56,59.88
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 55694 >> Train your class spells
+.xp <75,1
+step
+.goto Dragonblight,26.18,50.79
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
+.turnin 13187 >>Turn in The Faceless Ones
+.isQuestComplete 13187
+step
+#completewith next
+.goto Zul'Drak,18.29,84.66
+.zone Zul'Drak >> Travel to Zul'Drak
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Light's Breach. Talk to Moky, Lantinga, Rageclaw, and the Wanted Poster. Skip these quests if you wish, but it's recommended you complete them
+.accept 12859 >>Accept This Just In: Fire Still Hot!
+.goto ZulDrak,32.02,75.60
+.accept 12902 >>Accept In Search Of Answers
+.goto ZulDrak,32.15,75.74
+.accept 12861 >>Accept Trolls Is Gone Crazy!
+.goto ZulDrak,32.17,75.64
+.accept 12857 >>Accept Wanted: Ragemane's Flipper
+.goto ZulDrak,32.26,75.68
+.xp >76,1
+step
+#completewith Ragemane
+.goto ZulDrak,34.8,85.1,0
+.goto ZulDrak,34.7,80.6,0
+.use 41131 >>Spam use the Rageclaw Fire Extinguisher in your bags when next to huts that are on fire.
+.complete 12859,1 
+.isOnQuest 12859
+step
+#completewith Fires
+.goto ZulDrak,34.8,85.1,0
+.goto ZulDrak,34.7,80.6,0
+>>Kill Undead Trolls in the area. Loot them for their Lock Openers
+.use 41161 >>Use them on Captured Rageclaws to free them
+.collect 41161,8,12861,1,-1
+.complete 12861,1 
+.isOnQuest 12861
+step
+.goto ZulDrak,34.94,83.90
+>>Click the floating scroll
+.turnin 12902 >>Turn in In Search Of Answers
+.accept 12883 >>Accept Orders From Drakuru
+.isOnQuest 12902
+step
+.goto ZulDrak,34.94,83.90
+>>Click the floating scroll
+.accept 12883 >>Accept Orders From Drakuru
+.isQuestTurnedIn 12902
+step
+#label Ragemane
+.goto ZulDrak,38.29,84.93
+>>Go out into the water. Kill Ragemane. Loot him for his Flipper
+.complete 12857,1 
+.isOnQuest 12857
+step
+#label Fires
+.goto ZulDrak,34.8,85.1,80,0
+.goto ZulDrak,34.7,80.6
+.use 41131 >>Use the Rageclaw Fire Extinguisher when next to a hut that's on fire
+.complete 12859,1 
+.isOnQuest 12859
+step
+.goto ZulDrak,34.8,85.1,80,0
+.goto ZulDrak,34.7,80.6
+>>Kill Undead Trolls in the area. Loot them for their Lock Openers (that go into your bag)
+.use 41161 >>Use them on Captured Rageclaws to free them
+.collect 41161,8,12861,1,-1
+.complete 12861,1 
+.isOnQuest 12861
+step
+#completewith end
+#label Langtina1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
+.turnin 12883 >>Turn in Orders From Drakuru
+.accept 12884 >>Accept The Ebon Watch
+.accept 12894 >>Accept Crusader Forward Camp
+.goto ZulDrak,32.15,75.74
+.isQuestComplete 12883
+
+step
+#completewith end
+#requires Langtina1
+#label Langtina2
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
+.accept 12884 >>Accept The Ebon Watch
+.accept 12894 >>Accept Crusader Forward Camp
+.goto ZulDrak,32.15,75.74
+.isQuestTurnedIn 12883
+step
+#completewith end
+#label Rageclaw1
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
+.turnin 12861 >>Turn in Trolls Is Gone Crazy!
+.goto ZulDrak,32.2,75.7
+.isQuestComplete 12857
+.isQuestComplete 12861
+step
+#completewith end
+#requires Rageclaw1
+#label Rageclaw2
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
+.goto ZulDrak,32.17,75.64
+.isQuestComplete 12857
+step
+#completewith end
+#requires Rageclaw2
+#label Rageclaw3
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
+.turnin 12861 >>Turn in Trolls Is Gone Crazy!
+.goto ZulDrak,32.17,75.64
+.isQuestComplete 12861
+step
+#completewith end
+#label Moky
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Moky
+.turnin 12859 >>Turn in This Just In: Fire Still Hot!
+.goto ZulDrak,32.02,75.60
+.isQuestComplete 12859
+step
+#hidewindow
+#requires Langtina2
+step
+#hidewindow
+#requires Rageclaw3
+step
+#requires Moky
+.goto ZulDrak,32.18,74.39
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Danica
+.fp Light's Breach >>Get the Light's Breach Flight Path
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRide to the Crusader Forward Camp. Talk to Mackeller
+.turnin 12894 >>Turn in Crusader Forward Camp
+.accept 12903 >>Accept That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+
+
+.isQuestTurnedIn 12883
+step
+.goto ZulDrak,25.05,51.61
+>>Travel close to Crusader Dargath until the objective completes
+.complete 12903,1 
+.isOnQuest 12903
+step
+.goto ZulDrak,19.78,56.35
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gymer in the giant cage. Try to avoid killing the Vargul in the area
+.accept 12912 >>Accept A Great Storm Approaches
+.isOnQuest 12903
+step
+.goto ZulDrak,17.64,57.55
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk in the plague tank. Try to avoid killing the Vargul in the area
+.complete 12903,2 
+.accept 12904 >>Accept Light Won't Grant Me Vengeance
+.isOnQuest 12903
+step
+#completewith next
+.goto ZulDrak,19.8,56.9,0
+.goto ZulDrak,23.2,54.7,0
+.goto ZulDrak,21.4,51.3,0
+.goto ZulDrak,15.0,61.3,0
+>>Kill any Vargul humanoid in the area
+.complete 12904,1 
+.isOnQuest 12904
+step << skip
+#completewith next
+.goto ZulDrak,19.5,58.9,0
+.goto ZulDrak,15.3,62.2,0
+.goto ZulDrak,13.3,59.9,0
+.goto ZulDrak,18.7,54.5,0
+>>Collect pieces of Scrap Metal scattered throughout the area
+.complete 12901,1 
+step
+.goto ZulDrak,15.67,59.41
+>>Travel close to Burr until the objective completes
+.complete 12903,3 
+.isOnQuest 12903
+step << skip
+#label Metal
+.goto ZulDrak,19.1,61.8,70,0
+.goto ZulDrak,15.3,62.2,70,0
+.goto ZulDrak,13.3,59.9,70,0
+.goto ZulDrak,18.7,54.5
+>>Collect pieces of Scrap Metal scattered throughout the area
+.complete 12901,1 
+step
+.goto ZulDrak,19.8,56.9,70,0
+.goto ZulDrak,23.2,54.7,70,0
+.goto ZulDrak,21.4,51.3,70,0
+.goto ZulDrak,15.0,61.3
+>>Kill any Vargul humanoid in the area
+.complete 12904,1 
+.isOnQuest 12904
+step
+.goto ZulDrak,17.64,57.55
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk
+.turnin 12904 >>Turn in Light Won't Grant Me Vengeance
+.isQuestComplete 12904
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed and MacKellar
+.turnin 12912 >>Turn in A Great Storm Approaches
+
+
+
+.turnin 12903 >>Turn in That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+.isQuestComplete 12903
+.isOnQuest 12912
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to MacKellar
+
+
+
+.turnin 12903 >>Turn in That's What Friends Are For...
+.goto ZulDrak,25.28,63.96
+.isQuestComplete 12903
+step
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed
+.turnin 12912 >>Turn in A Great Storm Approaches
+.goto ZulDrak,25.22,63.88
+
+
+.isOnQuest 12912
+step
+.goto ZulDrak,39.43,66.96
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to The Argent Stand. Talk to Falstaav
+
+.accept 12503 >>Accept Defend the Stand
+
+.xp >78,1
+step
+.goto ZulDrak,40.53,65.61
+>>If you think you'll have at least 10 Drakkari Offerings amongst yourselves, trade them all to someone and then accept this quest for one person so they can turn it in. This gives them 1 hour of Blessing of Might (Attack Power)
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ubungo
+.accept 12565 >>Accept The Blessing of Zim'Abwa
+.xp >78,1
+step << skip
+#completewith next
+.goto ZulDrak,36.6,67.7,0
+.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
+.complete 12740,1 
+step
+.goto ZulDrak,35.8,66.6
+>>Kill undead mobs in the area
+.complete 12503,1 
+.isOnQuest 12503
+step << skip
+.goto ZulDrak,36.6,67.7
+.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
+.complete 12740,1 
+step << skip
+.goto ZulDrak,35.8,66.6
+>>Kill undead mobs in the area. Loot them for Drakkari Offerings
+.collect 38551,10 
+step
+.goto ZulDrak,36.70,72.72
+>>Click the statue
+.turnin 12565 >>Turn in The Blessing of Zim'Abwa
+.isQuestComplete 12565
+step
+.goto ZulDrak,39.43,66.96
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Falstaav
+
+.turnin 12503 >>Turn in Defend the Stand
+
+.isQuestComplete 12503
+step
+#completewith next
+.goto ZulDrak,40.83,66.25
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
+.vendor 28791 >>Buy a LOT of the new food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
+.vendor 28791 >>Buy a LOT of the new food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
+step
+#completewith next
+.goto ZulDrak,41.09,65.15
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
+.vendor 28800 >>Vendor and Repair
+step
+.goto ZulDrak,41.55,64.43
+.fp The Argent Stand >>Get the The Argent Stand Flight Path
+step
+>>Complete the Amphitheater of Anguish Questline. There are 6 elite quests that give a LOT of fast xp and a weapon that'll last you to 80. Only accept this when your party is ready and on the same quest progression as you. (Auto-accept is disabled for this questline)
+.groundgoto ZulDrak,46.3,57.9,50,0
+.goto ZulDrak,48.43,56.36
+.accept 12932,0 >>Accept The Amphitheater of Anguish: Yggdras!
+.xp >78,1
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Yggdras in the Amphitheater of Anguish
+.complete 12932,1 
+.isOnQuest 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12932 >>Turn in The Amphitheater of Anguish: Yggdras!
+.isQuestComplete 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12933,0 >>Accept The Amphitheater of Anguish: Magnataur!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Stinkbeard in the Amphitheater of Anguish
+.complete 12933,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12933 >>Turn in The Amphitheater of Anguish: Magnataur!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12934,0 >>Accept The Amphitheater of Anguish: From Beyond!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill the Elemental Lord in the Amphitheater of Anguish
+.complete 12934,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12934 >>Turn in The Amphitheater of Anguish: From Beyond!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12935,0 >>Accept The Amphitheater of Anguish: Tuskarrmageddon!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Orinoko in the Amphitheater of Anguish
+.complete 12935,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12935 >>Turn in The Amphitheater of Anguish: Tuskarrmageddon!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12936,0 >>Accept The Amphitheater of Anguish: Korrak the Bloodrager!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Korrak in the Amphitheater of Anguish
+.complete 12936,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12936 >>Turn in The Amphitheater of Anguish: Korrak the Bloodrager!
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.43,56.36
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
+.accept 12948,0 >>Accept The Champion of Anguish
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,47.83,56.83
+>>Kill Vladof in the Amphitheater of Anguish
+.complete 12948,1 
+.isQuestTurnedIn 12932
+step
+.goto ZulDrak,48.47,56.41
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
+.turnin 12948 >>Turn in The Champion of Anguish
+.isQuestTurnedIn 12932
+step
+.groundgoto ZulDrak,51.20,54.32,60,0
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the stairs behind you up toward Zim'Torga. Talk to To'kini
+.accept 13099 >>Accept Just Checkin'
+.goto ZulDrak,59.98,57.93
+.xp >78,1
+step
+.groundgoto ZulDrak,65.47,44.23,60,0
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Bah'kini
+.turnin 13099 >> Turn in Just Checkin'
+.accept 13098 >> Accept For Posterity
+.accept 13111 >> Accept One of a Kind
+.xp >78,1
+step
+#completewith next
+.goto Zul'Drak,76.02,20.79
+.zone 154 >> Enter Gundrak
+step
+#completewith Gundrak1
+.goto 154,56.80,41.61
+.goto 154,52.28,68.79
+.goto 154,48.64,78.52
+.goto 154,49.42,81.91
+.goto 154,48.27,71.79
+.goto 154,44.95,67.51
+.goto 154,47.97,63.31
+.goto 154,46.23,52.77
+.goto 154,41.46,72.29
+.goto 154,30.61,76.64
+.goto 154,31.80,69.53
+.goto 154,32.28,65.89
+.goto 154,33.63,58.70
+.goto 154,36.22,58.40
+.goto 154,36.24,56.40
+.goto 154,32.53,56.32
+.goto 154,31.81,49.55
+.goto 154,31.77,45.85
+.goto 154,40.21,51.56
+.goto 154,39.94,47.99
+.goto 154,38.92,47.34
+.goto 154,43.93,31.06
+.goto 154,41.51,25.48
+.goto 154,39.40,21.64
+.goto 154,40.03,16.82
+.goto 154,46.31,22.51
+.goto 154,49.21,30.61
+.goto 154,49.74,27.77
+.goto 154,53.08,17.08
+>>Loot the Drakkari History Tablets found throughout Gundrak
+.complete 13098,1 
+step
+#completewith Gundrak1
+.goto 154,46.60,65.71
+>>Kill the Drakkari Colossus. Loot it for its Fragment
+.complete 13111,1 
+step << DK/Mage/Shaman/Hunter/Rogue
+#label Gundrak1
+.xp 76 >>Grind Gundrak to level 76
+>>If you reach your hourly lockout, switch to the Gundrak Lockout guide
+
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <76,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49894 >> Train your class spells from Amal'Thazad in Acherus
+.xp <76,1
+.xp >80,1
+step << Mage
+#completewith next
+.zone Stormwind City >> Teleport to Stormwind
+.xp <76,1
+step << Mage
+.goto Stormwind City,49.26,87.77
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42920 >> Train your class spells
+.xp <76,1
+step << Shaman/Hunter/Rogue
+#completewith next
+.hs >> Hearth to Stormwind
+step << Shaman
+.goto Stormwind City,67.52,89.41
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 58803 >> Train your class spells
+.xp <76,1
+step << Hunter
+.goto Stormwind City,67.35,36.26
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 53338 >> Train your class spells
+.xp <76,1
+step << Rogue
+.goto Stormwind City,77.42,65.31
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48637 >> Train your class spells
+.xp <76,1
+step
+#completewith Gundrak2
+.goto 154,56.80,41.61
+.goto 154,52.28,68.79
+.goto 154,48.64,78.52
+.goto 154,49.42,81.91
+.goto 154,48.27,71.79
+.goto 154,44.95,67.51
+.goto 154,47.97,63.31
+.goto 154,46.23,52.77
+.goto 154,41.46,72.29
+.goto 154,30.61,76.64
+.goto 154,31.80,69.53
+.goto 154,32.28,65.89
+.goto 154,33.63,58.70
+.goto 154,36.22,58.40
+.goto 154,36.24,56.40
+.goto 154,32.53,56.32
+.goto 154,31.81,49.55
+.goto 154,31.77,45.85
+.goto 154,40.21,51.56
+.goto 154,39.94,47.99
+.goto 154,38.92,47.34
+.goto 154,43.93,31.06
+.goto 154,41.51,25.48
+.goto 154,39.40,21.64
+.goto 154,40.03,16.82
+.goto 154,46.31,22.51
+.goto 154,49.21,30.61
+.goto 154,49.74,27.77
+.goto 154,53.08,17.08
+>>Loot the Drakkari History Tablets found throughout Gundrak
+.complete 13098,1 
+step
+#completewith Gundrak2
+.goto 154,46.60,65.71
+>>Kill the Drakkari Colossus. Loot it for its Fragment
+.complete 13111,1 
+step
+#label Gundrak2
+.xp 77 >>Grind Gundrak to level 77
+>>If you reach your hourly lockout, switch to the Gundrak Lockout guide
+step << Warlock
+#completewith next
+.hs >> Hearth to Stormwind
+step << Warlock
+#completewith next
+.goto Stormwind City,29.2,74.0,20,0
+.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
+step << Warlock
+.goto Stormwind City,39.89,84.19
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47813 >> Train your class spells
+.xp <77,1
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.turnin 13111 >> Turn in One of a Kind
+.isQuestComplete 13098
+.isQuestComplete 13111
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.isQuestComplete 13098
+step
+.goto Zul'Drak,70.06,20.92
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
+.turnin 13098 >> Turn in For Posterity
+.isQuestComplete 13098
+step
+#completewith next
+.goto ZulDrak,70.47,23.30
+.fp Dubra'Jin >> Get the Dubra'Jin flight path
+step
+#completewith next
+.goto ZulDrak,70.47,23.30
+.fly The Argent Stand >> Fly to The Argent Stand
+step
+.goto ZulDrak,40.83,66.25
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
+.vendor 25245 >>Buy a LOT of the food. You'll be doing dungeons for the last 3 levels << Warrior/Rogue/DK
+.vendor 28791 >>Buy a LOT of the food/water. You'll be doing dungeons for the last 3 levels << !Warrior !Rogue !DK
+.xp >78,1
+step
+.goto ZulDrak,41.09,65.15
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
+.vendor 28800 >>Vendor and Repair
+.xp >78,1
+step
+#completewith next
+.goto ZulDrak,40.63,66.90
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Teronus
+.accept 12796 >>Accept The Magical Kingdom of Dalaran
+.zoneskip Stormwind City
+.zoneskip Dalaran
+.xp >78,1
+step
+.goto ZulDrak,40.63,66.90
+.zone Dalaran >>Ask Teronus to be teleported to Dalaran
+.skipgossip
+.xp >78,1
+step
+.abandon 12796 >> Abandon The Magical Kingdom of Dalaran. DO NOT TURN THIS IN
+step << Mage
+.goto Dalaran,56.3,46.7
+.trainer >>Go inside the building. Train your Dalaran Portals
+step << Mage
+.goto Dalaran,55.0,46.2
+.train 42985 >> Train your class spells
+.xp <77,1
+step
+.goto Dalaran,69.81,45.45
+.train 54197 >> Train Cold Weather Flying from Hira Snowdawn
+step << skip
+.goto The Storm Peaks,65.3,60.2
+.accept 13109 >>Accept Diametrically Opposed
+.accept 13108 >>Accept Whatever it Takes
+step
+#completewith next
+.goto The Storm Peaks,45.56,21.10
+.zone 138 >>Enter the Halls of Lightning
+step << Warrior/Druid/DK/Mage
+.xp 78 >>Grind the Halls of Lightning to level 78
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <78,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48465 >> Train your class spells
+.xp <78,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <78,1
+step << DK
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 49941 >> Train your class spells from Amal'Thazad in Acherus. Runeforge your weapon downstairs if needed
+.xp <78,1
+step << Mage
+#completewith next
+.zone Dalaran >> Teleport to Dalaran
+.xp <78,1
+step << Mage
+.goto Dalaran,55.0,46.2
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 42914 >> Train your class spells
+.xp <78,1
+step << Warrior
+#completewith next
+.hs >> Hearth to Stormwind
+step << Warrior
+.goto Stormwind City,77.65,64.31,15,0
+.goto Stormwind City,81.45,59.49,15,0
+.goto Stormwind City,80.56,59.88
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 47436 >> Train your class spells
+.xp <78,1
+step << Mage/Druid/DK
+.xp 79 >>Grind the Halls of Lightning to level 79
+step << Mage
+#completewith next
+.zone Dalaran >> Teleport to Dalaran
+.xp <79,1
+step << Mage
+.goto Dalaran,55.0,46.2
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 43046 >> Train your class spells
+.xp <79,1
+step << Druid
+#completewith next
+.cast 18960 >> Cast Teleport: Moonglade
+.zoneskip Moonglade
+.xp <79,1
+step << Druid
+.goto Moonglade,52.4,40.6
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 48378 >> Train your class spells
+.xp <79,1
+step << DK
+#completewith next
+.cast 50977 >> Cast Death Gate
+.zoneskip Eastern Plaguelands
+.xp <79,1
+step << DK
+#label DKTrain1
+.goto Eastern Plaguelands,80.3,48.0
+>>Make sure your party can summon you back via the summoning stone or Warlock summon
+.train 55271 >> Train your class spells from Amal'Thazad in Acherus
+.xp <79,1
+step
+.xp 80 >>Grind the Halls of Lightning to level 80
+step << skip
+.goto The Storm Peaks,65.3,60.2
+.turnin 13109 >>Turn in Diametrically Opposed
+.turnin 13108 >>Turn in Whatever it Takes
+>>Ding Level 80 - Congratulations!
+]])
+RXPGuides.RegisterGuide([[
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -289,7 +2013,7 @@ step << Warrior
 .accept 1112 >> Accept Parts for Kravel
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -721,7 +2445,7 @@ step
 .zone Dustwallow Marsh >> Take the Boat to Theramore
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -1517,7 +3241,7 @@ step << !Mage
 .zone The Barrens >> Take the boat to Ratchet. You can deposit Green Hills of Stranglethorn pages into your bank while you wait.
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -2590,7 +4314,7 @@ step << wotlk !Mage
 .fly Ironforge >> Fly to Ironforge
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -3143,7 +4867,7 @@ step
 .accept 697 >> Accept Malin's Request
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -3395,7 +5119,7 @@ step << Gnome !Warlock tbc
 .skill riding,1,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -3741,6 +5465,8 @@ step
 .target Hammertoe Grez
 .accept 723 >> Accept Prospect of Faith
 step
+#ignorecorpse 
+
 #xprate <1.2 
 .goto Badlands,35.2,10.9,40 >>Go inside the instance portal
 .goto Badlands,67.8,44.4,40
@@ -4216,7 +5942,7 @@ step << wotlk
 .zoneskip Stormwind City
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -4478,7 +6204,7 @@ step << !Mage
 .zone The Barrens>> Take the boat to Ratchet
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -4749,6 +6475,8 @@ step
 .target Hammertoe Grez
 .accept 723 >> Accept Prospect of Faith
 step
+#ignorecorpse 
+
 .goto Badlands,35.2,10.9,40 >>Go inside the instance portal
 .goto Badlands,67.8,44.4,40
 >>Ignore the arrow for a moment, run inside the instance portal then die anywhere inside the instance, and then follow the arrow again to the back entrance. Run into the back entrance portal, then exit the dungeon.
@@ -5145,7 +6873,7 @@ step << wotlk
 .zoneskip Stormwind City
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5460,7 +7188,7 @@ step
 .fly Tanaris >> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5677,7 +7405,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -5880,7 +7608,7 @@ step << wotlk !Mage
 .fly Ironforge >> Fly to Ironforge
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -6090,7 +7818,7 @@ step << tbc/Mage
 .accept 1448 >> Accept In Search of The Temple
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 32-47
@@ -6470,7 +8198,7 @@ step
 .fly Tanaris>> Fly to Tanaris. This flight takes 3 minutes, feel free to afk and stretch for a bit :D
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -6980,7 +8708,7 @@ step << Warlock
 .isOnQuest 1804
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -7208,7 +8936,7 @@ step << skip
 .turnin 5217 >> Turn in Return to Chillwind Camp
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -7270,8 +8998,8 @@ step << tbc
 step
 .goto Ironforge,55.501,47.742
 .fly Searing Gorge >>Fly to Thorium Point
->>If you don't have the Searing Gorge flight path, leave Ironforge through the main gate and head east to Loch Modan<< !Dwarf !Gnome
->>If you don't have the Searing Gorge flight path, fly to Loch Modan instead<< Dwarf/Gnome
+>>If you don't have the Searing Gorge flight path, leave Ironforge through the main gate and head east to Loch Modan << !Dwarf !Gnome
+>>If you don't have the Searing Gorge flight path, fly to Loch Modan instead << Dwarf/Gnome
 .zoneskip Dun Morogh
 .zoneskip Searing Gorge
 .zoneskip Loch Modan
@@ -7303,15 +9031,10 @@ step
 .isOnQuest 3368
 step
 .goto Ironforge,72.1,15.8
->>Speak to Curator Thorius, he walks around the library
-.target Curator Thorius
->>Talk to |cRXP_FRIENDLY_Curator Thorius|r
+>>Talk to |cRXP_FRIENDLY_Curator Thorius|r, walking around the library
 .turnin 3368 >> Turn in Suntara Stones
-step
-.goto Ironforge,70.4,14.1
-.target Curator Thorius
->>Talk to |cRXP_FRIENDLY_Curator Thorius|r
 .accept 3371 >> Accept Dwarven Justice
+.target Curator Thorius
 step
 #completewith next
 #label fly1
@@ -7319,55 +9042,45 @@ step
 .fly Searing Gorge>> Fly to Searing Gorge
 step
 .goto Searing Gorge,38.58,27.81
->>Talk to Hansel Heavyhands
-
 >>Talk to |cRXP_FRIENDLY_Hansel Heavyhands|r
+.target Hansel Heavyhands
 .accept 7723 >> Accept Curse These Fat Fingers
 .accept 7724 >> Accept Fiery Menace!
 .accept 7727 >> Accept Incendosaurs? Whateverosaur is More Like It
 step << wotlk
 .goto Searing Gorge,38.36,27.74
->>Talk to Evonice Sootsmoker
-
+>>Talk to |cRXP_FRIENDLY_Evonice Sootsmoker|r
+.target Evonice Sootsmoker
 .accept 7702 >> Accept Kill 'Em With Sleep Deprivation
 step
 .goto Searing Gorge,38.80,28.50
->>Talk to Master Smith Burninate
-
 >>Talk to |cRXP_FRIENDLY_Master Smith Burninate|r
+.target Master Smith Burninate
 .accept 7722 >> Accept What the Flux?
-step
-.goto Searing Gorge,38.80,28.50
->>Talk to Master Smith Burninate
-
 .vendor >> Purchase more level 45 food/water. It's on the very last page
 .vendor >> Restock on ammo << Hunter
 step
->>Click the Wanted/Missing/Lost&Found Board
+>>Click the Wanted/Missing/Lost & Found Board
 .goto Searing Gorge,37.6,26.6
 .accept 7701 >> Accept WANTED: Overseer Maltorius
 .accept 7728 >> Accept STOLEN: Smithing Tuyere and Lookout's Spyglass
 .accept 7729 >> Accept JOB OPPORTUNITY: Culling the Competition
 step
 .goto Searing Gorge,39.05,38.99
->>Talk to Velarok Windblade
-
-.target Kalaran Windblade
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+.target Velarok Windblade
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
 .accept 3441 >> Accept Divine Retribution
 step
 .goto Searing Gorge,39.05,38.99
->>Listen to Velarok's story
-
+>>Listen to |cRXP_FRIENDLY_Velarok Windblade|r's story
+.target Velarok Windblade
 .skipgossip
 .complete 3441,1 
 step
 .goto Searing Gorge,39.05,38.99
->>Talk to Velarok Windblade
-
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
+.target Velarok Windblade
 .turnin 3441 >> Turn in Divine Retribution
-.target Kalaran Windblade
 .accept 3442 >> Accept The Flawless Flame
 step
 >>Kill Inferno and Magma Elementals, and loot their Heart of Flame. Kill Greater Lava Spiders along the way
@@ -7408,12 +9121,11 @@ step
 .complete 3442,2 
 step
 .goto Searing Gorge,39.06,38.99
->>Talk to Velarok Windblade
-
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
+.target Velarok Windblade
 .turnin 3442 >> Turn in The Flawless Flame
-.target Kalaran Windblade
 .accept 3443 >> Accept Forging the Shaft
+
 step
 #completewith next
 >>As you quest, loot the Grimesilt Outhouse Key from Dark Iron Dwarves and accept its quest
@@ -7431,11 +9143,9 @@ step
 step
 #label Ragnaros
 .goto Searing Gorge,39.06,38.99
->>Talk to Velarok Windblade
-
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
+.target Velarok Windblade
 .turnin 3443 >> Turn in Forging the Shaft
-.target Kalaran Windblade
 .accept 3452 >> Accept The Flame's Casing
 step
 .goto Searing Gorge,26.33,34.59,40,0
@@ -7445,11 +9155,9 @@ step
 .complete 3452,1 
 step
 .goto Searing Gorge,39.06,38.99
->>Talk to Velarok Windblade
-
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
+.target Velarok Windblade
 .turnin 3452 >> Turn in The Flame's Casing
-.target Kalaran Windblade
 .accept 3453 >> Accept The Torch of Retribution
 step
 .goto Searing Gorge,39.06,38.99
@@ -7457,18 +9165,15 @@ step
 .complete 3453,1 
 step
 .goto Searing Gorge,39.06,38.99
->>Talk to Velarok Windblade and Squire Maltrake
-
->>Talk to |cRXP_FRIENDLY_Kalaran Windblade|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r and |cRXP_FRIENDLY_Squire Maltrake|r
 .turnin 3453 >> Turn in The Torch of Retribution
-.target Kalaran Windblade
 .accept 3454 >> Accept The Torch of Retribution
 .turnin 3454 >> Turn in The Torch of Retribution
 .accept 3462 >> Accept Squire Maltrake
->>Talk to |cRXP_FRIENDLY_Squire Maltrake|r
 .turnin 3462 >> Turn in Squire Maltrake
-.target Squire Maltrake
 .accept 3463 >> Accept Set Them Ablaze!
+.target Velarok Windblade
+.target Squire Maltrake
 step
 #completewith TowerBurn
 .goto Searing Gorge,38.72,50.14,30,0
@@ -7532,10 +9237,8 @@ step
 .complete 7729,1 
 .complete 7729,2 
 step
->>Talk to the Dying Archaelogist
-
 .goto Searing Gorge,41.16,25.54
->>Talk to |cRXP_FRIENDLY_Dying Archaeologist|r
+>>Talk to the |cRXP_FRIENDLY_Dying Archaeologist|r
 .turnin 3371 >> Turn in Dwarven Justice
 .target Dying Archaeologist
 .accept 3372 >> Accept Release Them
@@ -7596,13 +9299,12 @@ step
 .link https://www.youtube.com/watch?v=-mcsjDkeSUw >> CLICK HERE for a guide
 step
 .goto Searing Gorge,39.06,38.99
->>Talk to Squire Maltrake
-
->>Talk to |cRXP_FRIENDLY_Squire Maltrake|r
+>>Talk to |cRXP_FRIENDLY_Velarok Windblade|r
 .turnin 3463 >> Turn in Set Them Ablaze!
+.target Velarok Windblade
 step
 .goto Searing Gorge,38.85,38.99
->>Open the chest to the west of Velarok Windblade
+>>Open the chest next to |cRXP_FRIENDLY_Velarok Windblade|r
 .accept 3481 >> Accept Trinkets...
 .turnin 3481 >> Turn in Trinkets...
 step
@@ -7610,25 +9312,23 @@ step
 #completewith next
 .destroy 10515 >> You can destroy the Torch of Retribution now. Note: It can be used to aggro rats in the deeprun tram and level your defense skill in the future, skip this step if you want to use it that way.
 step
->>Go up the hill north of the Twilight Cultists' campfire, then fight your way east. Talk to Zamael Lunthistle, in the cage by the lava
+>>Go up the hill north of the Twilight Cultists' campfire, then fight your way east. Talk to |cRXP_FRIENDLY_Zamael Lunthistle|r in the cage
 .goto Searing Gorge,24.26,34.35,30,0
 .goto Searing Gorge,25.24,27.67,30,0
 .goto Searing Gorge,29.63,26.32
->>Talk to |cRXP_FRIENDLY_Zamael Lunthistle|r
 .accept 3377 >> Accept Prayer to Elune
-
+.target Zamael Lunthistle
 step
 .goto Searing Gorge,29.63,26.32
->>Listen to Zamael's story
+>>Listen to |cRXP_FRIENDLY_Zamael Lunthistle|r's story
 .skipgossip
 .complete 3377,1 
 step
->>Talk to Zamael Lunthistle
 .goto Searing Gorge,29.63,26.32
 >>Talk to |cRXP_FRIENDLY_Zamael Lunthistle|r
 .turnin 3377 >> Turn in Prayer to Elune
-.target Zamael Lunthistle
 .accept 3378 >> Accept Prayer to Elune
+.target Zamael Lunthistle
 step
 .goto Searing Gorge,29.2,25.9
 >>Jump onto the crystal in the center of the lava pond, then loot it
@@ -7637,55 +9337,50 @@ step
 step
 .goto Searing Gorge,24.85,27.52,30,0
 .goto Searing Gorge,22.65,37.89
->>Kill Twilight Geomancers, Idolaters, Fire Guard, and Dark Shaman. Loot their Prayer to Elune
+>>Kill Twilight Geomancers, Idolaters, Fire Guards, and Dark Shamans. Loot them for the |cRXP_LOOT_Prayer to Elune|r
 .complete 3378,1 
 step
 .goto Searing Gorge,37.74,26.56
->>Talk to Lookout Captain Lolo Longstriker
-
 >>Talk to |cRXP_FRIENDLY_Lookout Captain Lolo Longstriker|r
+.target Lookout Captain Lolo Longstriker
 .turnin 7701 >> Turn in WANTED: Overseer Maltorius
 .isQuestComplete 7701
 step << wotlk
 .goto Searing Gorge,38.36,27.74
->>Talk to Evonice Sootsmoker
-
+>>Talk to |cRXP_FRIENDLY_Evonice Sootsmoker|r
+.target Evonice Sootsmoker
 .turnin 7704 >> Turn in Look at the Size of It!
 .turnin 7702 >> Turn in Kill 'Em With Sleep Deprivation
 .isOnQuest 7704
 step << wotlk
 .goto Searing Gorge,38.36,27.74
->>Talk to Evonice Sootsmoker
-
+>>Talk to |cRXP_FRIENDLY_Evonice Sootsmoker|r
+.target Evonice Sootsmoker
 .turnin 7702 >> Turn in Kill 'Em With Sleep Deprivation
 .isQuestComplete 7702
 step
 .goto Searing Gorge,38.58,27.81
->>Talk to Hansel Heavyhands
-
 >>Talk to |cRXP_FRIENDLY_Hansel Heavyhands|r
+.target Hansel Heavyhands
 .turnin 7727 >> Turn in Incendosaurs? Whateverosaur is More Like It
 .turnin 7724 >> Turn in Fiery Menace!
 .turnin 7723 >> Turn in Curse These Fat Fingers
 step
 .goto Searing Gorge,38.97,27.51
->>Talk to Taskmaster Scrange
-
 >>Talk to |cRXP_FRIENDLY_Taskmaster Scrange|r
+.target Taskmaster Scrange
 .turnin 7728 >> Turn in STOLEN: Smithing Tuyere and Lookout's Spyglass
 .turnin 7729 >> Turn in JOB OPPORTUNITY: Culling the Competition
 .isQuestComplete 7728
 step
 .goto Searing Gorge,38.97,27.51
->>Talk to Taskmaster Scrange
-.target Taskmaster Scrange
 >>Talk to |cRXP_FRIENDLY_Taskmaster Scrange|r
+.target Taskmaster Scrange
 .turnin 7729 >> Turn in JOB OPPORTUNITY: Culling the Competition
 step
 .goto Searing Gorge,38.80,28.50
->>Talk to Master Smith Burninate
-
 >>Talk to |cRXP_FRIENDLY_Master Smith Burninate|r
+.target Master Smith Burninate
 .turnin 7722 >> Turn in What the Flux?
 step
 #completewith next
@@ -7698,13 +9393,11 @@ step
 .complete 7728,2 
 .unitscan Dark Iron Steamsmith
 step
->> Jump down into the square hole south of Thorium Point, then talk to the Dying Archaelogist
-
+>> Jump down into the square hole south of Thorium Point, then talk to the |cRXP_FRIENDLY_Dying Archaeologist|r
 .goto Searing Gorge,35.27,42.61,30,0
 .goto Searing Gorge,41.16,25.54
 .turnin 3372 >> Turn in Release Them
 .target Dying Archaeologist
->>Talk to |cRXP_FRIENDLY_Dying Archaeologist|r
 .accept 3566 >> Accept Rise, Obsidion!
 step
 .goto Searing Gorge,41.16,25.54
@@ -7718,9 +9411,8 @@ step
 .link https://www.youtube.com/watch?v=-mcsjDkeSUw >> CLICK HERE for a guide
 step
 .goto Searing Gorge,38.97,27.51
->>Talk to Taskmaster Scrange
-
 >>Talk to |cRXP_FRIENDLY_Taskmaster Scrange|r
+.target Taskmaster Scrange
 .turnin 7728 >> Turn in STOLEN: Smithing Tuyere and Lookout's Spyglass
 .isQuestComplete 7728
 step
@@ -7923,7 +9615,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #xprate <1.5
@@ -7947,7 +9639,7 @@ step
 #completewith bsdragonturnin
 .goto Burning Steppes,84.33,68.33
 >>Talk to Borgus Stoutarm
-
+.target Borgus Stoutarm
 .fp Burning Steppes >> Get the Morgan's Vigil flight path if you don't have it
 step
 #label Firegut
@@ -8183,7 +9875,7 @@ step << Warlock
 .accept 8419 >>Accept An Imp's Request
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #xprate <1.5
@@ -8510,7 +10202,7 @@ step
 .fly Tanaris>> Fly to Tanaris
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -9094,7 +10786,7 @@ step
 .turnin 4510>> Turn in Calm Before the Storm
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -9516,7 +11208,7 @@ step << Druid
 #requires FrostmaulS
 >>Teleport to Moonglade
 .goto Moonglade,52.4,40.6
-.trainer 12042 >> Train spells
+.trainer 12042 >> Train your class spells
 step << !Shaman !Druid
 #sticky
 #completewith next
@@ -9652,7 +11344,7 @@ step << tbc
 .turnin 4512 >> Turn in A Little Slime Goes a Long Way
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -10625,7 +12317,7 @@ step
 .isQuestTurnedIn 6183
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 47-60
@@ -10894,7 +12586,7 @@ step
 .hs >> Hearth back to Stormwind
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -14008,7 +15700,7 @@ step
 >>You are now attuned to Karazhan - Congratulations!
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -15583,7 +17275,7 @@ step
 .mob Sporebat
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -17350,7 +19042,7 @@ step
 .target Adyen the Lightwarden
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -19234,7 +20926,7 @@ step
 .target Hemet Nesingwary
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -20862,7 +22554,7 @@ step
 .target Tree Warden Chawn
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Alliance 60-70
 << Alliance
@@ -21704,7 +23396,7 @@ step
 .target A'dal
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #tbc
 #group RestedXP Alliance 60-70
 << Alliance
@@ -22556,7 +24248,7 @@ step
 .abandon 10912 >> Abandon The Hound-Master
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #tbc
 #group RestedXP Alliance 60-70
 << Alliance
@@ -25923,7 +27615,7 @@ step
 .target Voren'thal the Seer
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -29118,7 +30810,7 @@ step << Warrior
 
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -29994,7 +31686,7 @@ step << Druid/70
 .target Exarch Onaala
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #tbc
 #group RestedXP Alliance 60-70
@@ -30814,7 +32506,7 @@ step
 .mob Ancient Shadowmoon Spirit
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Alliance 70-80
 #defaultfor None
@@ -32584,1730 +34276,7 @@ step
 .zone Dragonblight >> Travel to Dragonblight
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
-#wotlk
-#group RestedXP Dungeon Cleave 70-80
-<< Alliance
-#name 70-80 Alliance Dungeon Cleave
-step << !Mage
-#completewith next
-.zone Stormwind City >> Travel or get Mage teleported to Stormwind City
-.zoneskip Elwynn Forest
-step << !Mage !DK !Druid
-#completewith ALFP
-.goto Stormwind City,60.39,75.27
-.home >> Set your Hearthstone to Stormwind City
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind City
-.xp <71,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 43023 >> Train your class spells
-.xp <71,1
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 58699 >> Train your class spells
-.xp <71,1
-step << Paladin
-.goto Stormwind City,49.60,49.83
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 54428 >> Train your class spells
-.xp <71,1
-step << Warlock
-#completewith next
-.goto Stormwind City,29.2,74.0,20,0
-.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
-step << Warlock
-.goto Stormwind City,39.89,84.19
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 47812 >> Train your class spells
-.xp <71,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>If you pre-quested to 71, get your training
->>Make sure your party can summon you via summoning stone or Warlock summon
-.train 49051 >> Train your class spells
-.xp <71,1
-step << Shaman/Priest/Druid/Mage/Paladin
-.goto Stormwind City,63.20,74.92
->>Purchase Reagents from Horthus inside the building
-.collect 17030,20 << Shaman 
-.collect 17029,40 << Priest 
-.collect 22148,40 << Druid 
-.collect 22147,40 << Druid 
-.collect 17032,40 << Mage 
-.collect 17020,40 << Mage 
-.collect 21177,100 << Paladin 
-.xp >72,1
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>If you pre-quested to 71, get your training
->>Go to Moonglade. Make sure your party can summon you via summoning stone to The Nexus/Ragefire Chasm or Warlock summon
-.train 48442 >> Train your class spells
-.xp <71,1
-step << Druid/Shaman/Paladin/Hunter/Warlock
-#completewith next
-.hs >> Hearth to Stormwind City, or get teleported/summoned to Borean Tundra/The Nexus/the Boat to Borean Tundra
-.zoneskip Elwynn Forest
-.zoneskip Stormwind City
-.xp <71,1
-step
-#label Boat
-.goto Stormwind City,43.5,52.7,70,0
-.goto Stormwind City,17.7,25.5
-.zone BoreanTundra >>Travel to the Stormwind Harbor. Get onto the boat when it comes. Take it to Borean Tundra
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 129 
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-step
-.goto Stormwind City,43.5,52.7,70,0
-.goto Stormwind City,17.7,25.5
-.zone BoreanTundra >>Travel to the Stormwind Harbor. Get onto the boat when it comes. Take it to Borean Tundra
-.xp >72,1
-step
-.goto BoreanTundra,58.97,68.29
-.fp Valiance Keep >> Get the Valiance Keep flight path
-.xp >72,1
-step
-#completewith Hawthorn5
-.groundgoto BoreanTundra,58.5,68.3,15,0
-.goto BoreanTundra,58.29,68.05
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James
-.vendor 25245 >> Buy a LOT of the new food. You'll be doing dungeons for the next 3 levels until your next break << Warrior/Rogue/DK
-.vendor 25245 >> Buy a LOT of the new food/water. You'll be doing dungeons for the next 3 levels until your next break << !Warrior !Rogue !DK
-.xp >72,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Recruitment Officer, Rollick, then Arlos inside the Keep
-.accept 11672 >>Accept Enlistment Day
-.goto BoreanTundra,57.85,67.60
-.accept 13088 >> Accept Northern Cooking
-.goto BoreanTundra,57.93,71.54
-.turnin 11672 >>Turn in Enlistment Day
-.accept 11727 >>Accept A Time for Heroes
-.goto BoreanTundra,57.1,71.8,15,0
-.goto BoreanTundra,57.2,72.3,15,0
-.goto BoreanTundra,56.67,72.64
-.skill cooking,<350,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the Recruitment Officer and then Arlos inside the Keep
-.accept 11672 >>Accept Enlistment Day
-.goto BoreanTundra,57.85,67.60
-.turnin 11672 >>Turn in Enlistment Day
-.accept 11727 >>Accept A Time for Heroes
-.goto BoreanTundra,57.1,71.8,15,0
-.goto BoreanTundra,57.2,72.3,15,0
-.goto BoreanTundra,56.67,72.64
-step
-#label Hawthorn5
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Hammerhill and Hawthorn
-.turnin 11727 >>Turn in A Time for Heroes
-.accept 11797 >>Accept The Siege
-.goto BoreanTundra,56.36,69.58
-.accept 11789 >>Accept A Soldier in Need
-.goto BoreanTundra,55.00,68.91
-step
-.goto BoreanTundra,53.5,69.1,70,0
-.goto BoreanTundra,53.1,72.8
->>Kill Crypt Crawlers in the area
-.complete 11797,1 
-step
-.goto BoreanTundra,56.36,69.58
->>Return to Hammerhill
-.turnin 11797 >>Turn in The Siege
-.accept 11889 >>Accept Death From Above
-step
-.goto BoreanTundra,54.8,70.2
-.use 35278 >>Use the Reinforced Net in your bags to bring down the Flamespitters flying nearby. Kill them
-.complete 11889,1 
-step
-.goto BoreanTundra,56.36,69.58
->>Return to Hammerhill
-.turnin 11889 >>Turn in Death From Above
-.accept 11897 >>Accept Plug the Sinkholes
-step
-.goto BoreanTundra,56.96,68.75,10,0
->>Go inside The Stormbreaker (the ship) in the middle of the town. Loot the chest and click on the altar at the back of the ship
-.complete 11789,1 
-.goto BoreanTundra,57.50,69.27
-.accept 11920 >>Accept Cultists Among Us
-.goto BoreanTundra,57.56,69.13
-step
-.goto BoreanTundra,56.96,68.75,10,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRun out of the ship. Talk to Captain "Lefty" and Admiral Cantlebree
-.turnin 11920 >>Turn in Cultists Among Us
-.goto BoreanTundra,57.83,69.20
-.accept 11791 >>Accept Notify Arlos
-.goto BoreanTundra,57.79,69.19
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Arlos, Talbot, and Vureen in Valiance's Keep. Then Talk to Hawthorn outside
-.turnin 11791 >>Turn in Notify Arlos
-.goto BoreanTundra,56.67,72.64
-.accept 12141 >>Accept A Diplomatic Mission
-.goto BoreanTundra,56.72,72.62
-.accept 11792 >>Accept Enemies of the Light
-.goto BoreanTundra,56.60,72.46
-.turnin 11789 >>Turn in A Soldier in Need
-.goto BoreanTundra,55.00,68.91
-step
-.goto BoreanTundra,54.08,63.73,-1
-.goto BoreanTundra,54.77,63.08,-1
-.use 35704 >> Use the Incendiary Explosives in your bag at the sinkhole to seal it
-.complete 11897,2 
-step
-.loop 40,BoreanTundra,54.04,62.42,53.84,60.33,55.25,63.43,54.04,62.42
->>Kill the Cultist Necrolytes. Loot them for their Communique
-.complete 11792,1 
-step
-.goto BoreanTundra,50.46,71.38,-1
-.goto BoreanTundra,50.88,72.29,-1
-.use 35704 >> Use the Incendiary Explosives in your bag at the sinkhole to seal it
-.complete 11897,1 
-step
-#completewith Karuk5
-+You may skip any of the Riplash Strand quests at any point if you wish
-step
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.turnin 12141 >>Turn in A Diplomatic Mission
-.accept 11613 >>Accept Karuk's Oath
-.isOnQuest 12141
-step
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.accept 11613 >>Accept Karuk's Oath
-.isQuestTurnedIn 12141
-step
-#requires Cruelty1
->>Kill the Skadir Longboatsmen and Raiders in the area
-.complete 11613,2 
-.goto BoreanTundra,49.2,79.2
-.complete 11613,1 
-.goto BoreanTundra,44.6,80.5
-.isOnQuest 11613
-step
-#completewith Karuk2
-#label CTPrisoner2
-.goto BoreanTundra,44.10,77.90,50,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
->>Ignore this if he isn't up right now
-.accept 12471 >>Accept Cruelty of the Kvaldir
-.unitscan Captured Tuskarr Prisoner
-.isOnQuest 11613
-step
-#completewith end
-#requires CTPrisoner2
-#label Cruelty2
-.goto BoreanTundra,47.13,75.49
-.turnin 12471 >>Turn in Cruelty of the Kvaldir
-.isOnQuest 12471
-step
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.turnin 11613 >>Turn in Karuk's Oath
-.accept 11619 >>Accept Gamel the Cruel
-.isQuestComplete 11613
-step
-#label Karuk2
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.accept 11619 >>Accept Gamel the Cruel
-.isQuestTurnedIn 11613
-step
-#requires Cruelty2
-.groundgoto BoreanTundra,46.3,78.8,20,0
-.goto BoreanTundra,46.42,78.23
->>Enter the cave. Kill Gamel
-.complete 11619,1 
-.isOnQuest 11619
-step
-#completewith Karuk3
-#label CTPrisoner3
-.goto BoreanTundra,44.10,77.90,50,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
->>Ignore this if he isn't up right now
-.accept 12471 >>Accept Cruelty of the Kvaldir
-.unitscan Captured Tuskarr Prisoner
-.isOnQuest 11619
-step
-#completewith end
-#requires CTPrisoner3
-#label Cruelty3
-.goto BoreanTundra,47.13,75.49
-.turnin 12471 >>Turn in Cruelty of the Kvaldir
-.isOnQuest 12471
-step
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.turnin 11619 >>Turn in Gamel the Cruel
-.accept 11620 >>Accept A Father's Words
-.isQuestComplete 11619
-step
-#label Karuk3
-.goto BoreanTundra,47.13,75.49
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Karuk
-.accept 11620 >>Accept A Father's Words
-.isQuestTurnedIn 11619
-step
-#completewith Veehja
-#label CTPrisoner4
-.goto BoreanTundra,44.10,77.90,50,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
->>Ignore this if he isn't up right now
-.accept 12471 >>Accept Cruelty of the Kvaldir
-.unitscan Captured Tuskarr Prisoner
-.isOnQuest 11620
-step
-#completewith end
-#requires CTPrisoner4
-.goto BoreanTundra,47.13,75.49
-.turnin 12471 >>Turn in Cruelty of the Kvaldir
-.isOnQuest 12471
-step
-#completewith end
-#label Veehja2
-.goto BoreanTundra,43.60,80.53
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja. Only accept this quest if you have enough Water Walking Elixirs, are partied with a Shaman with Fish oil, or a Death Knight with Path of Frost
-.accept 11625 >>Accept The Trident of Naz'jan
-.isQuestTurnedIn 11619
-step
-#label Veehja
-.goto BoreanTundra,43.60,80.53
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja << !DK
-.turnin 11620 >>Turn in A Father's Words
-.isOnQuest 11620
-step
-#requires Veehja2
-.goto BoreanTundra,53.7,91.1,40,0
-.goto BoreanTundra,54.85,88.78
->>Kill Ragnar Drakkarlund inside the temple. Loot him for the Trident
-.complete 11625,1 
-.isOnQuest 11625
-step
-.goto BoreanTundra,43.63,80.57
->>Return to Veehja
-.turnin 11625 >>Turn in The Trident of Naz'jan
-.isQuestComplete 11625
-step
-.goto BoreanTundra,43.63,80.57
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Veehja
-.accept 11626 >>Accept The Emissary
-.isQuestTurnedIn 11625
-step
-.goto BoreanTundra,51.90,88.46
-.use 35850 >> Go underwater to Leviroth. Use the Trident of Naz'jan in your bags to deal a lot of damage to him, then kill him
-.complete 11626,1 
-.isQuestTurnedIn 11625
-step
-#completewith Karuk5
-#label CTPrisoner5
-.goto BoreanTundra,44.10,77.90,50,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tKill ONE (or more) Skadir surrounding the Captured Tuskarr Prisoner, and THEN the Riplash Myrmidon. Talk to the Prisoner after
->>Ignore this if he isn't up right now
-.accept 12471 >>Accept Cruelty of the Kvaldir
-.unitscan Captured Tuskarr Prisoner
-.isQuestTurnedIn 11625
-step
-#completewith end
-#requires CTPrisoner5
-.goto BoreanTundra,47.13,75.49
-.turnin 12471 >>Turn in Cruelty of the Kvaldir
-.isOnQuest 12471
-step
-#label Karuk5
-.goto BoreanTundra,47.13,75.49
->>Return to Karuk
-.turnin 11626 >>Turn in The Emissary
-.isQuestTurnedIn 11625
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Vureen in Valiance's Keep, then Rollick, Hammerhill, Mark, and Skyhopper outside
-.turnin 11792 >>Turn in Enemies of the Light
-.accept 11793 >>Accept Further Investigation
-.goto BoreanTundra,56.60,72.46
-.turnin 13088 >> Turn in Northern Cooking
-.goto BoreanTundra,57.93,71.54
-.turnin 11897 >>Turn in Plug the Sinkholes
-.accept 11928 >>Accept Farshire
-.goto BoreanTundra,56.36,69.58
-.accept 11927 >>Accept Word on the Street
-.goto BoreanTundra,56.77,69.51
-.accept 11707 >>Accept Distress Call
-.goto BoreanTundra,58.84,68.72
-.isQuestComplete 13088
-.skill cooking,<350,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Vureen in Valiance's Keep, then Hammerhill, Mark, and Skyhopperoutside
-.turnin 11792 >>Turn in Enemies of the Light
-.accept 11793 >>Accept Further Investigation
-.goto BoreanTundra,56.60,72.46
-.turnin 11897 >>Turn in Plug the Sinkholes
-.accept 11928 >>Accept Farshire
-.goto BoreanTundra,56.36,69.58
-.accept 11927 >>Accept Word on the Street
-.goto BoreanTundra,56.77,69.51
-.accept 11707 >>Accept Distress Call
-.goto BoreanTundra,58.84,68.72
-step
-.goto BoreanTundra,58.5,68.3,15,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo inside the Inn. Talk to Midge
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs. Talk to Leryssa, and Yaala
-.accept 11575 >>Accept Nick of Time
-.goto BoreanTundra,58.41,67.79
-.turnin 11927 >>Turn in Word on the Street
-.accept 11599 >>Accept Thassarian, My Brother
-.goto BoreanTundra,58.4,67.6,15,0
-.goto BoreanTundra,58.75,68.36
-.turnin 11793 >>Turn in Further Investigation
-.accept 11794 >>Accept The Hunt is On
-.goto BoreanTundra,58.55,67.29
-step
->>Skip this quest if you wish
-.use 35125 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t Use the Oculus of the Exorcist in your bags. Talk to "Salty" John Thorpe in the Inn, Tom Hegger on the Dock, and Guard Mitchels in the prison below the keep. Kill them
-.complete 11794,3 
-.goto BoreanTundra,58.57,67.13
-.complete 11794,1 
-.goto BoreanTundra,59.26,68.19
-.complete 11794,2 
-.goto BoreanTundra,56.9,72.2,12,0
-.goto BoreanTundra,56.72,71.83
-.isOnQuest 11794
-.skipgossip
-step
-.goto BoreanTundra,58.21,62.82
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Farshire. Talk to Gerald
-.turnin 11928 >>Turn in Farshire
-.accept 11901 >>Accept Military? What Military?
-step
-.goto BoreanTundra,56.7,57.2,40,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tEnter Farshire's mine. Click the grain bag and Talk to William's corpse
-.turnin 11901 >>Turn in Military? What Military?
-.accept 11902 >>Accept Pernicious Evidence
-.goto BoreanTundra,56.81,55.56
-.turnin 11599 >>Turn in Thassarian, My Brother
-.accept 11600 >>Accept The Late William Allerton
-.goto BoreanTundra,56.04,55.42
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerald and Jeremiah
-.turnin 11902 >>Turn in Pernicious Evidence
-.accept 11903 >>Accept It's Time for Action
-.goto BoreanTundra,58.21,62.82
-.accept 11908 >>Accept Reference Material
-.goto BoreanTundra,58.19,62.98
-
-.goto BoreanTundra,58.28,62.77
-step
-#completewith next
->> Kill Plagued Scavengers in the area
-.complete 11903,1 
-step
-.goto BoreanTundra,55.75,58.32
->>Loot the small red book in the house
-.complete 11908,1 
-step
-.loop 50,BoreanTundra,56.84,61.57,55.59,62.11,54.56,60.67,55.89,60.80,55.32,59.32,55.81,57.69,56.83,58.39,56.84,61.57
-.use 35491 >>Kill Plagued Scavengers in the area
-.complete 11903,1 
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerald and Jeremiah
-.turnin 11903 >>Turn in It's Time for Action
-
-.goto BoreanTundra,58.21,62.82,-1
-.turnin 11908 >>Turn in Reference Material
-
-.goto BoreanTundra,58.19,62.98,-1
-step
-.goto BoreanTundra,58.75,68.42
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tJump up on the cart then onto the bottom of her window, then Talk to her
-.turnin 11600 >>Turn in The Late William Allerton
-.accept 11601 >>Accept Lost and Found
-step
-.goto BoreanTundra,58.29,68.05
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tGo upstairs and Talk to Yaala
-.turnin 11601 >>Turn in Lost and Found
-.accept 11603 >>Accept In Wine, Truth
-.goto BoreanTundra,58.29,68.05
-.turnin 11794 >>Turn in The Hunt is On
-.goto BoreanTundra,58.55,67.29
-.isQuestComplete 11794
-step
-.goto BoreanTundra,58.29,68.05
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
-.turnin 11601 >>Turn in Lost and Found
-.accept 11603 >>Accept In Wine, Truth
-.goto BoreanTundra,58.29,68.05
-step
-.goto BoreanTundra,61.9,65.7
->>Skip this quest if you don't have enough Water Walking Elixirs, are NOT partied with a Shaman with Fish oil, or are NOT partied with a Death Knight with Path of Frost
->>Loot the small chest underwater inside the ship
-.complete 11603,1 
-.isOnQuest 11603
-step
-.goto BoreanTundra,58.29,68.05
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
-.turnin 11603 >>Turn in In Wine, Truth
-.accept 11604 >>Accept A Deserter
-.isQuestComplete 11603
-step
-.goto BoreanTundra,58.29,68.05
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to James inside the Inn
-.accept 11604 >>Accept A Deserter
-.isQuestTurnedIn 11603
-step
-.goto BoreanTundra,56.9,72.2,10,0
-.goto BoreanTundra,56.68,71.44
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRun downstairs to the prison below the Keep. Talk to Brau
-.turnin 11604 >>Turn in A Deserter
-.accept 11932 >>Accept Cowards and Fools
-.isQuestTurnedIn 11603
-step
-#completewith next
-#label ALFP
-.goto BoreanTundra,45.33,34.62
->>Travel to Amber Ledge
-.fp Amber Ledge >>Get the Amber Ledge Flight Path
-.xp >72,1
-step
-#completewith next
-.goto BoreanTundra,45.33,34.62
-.fly Coldarra >> Fly to Coldarra
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 129 
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-.xp >72,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand inside, then Talk to Raelorasz and Serrah outside
-
-.accept 11900 >>Accept Reading the Meters
-.accept 11910 >>Accept Secrets of the Ancients
-.goto BoreanTundra,32.94,34.40
-.accept 11918 >>Accept Basic Training
-.goto BoreanTundra,33.32,34.54
-.accept 13094 >>Accept Have They No Shame?
-.accept 11912 >>Accept Nuts for Berries
-.goto BoreanTundra,33.49,34.38
-.xp >74,1
-step
-.goto BoreanTundra,28.31,28.46
->>Click on the small orb next to The Nexus meeting stone
-.complete 11900,1 
-.isOnQuest 11900
-step
-#completewith next
-.goto Borean Tundra,27.63,25.50
-.zone 129 >> Enter The Nexus
-.xp >74,1
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13094,1 
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#completewith Nexus
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step << Druid/Mage/Shaman/Paladin/Warlock/Hunter
-#label Nexus
-.xp 71 >> Grind The Nexus to level 71
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <71,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48442 >> Train your class spells
-.xp <71,1
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind City
-.xp <71,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43023 >> Train your class spells
-.xp <71,1
-step << Shaman/Paladin/Warlock/Hunter
-#completewith next
-.hs >> Hearth to Stormwind
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 58699 >> Train your class spells
-.xp <71,1
-step << Paladin
-.goto Stormwind City,49.60,49.83
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 54428 >> Train your class spells
-.xp <71,1
-step << Warlock
-.goto Stormwind City,39.89,84.19
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47812 >> Train your class spells
-.xp <71,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49051 >> Train your class spells
-.xp <71,1
-step << DK/Mage
-#completewith Nexus2
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13094,1 
-step << DK/Mage
-#completewith Nexus2
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step << DK/Mage
-#completewith Nexus2
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step << DK/Mage
-#label Nexus2
-.groundgoto Borean Tundra,27.75,28.43,40,0
-.goto Borean Tundra,27.63,25.09
-.xp 72 >> Grind The Nexus to level 72
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49940 >> Train your class spells from Amal'Thazad in Acherus
-.xp <72,1
-.xp >78,1
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind
-.xp <72,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42930 >> Train your class spells
-.xp <72,1
-step
-#completewith Nexus3
-.goto 129,19.23,52.43
->>Loot the book on the ground in the Hall of Stasis surrounded by the Frozen Alliance
-.complete 13094,1 
-step
-#completewith Nexus3
-.goto 129,65.19,21.67
->>Use the Interdimensional Refabricator on the platform behind Anomalus
-.complete 11905,1 
-.isOnQuest 11905
-.use 35479
-step
-#completewith Nexus3
-.goto 129,54.43,55.35,0
-.goto 129,58.06,54.54,0
-.goto 129,64.85,51.62,0
-.goto 129,62.90,64.02,0
-.goto 129,49.80,67.54,0
->>Kill Crystalline Protectors. Loot them for their Splinters
-.complete 11911,1 
-.isOnQuest 11911
-step
-#label Nexus3
-.groundgoto Borean Tundra,27.75,28.43,40,0
-.goto Borean Tundra,27.63,25.09
-.xp 73 >> Grind The Nexus to level 73
->>If you reach your hourly lockout, switch to the Nexus Lockout guide
-step << Rogue/Hunter/Warrior/Shaman/Paladin
-#completewith next
-.hs >> Hearth to Stormwind
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind City
-.xp <73,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43019 >> Train your class spells
-.xp <73,1
-step << Rogue
-.goto Stormwind City,77.42,65.31
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48667 >> Train your class spells
-.xp <73,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49044 >> Train your class spells
-.xp <73,1
-step << Warrior
-.goto Stormwind City,77.65,64.31,15,0
-.goto Stormwind City,81.45,59.49,15,0
-.goto Stormwind City,80.56,59.88
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47470 >> Train your class spells
-.xp <73,1
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49237 >> Train your class spells
-.xp <73,1
-step << Paladin
-.goto Stormwind City,49.60,49.83
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48931 >> Train your class spells
-.xp <73,1
-step
-#completewith Berinand
-.goto BoreanTundra,33.49,34.38,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
-.turnin 13094 >>Turnin Have They No Shame?
-.isQuestComplete 13094
-step
-#completewith AmberL
-.goto BoreanTundra,32.94,34.40,-1
-.vendor 25314 >> Vendor and Repair at Berinand
-.xp >74,1
-step
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11911 >>Turnin Quickening
-.turnin 11905 >>Turnin Postponing the Inevitable
-.isQuestComplete 11911
-.isQuestComplete 11905
-step
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11911 >>Turnin Quickening
-.isQuestComplete 11911
-step
-#label Berinand
-.goto BoreanTundra,32.94,34.40,-1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Berinand
-.turnin 11905 >>Turnin Postponing the Inevitable
-.isQuestComplete 11905
-step
-.goto BoreanTundra,33.49,34.38
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Serrah
-.turnin 13094 >>Turnin Have They No Shame?
-.isQuestComplete 13094
-step
-#label AmberL
-#completewith next
-.goto BoreanTundra,33.13,34.45
-.fly Amber Ledge >>Fly to Amber Ledge
-.zoneskip Dragonblight
-.zoneskip ZulDrak
-.zoneskip The Storm Peaks
-.zoneskip Dalaran
-.zoneskip 159 
-.zoneskip 157 
-.zoneskip 132 
-.zoneskip 154 
-.zoneskip 138 
-step
-#completewith next
-.goto BoreanTundra,46.62,32.75
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Fraser inside the tower
-.vendor 27137 >> Buy a LOT of the food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
-.vendor 27137 >> Buy a LOT of the food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
-.xp >74,1
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Kaskala. Talk to Ataika and Utaik
-.turnin 11932 >>Turn in Cowards and Fools
-.accept 12086 >>Accept The Son of Karkut
-.accept 11949 >>Accept Not Without a Fight!
-.goto BoreanTundra,63.80,46.12
-.daily 11945 >>Accept Preparing for the Worst
-.goto BoreanTundra,63.95,45.72
-step
-#requires AbandonAss
-#completewith next
-.goto BoreanTundra,66.2,45.9,0
-.goto BoreanTundra,63.7,52.2,0
->>Loot the small baskets all around the village. Skip this if you wish or let one of your other party members loot them
-.complete 11945,1 
-.isOnQuest 11945
-step
-#requires AbandonAss
-.goto BoreanTundra,67.3,47.7,60,0
-.goto BoreanTundra,63.61,53.93
->>Kill the Raiders all around the village
-.complete 11949,1 
-step
-.goto BoreanTundra,66.2,45.9,60,0
-.goto BoreanTundra,63.7,52.2
->>Loot the small baskets all around the village. Skip this if you wish or let one of your other party members loot them
-.complete 11945,1 
-.isOnQuest 11945
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ataika and Utaik
-.turnin 11949 >>Turn in Not Without a Fight!
-.accept 11950 >>Accept Muahit's Wisdom
-.goto BoreanTundra,63.80,46.12
-.turnin 11945 >>Turn in Preparing for the Worst
-.goto BoreanTundra,63.95,45.72
-.isQuestComplete 11945
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ataika
-.turnin 11949 >>Turn in Not Without a Fight!
-.accept 11950 >>Accept Muahit's Wisdom
-.goto BoreanTundra,63.80,46.12
-step
-.goto BoreanTundra,67.21,54.86
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Njord's Breath Bay. Talk to Muahit
-.turnin 11950 >>Turn in Muahit's Wisdom
-.accept 11961 >>Accept Spirits Watch Over Us
-step
-.goto BoreanTundra,67.65,50.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to the corpse underwater
-.complete 11961,1 
-.skipgossip
-step
-.goto BoreanTundra,67.21,54.86
->>Return to Muahit
-.turnin 11961 >>Turn in Spirits Watch Over Us
-.accept 11968 >>Accept The Tides Turn
-step
-.goto BoreanTundra,67.41,56.87
->>Kill Heigarr the Horrible
-.complete 11968,1 
-.unitscan Heigarr the Horrible
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Muahit, then Hotawa
-.turnin 11968 >>Turn in The Tides Turn
-.goto BoreanTundra,67.21,54.86
-
-
-step << skip
-.goto BoreanTundra,78.5,51.5
->>Travel to Unu'pe
-.fp Unu'pe >> Get the Unu'pe flight path
-step
-#completewith next
-.goto Dragonblight,12.27,55.25
-.zone Dragonblight >> Travel to Dragonblight
-step
-.goto Dragonblight,29.15,55.32
->>Head east into Dragonblight
-.fp Stars' Rest >> Get the Stars' Rest Flight Path
-step
-#completewith next
-.goto Dragonblight,26.15,49.48,20 >> Jump down into The Pit of Narjun
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.accept 13187 >>Accept The Faceless Ones
-.accept 13167 >>Accept Death to the Traitor King
-.accept 13182 >>Accept Don't Forget the Eggs
-.xp >76,1
-step
-#completewith next
-.goto Dragonblight,25.61,51.30
-.zone 159 >>Enter Azjol'Nerub
-step
->>Clear Azjol'nerub once. Destroy the eggs throughout Azjol'Nerub
-.complete 13182,1 
-step
-.goto 157,62.27,48.55
->>Clear Azjol'nerub once. Kill Anub'arak. Loot him for his Husk
-.complete 13167,1 
-step
-#completewith KilixT
-.goto 157,89.25,77.99
-.zone Dragonblight >> Exit Azjol'nerub through the back entrance
-step
-#label KilixT
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13167 >>Turn in Death to the Traitor King
-.turnin 13182 >>Turn in Don't Forget the Eggs
-.xp >76,1
-step
-#completewith next
-.goto Dragonblight,28.61,51.79
-.zone 132 >>Enter Ahn'kahet: The Old Kingdom
-step
-#completewith AhnKahet1
-.goto 132,33.38,49.79,40,0
-.goto 132,27.61,50.24
->>Kill the Faceless Ones just before Herald Volazj
-.complete 13187,1 
-step
-#completewith AhnKahet1
-.goto 132,23.00,50.81
->>Kill Herald Volazj
-.complete 13187,2 
-step
-#label AhnKahet1
-.xp 74 >> Grind Ahn'Kahet: The Old Kingdom to level 74
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <73,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 53307 >> Train your class spells
-.xp <74,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <74,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49929 >> Train your class spells from Amal'Thazad in Acherus
-.xp <74,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind City
-.xp <74,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42939 >>Train your class spells
-.xp <74,1
-step << Shaman/Paladin/Priest/Warlock/Hunter
-#completewith next
-.hs >> Hearth to Stormwind << !Priest
-.hs >> Hearth to Stormwind. Skip this step if you're Holy or Discipline specced << Priest
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49270 >> Train your class spells
-.xp <74,1
-step << Paladin
-.goto Stormwind City,49.60,49.83
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48805 >> Train your class spells
-.xp <74,1
-step << Priest
-.goto Stormwind City,49.51,45.22
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48126 >> Train your class spells. Skip this step if you're Holy or Discipline specced
-.xp <74,1
-
-step << Warlock
-#completewith next
-.goto Stormwind City,29.2,74.0,20,0
-.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
-step << Warlock
-.goto Stormwind City,39.89,84.19
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47892 >> Train your class spells
-.xp <74,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 61846 >> Train your class spells
-.xp <74,1
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13187 >>Turn in The Faceless Ones
-.isQuestComplete 13187
-step
-#completewith AhnKahet2
-.goto 132,33.38,49.79,40,0
-.goto 132,27.61,50.24
->>Kill the Faceless Ones just before Herald Volazj
-.complete 13187,1 
-step
-#completewith AhnKahet2
-.goto 132,23.00,50.81
->>Kill Herald Volazj
-.complete 13187,2 
-step
-#label AhnKahet2
-.xp 75 >>Grind Ahn'Kahet: The Old Kingdom to level 75
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <75,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48440 >> Train your class spells
-.xp <75,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <75,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49923 >> Train your class spells from Amal'Thazad in Acherus
-.xp <75,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind
-.xp <75,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42955 >> Train your class spells
-.xp <75,1
-step << Shaman/Paladin/Priest/Hunter/Warrior
-#completewith next
-.hs >> Hearth to Stormwind
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49280 >> Train your class spells
-.xp <75,1
-step << Paladin
-.goto Stormwind City,49.60,49.83
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48818 >> Train your class spells
-.xp <75,1
-step << Priest
-.goto Stormwind City,49.51,45.22
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48124 >> Train your class spells
-.xp <75,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 61005 >> Train your class spells
-.xp <75,1
-step << Warrior
-.goto Stormwind City,77.65,64.31,15,0
-.goto Stormwind City,81.45,59.49,15,0
-.goto Stormwind City,80.56,59.88
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 55694 >> Train your class spells
-.xp <75,1
-step
-.goto Dragonblight,26.18,50.79
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Kilix inside the Pit of Narjun
-.turnin 13187 >>Turn in The Faceless Ones
-.isQuestComplete 13187
-step
-#completewith next
-.goto Zul'Drak,18.29,84.66
-.zone Zul'Drak >> Travel to Zul'Drak
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to Light's Breach. Talk to Moky, Lantinga, Rageclaw, and the Wanted Poster. Skip these quests if you wish, but it's recommended you complete them
-.accept 12859 >>Accept This Just In: Fire Still Hot!
-.goto ZulDrak,32.02,75.60
-.accept 12902 >>Accept In Search Of Answers
-.goto ZulDrak,32.15,75.74
-.accept 12861 >>Accept Trolls Is Gone Crazy!
-.goto ZulDrak,32.17,75.64
-.accept 12857 >>Accept Wanted: Ragemane's Flipper
-.goto ZulDrak,32.26,75.68
-.xp >76,1
-step
-#completewith Ragemane
-.goto ZulDrak,34.8,85.1,0
-.goto ZulDrak,34.7,80.6,0
-.use 41131 >>Spam use the Rageclaw Fire Extinguisher in your bags when next to huts that are on fire.
-.complete 12859,1 
-.isOnQuest 12859
-step
-#completewith Fires
-.goto ZulDrak,34.8,85.1,0
-.goto ZulDrak,34.7,80.6,0
->>Kill Undead Trolls in the area. Loot them for their Lock Openers
-.use 41161 >>Use them on Captured Rageclaws to free them
-.collect 41161,8,12861,1,-1
-.complete 12861,1 
-.isOnQuest 12861
-step
-.goto ZulDrak,34.94,83.90
->>Click the floating scroll
-.turnin 12902 >>Turn in In Search Of Answers
-.accept 12883 >>Accept Orders From Drakuru
-.isOnQuest 12902
-step
-.goto ZulDrak,34.94,83.90
->>Click the floating scroll
-.accept 12883 >>Accept Orders From Drakuru
-.isQuestTurnedIn 12902
-step
-#label Ragemane
-.goto ZulDrak,38.29,84.93
->>Go out into the water. Kill Ragemane. Loot him for his Flipper
-.complete 12857,1 
-.isOnQuest 12857
-step
-#label Fires
-.goto ZulDrak,34.8,85.1,80,0
-.goto ZulDrak,34.7,80.6
-.use 41131 >>Use the Rageclaw Fire Extinguisher when next to a hut that's on fire
-.complete 12859,1 
-.isOnQuest 12859
-step
-.goto ZulDrak,34.8,85.1,80,0
-.goto ZulDrak,34.7,80.6
->>Kill Undead Trolls in the area. Loot them for their Lock Openers (that go into your bag)
-.use 41161 >>Use them on Captured Rageclaws to free them
-.collect 41161,8,12861,1,-1
-.complete 12861,1 
-.isOnQuest 12861
-step
-#completewith end
-#label Langtina1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
-.turnin 12883 >>Turn in Orders From Drakuru
-.accept 12884 >>Accept The Ebon Watch
-.accept 12894 >>Accept Crusader Forward Camp
-.goto ZulDrak,32.15,75.74
-.isQuestComplete 12883
-
-step
-#completewith end
-#requires Langtina1
-#label Langtina2
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lantinga
-.accept 12884 >>Accept The Ebon Watch
-.accept 12894 >>Accept Crusader Forward Camp
-.goto ZulDrak,32.15,75.74
-.isQuestTurnedIn 12883
-step
-#completewith end
-#label Rageclaw1
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
-.turnin 12861 >>Turn in Trolls Is Gone Crazy!
-.goto ZulDrak,32.2,75.7
-.isQuestComplete 12857
-.isQuestComplete 12861
-step
-#completewith end
-#requires Rageclaw1
-#label Rageclaw2
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12857 >>Turn in Wanted: Ragemane's Flipper
-.goto ZulDrak,32.17,75.64
-.isQuestComplete 12857
-step
-#completewith end
-#requires Rageclaw2
-#label Rageclaw3
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Rageclaw
-.turnin 12861 >>Turn in Trolls Is Gone Crazy!
-.goto ZulDrak,32.17,75.64
-.isQuestComplete 12861
-step
-#completewith end
-#label Moky
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Moky
-.turnin 12859 >>Turn in This Just In: Fire Still Hot!
-.goto ZulDrak,32.02,75.60
-.isQuestComplete 12859
-step
-#hidewindow
-#requires Langtina2
-step
-#hidewindow
-#requires Rageclaw3
-step
-#requires Moky
-.goto ZulDrak,32.18,74.39
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Danica
-.fp Light's Breach >>Get the Light's Breach Flight Path
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tRide to the Crusader Forward Camp. Talk to Mackeller
-.turnin 12894 >>Turn in Crusader Forward Camp
-.accept 12903 >>Accept That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-
-
-.isQuestTurnedIn 12883
-step
-.goto ZulDrak,25.05,51.61
->>Travel close to Crusader Dargath until the objective completes
-.complete 12903,1 
-.isOnQuest 12903
-step
-.goto ZulDrak,19.78,56.35
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gymer in the giant cage. Try to avoid killing the Vargul in the area
-.accept 12912 >>Accept A Great Storm Approaches
-.isOnQuest 12903
-step
-.goto ZulDrak,17.64,57.55
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk in the plague tank. Try to avoid killing the Vargul in the area
-.complete 12903,2 
-.accept 12904 >>Accept Light Won't Grant Me Vengeance
-.isOnQuest 12903
-step
-#completewith next
-.goto ZulDrak,19.8,56.9,0
-.goto ZulDrak,23.2,54.7,0
-.goto ZulDrak,21.4,51.3,0
-.goto ZulDrak,15.0,61.3,0
->>Kill any Vargul humanoid in the area
-.complete 12904,1 
-.isOnQuest 12904
-step << skip
-#completewith next
-.goto ZulDrak,19.5,58.9,0
-.goto ZulDrak,15.3,62.2,0
-.goto ZulDrak,13.3,59.9,0
-.goto ZulDrak,18.7,54.5,0
->>Collect pieces of Scrap Metal scattered throughout the area
-.complete 12901,1 
-step
-.goto ZulDrak,15.67,59.41
->>Travel close to Burr until the objective completes
-.complete 12903,3 
-.isOnQuest 12903
-step << skip
-#label Metal
-.goto ZulDrak,19.1,61.8,70,0
-.goto ZulDrak,15.3,62.2,70,0
-.goto ZulDrak,13.3,59.9,70,0
-.goto ZulDrak,18.7,54.5
->>Collect pieces of Scrap Metal scattered throughout the area
-.complete 12901,1 
-step
-.goto ZulDrak,19.8,56.9,70,0
-.goto ZulDrak,23.2,54.7,70,0
-.goto ZulDrak,21.4,51.3,70,0
-.goto ZulDrak,15.0,61.3
->>Kill any Vargul humanoid in the area
-.complete 12904,1 
-.isOnQuest 12904
-step
-.goto ZulDrak,17.64,57.55
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gerk
-.turnin 12904 >>Turn in Light Won't Grant Me Vengeance
-.isQuestComplete 12904
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed and MacKellar
-.turnin 12912 >>Turn in A Great Storm Approaches
-
-
-
-.turnin 12903 >>Turn in That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-.isQuestComplete 12903
-.isOnQuest 12912
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to MacKellar
-
-
-
-.turnin 12903 >>Turn in That's What Friends Are For...
-.goto ZulDrak,25.28,63.96
-.isQuestComplete 12903
-step
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tReturn to the Crusader Forward Camp. Talk to Reed
-.turnin 12912 >>Turn in A Great Storm Approaches
-.goto ZulDrak,25.22,63.88
-
-
-.isOnQuest 12912
-step
-.goto ZulDrak,39.43,66.96
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTravel to The Argent Stand. Talk to Falstaav
-
-.accept 12503 >>Accept Defend the Stand
-
-.xp >78,1
-step
-.goto ZulDrak,40.53,65.61
->>If you think you'll have at least 10 Drakkari Offerings amongst yourselves, trade them all to someone and then accept this quest for one person so they can turn it in. This gives them 1 hour of Blessing of Might (Attack Power)
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Ubungo
-.accept 12565 >>Accept The Blessing of Zim'Abwa
-.xp >78,1
-step << skip
-#completewith next
-.goto ZulDrak,36.6,67.7,0
-.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
-.complete 12740,1 
-step
-.goto ZulDrak,35.8,66.6
->>Kill undead mobs in the area
-.complete 12503,1 
-.isOnQuest 12503
-step << skip
-.goto ZulDrak,36.6,67.7
-.use 39615 >>Use the Crusader Parachute in your bags on an Argent Crusader or Shieldman
-.complete 12740,1 
-step << skip
-.goto ZulDrak,35.8,66.6
->>Kill undead mobs in the area. Loot them for Drakkari Offerings
-.collect 38551,10 
-step
-.goto ZulDrak,36.70,72.72
->>Click the statue
-.turnin 12565 >>Turn in The Blessing of Zim'Abwa
-.isQuestComplete 12565
-step
-.goto ZulDrak,39.43,66.96
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Falstaav
-
-.turnin 12503 >>Turn in Defend the Stand
-
-.isQuestComplete 12503
-step
-#completewith next
-.goto ZulDrak,40.83,66.25
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
-.vendor 28791 >>Buy a LOT of the new food. You'll be doing dungeons for the next 2 levels until your next break << Warrior/Rogue/DK
-.vendor 28791 >>Buy a LOT of the new food/water. You'll be doing dungeons for the next 2 levels until your next break << !Warrior !Rogue !DK
-step
-#completewith next
-.goto ZulDrak,41.09,65.15
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
-.vendor 28800 >>Vendor and Repair
-step
-.goto ZulDrak,41.55,64.43
-.fp The Argent Stand >>Get the The Argent Stand Flight Path
-step
->>Complete the Amphitheater of Anguish Questline. There are 6 elite quests that give a LOT of fast xp and a weapon that'll last you to 80. Only accept this when your party is ready and on the same quest progression as you. (Auto-accept is disabled for this questline)
-.groundgoto ZulDrak,46.3,57.9,50,0
-.goto ZulDrak,48.43,56.36
-.accept 12932,0 >>Accept The Amphitheater of Anguish: Yggdras!
-.xp >78,1
-step
-.goto ZulDrak,47.83,56.83
->>Kill Yggdras in the Amphitheater of Anguish
-.complete 12932,1 
-.isOnQuest 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12932 >>Turn in The Amphitheater of Anguish: Yggdras!
-.isQuestComplete 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12933,0 >>Accept The Amphitheater of Anguish: Magnataur!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Stinkbeard in the Amphitheater of Anguish
-.complete 12933,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12933 >>Turn in The Amphitheater of Anguish: Magnataur!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12934,0 >>Accept The Amphitheater of Anguish: From Beyond!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill the Elemental Lord in the Amphitheater of Anguish
-.complete 12934,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12934 >>Turn in The Amphitheater of Anguish: From Beyond!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12935,0 >>Accept The Amphitheater of Anguish: Tuskarrmageddon!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Orinoko in the Amphitheater of Anguish
-.complete 12935,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12935 >>Turn in The Amphitheater of Anguish: Tuskarrmageddon!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12936,0 >>Accept The Amphitheater of Anguish: Korrak the Bloodrager!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Korrak in the Amphitheater of Anguish
-.complete 12936,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12936 >>Turn in The Amphitheater of Anguish: Korrak the Bloodrager!
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.43,56.36
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Gurgthock. Only accept this when your party is ready and on the same quest progression as you.
-.accept 12948,0 >>Accept The Champion of Anguish
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,47.83,56.83
->>Kill Vladof in the Amphitheater of Anguish
-.complete 12948,1 
-.isQuestTurnedIn 12932
-step
-.goto ZulDrak,48.47,56.41
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Wodin
-.turnin 12948 >>Turn in The Champion of Anguish
-.isQuestTurnedIn 12932
-step
-.groundgoto ZulDrak,51.20,54.32,60,0
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTake the stairs behind you up toward Zim'Torga. Talk to To'kini
-.accept 13099 >>Accept Just Checkin'
-.goto ZulDrak,59.98,57.93
-.xp >78,1
-step
-.groundgoto ZulDrak,65.47,44.23,60,0
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Bah'kini
-.turnin 13099 >> Turn in Just Checkin'
-.accept 13098 >> Accept For Posterity
-.accept 13111 >> Accept One of a Kind
-.xp >78,1
-step
-#completewith next
-.goto Zul'Drak,76.02,20.79
-.zone 154 >> Enter Gundrak
-step
-#completewith Gundrak1
-.goto 154,56.80,41.61
-.goto 154,52.28,68.79
-.goto 154,48.64,78.52
-.goto 154,49.42,81.91
-.goto 154,48.27,71.79
-.goto 154,44.95,67.51
-.goto 154,47.97,63.31
-.goto 154,46.23,52.77
-.goto 154,41.46,72.29
-.goto 154,30.61,76.64
-.goto 154,31.80,69.53
-.goto 154,32.28,65.89
-.goto 154,33.63,58.70
-.goto 154,36.22,58.40
-.goto 154,36.24,56.40
-.goto 154,32.53,56.32
-.goto 154,31.81,49.55
-.goto 154,31.77,45.85
-.goto 154,40.21,51.56
-.goto 154,39.94,47.99
-.goto 154,38.92,47.34
-.goto 154,43.93,31.06
-.goto 154,41.51,25.48
-.goto 154,39.40,21.64
-.goto 154,40.03,16.82
-.goto 154,46.31,22.51
-.goto 154,49.21,30.61
-.goto 154,49.74,27.77
-.goto 154,53.08,17.08
->>Loot the Drakkari History Tablets found throughout Gundrak
-.complete 13098,1 
-step
-#completewith Gundrak1
-.goto 154,46.60,65.71
->>Kill the Drakkari Colossus. Loot it for its Fragment
-.complete 13111,1 
-step << DK/Mage/Shaman/Hunter/Rogue
-#label Gundrak1
-.xp 76 >>Grind Gundrak to level 76
->>If you reach your hourly lockout, switch to the Gundrak Lockout guide
-
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <76,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49894 >> Train your class spells from Amal'Thazad in Acherus
-.xp <76,1
-.xp >80,1
-step << Mage
-#completewith next
-.zone Stormwind City >> Teleport to Stormwind
-.xp <76,1
-step << Mage
-.goto Stormwind City,49.26,87.77
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42920 >> Train your class spells
-.xp <76,1
-step << Shaman/Hunter/Rogue
-#completewith next
-.hs >> Hearth to Stormwind
-step << Shaman
-.goto Stormwind City,67.52,89.41
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 58803 >> Train your class spells
-.xp <76,1
-step << Hunter
-.goto Stormwind City,67.35,36.26
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 53338 >> Train your class spells
-.xp <76,1
-step << Rogue
-.goto Stormwind City,77.42,65.31
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48637 >> Train your class spells
-.xp <76,1
-step
-#completewith Gundrak2
-.goto 154,56.80,41.61
-.goto 154,52.28,68.79
-.goto 154,48.64,78.52
-.goto 154,49.42,81.91
-.goto 154,48.27,71.79
-.goto 154,44.95,67.51
-.goto 154,47.97,63.31
-.goto 154,46.23,52.77
-.goto 154,41.46,72.29
-.goto 154,30.61,76.64
-.goto 154,31.80,69.53
-.goto 154,32.28,65.89
-.goto 154,33.63,58.70
-.goto 154,36.22,58.40
-.goto 154,36.24,56.40
-.goto 154,32.53,56.32
-.goto 154,31.81,49.55
-.goto 154,31.77,45.85
-.goto 154,40.21,51.56
-.goto 154,39.94,47.99
-.goto 154,38.92,47.34
-.goto 154,43.93,31.06
-.goto 154,41.51,25.48
-.goto 154,39.40,21.64
-.goto 154,40.03,16.82
-.goto 154,46.31,22.51
-.goto 154,49.21,30.61
-.goto 154,49.74,27.77
-.goto 154,53.08,17.08
->>Loot the Drakkari History Tablets found throughout Gundrak
-.complete 13098,1 
-step
-#completewith Gundrak2
-.goto 154,46.60,65.71
->>Kill the Drakkari Colossus. Loot it for its Fragment
-.complete 13111,1 
-step
-#label Gundrak2
-.xp 77 >>Grind Gundrak to level 77
->>If you reach your hourly lockout, switch to the Gundrak Lockout guide
-step << Warlock
-#completewith next
-.hs >> Hearth to Stormwind
-step << Warlock
-#completewith next
-.goto Stormwind City,29.2,74.0,20,0
-.goto Stormwind City,27.2,78.1,15 >> Go into The Slaughtered Lamb and go downstairs
-step << Warlock
-.goto Stormwind City,39.89,84.19
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47813 >> Train your class spells
-.xp <77,1
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.turnin 13111 >> Turn in One of a Kind
-.isQuestComplete 13098
-.isQuestComplete 13111
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.isQuestComplete 13098
-step
-.goto Zul'Drak,70.06,20.92
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tExit Gundrak. Talk to Bah'kini
-.turnin 13098 >> Turn in For Posterity
-.isQuestComplete 13098
-step
-#completewith next
-.goto ZulDrak,70.47,23.30
-.fp Dubra'Jin >> Get the Dubra'Jin flight path
-step
-#completewith next
-.goto ZulDrak,70.47,23.30
-.fly The Argent Stand >> Fly to The Argent Stand
-step
-.goto ZulDrak,40.83,66.25
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Marissa
-.vendor 25245 >>Buy a LOT of the food. You'll be doing dungeons for the last 3 levels << Warrior/Rogue/DK
-.vendor 28791 >>Buy a LOT of the food/water. You'll be doing dungeons for the last 3 levels << !Warrior !Rogue !DK
-.xp >78,1
-step
-.goto ZulDrak,41.09,65.15
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Aidan
-.vendor 28800 >>Vendor and Repair
-.xp >78,1
-step
-#completewith next
-.goto ZulDrak,40.63,66.90
->>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Teronus
-.accept 12796 >>Accept The Magical Kingdom of Dalaran
-.zoneskip Stormwind City
-.zoneskip Dalaran
-.xp >78,1
-step
-.goto ZulDrak,40.63,66.90
-.zone Dalaran >>Ask Teronus to be teleported to Dalaran
-.skipgossip
-.xp >78,1
-step
-.abandon 12796 >> Abandon The Magical Kingdom of Dalaran. DO NOT TURN THIS IN
-step << Mage
-.goto Dalaran,56.3,46.7
-.trainer >>Go inside the building. Train your Dalaran Portals
-step << Mage
-.goto Dalaran,55.0,46.2
-.train 42985 >> Train your class spells
-.xp <77,1
-step
-.goto Dalaran,69.81,45.45
-.train 54197 >> Train Cold Weather Flying from Hira Snowdawn
-step << skip
-.goto The Storm Peaks,65.3,60.2
-.accept 13109 >>Accept Diametrically Opposed
-.accept 13108 >>Accept Whatever it Takes
-step
-#completewith next
-.goto The Storm Peaks,45.56,21.10
-.zone 138 >>Enter the Halls of Lightning
-step << Warrior/Druid/DK/Mage
-.xp 78 >>Grind the Halls of Lightning to level 78
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <78,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48465 >> Train your class spells
-.xp <78,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <78,1
-step << DK
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 49941 >> Train your class spells from Amal'Thazad in Acherus. Runeforge your weapon downstairs if needed
-.xp <78,1
-step << Mage
-#completewith next
-.zone Dalaran >> Teleport to Dalaran
-.xp <78,1
-step << Mage
-.goto Dalaran,55.0,46.2
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 42914 >> Train your class spells
-.xp <78,1
-step << Warrior
-#completewith next
-.hs >> Hearth to Stormwind
-step << Warrior
-.goto Stormwind City,77.65,64.31,15,0
-.goto Stormwind City,81.45,59.49,15,0
-.goto Stormwind City,80.56,59.88
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 47436 >> Train your class spells
-.xp <78,1
-step << Mage/Druid/DK
-.xp 79 >>Grind the Halls of Lightning to level 79
-step << Mage
-#completewith next
-.zone Dalaran >> Teleport to Dalaran
-.xp <79,1
-step << Mage
-.goto Dalaran,55.0,46.2
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 43046 >> Train your class spells
-.xp <79,1
-step << Druid
-#completewith next
-.cast 18960 >> Cast Teleport: Moonglade
-.zoneskip Moonglade
-.xp <79,1
-step << Druid
-.goto Moonglade,52.4,40.6
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 48378 >> Train your class spells
-.xp <79,1
-step << DK
-#completewith next
-.cast 50977 >> Cast Death Gate
-.zoneskip Eastern Plaguelands
-.xp <79,1
-step << DK
-#label DKTrain1
-.goto Eastern Plaguelands,80.3,48.0
->>Make sure your party can summon you back via the summoning stone or Warlock summon
-.train 55271 >> Train your class spells from Amal'Thazad in Acherus
-.xp <79,1
-step
-.xp 80 >>Grind the Halls of Lightning to level 80
-step << skip
-.goto The Storm Peaks,65.3,60.2
-.turnin 13109 >>Turn in Diametrically Opposed
-.turnin 13108 >>Turn in Whatever it Takes
->>Ding Level 80 - Congratulations!
-]])
-RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Alliance
@@ -34829,7 +34798,7 @@ step
 .xp <73,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -35878,7 +35847,7 @@ step
 .goto BoreanTundra,51.7,31.6,0,0
 >>Kill |cRXP_ENEMY_Beryl Hounds|r. Loot them for their |T134337:0|t[|cRXP_LOOT_Cores of Malice|r]
 .use 34711 >>|cRXP_WARN_Use the|r |T134337:0|t[|cRXP_LOOT_Cores of Malice|r] |cRXP_WARN_on |cRXP_FRIENDLY_Kaskala Craftsmen|r and|r |cRXP_FRIENDLY_Kaskala Shaman|r
-.collect 34711,6,11607,0x3,-1
+.collect 34711,6,11607,0x3,-1 
 .complete 11607,1 
 .complete 11607,2 
 .mob Beryl Hound
@@ -35887,7 +35856,7 @@ step
 >>Kill |cRXP_ENEMY_Beryl Reclaimers|r. Loot them for their |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r]
 >>|cRXP_WARN_Stand at the edge of the cliff|r
 .use 34772 >> |cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r] |cRXP_WARN_to destroy the|r |cRXP_PICK_East Platform|r
-.collect 34772,3,11617,0x7,-1
+.collect 34772,3,11617,0x7,-1 
 .complete 11617,1 
 .mob Beryl Reclaimer
 step
@@ -35895,7 +35864,7 @@ step
 >>Kill |cRXP_ENEMY_Beryl Reclaimers|r. Loot them for their |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r]
 >>|cRXP_WARN_Stand at the edge of the cliff|r
 .use 34772 >> |cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r] |cRXP_WARN_to destroy the|r |cRXP_PICK_West Platform|r
-.collect 34772,3,11617,0x7,-1
+.collect 34772,3,11617,0x7,-1 
 .complete 11617,3 
 .mob Beryl Reclaimer
 step
@@ -35904,7 +35873,7 @@ step
 >>Kill |cRXP_ENEMY_Beryl Reclaimers|r. Loot them for their |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r]
 >>|cRXP_WARN_Stand directly below the|r |cRXP_PICK_North Platform|r
 .use 34772 >> |cRXP_WARN_Use the|r |T133717:0|t[|cRXP_LOOT_Gnomish Grenades|r] |cRXP_WARN_to destroy the|r |cRXP_PICK_North Platform|r
-.collect 34772,3,11617,0x7,-1
+.collect 34772,3,11617,0x7,-1 
 .complete 11617,2 
 .mob Beryl Reclaimer
 step
@@ -38074,7 +38043,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #xprate <1.5
 #group RestedXP Alliance 70-80
@@ -38356,7 +38325,7 @@ step
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Woodland Walkers|r to receive their |T134882:0|t[|cRXP_LOOT_Barks of the Walkers|r]
 >>Kill |cRXP_ENEMY_Woodland Walkers|r if they turn hostile. Loot them for their |T134882:0|t[|cRXP_LOOT_Barks of the Walkers|r]
 .use 36786 >>|cRXP_WARN_Use the|r |T134882:0|t[|cRXP_LOOT_Barks of the Walkers|r] |cRXP_WARN_on|r |cRXP_FRIENDLY_Lothalor Ancients|r
-.collect 36786,3,12092,1,-1
+.collect 36786,3,12092,1,-1 
 .complete 12092,1 
 .skipgossip
 .mob Woodlands Walker
@@ -41105,7 +41074,7 @@ step
 .zone Grizzly Hills >> Travel to Grizzly Hills
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Alliance 70-80
 << Alliance
@@ -43627,7 +43596,7 @@ step
 .target Samuel Clearbook
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -47339,7 +47308,7 @@ step
 .xp <77,1
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Dungeon Cleave 70-80
 << Alliance
@@ -47352,7 +47321,7 @@ step
 .xp 77 >> Grind the mobs in Zol'Maz until your lockouts expire. Try to take one corner of the subzone each to force dynamic respawns
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -49228,7 +49197,7 @@ step << !Druid !DK !Mage
 .zoneskip Dalaran
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80
@@ -51842,7 +51811,7 @@ step
 .zone Icecrown >>Fly to Icecrown
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 #group RestedXP Horde 70-80 << Horde
 #group RestedXP Alliance 70-80 << Alliance
@@ -52629,7 +52598,7 @@ step << Alliance
 .mob Ymirheim Chosen Warrior
 step << Alliance
 .abandon 13308 >> Abandon Mind Tricks if you were unable to do it
-step
+step << Alliance
 #completewith next
 .goto Icecrown,57.01,62.53,100 >> Travel toward |cRXP_FRIENDLY_Frazzle|r
 step << Alliance
@@ -56510,7 +56479,7 @@ step
 .link https://discord.gg/restedxp >> As this was tested on Beta, the guide may have had some bugs. If you encountered any while playing through, report them here!
 ]])
 RXPGuides.RegisterGuide([[
-#version 24
+#version 25
 #wotlk
 << Alliance
 #group RestedXP Alliance 70-80

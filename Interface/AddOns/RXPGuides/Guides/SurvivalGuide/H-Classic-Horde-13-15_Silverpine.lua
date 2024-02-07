@@ -81,7 +81,7 @@ step << !Mage !Priest
     .money <0.05
 step
     .goto Silverpine Forest,43.98,39.89
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwyn|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Edwin|r
     >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from him|r << Mage/Warlock/Priest/Shaman/Druid
     .vendor >> |cRXP_BUY_Buy|r |T134830:0|t[Lesser Healing Potions] |cRXP_BUY_from him if they're up|r
     .collect 1179,20,421,1 << Mage/Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
@@ -177,7 +177,7 @@ step
     .goto Silverpine Forest,51.54,13.91
     >>Kill |cRXP_ENEMY_Ivar the Foul|r. Loot him for his |cRXP_LOOT_Head|r
     >>|cRXP_WARN_Be careful! Clear the entire front area of the barn and pull the|r |cRXP_ENEMY_Ravenclaw Slaves|r |cRXP_WARN_outside one by one.|r
-    >>|cRXP_WARN_Ivar is protected by one|r |cRXP_ENEMY_Ravenclaw Slave|r |cRXP_WARN_. Use a health potion if needed|r
+    >>|cRXP_WARN_Ivar is protected by two|r |cRXP_ENEMY_Ravenclaw Slaves|r |cRXP_WARN_inside the barn. You can solopull one of them as he patrols forward|r
     >>|cRXP_WARN_They are immune to fear!|r << Priest/Warlock
     .complete 425,1 --Ivar's Head (1)
     .target Ivar the Foul
@@ -201,7 +201,6 @@ step
 step
     #label Nightlash
     .goto Silverpine Forest,45.44,21.01
-    .loop 25,Silverpine Forest,46.26,19.11,46.48,19.77,46.61,21.59,46.01,22.75,44.20,22.52,44.35,21.08,44.49,19.54,45.23,19.36
     >>Kill |cRXP_ENEMY_Rothide Gnolls|r around The Dead Field until |cRXP_ENEMY_Nightlash|r spawns. Kill and loot her for her |cRXP_LOOT_Essence|r
     >>|cRXP_WARN_They are immune to fear!|r << Priest/Warlock
     .complete 437,1 --Enter the Dead Fields (1)
@@ -279,24 +278,25 @@ step << !Mage !Priest
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwyn|r
     >>|cRXP_BUY_Buy|r |T134532:0|t[Red-speckled Mushrooms] |cRXP_BUY_from her|r
     .vendor >> Vendor trash
-    .collect 4605,20,421,1 --Red-speckled Mushroom (20)
+    .collect 4605,20,423,1 --Red-speckled Mushroom (20)
     .target Gwyn Farrow
 step
     .goto Silverpine Forest,43.98,39.89
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Gwyn|r
-    >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from him|r << Mage/Warlock/Priest/Shaman/Druid
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Edwin|r
+    >>|cRXP_BUY_Buy|r |T132815:0|t[Ice Cold Milk] |cRXP_BUY_from him|r << Warlock/Priest/Shaman/Druid
     .vendor >> |cRXP_BUY_Buy|r |T134830:0|t[Lesser Healing Potions] |cRXP_BUY_from him if they're up|r
-    .collect 1179,20,421,1 << Mage/Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
+    .collect 1179,20,421,1 << Warlock/Priest/Shaman/Druid --Ice Cold Milk (20)
     .target Edwin Harly
 step << Warlock/Mage/Priest
     .goto Silverpine Forest,44.80,39.24
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Andrea|r
-    .vendor >> |cRXP_BUY_Buy a|r |T132491:0|t[Wise Man's Belt] |cRXP_BUY_from her if it's up|r
+    .vendor >> Buy |T132491:0|t[|cRXP_FRIENDLY_Wise Man's Belt|r] from her if they're up
     .target Andrea Boynton
     .money <0.1400
 step << Hunter
     .goto Silverpine Forest,45.01,39.30
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nadia|r|cRXP_BUY_. Buy a|r |T135490:0|t[Fine Longbow] |cRXP_BUY_from her if it's up|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nadia|r
+    >>Buy a |T135490:0|t[|cRXP_FRIENDLY_Fine Longbow|r] from her if it's up
     .collect 11304,1,438,1 --Fine Longbow (1)
     .collect 2515,1200,438,1 << Hunter --Sharp Arrow (1200)
     .target Nadia Vernon
@@ -306,38 +306,42 @@ step << Hunter
 step << Hunter/Rogue
     .goto Silverpine Forest,44.61,39.11
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexandre|r
-    .vendor >> |cRXP_BUY_Buy|r |T132539:0|t[Agile Boots] |cRXP_BUY_from him if they're up|r
+    .vendor >> Buy |T132539:0|t[|cRXP_FRIENDLY_Agile Boots|r] from her if they're up
     .target Alexandre Lefevre
     .money <0.2633
 step << Shaman/Warrior/Druid
     .goto Silverpine Forest,44.61,39.11
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Alexandre|r
-    .vendor >> |cRXP_BUY_Buy|r |T132539:0|t[Agile Boots] |cRXP_BUY_or|r |T132537:0|t[Stable Boots] |cRXP_BUY_from him if one of them is up|r
+    .vendor >> Buy |T132539:0|t[|cRXP_FRIENDLY_Agile Boots|r] or |T132537:0|t[|cRXP_FRIENDLY_Stable Boots|r] from her if one of them is up
     .target Alexandre Lefevre
     .money <0.2000
 step << Warlock/Mage/Priest
     #completewith Shackles
-    +Equip the |T132491:0|t[Wise Man's Belt]
+    +Equip the |T132491:0|t[|cRXP_FRIENDLY_Wise Man's Belt|r] 
     .use 4786
     .itemcount 4786,1
+    .xp <15,1
 step << Hunter
     #completewith Shackles
-    +Equip the |T135490:0|t[Fine Longbow]
+    +Equip the |T135490:0|t[|cRXP_FRIENDLY_Fine Longbow|r] 
     .use 11304
     .itemcount 11304,1
+    .xp <14,1
 step << Hunter/Rogue
     #completewith Shackles
-    +Equip the |T132539:0|t[Agile Boots]
+    +Equip the |T132539:0|t[|cRXP_FRIENDLY_Agile Boots|r]
     .use 4788
     .itemcount 4788,1
+    .xp <15,1
 step << Shaman/Warrior/Druid
     #completewith Shackles
-    +Equip the |T132539:0|t[Agile Boots]
+    +Equip the |T132539:0|t[|cRXP_FRIENDLY_Agile Boots|r]
     .use 4788
     .itemcount 4788,1
+    .xp <15,1
 step << Shaman/Warrior/Druid
     #completewith Shackles
-    +Equip the |T132537:0|t[Stable Boots]
+    +Equip the |T132537:0|t[|cRXP_FRIENDLY_Stable Boots|r]
     .use 4789
     .itemcount 4789,1
 step
@@ -849,8 +853,8 @@ step
     .group
 step << Hunter
     .goto Silverpine Forest,45.01,39.30
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nadia|r|cRXP_BUY_. Buy a|r |T135490:0|t[Fine Longbow] |cRXP_BUY_from her if it's available|r
-    >>|cRXP_BUY_If it's not available, buy a|r |T135490:0|t[Reinforced Bow] |cRXP_BUY_from her instead|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nadia|r
+    >>Buy a |T135490:0|t[|cRXP_FRIENDLY_Fine Longbow|r] from her if it's up
     .collect 11304,1,438,1 --Fine Longbow (1)
     .collect 2515,1200,438,1 << Hunter --Sharp Arrow (1200)
     .target Nadia Vernon

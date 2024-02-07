@@ -3,20 +3,43 @@ RXPGuides.RegisterGuide([[
 << Alliance Hunter SoD
 #group RestedXP Rune Guide
 #subgroup Gloves
-#name Chimera Shot - 3 (Dun Morogh)
+#name Chimera Shot - 2 (Dun Morogh)
 
-step << Hunter
-    #season 2
+
+step
+    +|cRXP_WARN_You should be at least level 2 in order to acquire|r |T133816:0|t[Engrave Gloves - Chimera Shot] |cRXP_WARN_in Dun Morogh alone|r
+    .train 410121,1
+    .xp >2,1
+step
+    #completewith Rune
+    #label Dun1
+    .zone Dun Morogh >> Travel to Dun Morogh
+    .train 410121,1
+step
+    #optional
+    #requires Dun1
+    #label FrostMCave1
+    #completewith Rune
+    .goto 1426,27.098,80.707,20 >> Enter the Frostmane Cave
+    .train 410121,1
+step
+    #optional
+    #requires FrostMCave1
+    #completewith Rune
+    .goto 1426,28.298,79.836,15,0
+    .goto 1426,29.252,79.043,15,0
+    .goto 1426,30.489,80.165,50 >> Travel towards the |cRXP_PICK_Frostmane Loot Cache|r inside
+    .train 410121,1
+step
+    #label Rune
     .goto Dun Morogh,30.773,80.063
-    >>Open the |cRXP_PICK_Frostmane Loot Cache|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r]
+    >>Open the |cRXP_PICK_Frostmane Loot Cache|r on the ground inside. Loot it for the |T134419:0|t|cRXP_LOOT_[Rune of the Chimera]|r
     .collect 206168,1 -- Rune of the Chimera (1)
     .train 410121,1
-step << Hunter
-    #season 2
-    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r]
+step
+    .train 410121 >>|cRXP_WARN_Use the|r |T134419:0|t|cRXP_LOOT_[Rune of the Chimera]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Chimera Shot]
     .use 206168
     .itemcount 206168,1
-    .train 410121,1
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -24,23 +47,99 @@ RXPGuides.RegisterGuide([[
 << Alliance Hunter SoD
 #group RestedXP Rune Guide
 #subgroup Gloves
-#name Chimera Shot - 3 (Shadowglen)
+#name Chimera Shot - 3 (Teldrassil)
 
-step << Hunter
-    #season 2
+step
+    +|cRXP_WARN_You should be at least level 3 in order to acquire|r |T133816:0|t[Engrave Gloves - Chimera Shot] |cRXP_WARN_in Teldrassil alone|r
+    .train 410121,1
+    .xp >3,1
+step
+    #completewith Rune
+    #label Teld1
+    .zone Teldrassil >> Travel to Teldrassil
+    .train 410121,1
+step
+    #optional
+    #requires Teld1
+    #label ShadowCave1
+    #completewith Rune
+    .goto 1438,56.694,31.485
+    .subzone 25 >> Enter the Shadowthread Cave
+    .train 410121,1
+step
+    #optional
+    #requires ShadowCave1
+    #completewith Rune
+    .goto 1438,56.137,24.971,15,0
+    .goto 1438,55.785,25.341,15,0
+    .goto 1438,56.137,24.971,15,0
+    .goto 1438,56.358,25.242,20,0
+    .goto 1438,56.654,26.430,50,0
+    .goto 1438,56.874,26.323,10 >> Travel towards |cRXP_ENEMY_Githyiss the Vile|r inside
+    .train 410121,1
+step
+    #label Rune
     .goto Teldrassil,56.68,26.12
-    >>Kill |cRXP_ENEMY_Githyiss the Vile|r. Loot Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r]
+    >>Kill |cRXP_ENEMY_Githyiss the Vile|r. Loot her for the |T134419:0|t|cRXP_LOOT_[Rune of the Chimera]|r
     .collect 206168,1 -- Rune of the Chimera (1)
     .mob Githyiss the Vile
     .train 410121,1
-step << Hunter
-    #season 2
-    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Chimera|r]
+step
+    .train 410121 >>|cRXP_WARN_Use the|r |T134419:0|t|cRXP_LOOT_[Rune of the Chimera]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Chimera Shot]
     .use 206168
     .itemcount 206168,1
-    .train 410121,1
 ]])
 
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Explosive Shot - 5 (Dun Morogh)
+
+
+step
+    +|cRXP_WARN_You should be at least level 5 in order to acquire|r |T133816:0|t[Engrave Gloves - Explosive Shot] |cRXP_WARN_in Dun Morogh alone|r
+    .train 410123,1
+    .xp >5,1
+step
+    #completewith Rune
+    .zone Dun Morogh >>Travel to Dun Morogh
+    .train 410123,1
+step
+    #loop
+    .goto 1426,31.87,38.45,0
+    .goto 1426,30.42,39.84,0
+    .goto 1426,30.02,39.08,0
+    .goto 1426,33.82,37.26,0
+    .goto 1426,31.87,38.45,50,0
+    .goto 1426,30.42,39.84,50,0
+    .goto 1426,30.02,39.08,50,0
+    .goto 1426,33.82,37.26,50,0
+    >>Kill |cRXP_ENEMY_Fyodi|r. Loot him for the |T134419:0|t|cRXP_LOOT_[Rune of Explosive Shot]|r
+    >>|cRXP_WARN_Even though |cRXP_ENEMY_Fyodi|r shows as an elite, his health, damage, and armor values are that of a standard mob|r
+    >>|cRXP_WARN_Be careful as he casts|r |T132337:0|t[Charge] |cRXP_WARN_(Self Instant: Increases movespeed for 3 seconds, dealing 35-80 melee damage on hit. Only castable at range)|r
+    >>|cRXP_WARN_NOTE: The|r |T134419:0|t|cRXP_LOOT_[Rune of Explosive Shot]|r |cRXP_WARN_can also drop off every rare mob in Dun Morogh, as well as |cRXP_ENEMY_Vagash|r, |cRXP_ENEMY_Mangeclaw|r, and|r |cRXP_ENEMY_Old Icebeard|r
+    .collect 206169,1 --Rune of Explosive Shot (1)
+    .mob Fyodi
+    .train 410123,1
+    .xp >10,1
+step
+    #label Rune
+    .goto 1426,62.094,47.154,40,0
+    .goto 1426,62.434,48.989,40,0
+    .goto 1426,62.538,46.195
+    >>Kill |cRXP_ENEMY_Vagash|r. Loot him for the |T134419:0|t|cRXP_LOOT_[Rune of Explosive Shot]|r
+    >>|cRXP_WARN_NOTE: The|r |T134419:0|t|cRXP_LOOT_[Rune of Explosive Shot]|r |cRXP_WARN_can also drop off every rare mob in Dun Morogh, as well as |cRXP_ENEMY_Fyodi|r, |cRXP_ENEMY_Mangeclaw|r, and|r |cRXP_ENEMY_Old Icebeard|r
+    .collect 206169,1 --Rune of Explosive Shot (1)
+    .mob Vagash
+    .train 410123,1
+    .xp <10,1
+step
+    .train 410123 >> |cRXP_WARN_Use the|r |T134419:0|t|cRXP_LOOT_[Rune of Explosive Shot]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Explosive Shot]
+    .use 206169
+    .itemcount 206169,1
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -61,13 +160,10 @@ step
     .train 410123,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Explosive Shot|r]
+    .train 410123 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Explosive Shot|r]
     .use 206169
-    .train 410123,1
-
+    .itemcount 206169,1
 ]])
-
-
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -95,9 +191,9 @@ step
     .train 410121,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
+    .train 410121 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
     .use 206168
-    .train 410121,1
+    .itemcount 206168,1
 step << !Tauren
     #season 2
     .goto Durotar,42.84,69.32
@@ -105,9 +201,7 @@ step << !Tauren
     .turnin 77590 >>Turn in Rugged Terrain << Troll Hunter
     .turnin 77584 >>Turn in Hunt for the Rune << Orc Hunter
     .target Jen'shan
-
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -127,36 +221,30 @@ step << Tauren
     .target Lanka Farshot
 step
     #season 2
-    .goto Mulgore,52.70,79.32,50,0
-    .goto Mulgore,54.19,79.83,50,0
-    .goto Mulgore,55.73,80.28,50,0
-    .goto Mulgore,56.48,81.67,50,0
-    .goto Mulgore,55.63,83.86,50,0
-    .goto Mulgore,56.03,85.53,50,0
-    .goto Mulgore,55.80,87.71,50,0
-    .goto Mulgore,56.72,89.27,50,0
-    .goto Mulgore,57.92,89.27,50,0
-    .goto Mulgore,57.69,86.77,50,0
-    .goto Mulgore,57.31,85.39,50,0
-    .goto Mulgore,55.99,85.46
-    >>Kill |cRXP_ENEMY_Battleboars|r. Loot them for |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
+    .goto Mulgore,63.81,76.65,40,0
+    .goto Mulgore,62.92,76.91,40,0
+    .goto Mulgore,61.31,77.22,40,0
+    .goto Mulgore,61.58,78.89,40,0
+    .goto Mulgore,62.53,79.52,40,0
+    .goto Mulgore,64.20,79.01,40,0
+    .goto Mulgore,65.82,78.13,40,0
+    .goto Mulgore,63.93,78.34
+    >>Kill |cRXP_ENEMY_Bristleback Battleboars|r. Loot them for |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
     .collect 206168,1 --Rune of the Chimera (1)
-    .mob Battleboar
+    .mob Bristleback Battleboar
     .train 410121,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
+    .train 410121 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of The Chimera|r]
     .use 206168
-    .train 410121,1
+    .itemcount 206168,1
 step << Tauren
     #season 2
     .goto Mulgore,44.26,75.70
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lanka|r
     .turnin 77649 >>Turn in A Hunter's Strength
     .target Lanka Farshot
-
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -179,12 +267,10 @@ step
     .train 410113,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
+    .train 410113 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
     .use 206155
-    .train 410113,1
-
-    ]])
-
+    .itemcount 206155,1
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -207,12 +293,62 @@ step
     .train 410113,1
 step
     #season 2
+    .train 410113 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
+    .use 206155
+    .itemcount 206155,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Chest
+#name Master Marksman - 6 (Dun Morogh)
+
+
+    --Rune of Master Marksman
+
+step
+    #season 2
+    .goto Dun Morogh,28.852,49.859
+    >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
+    >>Kill the |cRXP_ENEMY_Razormane Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
+    .collect 206155,1 --Rune of Markmanship (1)
+    .mob Rustling Bush
+    .mob Razormane Poacher
+    .train 410113,1
+step
+    #season 2
     .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
     .use 206155
     .train 410113,1
-
 ]])
 
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Chest
+#name Master Marksman - 6 (Teldrassil)
+
+
+    --Rune of Master Marksman
+
+step
+    #season 2
+    .goto Teldrassil,46.6,46.3
+    >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
+    >>Kill the |cRXP_ENEMY_Fallenroot Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
+    .collect 206155,1 --Rune of Markmanship (1)
+    .mob Rustling Bush
+    .mob Fallenroot Poacher
+    .train 410113,1
+step
+    #season 2
+    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
+    .use 206155
+    .train 410113,1
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -232,26 +368,27 @@ step
     .goto Mulgore,36.74,58.53
     >>Kill |cRXP_ENEMY_Plainstriders|r and |cRXP_ENEMY_Swoops|r. Loot them for |T134025:0|t[|cRXP_LOOT_Mulgore Bird Meat|r]
     .collect 205961,1 --Mulgore Bird Meat (1)
-    .mob Wiry Swoop
-    .mob Swoop
+    .mob Elder Plainstrider
     .mob Adult Plainstrider
+    .mob Swoop
+    .mob Wiry Swoop
+    .mob Taloned Swoop
     .train 425762,1
 step
     #season 2
     .goto Mulgore,35.22,57.42
-    .use 205961 >>Use the |T134025:0|t[|cRXP_LOOT_Mulgore Bird Meat|r] at the carcass to summon |cRXP_ENEMY_Mokwa|r
+    >>Use the |T134025:0|t[|cRXP_LOOT_Mulgore Bird Meat|r] at the carcass to summon |cRXP_ENEMY_Mokwa|r
     >>Kill him and loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r]
     .collect 205979,1 --Rune of Flanking (1)
     .mob Mokwa
+    .use 205961
     .train 425762,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r]
+    .train 425762 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r] |cRXP_WARN_to train|r |T132175:0|t[Flanking Strike]
     .use 205979
-    .train 425762,1
-
+    .itemcount 205979,1
 ]])
-
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -282,12 +419,10 @@ step
     .train 425762,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r]
+    .train 425762 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r] |cRXP_WARN_to train|r |T132175:0|t[Flanking Strike]
     .use 205979
-    .train 425762,1
-
+    .itemcount 205979,1
 ]])
-
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -301,7 +436,7 @@ RXPGuides.RegisterGuide([[
 
 step
     #season 2
-    #completewith next
+    #completewith n`t
     +|cRXP_WARN_You need to have learned|r |T132164:0|t[Tame Beast] |cRXP_WARN_to be able to obtain this rune|r
 step
     #season 2
@@ -337,12 +472,10 @@ step
     .train 425758,1
 step
     #season 2
-    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
+    .train 425758 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
     .use 206032
-    .train 425758,1
-
-    ]])
-
+    .itemcount 206032,1
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -390,8 +523,403 @@ step
     .train 425758,1
 step
     #season 2
+    .train 425758 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
+    .use 206032
+    .itemcount 206032,1
+
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Carve - 10 (Dun Morogh)
+
+
+    --Rune of Carve
+step
+    #season 2
+    #completewith next
+    +|cRXP_WARN_You need to have learned|r |T132164:0|t[Tame Beast] |cRXP_WARN_to be able to obtain this rune|r
+step
+    #season 2
+    #loop
+    .goto Dun Morogh,68.2,56.2,20,0
+    .goto Dun Morogh,68.8,58.2,20,0
+    .goto Dun Morogh,71.0,58.0,20,0
+    .goto Dun Morogh,71.0,58.0,20,0
+    .goto Dun Morogh,72.6,52.6,20,0
+    >>Kill |cRXP_ENEMY_Rockjaw Troggs|r. Loot them for |T134419:0|t[|cRXP_LOOT_Rabbit Musk.|r]
+    .collect 208180,1 --Rabbit Musk (1)
+    .mob Rockjaw Skullthumper
+    .mob Rockjaw Bonesnapper
+    .mob Rockjaw Backbreaker
+    .mob Rockjaw Ambusher
+    .train 425758,1
+step
+    #season 2
+    #completewith next
+    .goto Dun Morogh,44.4,56.2,20,0
+    .goto Dun Morogh,44.8,59.8,20,0
+    .goto Dun Morogh,47.4,54.4,20,0
+    .goto Dun Morogh,49.2,46.0,20,0
+    .goto Dun Morogh,47.0,44.6,20,0
+    .goto Dun Morogh,46.8,47.8
+    >>Use |T134419:0|t[Rabbit Musk] on a |cRXP_ENEMY_Rabbit|r |cRXP_WARN_Don't dismiss your current Pet.|r
+    .use 208180
+    .unitscan Rabbit
+step
+    #season 2
+    .goto Dun Morogh,63.40,50.20
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Toby|r
+    >>Deliver the |cRXP_ENEMY_Rabit|r to receive |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
+    .collect 206032,1 --Rune of Carve (1)
+    .target Toby
+    .train 425758,1
+step
+    #season 2
     .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
     .use 206032
     .train 425758,1
+]])
 
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Carve - 10 (Teldrassil)
+
+
+    --Rune of Carve
+
+step
+    #season 2
+    #completewith next
+    +|cRXP_WARN_You need to have learned|r |T132164:0|t[Tame Beast] |cRXP_WARN_to be able to obtain this rune|r
+step
+    #season 2
+    .goto Teldrassil,46.2,51.2,20,0
+    .goto Teldrassil,46.8,54.6,20,0
+    .goto Teldrassil,48.8,55.4,20,0
+    .goto Teldrassil,71.0,58.0,20,0
+    .goto Teldrassil,44.8,61.2
+    >>Kill |cRXP_ENEMY_Gnarlpines|r. Loot them for |T134419:0|t[|cRXP_LOOT_Deer Musk|r]
+    .collect 208607,1 --Deer Musk (1)
+    .train 425758,1
+    .mob Gnarlpine Augur
+    .mob Gnarlpine Pathfinder
+    .mob Gnarlpine Totemic
+    .mob Gnarlpine Ambusher
+    .mob Gnarlpine Defender
+    .mob Gnarlpine Avenger
+    .mob Gnarlpine Shaman
+step
+    #season 2
+    #completewith next
+    .goto Teldrassil,42.2,71.6,20,0
+    .goto Teldrassil,43.2,74.2,20,0
+    .goto Teldrassil,47.6,74.0,20,0
+    .goto Teldrassil,53.4,77.0,20,0
+    .goto Teldrassil,54.8,58.4
+    >>Use |T134419:0|t[Dear Musk] on a |cRXP_ENEMY_Deer|r |cRXP_WARN_Don't dismiss your current Pet.|r
+    .use 208607,1
+    .unitscan Deer
+step
+    #season 2
+    .goto Teldrassil,39.8,9.4
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Relaeron|r in |cFFfa9602Darnassus|r
+    >>Deliver the |cRXP_ENEMY_Deer|r to receive |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
+    .collect 206032,1 --Rune of Carve (1)
+    .target Relaeron
+    .train 425758,1
+step
+    #season 2
+    .cast 402265 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of Carve|r]
+    .use 206032
+    .train 425758,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Beast Mastery - 16 (The Barrens)
+
+
+    --Rune of Beast Mastery
+
+step
+    #season 2
+    #completewith next
+    +|cRXP_WARN_You need to have learned|r |T135813:0|t[Immolation Trap] |cRXP_WARN_or any other trap to be able to obtain this rune|r
+step
+    #season 2
+    .goto The Barrens,44.60,55.51,40,0
+    .goto The Barrens,44.05,56.20,40,0
+    .goto The Barrens,43.12,57.37
+    .line The Barrens,44.60,55.51,44.60,55.51,43.12,57.37
+    >>Use |T135813:0|t[Immolation Trap] on the patrol path of the |cRXP_ENEMY_Patrolling Cheetah|r to remove his buff
+    >>Kill him and loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r]
+    .collect 208701,1 --Rune of Beast Mastery (1)
+    .mob Patrolling Cheetah
+    .train 410110,1
+step
+    #season 2
+    .train 410110 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r] |cRXP_WARN_to train|r |T132270:0|t[Beast Mastery]
+    .use 208701
+    .itemcount 208701,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Gloves
+#name Beast Mastery - 16 (Silverpine)
+
+    --Rune of Beast Mastery
+
+step
+    #season 2
+    .goto Silverpine Forest,41.37,19.64,50,0
+    .goto Silverpine Forest,41.60,21.65,50,0
+    .goto Silverpine Forest,42.36,23.77,50,0
+    .goto Silverpine Forest,44.67,24.84,50,0
+    .goto Silverpine Forest,46.08,26.62,50,0
+    .goto Silverpine Forest,41.60,21.65
+    >>Kill |cRXP_ENEMY_Ferocious Grizzled Bears|r until a |cRXP_ENEMY_Grizzled Protecter|r (16 elite) spawns
+    >>Kill him and loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r] 
+    .collect 208701,1 --Rune of Beast Mastery (1)
+    .mob Ferocious Grizzled Bear
+    .mob Grizzled Protecter
+step
+    #season 2
+    .train 410110 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r] |cRXP_WARN_to train|r |T132270:0|t[Beast Mastery]
+    .use 208701
+    .itemcount 208701,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Sniper Training - 18 (Darkshore)
+
+
+    --Rune of the Sniper
+
+step
+    #season2
+    #completewith next
+    .train 416091,1
+    .zone Darkshore >>Travel to Darkshore
+step
+    #season 2
+    .train 416091,1
+    .goto Darkshore,48.0,18.0
+    >>Search the area for dead turtles with a harpoon stuck in their skull, and click on the |cRXP_PICK_harpoon|r to acquire the item.
+    .collect 209047,1
+step
+    #season 2
+    #loop
+    .goto Darkshore,48.0,18.0,20,0
+    .goto Darkshore,47.6,13.2,20,0
+    .goto Darkshore,50.4,12.0,20,0
+    .goto Darkshore,48.8,16.0,20,0
+    >>Use the |T135129:0|t[Gnarled Harpoon] to weaken |cRXP_ENEMY_Paxnozz|r then Kill |cRXP_ENEMY_Paxnozz|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
+    .collect 208777,1
+    .train 416091,1
+    .use 209047
+    .mob Paxnozz
+step
+    #season 2
+    .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
+    .use 208777
+    .itemcount 208777,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Sniper Training - 16 (Westfall)
+
+
+    --Rune of the Sniper
+
+step
+    #season2
+    #completewith next
+    .train 416091,1
+    .zone Westfall >>Travel to Westfall
+step
+    #season 2
+    #loop
+    .goto Westfall,51.2,47.0,20,0
+    .goto Westfall,50.2,48.6,20,0
+    .goto Westfall,51.6,55.6,20,0
+    >>Kill |cRXP_ENEMY_Defias Scouts|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
+    .collect 208777,1
+    .train 416091,1
+    .mob Defias Scout
+step
+    #season 2
+    .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
+    .use 208777
+    .itemcount 208777,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Sniper Training - 16 (Loch Modan)
+
+
+    --Rune of the Sniper
+
+step
+    #season2
+    #completewith next
+    .train 416091,1
+    .zone Loch Modan >>Travel to Loch Modan
+step
+    #season 2
+    #loop
+    .goto Loch Modan,55.6,52.2,20,0
+    .goto Loch Modan,55.8,54.4,20,0
+    .goto Loch Modan,54.2,56.8,20,0
+    .goto Loch Modan,53.8,54.4,20,0
+    >>Kill |cRXP_ENEMY_Kackle|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r] |cRXP_WARN_consider grouping up if you have trouble killing it solo.|r
+    .collect 208777,1
+    .train 416091,1
+    .mob Kackle
+step
+    #season 2
+    .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
+    .use 208777
+    .itemcount 208777,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Sniper Training - 16 (The Barrens)
+
+
+    --Rune of the Sniper
+
+step
+    #season2
+    #completewith next
+    .train 416091,1
+    .zone The Barrens >>Travel to The Barrens
+step
+    #season 2
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Klixx|r and buy |T135129:0|t[Fishing Harpoon]
+    .goto The Barrens,62.8,38.2
+    .buy 208773,1
+    .train 416091,1
+step
+    #season 2
+    .goto The Barrens,65,40
+    >>Use the |T135129:0|t[Fishing Harpoon] to weaken |cRXP_ENEMY_Bruuz|r then Kill |cRXP_ENEMY_Bruuz|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
+    .collect 208777,1
+    .train 416091,1
+    .mob Bruuz
+    .use 208773
+step
+    #season 2
+    .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
+    .use 208777
+    .itemcount 208777,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Flanking - 7 (Dun Morogh)
+
+
+    --Rune of Flanking
+
+step
+    #season2
+    #loop
+    .goto Dun Morogh,43.4,65.6,20,0
+    .goto Dun Morogh,49.2,61.4,20,0
+    .goto Dun Morogh,51.0,51.8,20,0
+    .goto Dun Morogh,45.8,50.0,20,0
+    .goto Dun Morogh,42.6,60.2,20,0
+    .goto Dun Morogh,38.2,60.6,20,0
+    .train 425762,1
+    >>Kill |cRXP_ENEMY_Boars|r in |cFFfa9602Dun Morogh|r and loot them for |T134026:0|t[Durotar Pig Meat]
+    .collect 208192,1
+    .mob Crag Boar
+    .mob Large Crag Boar
+    .mob Elder Crag Boar
+    .mob Scarred Crag Boar
+step
+    #season2
+    .train 425762,1
+    .goto Dun Morogh,37.78,42.55
+    >>Use |T134026:0|t[Durotar Pig Meat] near the corpse in the |cFFfa9602Iceflow Cavern|r to summon |cRXP_ENEMY_Jorul|r
+    >>Kill |cRXP_ENEMY_Jorul|r and loot him for |T135142:0|t|cRXP_LOOT_[Rune of Flanking]|r
+    .collect 205979,1
+    .use 208192
+    .mob Jorul
+step
+    #season 2
+    .train 425762 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r] |cRXP_WARN_to train|r |T132175:0|t[Flanking Strike]
+    .use 205979
+    .itemcount 205979,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Alliance Hunter SoD
+#group RestedXP Rune Guide
+#subgroup Legs
+#name Flanking - 7 (Teldrassil)
+
+
+    --Rune of Flanking
+step
+    #season2
+    #loop
+    .goto Teldrassil,42.6,52.6,20,0
+    .goto Teldrassil,39.8,53.2,20,0
+    .goto Teldrassil,39.4,36.2,20,0
+    .goto Teldrassil,40.8,31.6,20,0
+    .goto Teldrassil,46.6,31.2,20,0
+    .train 425762,1
+    >>Kill |cRXP_ENEMY_Birds|r in |cFFfa9602Teldrassil|r and loot them for |T134025:0|t[Teldrassil Pig Meat]
+    .collect 208608,1
+    .mob Strigid Owl
+    .mob Strigid Screecher
+    .mob Strigid Hunter
+step
+    #season2
+    .train 425762,1
+    .goto Teldrassil,48.3,31.4
+    >>Use |T134025:0|t[Teldrassil Pig Meat] near the corpse to summon |cRXP_ENEMY_Mowgh|r
+    >>Kill |cRXP_ENEMY_Mowgh|r and loot him for |T135142:0|t|cRXP_LOOT_[Rune of Flanking]|r
+    .collect 205979,1
+    .use 208608
+    .mob Mowgh
+step
+    #season 2
+    .train 425762 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Flanking|r] |cRXP_WARN_to train|r |T132175:0|t[Flanking Strike]
+    .use 205979
+    .itemcount 205979,1
 ]])

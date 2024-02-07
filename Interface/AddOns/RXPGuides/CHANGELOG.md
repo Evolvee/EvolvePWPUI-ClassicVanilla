@@ -1,21 +1,9 @@
 # RestedXP Guides
 
-## [v4.5.37-16-gafa9ddc](https://github.com/RestedXP/RXPGuides/tree/afa9ddc2aad9e0cc431ae25615c6456bef8cfc8a) (2023-12-08)
-[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.5.37...afa9ddc2aad9e0cc431ae25615c6456bef8cfc8a) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
+## [v4.5.45-4-g1898926](https://github.com/RestedXP/RXPGuides/tree/189892630801217cb3b7b57cc6a5610366845684) (2024-02-04)
+[Full Changelog](https://github.com/RestedXP/RXPGuides/compare/v4.5.45...189892630801217cb3b7b57cc6a5610366845684) [Previous Releases](https://github.com/RestedXP/RXPGuides/releases)
 
-- Merge branch 'main' of https://github.com/RestedXP/RXPGuides  
-- small bugfixes  
-- Completed Alliance Priest runes  
-- Update Alliance Warrior/Rogue/Priest runes  
-- SoD Paladin - Speedrun Guide Rune Integration  
-- Paladin Rune bugfixes  
-- Added Quick Strike rune  
-- Added Raging Blow rune  
-- Fixes  
-- Paladin Rune Fixes  
-- Fixed Divine Sacrifice rune subgroup  
-- Update Mage.lua  
-- Added Flagellation and Mass Regeneration runes  
-- Big Update Mage.lua  
-- Bug fixes and added Deadly Brew for Alliance  
-- Added Wild Growth rune  
+- Night Elf Druid SoD improvements  
+- Druid SoD route improvements  
+- Night Elf druid route improvements  
+- Night Elf Druid SoD route improvements  

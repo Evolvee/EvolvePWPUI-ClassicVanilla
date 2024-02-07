@@ -4,7 +4,7 @@ if faction == "Horde" then return end
 RXPGuides.RegisterGuide([[
 #hardcore
 #classic
-#era/som
+#era/som--h
 << Alliance
 #name 1-6 Coldridge Valley
 #version 1
@@ -408,7 +408,7 @@ step
 
 RXPGuides.RegisterGuide([[
 #hardcore
-#era/som
+#era/som--h
 #classic
 << Alliance
 #name 6-10 Dun Morogh
@@ -1690,7 +1690,7 @@ step << Rogue
 
 RXPGuides.RegisterGuide([[
 #hardcore
-#era/som
+#era/som--h
 #classic
 << Alliance
 #name 10-11 Elwynn (Dwarf/Gnome)
@@ -2352,7 +2352,7 @@ step << Dwarf Paladin
 
 RXPGuides.RegisterGuide([[
 #hardcore
-#era/som
+#era/som--h
 #classic
 << Alliance
 #name 11-13 Loch Modan (Dwarf/Gnome)
@@ -2649,7 +2649,7 @@ step
     .goto Loch Modan,27.4,48.4
     .xp 13+9600 >> Grind until 9600+/11400xp
 step
-    #som
+    #som--xpgate
     .goto Loch Modan,27.4,48.4
     .xp 14-2300 >> Grind until you are 2300xp away from level 14 (9100/11400)
 step
@@ -2788,16 +2788,16 @@ step << !Paladin
 step
     #completewith Fly2WF
     .goto StormwindClassic,55.21,7.04
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Billibub Cogspinner|r
-    .vendor 5519 >> |cFFFCDC00Buy a|r |T133024:0|t[Bronze Tube]
-    >>|cFFFCDC00This is a limited supply item. Skip this step if |cFF00FF25Billibub Cogspinner|r doesn't have one|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Billibub Cogspinner|r
+    .vendor 5519 >> |cRXP_WARN_Buy a|r |T133024:0|t[Bronze Tube]
+    >>|cRXP_WARN_This is a limited supply item. Skip this step if |cRXP_FRIENDLY_Billibub Cogspinner|r doesn't have one|r
 --    >>You will need 2 bronze tubes for a quest later << Rogue
     .bronzetube
     .target Billibub Cogspinner
 step << Rogue
     #ah
     .goto StormwindClassic,57.38,56.77
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Marda Weller|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marda Weller|r
     >>|cRXP_BUY_Buy 1 or 2|r |T135343:0|t[Scimitars] |cRXP_BUY_if you can afford it or something better from the Auction House|r
     .collect 2027,2 --Scimitar
     .target Marda Weller
@@ -2806,7 +2806,7 @@ step << Rogue
 step << Rogue
     #ssf
     .goto StormwindClassic,57.38,56.77
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cFF00FF25Marda Weller|r
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Marda Weller|r
     >>|cRXP_BUY_Buy 1 or 2|r |T135343:0|t[Scimitars] |cRXP_BUY_if you can afford it|r
     .collect 2027,2 --Scimitar
     .money <0.3815

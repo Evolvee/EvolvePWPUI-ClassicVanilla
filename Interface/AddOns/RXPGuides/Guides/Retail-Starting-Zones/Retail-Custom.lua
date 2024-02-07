@@ -1,8 +1,9 @@
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup First Playthrough (Campaign) 60-70
+#groupweight 10
 #name 2) Ohn'ahran Plains Campaign
 #displayname Chapter 2 - Ohn'ahran Plains Campaign
 #next 3) The Azure Span Campaign
@@ -1546,7 +1547,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate 60-70
 #name B2Ohn'ahran Plains ToF
 #displayname Chapter 2 - Ohn'ahran Plains ToF
@@ -2667,7 +2668,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup First Playthrough (Campaign) 60-70
 #name 4) Thaldraszus Campaign
 #displayname Chapter 4 - Thaldraszus Campaign (End)
@@ -4600,7 +4601,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate 60-70
 #name D4Thaldraszus ToF
 #displayname Chapter 4 - Thaldraszus ToF (End)
@@ -6553,7 +6554,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup First Playthrough (Campaign) 60-70
 #displayname Chapter 3 - The Azure Span Campaign
 #name 3) The Azure Span Campaign
@@ -8950,7 +8951,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate 60-70
 #name C3Azure Span ToF
 #displayname Chapter 3 - The Azure Span ToF
@@ -10919,7 +10920,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup First Playthrough (Campaign) 60-70
 #displayname Chapter 1 - The Waking Shores Campaign
 #name 1) The Waking Shores Campaign
@@ -12044,6 +12045,32 @@ step
 .turnin 65120 >>Turn in How to Use Momentum with Your Dragon
 .target Celormu
 step
+.goto 2022,57.66,66.89
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Andestrasz|r
+.accept 77345 >>Accept The Need For Higher Velocities
+.target Lord Andestrasz
+step
+>>Use your |cRXP_WARN_Dragonriding Mount|r
+.complete 77345,1 
+step
+>>Follow the yellow rings. Use |T4640490:0|t[Surge Forward] after each one. Don't overuse it.
+.goto 2022,56.97,62.83
+.complete 77345,2 
+step
+>>Land on the rock
+.goto 2022,57.37,59.01
+.complete 77345,3 
+step
+.goto 2022,57.47,59.10
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Celormu|r
+.turnin 77345 >>Turn in The Need For Higher Velocities
+.target Celormu
+step
+.goto 2022,57.66,66.89
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Andestrasz|r
+.accept 68796 >>Accept The Skytop Observatory
+.target Lord Andestrasz
+step
 .goto 2022,57.65,66.88
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lord Andestrasz
 .accept 65133 >>Accept The Skytop Observatory
@@ -12919,7 +12946,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate 60-70
 #displayname Chapter 1 - The Waking Shores ToF
 #name A1The Waking Shores ToF
@@ -14139,6 +14166,32 @@ step
 .turnin 65133 >>Turn in How to Use Momentum with Your Dragon
 .target Celormu
 step
+.goto 2022,57.66,66.89
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Andestrasz|r
+.accept 77345 >>Accept The Need For Higher Velocities
+.target Lord Andestrasz
+step
+>>Use your |cRXP_WARN_Dragonriding Mount|r
+.complete 77345,1 
+step
+>>Follow the yellow rings. Use |T4640490:0|t[Surge Forward] after each one. Don't overuse it.
+.goto 2022,56.97,62.83
+.complete 77345,2 
+step
+>>Land on the rock
+.goto 2022,57.37,59.01
+.complete 77345,3 
+step
+.goto 2022,57.47,59.10
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Celormu|r
+.turnin 77345 >>Turn in The Need For Higher Velocities
+.target Celormu
+step
+.goto 2022,57.66,66.89
+>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Lord Andestrasz|r
+.accept 68796 >>Accept The Skytop Observatory
+.target Lord Andestrasz
+step
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Lord Andestrasz
 .goto 2022,57.66,66.89
 .accept 68796 >>Accept The Skytop Observatory
@@ -15054,6 +15107,10 @@ step
 .goto 2022,38.60,81.24
 .complete 66525,2 
 step
+>>Kill the |cff00ecffPrimalists|r in the area
+.goto 2022,38.32,80.76
+.complete 66526,1 
+step
 .goto 2022,39.01,83.26
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to Cataloger Wulferd and Dervishian
 .turnin 66525 >>Turn in Competitive Protography
@@ -15130,7 +15187,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate Multibox 60-70
 #name B2Ohn'ahran Plains Multibox
 #displayname Chapter 2 - Ohn'ahran Plains Multibox
@@ -16367,7 +16424,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate Multibox 60-70
 #name D4Thaldraszus Multibox
 #displayname Chapter 4 - Thaldraszus Multibox (End)
@@ -18068,7 +18125,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate Multibox 60-70
 #name C3Azure Span Multibox
 #displayname Chapter 3 - The Azure Span Multibox
@@ -19904,7 +19961,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
-#group Dragonflight 60-70
+#group RestedXP Dragonflight 60-70
 #subgroup Threads of Fate Multibox 60-70
 #displayname Chapter 1 - The Waking Shores Multibox
 #name A1The Waking Shores Multibox
@@ -22046,6 +22103,7 @@ step
 RXPGuides.RegisterGuide([[
 #df
 #version 4
+#groupweight -1
 #group RestedXP Leveling Preparation
 #subgroup Leveling Tips
 #name General Leveling Tips
@@ -22225,3 +22283,4 @@ step
 .collect 173126,1,0,0,1 
 .collect 153715,1,0,0,1 
 ]])
+

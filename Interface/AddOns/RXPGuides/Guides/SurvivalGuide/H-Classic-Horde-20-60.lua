@@ -3,7 +3,7 @@ RXPGuides.RegisterGuide([[
 #classic
 << Horde
 #name 35-37 Desolace Horde
-#version 13
+#version 15
 #group RestedXP Survival Guide (H)
 #subgroup RXP Survival Guide 30-40
 #next 37-39 Northern Stranglethorn
@@ -31,7 +31,7 @@ step
 .zoneskip Desolace
 step
 .goto Desolace,55.80,30.10
->>Kill and loot members of the |cRXP_ENEMY_Burning Blade|r until you get a |T134253:0|t[|cFF00BCD4Flayed Demon Skin|r]
+>>Kill and loot members of the |cRXP_ENEMY_Burning Blade|r until you get a |T134253:0|t[|cRXP_LOOT_Flayed Demon Skin|r]
 .collect 20310,1,1480 
 .accept 1480 >> Accept The Corrupter
 .mob Burning Blade Augur
@@ -89,13 +89,13 @@ step
 .goto Desolace,73.20,41.80,0
 .goto Desolace,73.00,46.80,0
 .goto Desolace,74.80,48.80
->>Kill |cRXP_ENEMY_Khan Dez'hepah|r. Loot him for his |cFF00BCD4Head|r
+>>Kill |cRXP_ENEMY_Khan Dez'hepah|r. Loot him for his |cRXP_LOOT_Head|r
 >>|cRXP_WARN_He has 3 different spawn locations in the camp|r
 .complete 1365,1 
 .unitscan Khan Dez'hepah
 step
 #completewith next
->>Kill |cRXP_ENEMY_Hatefury Shadowstalkers|r. Loot them for a |cFF00BCD4Scalp|r
+>>Kill |cRXP_ENEMY_Hatefury Shadowstalkers|r. Loot them for a |cRXP_LOOT_Scalp|r
 .complete 1481,1 
 .mob Hatefury Shadowstalker
 step
@@ -108,7 +108,7 @@ step
 .unitscan Hatefury Rogue
 step
 .loop 25,Desolace,75.26,27.91,76.77,27.73,77.54,26.68,78.20,25.63,78.90,24.60,78.74,23.15,79.33,20.96,79.69,18.92,79.36,16.18,77.43,15.44,75.96,15.89,74.52,15.66,72.81,16.83,71.58,17.94,71.50,20.22,72.36,21.23,73.04,22.41,73.09,24.41,73.79,25.72,75.26,27.91
->>Kill |cRXP_ENEMY_Hatefury Shadowstalkers|r. Loot them for a |cFF00BCD4Scalp|r
+>>Kill |cRXP_ENEMY_Hatefury Shadowstalkers|r. Loot them for a |cRXP_LOOT_Scalp|r
 .complete 1481,1 
 .mob Hatefury Shadowstalker
 step
@@ -158,7 +158,7 @@ step
 .goto Desolace,70.95,75.09,60,0
 .goto Desolace,73.36,73.37,60,0
 .goto Desolace,69.60,77.85
->>Kill |cRXP_ENEMY_Magram Centaur|r. Loot them for their |cFF00BCD4Ears|r
+>>Kill |cRXP_ENEMY_Magram Centaur|r. Loot them for their |cRXP_LOOT_Ears|r
 .complete 1366,1 
 .mob Magram Outrunner
 .mob Magram Scout
@@ -280,7 +280,7 @@ step
 step << Warlock/Druid/Shaman
 #ah
 .loop 25,Desolace,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4
->>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cFF00BCD4Shellfish|r
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cRXP_LOOT_Shellfish|r
 >>|cRXP_WARN_The droprates may be low|r
 .use 5996 >>Drink an |T134797:0|t[Elixir of Water Breathing]
 .collect 13545,10 
@@ -296,7 +296,7 @@ step << Warlock/Druid/Shaman
 step << !Warlock !Druid !Shaman
 #ah
 .loop 25,Desolace,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4,23.3,77.1,22.4,75.1,20.7,75.0,20.0,73.6,19.8,76.1,17.9,76.3,18.7,77.2,24.3,77.4
->>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cFF00BCD4Shellfish|r
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tClick |cRXP_PICK_Shellfish Traps|r to loot their |cRXP_LOOT_Shellfish|r
 >>|cRXP_WARN_The droprates may be low|r
 .use 5996 >>Drink an |T134797:0|t[Elixir of Water Breathing]
 .collect 13545,10 
@@ -314,7 +314,7 @@ step << !Warlock !Druid !Shaman
 step << Hunter
 .goto Desolace,24.93,71.84
 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tukk|r
->>|cFF0E8312Buy|r |T132382:0|t[Razor Arrows] |cFF0E8312from him|r
+>>|cRXP_BUY_Buy|r |T132382:0|t[Razor Arrows] |cRXP_BUY_from him|r
 .collect 3030,2600,5741,1 
 .target Tukk
 step
@@ -331,7 +331,7 @@ step
 .complete 1435,1 
 step
 .goto Desolace,55.20,30.10
->>Kill the |cRXP_ENEMY_Burning Blade Seer|r at the top of the tower. Loot it for the |cFF00BCD4Sceptre|r
+>>Kill the |cRXP_ENEMY_Burning Blade Seer|r at the top of the tower. Loot it for the |cRXP_LOOT_Sceptre|r
 .complete 5741,1 
 .mob Burning Blade Seer
 step
@@ -349,7 +349,7 @@ step
 .goto Desolace,54.43,27.22,10,0
 .goto Desolace,54.93,26.67
 >>Enter the larger building, then use the |T136248:0|t[Demon Pick] on the |cRXP_PICK_Hand of Iruxos Crystal|r
->>Kill the |cRXP_ENEMY_Demon Spirit|r after it spawns. Loot it for his |cFF00BCD4Box|r
+>>Kill the |cRXP_ENEMY_Demon Spirit|r after it spawns. Loot it for his |cRXP_LOOT_Box|r
 .complete 5381,1 
 .mob Demon Spirit
 step
@@ -384,17 +384,17 @@ step << !Warlock !Druid !Shaman
 .itemcount 5996,1
 step
 #completewith Rackmore
->>Kill |cRXP_ENEMY_Slitherblade Oracles|r. Loot them for an |cFF00BCD4Oracle Crystal|r
+>>Kill |cRXP_ENEMY_Slitherblade Oracles|r. Loot them for an |cRXP_LOOT_Oracle Crystal|r
 >>|cRXP_ENEMY_Slitherblade Oracles|r |cRXP_WARN_share spawns with other|r |cRXP_ENEMY_Slitherblade Nagas|r|cRXP_WARN_; you may have to kill them|r
 .complete 1482,1 
 .mob Slitherblade Oracle
 step
 #completewith BookoftheAncients
->>Kill |cRXP_ENEMY_Slitherblade Nagas|r. Loot them for the |cFF00BCD4Golden Key|r
+>>Kill |cRXP_ENEMY_Slitherblade Nagas|r. Loot them for the |cRXP_LOOT_Golden Key|r
 .complete 6161,2 
 step
 #completewith ClamMeat
->>Kill |cRXP_ENEMY_Drysnap Pincers|r and |cRXP_ENEMY_Crawlers|r. Loot them for the |cFF00BCD4Silver Key|r
+>>Kill |cRXP_ENEMY_Drysnap Pincers|r and |cRXP_ENEMY_Crawlers|r. Loot them for the |cRXP_LOOT_Silver Key|r
 .complete 6161,1 
 .mob Drysnap Pincer
 .mob Drysnap Crawler
@@ -415,7 +415,7 @@ step
 .goto Desolace,35.36,25.03,40,0
 .goto Desolace,34.34,23.11,40,0
 .goto Desolace,32.97,28.58
->>|TInterface/GossipFrame/HealerGossipIcon:0|tLoot the |cRXP_PICK_Giant Softshell Clams|r for their |cFF00BCD4Meat|r
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tLoot the |cRXP_PICK_Giant Softshell Clams|r for their |cRXP_LOOT_Meat|r
 >>|cRXP_ENEMY_Enraged Reef Crawlers|r |cRXP_WARN_can also drop the|r |cRXP_PICK_Giant Softshell Clams|r
 .complete 6142,1 
 .mob Enraged Reef Crawler
@@ -427,7 +427,7 @@ step
 .goto Desolace,35.36,25.03,40,0
 .goto Desolace,34.34,23.11,40,0
 .goto Desolace,32.97,28.58
->>Kill |cRXP_ENEMY_Drysnap Pincers|r and |cRXP_ENEMY_Cralwers|r. Loot them for the |cFF00BCD4Silver Key|r
+>>Kill |cRXP_ENEMY_Drysnap Pincers|r and |cRXP_ENEMY_Cralwers|r. Loot them for the |cRXP_LOOT_Silver Key|r
 .complete 6161,1 
 .mob Drysnap Pincer
 .mob Drysnap Crawler
@@ -439,13 +439,13 @@ step
 step
 #label BookoftheAncients
 .goto Desolace,28.20,6.60
->>|TInterface/GossipFrame/HealerGossipIcon:0|tClick the |cRXP_PICK_Serpent Statue|r to summon |cRXP_ENEMY_Lord Kragaru|r. Kill him and loot him for his |cFF00BCD4Book|r
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tClick the |cRXP_PICK_Serpent Statue|r to summon |cRXP_ENEMY_Lord Kragaru|r. Kill him and loot him for his |cRXP_LOOT_Book|r
 >>|cRXP_WARN_Kill everything around the Serpent Statue first!|r
 .complete 6027,1 
 .mob Lord Kragaru
 step
 .loop 25,Desolace,28.48,11.14,27.24,10.26,27.81,7.83,27.87,5.71,28.66,6.74,30.07,6.86,30.96,7.87,30.33,8.98,29.99,11.23,28.48,11.14
->>Kill |cRXP_ENEMY_Slitherblade Nagas|r. Loot them for the |cFF00BCD4Golden Key|r
+>>Kill |cRXP_ENEMY_Slitherblade Nagas|r. Loot them for the |cRXP_LOOT_Golden Key|r
 .complete 6161,2 
 step
 #label Rackmore
@@ -463,7 +463,7 @@ step
 .mob Slitherblade Sorceress
 step
 .loop 25,Desolace,28.48,11.14,27.24,10.26,27.81,7.83,27.87,5.71,28.66,6.74,30.07,6.86,30.96,7.87,30.33,8.98,29.99,11.23,28.48,11.14
->>Kill |cRXP_ENEMY_Slitherblade Oracles|r. Loot them for an |cFF00BCD4Oracle Crystal|r
+>>Kill |cRXP_ENEMY_Slitherblade Oracles|r. Loot them for an |cRXP_LOOT_Oracle Crystal|r
 >>|cRXP_ENEMY_Slitherblade Oracles|r |cRXP_WARN_share spawns with other|r |cRXP_ENEMY_Slitherblade Nagas|r|cRXP_WARN_; you may have to kill them|r
 .complete 1482,1 
 .mob Slitherblade Oracle
@@ -513,7 +513,7 @@ step
 .goto Desolace,73.18,75.11,30,0
 .goto Desolace,73.57,74.21,30,0
 .goto Desolace,73.67,72.90,30,0
->>|TInterface/GossipFrame/HealerGossipIcon:0|tLoot the |cRXP_PICK_Sacks of Meat|r around Magram Village for their |cFF00BCD4Meat|r
+>>|TInterface/GossipFrame/HealerGossipIcon:0|tLoot the |cRXP_PICK_Sacks of Meat|r around Magram Village for their |cRXP_LOOT_Meat|r
 .complete 1370,1 
 step
 .goto Desolace,36.21,79.24
