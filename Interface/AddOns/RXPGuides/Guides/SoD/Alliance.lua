@@ -1,7 +1,7 @@
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Druid SoD/Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Lacerate - 12 (Darkshore) << Druid
 #name Beast Mastery - 12 (Darkshore) << Hunter
@@ -38,7 +38,7 @@ step << Druid/Hunter
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Druid SoD/Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Mangle - 8 (Teldrassil) << Druid
 #name Explosive Shot - 8 (Teldrassil) << Hunter
@@ -137,14 +137,14 @@ step << Druid
 step << Druid
     .train 410025 >>|cRXP_WARN_Use the|r |T136061:0|t|cRXP_LOOT_[Idol of Ursine Rage]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Mangle]
     .use 206954
-    .aura 414824
+    .aura -414824
     .train 410025,1
 ]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Rogue SoD/Alliance Warrior SoD/Alliance Priest SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest << Rogue/Priest
 #subgroup Legs << Warrior
 #name Slaughter from the Shadows - 8 (Teldrassil) << Rogue
@@ -184,7 +184,7 @@ step << Priest
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Rogue SoD/Alliance Priest SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves << Rogue
 #subgroup Legs << Priest
 #name Mutilate - 8 (Teldrassil) << Rogue

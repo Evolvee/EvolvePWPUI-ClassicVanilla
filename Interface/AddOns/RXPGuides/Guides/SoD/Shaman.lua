@@ -1,7 +1,7 @@
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Molten Blast - 8 (Mulgore)
 #next Lava Lash - 10 (Mulgore)
@@ -165,7 +165,7 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Sulfurous Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Molten Blast]
     .use 206388
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 425344,1
     .xp <3,1
@@ -174,12 +174,12 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Molten Blast - 10 (Durotar)
 #next Way of Earth - 12 (The Barrens)
-        
-        
+
+
     --Rune of Molten Blast
 step
     +|cRXP_WARN_You MUST be at least level 10 in order to acquire|r |T133816:0|t[Engrave Gloves - Molten Blast] |cRXP_WARN_as it is the level requirement of training|r |T135813:0|t[Flame Shock]
@@ -358,18 +358,17 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Sulfurous Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Molten Blast]
     .use 206388
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 425344,1
     .xp <10,1
 --XX Cast ID may be wrong, may need to be checked
 ]])
-        
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Lava Lash - 10 (Mulgore)
 #next Ancestral Guidance - 10 (Mulgore)
@@ -598,11 +597,10 @@ step
     .xp <4,1
 ]])
 
-
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Water Shield - 20 (The Barrens)
 #next Shamanistic Rage - 25 (Stonetalon Mountains)
@@ -805,7 +803,7 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T135832:0|t|cRXP_LOOT_[Tempest Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Water Shield]
     .use 206382
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410097,1
     .xp <20,1
@@ -814,7 +812,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Water Shield - 20 (Silverpine Forest)
 #next Shamanistic Rage - 25 (Stonetalon Mountains)
@@ -954,7 +952,7 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T135832:0|t|cRXP_LOOT_[Tempest Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Water Shield]
     .use 206382
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410097,1
     .xp <20,1
@@ -1010,7 +1008,7 @@ step
     >>|cRXP_WARN_Move out of the|r |T135805:0|t[Lava]
     .cast 402265 >>|cRXP_WARN_Use the|r |T134920:0|t|cRXP_LOOT_[Kajaric Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Lava Burst]
     .use 206387
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410095,1
     .xp <25,1
@@ -1019,7 +1017,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Lava Burst - 25 (Hillsbrad Foothills)
 #next Earth Shield - 25 (Azeroth)
@@ -1070,16 +1068,15 @@ step
     >>|cRXP_WARN_Move out of the|r |T135805:0|t[Lava]
     .cast 402265 >>|cRXP_WARN_Use the|r |T134920:0|t|cRXP_LOOT_[Kajaric Icon]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Lava Burst]
     .use 206387
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410095,1
 ]])
 
-
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Overload - 3 (Durotar)
 #next Shield Mastery - 6 (Durotar)
@@ -1127,7 +1124,7 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Dyadic Icon]|r |cRXP_WARN_to learn|r |T133815:0|t[Engrave Chest - Overload]
     .use 206381
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410094,1
     .xp <3,1
@@ -1138,13 +1135,12 @@ step << !Tauren skip
     .turnin 77585 >>Turn in Icons of Power << Orc Shaman
     .target Shikrik
     .xp <3,1
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Overload - 3 (Mulgore)
 #next Shield Mastery - 6 (Mulgore)
@@ -1204,7 +1200,7 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Dyadic Icon]|r |cRXP_WARN_to learn|r |T133815:0|t[Engrave Chest - Overload]
     .use 206381
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410094,1
     .xp <3,1
@@ -1214,13 +1210,12 @@ step << Tauren skip
     .turnin 77652 >>Turn in Icons of Power
     .target Meela Dawnstrider
     .xp <3,1
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Shield Mastery - 6 (Durotar)
 #next Molten Blast - 10 (Durotar)
@@ -1382,19 +1377,17 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Galvanic Icon]|r |cRXP_WARN_to learn|r |T133815:0|t[Engrave Chest - Shield Mastery]
     .use 206386
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410098,1
     .xp <3,1
 --XX Cast ID may be wrong, may need to be checked
 ]])
 
-
-
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Shield Mastery - 6 (Mulgore)
 #next Molten Blast - 8 (Mulgore)
@@ -1593,18 +1586,17 @@ step
 step
     .cast 402265 >>|cRXP_WARN_Use the|r |T134918:0|t|cRXP_LOOT_[Galvanic Icon]|r |cRXP_WARN_to learn|r |T133815:0|t[Engrave Chest - Shield Mastery]
     .use 206386
-    .aura 408828
+    .aura -408828
     .itemStat 18,QUALITY,2
     .train 410098,1
     .xp <3,1
 --XX Cast ID may be wrong, may need to be checked
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Ancestral Guidance - 6 (Durotar)
 #next Molten Blast - 10 (Durotar)
@@ -1651,13 +1643,12 @@ step
     .itemcount 210589,1 --Echo of the Ancestors (1)
     .train 410099,1
     .xp <3,1
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Ancestral Guidance - 10 (Mulgore)
 #next Way of Earth - 12 (The Barrens)
@@ -1726,13 +1717,12 @@ step
     .itemcount 210589,1 --Echo of the Ancestors (1)
     .train 410099,1
     .xp <3,1
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Way of Earth - 12 (The Barrens)
 #next Water Shield - 20 (The Barrens)
@@ -1815,7 +1805,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Way of Earth - 14 (Silverpine Forest)
 #next Water Shield - 20 (Silverpine Forest)
@@ -1878,7 +1868,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Shamanistic Rage - 25 (Stonetalon Mountains)
 #next Dual Wield Specialization - 25 (Ratchet)
@@ -1916,7 +1906,7 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Shaman SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Earth Shield - 25 (Azeroth)
 #next Overload - 3 (Durotar) << Orc Shaman/Troll Shaman
@@ -2099,7 +2089,7 @@ step
 --XX Not totally sure if any of the elementals in the charred vale do/don't share spawns? It's a total clown fiesta
 step
     #loop
-    .goto Stonetalon Mountains,45.60,44.18,50,0 
+    .goto Stonetalon Mountains,45.60,44.18,50,0
     .goto Stonetalon Mountains,44.54,43.43,50,0
     .goto Stonetalon Mountains,43.96,39.90,50,0
     .goto Stonetalon Mountains,43.62,41.14,50,0
@@ -2214,3 +2204,349 @@ step
     .xp <25,1
 ]])
 
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Shaman SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#name Fire Nova
+
+-- Fire Nova
+
+step
+    #completewith next
+    .zone Desolace >>Travel to |cFFfa9602Desolace|r
+step
+    .goto Desolace,56.6,21.8
+    >>Kill |cRXP_ENEMY_Flameseer Dubelen|r. Loot him for |T136008:0|t|cRXP_LOOT_Corrupted Fire Totem|r
+    .collect 213451,1
+    .mob Flameseer Dubelen
+step
+    #completewith next
+    .zone Orgrimmar >>Travel to |cFFfa9602Orgrimmar|r
+step
+    .goto Orgrimmar,39.0,38.0
+    .gossip 4047 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zor Lonetree|r and select the dialogoption
+    -- .gossipoption --x insert id
+    .target Zor Lonetree
+step
+    #completewith next
+    .zone Desolace >>Travel to |cFFfa9602Desolace|r
+step
+    .goto 1443,38.23,61,25,0
+    .goto 1443,37.13,60.41,25,0
+    .goto 1443,35.38,58.25,25,0
+    .goto 1443,33.03,55.4,25,0
+    .goto 1443,30.87,57.86,25,0
+    .goto 1443,29.85,62.5,25,0
+    .goto 1414,38.38,57.98,25,0
+    .goto 1414,38.42,57.98,25,0
+    .goto 1414,38.35,58.14,25,0
+    .goto 1414,38.28,58.17,25,0
+    .goto 1414,38.24,58.03,25,0
+    .goto 1414,38.31,58.02,25,0
+    .goto 1414,38.47,58.17,25,0
+    .goto 1414,38.6,58.24,25,0
+    .goto 1414,38.73,58.18,25,0
+    .goto 1414,38.83,58.31,25,0
+    .goto 1414,39.01,58.3,25,0
+    .goto 1414,39.17,58.09,25,0
+    .goto 1414,39.01,57.87,25,0
+    .goto 1414,39.26,57.69
+    >>Click on the |cRXP_PICK_Blue Crystal|r amongst the orange crystals to collect |T134088:0|t[Tear of Theradras] |cRXP_WARN_Be careful as enemies in this are elite & stun|r |cFFFF0000you are likely going to die multiple times.|r
+    .collect 213553,1
+step
+    .goto 1414,38.45,57.84,25,0
+    .goto 1414,38.64,57.69,25,0
+    .goto 1414,38.52,57.52,25,0
+    .goto 1414,38.43,57.43,25,0
+    .goto 1443,29.65,57.19,25,0
+    .goto 1443,27.72,57.51
+    >>Click on a |cRXP_PICK_Blue Crystal|r amongst the purple crystals to collect |T134088:0|t[Tear of Theradras] |cRXP_WARN_Be careful as enemies in this are elite & stun|r |cFFFF0000you are likely going to die multiple times.|r
+    .collect 213552,1
+step
+    .goto Orgrimmar,39.0,38.0
+    .gossip 4047 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Zor Lonetree|r and select the dialogoption
+    -- .gossipoption --x insert id
+    .target Zor Lonetree
+step
+    #completewith next
+    .zone Thunder Bluff >>Travel to |cFFfa9602Thunder Bluff|r
+step
+    .goto Thunder Bluff,78.6,28.6
+    .gossip 5769 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Hamuul Runetotem|r and select the dialogoption
+    -- .gossipoption --x insert id
+    .target Arch Druid Hamuul Runetotem
+step
+    -- .gossipoption --x insert id
+    .goto Thunderbluff,46.8,50.0
+    .gossip 2995 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Tal|r and select the dialogoption to fly to moonglade
+    .target Tal
+step
+    #completewith next
+    .zone Moonglade >>Travel to |cFFfa9602Moonglade|r
+step
+    .goto Moonglade,36.2,41.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Keeper Remulos|r
+    .collect 213558,1
+    .target Keeper Remulos
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Shaman SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#name Maelstrom Weapon - 40 (Azeroth)
+
+-- Maelstrom Weapon
+
+step
+    .train 410100,1
+    #completewith next
+    .zone The Barrens >>Travel to |cFFfa9602The Barrens|r
+step
+    .train 410100,1
+    >>Kill |cRXP_ENEMY_Charlga Razorflank|r. Loot him for |T134944:0|t|cRXP_LOOT_Tattered Note|r |cRXP_WARN_It is highly recommended to form a group of 5 players.|r
+    .collect 212748,1
+step
+    .train 410100,1
+    >>Click on the |T134944:0|t[Tattered Note] in your bags to accept the quest.
+    .accept 79358 --Tattered Note
+step
+    .train 410100,1
+    #completewith next
+    .zone Thousand Needles >>Travel to |cFFfa9602Thousand Needles|r
+step
+    .train 410100,1
+    .goto Thousand Needles,46.0,51.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rau Cliffrunner|r
+    .turnin 79358 --Tattered Note
+    .accept 79360 --Elemental Aid
+    .target Rau Cliffrunner
+step
+    .train 410100,1
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jania|r and buy 1 |T132793:0|t[Crystal Vial]
+    .collect 8925,1
+step
+    .train 410100,1
+    #completewith next
+    .zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
+step
+    .train 410100,1
+    .goto Alterac Mountains,80.4,66.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    .turnin 79360 -- Elemental Aid
+    .accept 79361 -- Power of da Wind
+    .accept 79362 -- Power of da Earth
+    .accept 79363 -- Power of da Water
+    .target Bath'rah the Windwatcher
+step
+    .train 410100,1
+    #completewith next
+    .zone Desolace >>Travel to |cFFfa9602Desolace|r
+step
+    .train 410100,1
+    #loop
+    .goto Desolace,48.0,27.2,25,0
+    .goto Desolace,40.6,37.0,25,0
+    .goto Desolace,50.8,42.0,25,0
+    .goto Desolace,64.4,39.4,25,0
+    .goto Desolace,68.4,48.4,25,0
+    .goto Desolace,69.4,64.6,25,0
+    .goto Desolace,58.8,65.6,25,0
+    >>Kill |cRXP_ENEMY_Whirlwind Ripper|r. Loot them for |T132845:0|t|cRXP_LOOT_Whirling Essence|r
+    .complete  79361 -- Power of da Wind
+    .mob Whirlwind Ripper
+step
+    .train 410100,1
+    #completewith next
+    .zone Dustwallow Marsh >>Travel to |cFFfa9602Dustwallow Marsh|r
+step
+    .train 410100,1
+    #loop
+    .goto Dustwallow Marsch,42.6,30.0,25,0
+    .goto Dustwallow Marsch,35.2,44.6,25,0
+    .goto Dustwallow Marsch,42.6,62.0,25,0
+    .goto Dustwallow Marsch,50.0,54.0,25,0
+    >>Kill |cRXP_ENEMY_Withervine Mire Beast|r. Loot them for |T132846:0|t|cRXP_LOOT_Rumbling Essences|r
+    .complete 79363,1 -- Power of da Water
+    .mob Withervine Mire Beast
+step
+    .train 410100,1
+    #completewith next
+    .zone Badlands >>Travel to |cFFfa9602Badlands|r
+step
+    .train 410100,1
+    #loop
+    .goto Badlands,13.8,38.6,25,0
+    .goto Badlands,18.8,42.8,25,0
+    .goto Badlands,23.0,47.4,25,0
+    >>Kill |cRXP_ENEMY_Lesser Rock Elemental|r and |cRXP_ENEMY_Lesser Rock Elemental|r. Loot them for |T132846:0|t|cRXP_LOOT_Rumbling Essences|r
+    .complete 79362,1 -- Power of da Earth
+    .mob Rock Elemental
+    .mob Lesser Rock Elemental
+step
+    .train 410100,1
+    #completewith next
+    .zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
+step
+    .train 410100,1
+    .goto Alterac Mountains,80.4,66.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    .turnin 79361 -- Power of da Wind
+    .turnin 79362 -- Power of da Earth
+    .turnin 79363 -- Power of da Water
+    .accept 79364 -- A Simple Container
+    .turnin 79364 -- A Simple Container
+    .accept 79365 -- With Wind Beneath Your Wings
+    .target Bath'rah the Windwatcher
+step
+    .train 410100,1
+    #completewith next
+    .zone Thousand Needles >>Travel to |cFFfa9602Thousand Needles|r
+step
+    .train 410100,1
+    .goto Thousand Needles,46.0,51.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rau Cliffrunner|r
+    .turnin 79365 -- With Wind Beneath Your Wings
+    .accept 79366 --Calm Before the Storm
+    .target Rau Cliffrunner
+step
+    .train 410100,1
+    .gossip 4317 >>|Tinterface/worldmap/chatbubble_64grey.blp:20|t>>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nyse|r and select the 2nd dialog option
+    .target Nyse
+step
+    .train 410100,1
+    >>Kill the |cRXP_ENEMY_Ravaging Tempest|r |cFFFF0000If you die in the process talk to the |cRXP_FRIENDLY_Spirit Healer|r to teleport you to your corpse|r
+    .collect 212792,1
+    .mob Dreath's Head Necromancer
+    .mob Skeletal Servant
+    .mob Ravaging Tempest
+step
+    .train 410100,1
+    .vehicle >> Interact with the |cRXP_FRIENDLY_Freewind Post Wyvern|r
+    .timer 9, Flight RP
+step
+    .train 410100,1
+    .goto Thousand Needles,46.0,51.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Rau Cliffrunner|r
+    .turnin 79366 --Calm Before the Storm
+    .accept 79442 --Catching up
+    .target Rau Cliffrunner
+step
+    .train 410100,1
+    #completewith next
+    .zone Hillsbrad Foothills >>Travel to |cFFfa9602Hillsbrad Foothills|r
+step
+    .train 410100,1
+    .goto Alterac Mountains,80.4,66.8
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk |cRXP_FRIENDLY_Bath'rah the Windwatcher|r
+    .turnin 79442 --Catching up
+    .target Bath'rah the Windwatcher
+step
+    .train 410100 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Storm|r] to learn |T136032:0|t[Maelstrom Weapon]
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Shaman SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#name Power Surge - 30 (Arathi Highlands)
+
+-- Power Surge
+
+step
+    .train 416054,1
+    #completewith next
+    .zone Arathi Highlands >>Travel to |cFFfa9602Arathi Highlands|r |cRXP_WARN_|cRXP_WARN_It is highly recommended to form a group of atleast 3 players.|r
+step
+    .train 416054,1
+    .goto Arathi Highlands,33.8,49.2,20,0
+    .goto Arathi Highlands,37.6,46.8,20,0
+    .goto Arathi Highlands,33.8,39.8,20,0
+    .goto Arathi Highlands,32.0,41.2,20,0
+    >>Kill |cRXP_ENEMY_Boulderfist Ogre|r. Loot them for |T134921:0|t|cRXP_LOOT_[Ogre Lightning Rod]|r
+    .collect 213426,1
+    .mob Boulderfist Ogre
+step
+    .train 416054,1
+    .goto Arathi Highlands,34.5 43.8
+    .cast 434350 >>Click the |cRXP_PICK_Soft Soil|r to insert the |T134921:0|t|cRXP_LOOT_[Lightning Rod]|r into the ground.
+step
+    .train 416054,1
+>>
+    .collect 213093,1 >> Cast |T136048:0|t[Lightning Bolt] 10 times on the |cRXP_ENEMY_Lightning Rod|r then Kill |cRXP_ENEMY_Tamkar|r. Loot him for |T134419:0|t[Rune of Power]
+    .mob Lightning Rod
+    .mob tamkar
+step
+    .train 416054 >>|cRXP_WARN_Use the|r |T134419:0|t[Rune of Power] |cRXP_WARN_to learn|r |T134337:0|t[Power Surge]
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Shaman SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#title Decoy Totem
+#name Decoy Totem - 27 (Thousand Needles)
+
+-- Decoy Totem
+
+step
+    .train 425882,1
+    .zone Thousand Needles >>Travel to |cFFfa9602Thousand Needles|r
+step
+    .train 425882,1
+    .goto Thousand Needles,46.0,51.6
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jandia|r and buy 1 |T132906:0|t[Silken Thread]
+    .buy 4291,1
+step
+    .train 425882,1
+    #loop
+    .goto Thousand Needles,26.6,47.8,20,0
+    .goto Thousand Needles,28.6,51.2,20,0
+    .goto Thousand Needles,44.4,59.4,20,0
+    .goto Thousand Needles,39.0,56.6,20,0
+    .goto Thousand Needles,46.4,59.6,20,0
+    >>Kill |cRXP_ENEMY_Cloud Serpent|r and |cRXP_ENEMY_Screeching Harpy|r loot them for |cRXP_LOOT_Cloud Serpent Fang|r and |cRXP_LOOT_Strong Harpy Feather|r
+    .collect 213709,3
+    .collect 213701,10
+    .mob Cloud Serpent
+    .mob Screeching Harpy
+step
+    .train 425882,1
+    >>Use |T133723:0|t[Cloud Serpent Fang] or |T132927:0|t[Strong Harpy Feather] to create |T133291:0|t[Offering to the Wind Spirit]
+    .collect 213737,1
+    .use 213709
+    .use 213701
+step
+    .goto Thousand Needles,45,6,65.3
+    .train 425882 >>Use the |T133291:0|t[Offering to the Wind Spirit] near the Altar of the Wind Spirit to learn |T134508:0|t[Decoy Totem]
+    .use 213737
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Horde Shaman SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#title Spirit of the Alpha
+#name Spirit of the Alpha - 27 (Thousand Needles)
+
+-- Spirit of the Alpha
+
+
+step
+    .train 410103,1
+    .zone Thousand Needles >>Travel to |cFFfa9602Thousand Needles|r
+step
+    .train 410103,1
+    .goto Thousand Needles,46.4,53.5
+    >>Click on the |cRXP_PICK_Weathered Cache|r to loot |T136095:0|t|cRXP_LOOT_Echo of the Alpha|r
+    .collect 206985,1
+step
+    .train 410103 >>|cRXP_WARN_Use the|r |T136095:0|t|cRXP_LOOT_Echo of the Alpha|r |cRXP_WARN_to learn|r |T408696:0|t[Spirit of the Alpha]
+    .use 206985
+]])

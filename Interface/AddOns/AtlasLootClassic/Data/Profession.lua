@@ -1386,8 +1386,8 @@ PROFESSION_DATA.CLASSIC = {
 	[435910] = {213376,2,200,210,220,{6037,213373},{1,5}}, -- Low-Background Truesilver Plates
 	[435906] = {215167,2,225,230,235,{6037,213376,213379,213383},{1,4,2,1}}, -- Reflective Truesilver Braincage
 	[435908] = {215161,2,225,230,235,{6037,213376,213379,213369},{1,4,1,2}}, -- Tempered Interference-Negating Helmet
-	[435903] = {215138,10,225,235,240,{11177,11176,9224},{1,2,1}}, -- Enchant Chest - Retricutioner 
-	[435481] = {215129,10,225,235,240,{11134,5637,11138},{1,2,1}}, -- Enchant Weapon - Dismantle
+	[435903] = {215138,10,225,235,240,{11177,11176},{1,2}}, -- Enchant Chest - Retricutioner 
+	[435481] = {215129,10,225,235,240,{11174,5637,11177},{4,2,2}}, -- Enchant Weapon - Dismantle
 	[435966] = {215168,9,225,230,235,{10505,215430,3860},{2,1,2}}, -- Ez-Thro Radiation Bomb  
 	[435964] = {215127,9,225,230,235,{10505,215430,3860},{1,1,2}}, -- High-Yield Radiation Bomb
 	[435960] = {215115,9,225,230,235,{213383,213379,213369},{3,3,1}}, -- Hyperconductive Goldwrap
@@ -1426,6 +1426,7 @@ PROFESSION_DATA.CLASSIC = {
 	[439100] = {217256,8,170,190,220,{4305,7067,2321},{3,1,2}}, -- Earthen Vest
 	[439102] = {217257,8,165,185,215,{4305,2321,4337},{3,2,2}}, -- Enchanter's Cowl
 	[439094] = {217252,8,185,205,235,{4305,3827,4291},{4,1,1}}, -- Long Silken Cloak
+	[439960] = {217398,4,190,210,215,{3356,3821,8925},{1,1,1}}, -- Lesser Arcane Elixir
 }
 if AtlasLoot:GameVersion_GE(AtlasLoot.BC_VERSION_NUM) then
     PROFESSION_DATA.BCC = {

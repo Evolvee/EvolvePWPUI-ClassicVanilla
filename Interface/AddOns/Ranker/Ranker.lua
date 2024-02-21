@@ -186,7 +186,7 @@
                     local timestampsTwoDays = 2 * 24 * 60 * 60
                     local timestampNow = time()
                     if ((timestampNow >= timestampNextPhase and GetSecondsUntilWeeklyReset() > timestampsTwoDays) or timestampNow >= timestampNextPhaseForAll) then
-                        if gameTocVersion * 1 >= 11500 and gameBuild * 1 >= 52610 then
+                        if gameTocVersion * 1 >= 11501 and gameBuild * 1 >= 53247 then
                             maxObtainableRank = 5
                         end
                     else
@@ -194,22 +194,25 @@
                             maxObtainableRank = 3
                         end
                     end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= ????? and gameBuild * 1 > ????? then
+                        -- maxObtainableRank = ?
+                    -- end
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 9
                     -- end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 10
                     -- end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 11
                     -- end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 12
                     -- end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 13
                     -- end
-                    -- if gameTocVersion * 1 >= 11500 and gameBuild * 1 > ??? then
+                    -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                     --     maxObtainableRank = 14
                     -- end
                     lookupData.defaults.rankerObjective = maxObtainableRank

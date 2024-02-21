@@ -458,7 +458,7 @@ step << Druid
     >>Ascend the Aldrassil Tree
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mardant Strongoak|r
 	.turnin 3120 >> Turn in Verdant Sigil
-    .accept 77571 >> Accept Relics of the Kaldorei
+    .turnin -77571 >> Turn in Relics of the Kaldorei
     .train 8921 >>Train |T136096:0|t[Moonfire]
     .target Mardant Strongoak
 step
@@ -994,6 +994,13 @@ step << Druid
     .itemcount 2495,1
     .itemStat 16,ITEM_MOD_DAMAGE_PER_SECOND_SHORT,<4.19
 step << Druid
+#xprate >1.49
+    .goto Teldrassil,56.142,61.714
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corithras Moonrage|r
+    .turnin 929 >> Turn in Crown of the Earth
+    .target Corithras Moonrage
+step << Druid
+#xprate <1.50
     .goto Teldrassil,56.142,61.714
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Corithras Moonrage|r
     .turnin 929 >> Turn in Crown of the Earth
@@ -1090,7 +1097,7 @@ step << Priest
 step << Priest
     #season 2
     .train 402852 >> |cRXP_WARN_Use the|r |T135975:0|t[|cRXP_FRIENDLY_Prophecy of a Desecrated Citadel|r] |cRXP_WARN_to train|r |T237570:0|t[Homunculi]
-    >>|cRXP_WARN_You must have a|r |T135934:0|t|T136057:0|t[Meditation] |cRXP_WARN_buff by typing /kneel in a holy area such as, a moonwell, Northshire Abbey, Stormwind Cathedral, the Altars of Light in Anvilmar, Loch Modan or the Mystic Ward in Ironforge|r
+    >>|cRXP_WARN_You must have 2|r |T135934:0|t|T136057:0|t[Meditation] |cRXP_WARN_buffs by typing /kneel in a holy area such as, a moonwell, Northshire Abbey, Stormwind Cathedral, the Altars of Light in Anvilmar, Loch Modan or the Mystic Ward in Ironforge|r
     .use 205947
     .itemcount 205947,1
 step << Rogue
@@ -1237,7 +1244,7 @@ step << Hunter
     .goto Teldrassil,46.6,46.3
     >>|cRXP_WARN_Cast|r |T132212:0|t[Hunter's Mark] |cRXP_WARN_on the|r |cRXP_ENEMY_Rustling Bush|r
     >>Kill the |cRXP_ENEMY_Fallenroot Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
-    .collect 206155,1 --Rune of Markmanship (1)
+    .collect 206155,1 --Rune of Marksmanship (1)
     .mob Rustling Bush
     .mob Fallenroot Poacher
     .train 410113,1 --Master Marksman
@@ -1628,8 +1635,8 @@ step << Druid
     .accept 5931 >> Accept Back to Darnassus
 step
     #requires xp10 << Rogue
-    #completewith next << !Rogue
     .hs >> Hearth to Dolanaar
+    .subzoneskip 186
 step << Hunter
     .goto Teldrassil,55.890,59.205
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Jeena Featherbow|r
@@ -2042,7 +2049,7 @@ step
     .goto Darnassus,34.814,9.255
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Arch Druid Fandral Staghelm|r
     .turnin 935 >> Turn in Crown of the Earth
-    .turnin 940 >> Turn in Teldrassil << Hunter
+    .turnin -940 >> Turn in Teldrassil
     .target Arch Druid Fandral Staghelm
     .accept 952 >> Accept Grove of the Ancients
 step
@@ -2086,10 +2093,11 @@ step
     .goto Darnassus,56.245,54.039,-1
     .goto Darnassus,56.374,51.820,-1
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to a |cRXP_FRIENDLY_Darnassus Auctioneer|r
-    >>Buy the following items for a instant turn ins at Darkshore shortly. Skip this step if you wish to not buy any
-    >>|T133972:0|t[Strider Meat]
-    >>|T133912:0|t[Darkshore Grouper]
+    >>Buy the following items for instant turn ins at Darkshore later:
     >>|T134187:0|t[Earthroot] << Druid
+    >>|T133912:0|t[Darkshore Grouper]
+    >>|T133972:0|t[Strider Meat]
+    *Skip this step if you wish to not buy any
     .collect 5469,5,2178,1 -- Strider Meat (5)
     .collect 12238,6,1141,1 -- Darkshore Grouper (6)
     .collect 2449,5,6123,1 << Druid

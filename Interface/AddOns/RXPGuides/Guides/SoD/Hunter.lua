@@ -1,9 +1,10 @@
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chimera Shot - 2 (Dun Morogh)
+#title Chimera Shot
 
 
 step
@@ -45,9 +46,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chimera Shot - 3 (Teldrassil)
+#title Chimera Shot
 
 step
     +|cRXP_WARN_You should be at least level 3 in order to acquire|r |T133816:0|t[Engrave Gloves - Chimera Shot] |cRXP_WARN_in Teldrassil alone|r
@@ -93,10 +95,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Explosive Shot - 5 (Dun Morogh)
-
+#title Explosive Shot
 
 step
     +|cRXP_WARN_You should be at least level 5 in order to acquire|r |T133816:0|t[Engrave Gloves - Explosive Shot] |cRXP_WARN_in Dun Morogh alone|r
@@ -144,9 +146,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Explosive Shot - 2 (Durotar)
+#title Explosive Shot
 
 
     --Rune of Explosive Shot
@@ -168,9 +171,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chimera Shot - 2 (Durotar)
+#title Chimera Shot
 
 
     --Rune of Chimera Shot
@@ -206,9 +210,10 @@ step << !Tauren
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chimera Shot - 2 (Mulgore)
+#title Chimera Shot
 
 
     --Rune of Chimera Shot
@@ -249,9 +254,10 @@ step << Tauren
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Marksman - 6 (Durotar)
+#title Master Marksman
 
 
     --Rune of Master Marksman
@@ -261,7 +267,7 @@ step
     .goto Durotar,40.61,52.19
     >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
     >>Kill the |cRXP_ENEMY_Razormane Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
-    .collect 206155,1 --Rune of Markmanship (1)
+    .collect 206155,1 --Rune of Marksmanship (1)
     .mob Rustling Bush
     .mob Razormane Poacher
     .train 410113,1
@@ -275,9 +281,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Marksman - 6 (Mulgore)
+#title Master Marksman
 
 
     --Rune of Master Marksman
@@ -287,7 +294,7 @@ step
     .goto Mulgore,59.02,54.36
     >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
     >>Kill the |cRXP_ENEMY_Venture Co. Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
-    .collect 206155,1 --Rune of Markmanship (1)
+    .collect 206155,1 --Rune of Marksmanship (1)
     .mob Rustling Bush
     .mob Venture Co. Poacher
     .train 410113,1
@@ -301,9 +308,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Marksman - 6 (Dun Morogh)
+#title Master Marksman
 
 
     --Rune of Master Marksman
@@ -313,7 +321,7 @@ step
     .goto Dun Morogh,28.852,49.859
     >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
     >>Kill the |cRXP_ENEMY_Razormane Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
-    .collect 206155,1 --Rune of Markmanship (1)
+    .collect 206155,1 --Rune of Marksmanship (1)
     .mob Rustling Bush
     .mob Razormane Poacher
     .train 410113,1
@@ -327,9 +335,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Marksman - 6 (Teldrassil)
+#title Master Marksman
 
 
     --Rune of Master Marksman
@@ -339,7 +348,7 @@ step
     .goto Teldrassil,46.6,46.3
     >>Cast |T132212:0|t[Hunter's Mark] on the |cRXP_ENEMY_Rustling Bush|r
     >>Kill the |cRXP_ENEMY_Fallenroot Poacher|r that spawns. Loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Marksmanship|r]
-    .collect 206155,1 --Rune of Markmanship (1)
+    .collect 206155,1 --Rune of Marksmanship (1)
     .mob Rustling Bush
     .mob Fallenroot Poacher
     .train 410113,1
@@ -353,9 +362,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Flanking - 6 (Mulgore)
+#title Flanking
 
 
     --Rune of Flanking
@@ -393,9 +403,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Flanking - 6 (Durotar)
+#title Flanking
 
 
     --Rune of Flanking
@@ -427,9 +438,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Carve - 10 (Durotar)
+#title Carve
 
 
     --Rune of Carve
@@ -480,9 +492,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Carve - 10 (Mulgore)
+#title Carve
 
 
     --Rune of Carve
@@ -532,9 +545,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Carve - 10 (Dun Morogh)
+#title Carve
 
 
     --Rune of Carve
@@ -587,9 +601,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Carve - 10 (Teldrassil)
+#title Carve
 
 
     --Rune of Carve
@@ -644,10 +659,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Beast Mastery - 16 (The Barrens)
-
+#title Beast Mastery
 
     --Rune of Beast Mastery
 
@@ -676,9 +691,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Beast Mastery - 16 (Silverpine)
+#title Beast Mastery
 
     --Rune of Beast Mastery
 
@@ -691,7 +707,7 @@ step
     .goto Silverpine Forest,46.08,26.62,50,0
     .goto Silverpine Forest,41.60,21.65
     >>Kill |cRXP_ENEMY_Ferocious Grizzled Bears|r until a |cRXP_ENEMY_Grizzled Protecter|r (16 elite) spawns
-    >>Kill him and loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r] 
+    >>Kill him and loot him for |T134419:0|t[|cRXP_FRIENDLY_Rune of Beast Mastery|r]
     .collect 208701,1 --Rune of Beast Mastery (1)
     .mob Ferocious Grizzled Bear
     .mob Grizzled Protecter
@@ -705,9 +721,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Sniper Training - 18 (Darkshore)
+#title Sniper Training
 
 
     --Rune of the Sniper
@@ -745,9 +762,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Sniper Training - 16 (Westfall)
+#title Sniper Training
 
 
     --Rune of the Sniper
@@ -777,9 +795,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Sniper Training - 16 (Loch Modan)
+#title Sniper Training
 
 
     --Rune of the Sniper
@@ -810,10 +829,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Sniper Training - 16 (The Barrens)
-
+#title Sniper Training
 
     --Rune of the Sniper
 
@@ -846,9 +865,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Flanking - 7 (Dun Morogh)
+#title Flanking
 
 
     --Rune of Flanking
@@ -863,7 +883,7 @@ step
     .goto Dun Morogh,42.6,60.2,20,0
     .goto Dun Morogh,38.2,60.6,20,0
     .train 425762,1
-    >>Kill |cRXP_ENEMY_Boars|r in |cFFfa9602Dun Morogh|r and loot them for |T134026:0|t[Durotar Pig Meat]
+    >>Kill |cRXP_ENEMY_Boars|r in |cFFfa9602Dun Morogh|r and loot them for |T134026:0|t[Dun Morogh Pig Meat]
     .collect 208192,1
     .mob Crag Boar
     .mob Large Crag Boar
@@ -873,7 +893,7 @@ step
     #season2
     .train 425762,1
     .goto Dun Morogh,37.78,42.55
-    >>Use |T134026:0|t[Durotar Pig Meat] near the corpse in the |cFFfa9602Iceflow Cavern|r to summon |cRXP_ENEMY_Jorul|r
+    >>Use |T134026:0|t[Dun Morogh Pig Meat] near the corpse in the |cFFfa9602Iceflow Cavern|r to summon |cRXP_ENEMY_Jorul|r
     >>Kill |cRXP_ENEMY_Jorul|r and loot him for |T135142:0|t|cRXP_LOOT_[Rune of Flanking]|r
     .collect 205979,1
     .use 208192
@@ -888,9 +908,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Hunter SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Flanking - 7 (Teldrassil)
+#title Flanking
 
 
     --Rune of Flanking
@@ -923,3 +944,168 @@ step
     .use 205979
     .itemcount 205979,1
 ]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Hunter SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#title Expose Weakness
+#name Expose Weakness - 40 (Azeroth)
+
+
+-- Expose Weakness
+
+step
+    #optional
+    #completewith next
+    .zone Badlands >>Travel to Badlands
+step
+    #loop
+    .goto Badlands,28.2,51.4,0
+    .goto Badlands,28.0,61.0,0
+    .goto Badlands,30.6,61.2,0
+    .goto Badlands,34.6,54.8,0
+    .goto Badlands,28.2,51.4,25,0
+    .goto Badlands,28.0,61.0,25,0
+    .goto Badlands,30.6,61.2,25,0
+    .goto Badlands,34.6,54.8,25,0
+    >>Kill |cRXP_ENEMY_Dustbelcher Warriors|r, |cRXP_ENEMY_Dustbelcher Brutes|r, and |cRXP_ENEMY_Dustbelcher Ogres|r. Loot them for the |T237388:0|t|cRXP_LOOT_[Primitive Drawing]|r
+    .collect 211269,1 --Primitive Drawing
+    .mob Dustbelcher Ogre
+    .train 410114,1
+step
+    >>|cRXP_WARN_Use the|r |T237388:0|t|cRXP_LOOT_[Primitive Drawing]|r |cRXP_WARN_to start the quest|r
+    .accept 78823 >> Accept Terror of the Desert Skies
+    .use 211269
+step
+    #optional
+    #completewith next
+    .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
+    .train 410114,1
+step
+    .goto Stranglethorn Vale,35.66,10.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hemet Nesingwary|r
+    .turnin 78823 >> Turn in Terror of the Desert Skies
+    .accept 78830 >> Accept Terror of the Desert Skies
+    .target Hemet Nesingwary
+    .train 410114,1
+step
+    #sticky
+    #label Bait
+    >>Use the |T132599:0|t[Empty Bait Cage] on any critter for a |T132599:0|t[Trapped Critter]
+    .collect 211273,1 --Trapped Critter
+    .mob Rat
+    .mob Black Rat
+    .mob Chicken
+    .train 410114,1
+step
+    #optional
+    #completewith next
+    .zone Badlands >>Travel to Badlands
+    .train 410114,1
+step
+    #requires Bait
+    .goto Badlands,22.6,67.4
+    >>Use the |T132599:0|t[Trapped Critter] atop the hill to lure |cRXP_ENEMY_Gharik|r
+    >>Kill |cRXP_ENEMY_Gharik|r. Loot him for the |cRXP_LOOT_Crimson Trophy Quill|r
+    .complete 78830,1 --Crimson Trophy Quill (1)
+    .mob Gharik
+    .train 410114,1
+    .use 211273
+step
+    #optional
+    #completewith next
+    .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
+    .train 410114,1
+step
+    .goto Stranglethorn Vale,35.66,10.52
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hemet Nesingwary|r
+    .turnin 78830 >> Turn in Terror of the Desert Skies
+    .train 410114,1
+step
+    #season 2
+    .train 410114 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Expose Weakness|r] |cRXP_WARN_to learn|r |T132353:0|t[Expose Weakness]
+    .use 211301
+    .itemcount 211301,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Hunter SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#title Steady Shot
+#name Steady Shot - 30 (Arathi Highlands)
+
+step
+    #completewith next
+    .zone Arathi Highlands >>Travel to Arathi Highlands
+step
+    .train 410109,1
+    .goto Arathi Highlands,67.8,66.0
+    >>Kill |cRXP_ENEMY_Needletooth|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Steady Shot|r]
+    >>|cRXP_ENEMY_Needletooth|r |cRXP_WARN_is a fish that swims in the Witherbark Village lake|r
+    .collect 213122,1
+    .mob Needletooth
+step
+    .train 410109 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Steady Shot|r] |cRXP_WARN_to train|r |T132213:0|t[Steady Shot]
+    .use 213122
+    .itemcount 213122,1
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Hunter SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#title Dual-Wield Specialization
+#name Dual-Wield Specialization - 32 (Stranglethorn Vale)
+
+step
+    .train 410116,1
+    .train 1543 >>You have to learn |T135815:0|t[Flare] before you can obtain this rune
+step
+    #completewith next
+    .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
+step
+    .train 410116,1
+    .goto Stranglethorn Vale,31.8,15.7
+    .aura 435548,1+ >>Go to the waypoint and run around until you get the buff |T132118:0|t[Danger!]
+step
+    .train 410116,1
+    >>Use |T135815:0|t[Flare] and kill the appearing |cRXP_ENEMY_Bloodscalp Guerrilla|r. Loot him for the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r]
+    .goto Stranglethorn Vale,31.8,15.7
+    .collect 213126,1
+    .mob Bloodscalp Guerrilla
+step
+    .itemcount 213126,1
+    .use 213126
+    .train 410116 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r] to learn |T132147:0|t[Dual-Wield Specialization]
+]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Hunter SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Bracers
+-- #name Focus Fire
+-- for phase 3
+
+-- Focus Fire
+
+
+-- ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Hunter SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Bracers
+-- #name T.N.T.
+-- for phase 3
+
+-- T.N.T.
+
+
+-- ]])

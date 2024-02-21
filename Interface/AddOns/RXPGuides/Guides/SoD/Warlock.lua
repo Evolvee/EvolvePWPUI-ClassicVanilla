@@ -1,9 +1,11 @@
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Haunt - 3 (Elwynn Forest)
+#title Haunt
+
 step << Warlock
     #season 2
     .goto Elwynn Forest,52.544,51.922
@@ -20,9 +22,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Haunt - 1 (Dun Morogh)
+#title Haunt
 
 step << Warlock
     #season 2
@@ -37,13 +40,13 @@ step << Warlock
     .itemcount 205230,1 -- Rune of Haunting (1)
 ]])
 
-
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Haunt - 2 (Durotar)
+#title Haunt
 
 
     --Rune of Haunt
@@ -72,15 +75,15 @@ step << Orc
     .turnin 77586 >>Turn in Stolen Power
     .target Nartok
 
-    ]])
-
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Haunt - 2 (Tirisfal)
+#title Haunt
 
 
     --Rune of Haunt
@@ -110,14 +113,15 @@ step << Undead
     .target Maximillion
 
 
-    ]])
+]])
 
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Soul Siphon - 13 (Durotar)
+#title Soul Siphon
 
 step
     #completewith next
@@ -149,9 +153,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Soul Siphon - 9 (Tirisfal Glades)
+#title Soul Siphon
 
 step
     #completewith next
@@ -182,9 +187,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Demonic Tactics - 4 (Tirisfal Glades)
+#title Demonic Tactics
 
 step
     #completewith next
@@ -227,9 +233,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Demonic Grace - 8 (Durotar)
+#title Demonic Grace
 
 step
     #completewith DemonicGraceDurotarTome
@@ -280,9 +287,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Demonic Grace - 8 (Tirisfal Glades)
+#title Demonic Grace
 
 step
     .train 425477,1
@@ -341,11 +349,12 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 -- #subgroup Chest << Mage
 #subgroup Gloves << Warlock
 -- #name Burnout - 8 (Tirisfal Glades) << Mage
 #name Chaos Bolt - 8 (Tirisfal Glades) << Warlock
+#title Chaos Bolt << Warlock
 --Permok: Dont load it for mages for now
 
 step << Mage
@@ -377,9 +386,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Lake of Fire - 25 (Hillsbrad Foothills)
+#title Lake of Fire
 
 step
     #completewith next
@@ -408,9 +418,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Incinerate - 22 (Redridge Mountains)
+#title Incinerate
 
 step
     #completewith next
@@ -432,9 +443,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Channeler - 12 (The Barrens)
+#title Master Channeler
 
 step
     #completewith next
@@ -456,9 +468,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Channeler - 14 (Silverpine Forest)
+#title Master Channeler
 
 step
     #completewith next
@@ -478,9 +491,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Shadow Bolt Volley - 16 (The Barrens)
+#title Shadow Bolt Volley
 
 step
     #completewith next
@@ -507,9 +521,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Horde Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Shadow Bolt Volley - 18 (Silverpine Forest)
+#title Shadow Bolt Volley
 
 step
     #completewith next
@@ -539,9 +554,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Metamorphosis - 25
+#title Metamorphosis
 
 step
     #completewith WarlockRuneMetamorphosisA
@@ -659,9 +675,10 @@ step
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Channeler - 10 (Loch Modan)
+#title Master Channeler
 
 step << Warlock
     .line Loch Modan,22.87,70.89,24.69,68.20,28.02,65.41,29.47,59.92,31.56,56.66,32.36,50.09,34.94,47.10,32.36,50.09,31.36,47.60,31.54,44.72,32.29,42.34,32.25,41.14,31.08,38.57,30.04,31.45,27.96,25.37,26.73,23.07,26.04,19.16,25.95,15.13,25.53,11.66
@@ -702,9 +719,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Master Channeler - 15 (Darkshore)
+#title Master Channeler
 
 step << Warlock
     .goto Darkshore,55.27,27.74,40,0
@@ -725,9 +743,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Soul Siphon - 10 (Dun Morogh)
+#title Soul Siphon
 
 step << Warlock
     #completewith next
@@ -735,7 +754,7 @@ step << Warlock
     .collect 205020,1 -- Pure Soul Shard (1)
     .train 403920,1
 step << Warlock
-    .goto Loch Modan,77.894,62.236
+    .goto Dun Morogh,77.894,62.236
     >>Kill |cRXP_ENEMY_Captain Beld|r downstairs inside the building. Loot him for a |T134085:0|t[|cRXP_LOOT_Tainted Soul Shard|r]
     >>|cRXP_WARN_Ensure he dies while you also have|r |T136163:0|t[Drain Soul] |cRXP_WARN_on him|r
     .collect 205019,1 -- Tainted Soul Shard (1)
@@ -762,9 +781,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Soul Siphon - 10 (Elwynn Forest)
+#title Soul Siphon
 
 step << Warlock
     #completewith next
@@ -810,9 +830,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Chest
 #name Demonic Tactics - 1 (Elwynn Forest)
+#title Demonic Tactics
 
 step << Warlock
     .goto Elwynn Forest,56.743,57.650
@@ -864,9 +885,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Demonic Grace - 10 (Elwynn Forest)
+#title Demonic Grace
 
 step << Warlock
     .goto Elwynn Forest,61.6,53.8
@@ -936,9 +958,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Legs
 #name Demonic Grace - 10 (Dun Morogh)
+#title Demonic Grace
 
 step << Warlock
     .goto Dun Morogh,22.8,50.6
@@ -982,9 +1005,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Shadow Bolt Volley - 16 (Darkshore)
+#title Shadow Bolt Volley
 
 step << Warlock
     .goto Darkshore,56.8,27.6,60,0
@@ -1002,9 +1026,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chaos Bolt - 8 (Dun Morogh)
+#title Chaos Bolt
 
 step << Warlock
     .goto Dun Morogh,69.365,58.302
@@ -1023,9 +1048,10 @@ step << Warlock
 RXPGuides.RegisterGuide([[
 #classic
 << Alliance Warlock SoD
-#group RestedXP Rune Guide
+#group RestedXP Rune & Books Guide
 #subgroup Gloves
 #name Chaos Bolt - 8 (Elwynn Forest)
+#title Chaos Bolt
 
 step << Warlock
     .goto Elwynn Forest,77.010,51.897
@@ -1040,3 +1066,219 @@ step << Warlock
     .use 208744
     .itemcount 208744,1
 ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Belt
+-- #name Grimoire of Synergy
+
+-- Grimoire of Synergy
+
+
+-- ]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Warlock SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#name Invocation - 35 (Arathi Highlands)
+#title Invocation
+
+-- Invocation
+
+step
+    .train 426443,1
+    #completewith SyndicateConjuror
+    +|cRXP_WARN_It is recommended you find additional party members for acquiring the|r |T134419:0|t[|cRXP_LOOT_Rune of Invocation|r] |cRXP_WARN_as it requires killing elites in Stromgarde Keep|r
+step
+    .train 426443,1
+    .zone Arathi Highlands >> Travel to Arathi Highlands
+step
+    .train 426443,1
+    #completewith next
+    .subzone 324 >> Travel to Stromgarde Keep 
+step
+    #label SyndicateConjuror
+    .train 426443,1
+    #loop
+    .goto Arathi Highlands,26.04,62.80,40,0
+    .goto Arathi Highlands,29.47,64.14,40,0
+    .goto Arathi Highlands,29.06,60.96,40,0
+    >>Kill |cRXP_ENEMY_Syndicate Conjurors|r. Loot them for their |T348282:0|t[|cRXP_LOOT_Conjuror's Pendants|r]
+    >>Kill a |cRXP_ENEMY_Voidwalker Minion|r while you are channelling |T136163:0|t[Drain Soul] on it to receive a |T132885:0|t[|cRXP_LOOT_Soul of the Void|r]
+    .collect 213573,10
+    .collect 213572,1
+    .mob Syndicate Conjuror
+    .mob Voidwalker Minion
+step
+    #completewith next
+    .train 426443,1
+    .goto Arathi Highlands,29.292,62.283,10 >> |cRXP_WARN_Enter the large house on the lower level of Stromgade Keep, and head up to the 2nd floor|r
+step
+    #completewith next
+    .train 426443,1
+    .goto Arathi Highlands,29.077,63.079
+    .cast 434994 >> |cRXP_WARN_Use the|r |T348282:0|t[|cRXP_LOOT_Conjuror's Pendants|r] |cRXP_WARN_up stairs next to the floating|r |cRXP_PICK_Void Prism|r |cRXP_WARN_to summon a level 36 elite |cRXP_ENEMY_Void Seeker|r
+    .use 213573
+step
+    .train 426443,1
+    .goto Arathi Highlands,29.077,63.079
+    >>Kill the |cRXP_ENEMY_Void Seeker|r. Loot it for the |T134419:0|t[|cRXP_LOOT_Rune of Invocation|r]
+    .collect 213098,1
+    .mob Void Seeker
+step
+    .train 426443 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_LOOT_Rune of Invocation|r] |cRXP_WARN_to train|r |T136133:0|t[Invocation]
+    .use 213098
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Warlock SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#name Dance of the Wicked - 35 (Desolace)
+#title Dance of the Wicked
+
+-- Dance of the Wicked
+
+step
+    .train 416017,1
+    #completewith next
+    .zone Desolace >>Travel to Desolace
+step
+    .train 416017,1
+    .goto Desolace,74.5,13.4
+    >>Kill the |cRXP_ENEMY_Reckless Warlock|r in Desolace |cRXP_WARN_ Please note, this is a rare enemy and there's a chance it may not be present.|r Loot him |T236297:0|t[Brimstone Carving]
+    .collect 213583,1
+    .mob Reckless Warlock
+    .unitscan Reckless Warlock
+step
+    .train 416017,1
+    .cast 1949 >> Cast |T135818:0|t[Hellfire] to damage yourself below 70%. Afterwards |T236297:0|t[Brimstone Carving] will turn into the rune.
+step
+    .train 416017 >> Use the |T236295:0|t[Item] to learn |T236295:0|t[Dance of the Wicked]
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Warlock SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#name Dance of the Wicked - 35 (Stranglethorn)
+#title Dance of the Wicked
+
+-- Dance of the Wicked
+
+step
+    .train 416017,1
+    #completewith next
+    .zone Stranglethorn Vale>>Travel to Stranglethorn
+step
+    .train 416017,1
+    .goto Stranglethorn Vale,31.2,47.4
+    >>Kill the |cRXP_ENEMY_Reckless Warlock|r in Desolace |cRXP_WARN_ Please note, this is a rare enemy and there's a chance it may not be present.|r Loot him |T236297:0|t[Brimstone Carving]
+    .collect 213583,1
+    .unitscan Reckless Warlock
+    .mob Reckless Warlock
+step
+    .train 416017,1
+    .cast 1949 >> Cast |T135818:0|t[Hellfire] to damage yourself below 70%. Afterwards |T236297:0|t[Brimstone Carving] will turn into the rune.
+step
+    .train 416017 >> Use the |T236295:0|t[Item] to learn |T236295:0|t[Dance of the Wicked]
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Warlock SoD
+#group RestedXP Rune & Books Guide
+#subgroup Boots
+#name Shadowflame - 40 (Desolace)
+
+
+-- Shadowflame
+
+step
+    .train 426467,1
+    #completewith next
+    .zone Desolace >>Travel to Desolace |cRXP_WARN_It is highly recommended to form a group of atleast 3 players.|r
+step
+    .train 426467,1
+    .goto Desolace,81.2,79.7
+    .cast 434869 >> |cRXP_WARN_Click on the Altar to summon |cRXP_ENEMY_Seductress Ceeyna|r |cRXP_WARN_but make sure to use |T136121:0|t[Shadow Ward], |T136190:0|t[Sacrifice] and |T136160:0|t[Soul Link]|r beforehand|r |cFFFF0000 as you will receive a lot of damage during the channel and it cannot be healed.|r
+step
+    .train 426467,1
+    .goto Desolace,81.2,79.7
+    >>Kill |cRXP_ENEMY_Seductress Ceeyna|r. Loot her for |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowflames|r]
+    .collect 213101,1
+    .mob Seductress Ceeyna
+step
+    .train 426467 >> Use |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowflames|r] to learn |T236302:0|t[Shadowflame]
+]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Bracers
+-- #name Immolation Aura
+-- for phase 3
+
+-- Immolation Aura
+
+
+-- ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Bracers
+-- #name Summon Felguard
+-- for phase 3
+
+-- Summon Felguard
+
+
+-- ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Bracers
+-- #name Unstable Affliction
+-- for phase 3
+
+-- Unstable Affliction
+
+
+-- ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Helmet
+-- #name Backdraft
+-- for phase 3
+
+-- Backdraft
+
+
+-- ]])
+
+-- RXPGuides.RegisterGuide([[
+-- #classic
+-- << Warlock SoD
+-- #group RestedXP Rune & Books Guide
+-- #subgroup Helmet
+-- #name Pandemic
+-- for phase 3
+
+-- Pandemic
+
+
+-- ]])
