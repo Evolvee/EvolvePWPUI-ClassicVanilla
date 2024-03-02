@@ -1258,8 +1258,8 @@ plateEventFrame:SetScript("OnEvent", function(_, event)
             return
         end
 
-        -- PlaySound whenever an enemy casts Tremor Totem (previously handled in a standalone addon "EvolveAlert" - https://github.com/Evolvee/EvolvePWPUI-ClassicTBC/tree/main/Interface/AddOns/EvolveAlert)
-        if isSourceEnemy and ex1 == 8143 and action == "SPELL_CAST_SUCCESS" then
+        -- PlaySound whenever an enemy casts Grounding Totem (mage gaymeplay only)
+        if isSourceEnemy and ex1 == 8177 and action == "SPELL_CAST_SUCCESS" then
             PlaySound(12889)
         end
 
@@ -1867,6 +1867,8 @@ FIXED_CLASS_COLORS = {
 for k, v in pairs(FIXED_CLASS_COLORS) do
     v.colorStr = v:GenerateHexColor();
 end
+
+
 
 -- Temporary way to disable the dogshit cata spellqueue they brought to tbc instead of using the proper Retail TBC one that bypasses GCD: /console SpellQueueWindow 0
 -- ^^ current value: 130 (100+ latency)

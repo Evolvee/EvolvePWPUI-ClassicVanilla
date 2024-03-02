@@ -325,7 +325,7 @@ do -- item: items ID/inventory slot
 			local time = GetTime()
 			cdLeft = (cdStart or 0) > 0 and (enabled ~= 0) and (cdStart + cdLen - time)
 		end
-		local inRange, hasRange = NormalizeInRange[(not (MODERN and InCombatLockdown()) or nil) and IsItemInRange(ident, target or "target")]
+		local inRange, hasRange = NormalizeInRange[(not (InCombatLockdown()) or nil) and IsItemInRange(ident, target or "target")]
 		inRange, hasRange = inRange ~= 0, inRange ~= nil
 		if ibag and islot then
 			bag, slot = ibag, islot
@@ -458,7 +458,7 @@ do -- macrotext
 		local f = CreateFrame("Frame", nil, nil, "SecureHandlerBaseTemplate")
 		f:SetFrameRef("RW", RW:seclib())
 		f:Execute("seed, t, RW = math.random(2^30), newtable(), self:GetFrameRef('RW'); self:SetAttribute('frameref-RW', nil)")
-		f:SetAttribute("RunSlashCmd", [=[-- AB_userandom 
+		f:SetAttribute("RunSlashCmd", [=[-- AB_userandom 
 			local cmd, v, target, s, q = ...
 			if v == "" or not v then
 				return
@@ -1078,7 +1078,7 @@ do -- disenchant: iid
 		local function escape(s)
 			return ("%q"):format(s):gsub('[{u}]', er):sub(2,-2)
 		end
-		w:SetAttribute("RunSlashCmd", ([[-- AB_SPELLTARGET_ITEM_RUN 
+		w:SetAttribute("RunSlashCmd", ([[-- AB_SPELLTARGET_ITEM_RUN 
 			local cmd, v = ...
 			if cmd == "%s" and v then
 				self:SetAttribute("target-item", v)

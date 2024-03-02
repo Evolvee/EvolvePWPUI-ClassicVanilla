@@ -17,7 +17,8 @@ local blacklist = {
     [GetSpellInfo(11198)] = true, -- Expose Armor
     [GetSpellInfo(11581)] = true, -- Thunder Clap
     [GetSpellInfo(11556)] = true, -- Demoralizing Shout
-
+	[GetSpellInfo(437751)] = true, -- Bruised
+	[GetSpellInfo(438567)] = true, -- Bruised
 }
 
 local function UpdateDebuffs(frame, unit)
