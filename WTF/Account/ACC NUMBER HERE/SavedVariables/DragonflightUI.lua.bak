@@ -5,7 +5,9 @@ DragonflightUIDB = {
 		},
 		["Actionbar"] = {
 		},
-		["Minimap"] = {
+		["Chat"] = {
+		},
+		["Config"] = {
 		},
 		["Castbar"] = {
 			["profiles"] = {
@@ -14,7 +16,7 @@ DragonflightUIDB = {
 				},
 			},
 		},
-		["Chat"] = {
+		["Minimap"] = {
 		},
 	},
 	["profileKeys"] = {
@@ -26,8 +28,8 @@ DragonflightUIDB = {
 		["Evolvepwp - Classic Era PTR"] = "Default",
 		["Evolvepwe - Firemaw"] = "Default",
 		["Evolvebank - Gehennas"] = "Default",
-		["Evolvepwp - Firemaw"] = "Default",
 		["Evolvepwp - Stitches"] = "Default",
+		["Evolvepwp - Firemaw"] = "Default",
 	},
 	["profiles"] = {
 		["Default"] = {

@@ -2,6 +2,4 @@
 ..\FrameXML\UI.xsd">
 	<Script file="core.lua"/>
 	<Script file="classAbilities.lua"/>
-	<Script file="diminishingReturns.lua"/>
-	<Script file="npcAbilities.lua"/>
 </Ui>

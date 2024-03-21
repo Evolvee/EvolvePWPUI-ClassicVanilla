@@ -1,0 +1,15 @@
+
+EngraverOptions = {
+	["ShowFilterSelector"] = false,
+	["HideTooltip"] = false,
+	["PreventSpellPlacement"] = false,
+	["CurrentFilter"] = 0,
+	["HideSlotLabels"] = false,
+	["DisplayMode"] = 1,
+	["HideDragTab"] = false,
+	["UIScale"] = 1,
+	["HideUndiscoveredRunes"] = false,
+	["EnableRightClickDrag"] = false,
+	["VisibilityMode"] = "ShowAlways",
+	["LayoutDirection"] = 0,
+}

@@ -12,6 +12,7 @@ local IsAddOnLoaded = C_AddOns and C_AddOns.IsAddOnLoaded or IsAddOnLoaded
 local GetAddOnInfo = C_AddOns and C_AddOns.GetAddOnInfo or GetAddOnInfo
 local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or GetAddOnMetadata
 local isClassic = WOW_PROJECT_ID == WOW_PROJECT_CLASSIC
+local LibClassicDurations
 
 local defaults = {
     profile = {
@@ -569,10 +570,7 @@ local function updatePositions(frame, auraName, numAuras, numOppositeAuras, upda
 
         if updateFunc == UpdateBuffAnchor then
             if isClassic then
-                local auras = C_UnitAuras.GetAuraDataByIndex(frame.unit, i, "HELPFUL")
-                if auras then
-                    buffName, icon, debuffType, caster = auras.name, auras.icon, auras.dispelName, auras.sourceUnit
-                end
+                buffName, buffName, icon, _, debuffType, _, _, caster = LibClassicDurations:UnitAura(frame.unit, i, "HELPFUL")
             else
                 buffName, icon, _, debuffType, _, _, caster = UnitBuff(frame.unit, i, "HELPFUL")
             end
@@ -638,10 +636,7 @@ local function Filterino(self)
     for i = 1, MAX_TARGET_BUFFS do
         local buffName, icon, count, debuffType, duration, expirationTime, caster, canStealOrPurge, _, spellId, _, _, casterIsPlayer, nameplateShowAll
         if isClassic then
-            local auras = C_UnitAuras.GetAuraDataByIndex(self.unit, i, "HELPFUL")
-            if auras then
-                buffName, icon, count, debuffType, duration, expirationTime, caster, canStealOrPurge, spellId = auras.name, auras.icon, auras.applications, auras.dispelName, auras.duration, auras.expirationTime, auras.sourceUnit, auras.isStealable, auras.spellId
-            end
+            buffName, icon, count, debuffType, duration, expirationTime, caster, canStealOrPurge, _, spellId = LibClassicDurations:UnitAura(self.unit, i, "HELPFUL")
         else
             buffName, icon, _, debuffType, _, _, caster, canStealOrPurge = UnitBuff(self.unit, i, "HELPFUL");
         end
@@ -681,6 +676,11 @@ local function Filterino(self)
 
                     -- Handle cooldowns
                     frameCooldown = _G[frameName .. "Cooldown"];
+                    local durationNew, expirationTimeNew = LibClassicDurations:GetAuraDurationByUnit(frame.unit, spellId, caster)
+                    if duration == 0 and durationNew then
+                        duration = durationNew
+                        expirationTime = expirationTimeNew
+                    end
                     CooldownFrame_Set(frameCooldown, expirationTime - duration, duration, duration > 0, true);
                 end
 
@@ -702,7 +702,7 @@ local function Filterino(self)
                         if modifier == 2.06 then
                             frameStealable:SetDesaturated(true)
                         end
-                    elseif (not playerIsTarget and isEnemy and canStealOrPurge) then
+                    elseif (not playerIsTarget and isEnemy and (canStealOrPurge or (debuffType == "Magic" and isClassic))) then
                         frameStealable:Show()
                         frameStealable:SetVertexColor(stockR, stockG, stockB)
                         frameStealable:SetHeight(buffSize * modifier)
@@ -784,6 +784,15 @@ DeBuffFilter.event = CreateFrame("Frame")
 DeBuffFilter.event:RegisterEvent("PLAYER_LOGIN")
 DeBuffFilter.event:SetScript("OnEvent", function(self)
     DeBuffFilter:SetupOptions()
+
+    if isClassic then
+        LibClassicDurations = LibStub("LibClassicDurations")
+        LibClassicDurations:Register(AddonName)
+        LibClassicDurations.RegisterCallback(AddonName, "UNIT_BUFF", function(event, unit)
+            TargetFrame_UpdateAuras(TargetFrame)
+        end)
+    end
+
     hooksecurefunc("TargetFrame_UpdateAuras", Filterino)
     hooksecurefunc("Target_Spellbar_AdjustPosition", adjustCastbar)
 

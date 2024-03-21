@@ -1,9 +1,5 @@
 
 OmniCCDB = {
-	["global"] = {
-		["dbVersion"] = 6,
-		["addonVersion"] = "10.0.4",
-	},
 	["profileKeys"] = {
 		["Evolvexd - Classic Arena - EU"] = "Default",
 		["Evolvebanned - Gehennas"] = "Default",
@@ -25,10 +21,14 @@ OmniCCDB = {
 		["Evolve - Living Flame"] = "Default",
 		["Wotlkprep - Sulfuron"] = "Default",
 		["Evolve - Classic PTR Realm 1"] = "Default",
-		["Evolvebanned - Firemaw"] = "Default",
+		["Evolvepwp - Living Flame"] = "Default",
 		["Evolvepwe - Firemaw"] = "Default",
 		["Dbldogcheck - Firemaw"] = "Default",
-		["Evolvepwp - Living Flame"] = "Default",
+		["Evolvebanned - Firemaw"] = "Default",
+	},
+	["global"] = {
+		["dbVersion"] = 6,
+		["addonVersion"] = "10.0.4",
 	},
 	["profiles"] = {
 		["Default"] = {
@@ -95,17 +95,17 @@ OmniCCDB = {
 			["themes"] = {
 				["Default"] = {
 					["textStyles"] = {
-						["seconds"] = {
-							["b"] = 1,
-							["g"] = 0.984313725490196,
-							["r"] = 0.9803921568627451,
+						["minutes"] = {
 						},
 						["soon"] = {
 							["b"] = 0,
 							["scale"] = 1,
 							["g"] = 0.8784313725490196,
 						},
-						["minutes"] = {
+						["seconds"] = {
+							["b"] = 1,
+							["g"] = 0.984313725490196,
+							["r"] = 0.9803921568627451,
 						},
 					},
 					["minDuration"] = 3,
@@ -117,17 +117,17 @@ OmniCCDB = {
 				},
 				["HIDDEN"] = {
 					["textStyles"] = {
-						["seconds"] = {
-							["b"] = 1,
-							["g"] = 0.984313725490196,
-							["r"] = 0.9803921568627451,
-						},
-						["minutes"] = {
-						},
 						["soon"] = {
 							["b"] = 0,
 							["scale"] = 1,
 							["g"] = 0.8784313725490196,
+						},
+						["minutes"] = {
+						},
+						["seconds"] = {
+							["b"] = 1,
+							["g"] = 0.984313725490196,
+							["r"] = 0.9803921568627451,
 						},
 					},
 					["timerOffset"] = 1400,
