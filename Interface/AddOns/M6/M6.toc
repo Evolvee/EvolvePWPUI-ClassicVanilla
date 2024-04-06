@@ -1,6 +1,6 @@
-## Interface: 100205
+## Interface: 100206
 ## Title: M6
-## Version: 1.46
+## Version: 1.48
 ## Author: foxlit
 ## Notes: Better macros for standard action bars (or key bindings)
 ## X-Website: https://www.townlong-yak.com/addons/m6/
@@ -9,8 +9,8 @@
 ## SavedVariables: M6DB
 ## SavedVariablesPerCharacter: M6PC
 ## IconTexture: Interface/Icons/secrets_of_the_empire_icon
-## IconTexture-Classic: interface/icons/inv_misc_gear_01
 Libs\Evie.lua
+Libs\exui\exui.xml
 Libs\Skip.lua
 Libs\ActionBook\ActionBook.xml
 Core.lua

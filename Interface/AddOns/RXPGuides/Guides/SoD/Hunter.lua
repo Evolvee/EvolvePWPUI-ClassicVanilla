@@ -730,25 +730,35 @@ RXPGuides.RegisterGuide([[
     --Rune of the Sniper
 
 step
-    #season2
+    #season 2
     #completewith next
     .train 416091,1
     .zone Darkshore >>Travel to Darkshore
 step
     #season 2
+    .goto 1439,44.081,20.739
+    >>Loot the |T135129:0|t[Gnarled Harpoon] in the eye of the skeleton
+    .collect 209047,1 --Gnarled Harpoon (1)
     .train 416091,1
-    .goto Darkshore,48.0,18.0
-    >>Search the area for dead turtles with a harpoon stuck in their skull, and click on the |cRXP_PICK_harpoon|r to acquire the item.
-    .collect 209047,1
+step
+    #completewith next
+    .goto 1439,44.081,20.739
+    .cast 422397 >>|cRXP_WARN_Use the|r |T135129:0|t[Gnarled Harpoon] |cRXP_WARN_on |cRXP_ENEMY_Paxnozz|r to reduce his max health to 743|r
+    .train 416091,1
 step
     #season 2
     #loop
-    .goto Darkshore,48.0,18.0,20,0
-    .goto Darkshore,47.6,13.2,20,0
-    .goto Darkshore,50.4,12.0,20,0
-    .goto Darkshore,48.8,16.0,20,0
-    >>Use the |T135129:0|t[Gnarled Harpoon] to weaken |cRXP_ENEMY_Paxnozz|r then Kill |cRXP_ENEMY_Paxnozz|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
-    .collect 208777,1
+    .goto Darkshore,48.0,18.0,0
+    .goto Darkshore,47.6,13.2,0
+    .goto Darkshore,50.4,12.0,0
+    .goto Darkshore,48.8,16.0,0
+    .goto Darkshore,48.0,18.0,40,0
+    .goto Darkshore,47.6,13.2,40,0
+    .goto Darkshore,50.4,12.0,40,0
+    .goto Darkshore,48.8,16.0,40,0
+    >>Kill |cRXP_ENEMY_Paxnozz|r. Loot him for the |T134419:0|t|cRXP_LOOT_[Rune of the Sniper]|r
+    >>|cRXP_WARN_Be careful as he is a level 20 elite|r
+    .collect 208777,1 --Rune of the Sniper (1)
     .train 416091,1
     .use 209047
     .mob Paxnozz
@@ -781,7 +791,7 @@ step
     .goto Westfall,51.2,47.0,20,0
     .goto Westfall,50.2,48.6,20,0
     .goto Westfall,51.6,55.6,20,0
-    >>Kill |cRXP_ENEMY_Defias Scouts|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
+    >>Kill the |cRXP_ENEMY_Defias Scout|r. Loot him for the |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
     .collect 208777,1
     .train 416091,1
     .mob Defias Scout
@@ -815,46 +825,10 @@ step
     .goto Loch Modan,55.8,54.4,20,0
     .goto Loch Modan,54.2,56.8,20,0
     .goto Loch Modan,53.8,54.4,20,0
-    >>Kill |cRXP_ENEMY_Kackle|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r] |cRXP_WARN_consider grouping up if you have trouble killing it solo.|r
+    >>Kill |cRXP_ENEMY_Kackle|r. Loot him for the |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
     .collect 208777,1
     .train 416091,1
     .mob Kackle
-step
-    #season 2
-    .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
-    .use 208777
-    .itemcount 208777,1
-]])
-
-RXPGuides.RegisterGuide([[
-#classic
-<< Horde Hunter SoD
-#group RestedXP Rune & Books Guide
-#subgroup Legs
-#name Sniper Training - 16 (The Barrens)
-#title Sniper Training
-
-    --Rune of the Sniper
-
-step
-    #season2
-    #completewith next
-    .train 416091,1
-    .zone The Barrens >>Travel to The Barrens
-step
-    #season 2
-    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Klixx|r and buy |T135129:0|t[Fishing Harpoon]
-    .goto The Barrens,62.8,38.2
-    .buy 208773,1
-    .train 416091,1
-step
-    #season 2
-    .goto The Barrens,65,40
-    >>Use the |T135129:0|t[Fishing Harpoon] to weaken |cRXP_ENEMY_Bruuz|r then Kill |cRXP_ENEMY_Bruuz|r and loot him for |T134419:0|t[|cRXP_LOOT_Rune of the Sniper|r]
-    .collect 208777,1
-    .train 416091,1
-    .mob Bruuz
-    .use 208773
 step
     #season 2
     .train 416091 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Sniper|r] |cRXP_WARN_to train|r |T132212:0|t[Sniper Training]
@@ -883,7 +857,7 @@ step
     .goto Dun Morogh,42.6,60.2,20,0
     .goto Dun Morogh,38.2,60.6,20,0
     .train 425762,1
-    >>Kill |cRXP_ENEMY_Boars|r in |cFFfa9602Dun Morogh|r and loot them for |T134026:0|t[Dun Morogh Pig Meat]
+    >>Kill |cRXP_ENEMY_Boars|r. Loot them for |T134026:0|t[Dun Morogh Pig Meat]
     .collect 208192,1
     .mob Crag Boar
     .mob Large Crag Boar
@@ -958,74 +932,92 @@ RXPGuides.RegisterGuide([[
 
 step
     #optional
+    .train 426445,1
+    +|cRXP_WARN_You must be at least level 26 before you can acquire the|r |T132353:0|t[Expose Weakness] |cRXP_WARN_rune|r
+    .xp >26,1
+step
     #completewith next
     .zone Badlands >>Travel to Badlands
 step
-    #loop
-    .goto Badlands,28.2,51.4,0
-    .goto Badlands,28.0,61.0,0
-    .goto Badlands,30.6,61.2,0
-    .goto Badlands,34.6,54.8,0
-    .goto Badlands,28.2,51.4,25,0
-    .goto Badlands,28.0,61.0,25,0
-    .goto Badlands,30.6,61.2,25,0
-    .goto Badlands,34.6,54.8,25,0
-    >>Kill |cRXP_ENEMY_Dustbelcher Warriors|r, |cRXP_ENEMY_Dustbelcher Brutes|r, and |cRXP_ENEMY_Dustbelcher Ogres|r. Loot them for the |T237388:0|t|cRXP_LOOT_[Primitive Drawing]|r
-    .collect 211269,1 --Primitive Drawing
-    .mob Dustbelcher Ogre
-    .train 410114,1
-step
-    >>|cRXP_WARN_Use the|r |T237388:0|t|cRXP_LOOT_[Primitive Drawing]|r |cRXP_WARN_to start the quest|r
+    .goto Badlands,66.6,23.4,0
+    .goto Badlands,51.2,69.4,0
+    .goto Badlands,29.6,56.8,0
+    .goto Badlands,62.6,69.2,0
+    .goto Badlands,9.6,77.6,0
+    .goto Badlands,66.6,23.4,50,0
+    .goto Badlands,51.2,69.4,50,0
+    .goto Badlands,29.6,56.8,50,0
+    .goto Badlands,62.6,69.2,50,0
+    .goto Badlands,9.6,77.6
+    .use 211269 >>Kill any |cRXP_ENEMY_Dustbelcher Ogre|r or |cRXP_ENEMY_Stonevault Trogg|r. Loot them for the |T237388:0|t[|cRXP_LOOT_Primitive Drawing|r]
+    >>|cRXP_WARN_Use the|r |T237388:0|t[|cRXP_LOOT_Primitive Drawing|r] |cRXP_WARN_to start the quest|r
+    >>|cRXP_WARN_Their locations are marked on your map|r
+    .collect 211269,1,78823,1 --Primitive Drawing
     .accept 78823 >> Accept Terror of the Desert Skies
-    .use 211269
+    .mob Dustbelcher Ogre
+    .mob Dustbelcher Brute
+    .mob Dustbelcher Mauler
+    .mob Dustbelcher Mystic
+    .mob Dustbelcher Shaman
+    .mob Dustbelcher Warrior
+    .mob Dustbelcher Wyrmhunter
+    .mob Stonevault Bonesnapper
+    .mob Stonevault Shaman
+    .train 410114,1
 step
     #optional
     #completewith next
     .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
     .train 410114,1
 step
-    .goto Stranglethorn Vale,35.66,10.52
+    .goto Stranglethorn Vale,35.658,10.808
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hemet Nesingwary|r
     .turnin 78823 >> Turn in Terror of the Desert Skies
     .accept 78830 >> Accept Terror of the Desert Skies
     .target Hemet Nesingwary
     .train 410114,1
 step
-    #sticky
-    #label Bait
-    >>Use the |T132599:0|t[Empty Bait Cage] on any critter for a |T132599:0|t[Trapped Critter]
+    #loop
+    .goto Stranglethorn Vale,43.8,18.6,20,0
+    .goto Stranglethorn Vale,45.2,19.6,20,0
+    .goto Stranglethorn Vale,44.2,22.0,20,0
+    .goto Stranglethorn Vale,45.6,23,0,20,0
+    .use 211272 >>|cRXP_WARN_Use the|r |T132599:0|t[Empty Bait Cage] |cRXP_WARN_on a |cRXP_ENEMY_Arbor Tarantula|r critter in STV. They're found on top of tree stumps|r
+    >>|cRXP_WARN_You may also use it on any other critter you see in the world|r
     .collect 211273,1 --Trapped Critter
+    .mob Arbor Tarantula
     .mob Rat
     .mob Black Rat
     .mob Chicken
     .train 410114,1
 step
-    #optional
     #completewith next
     .zone Badlands >>Travel to Badlands
     .train 410114,1
 step
-    #requires Bait
-    .goto Badlands,22.6,67.4
-    >>Use the |T132599:0|t[Trapped Critter] atop the hill to lure |cRXP_ENEMY_Gharik|r
-    >>Kill |cRXP_ENEMY_Gharik|r. Loot him for the |cRXP_LOOT_Crimson Trophy Quill|r
+    #completewith next
+    .goto Badlands,22.352,67.733
+    +Click the |cRXP_PICK_Large Nest|r atop the mountain to summon |cRXP_ENEMY_Gharik|r
+    .itemcount 211272,<1
+step
+    .goto Badlands,22.352,67.733
+    >>Kill |cRXP_ENEMY_Gharik|r. Loot her for the |cRXP_LOOT_Crimson Trophy Quill|r
     .complete 78830,1 --Crimson Trophy Quill (1)
     .mob Gharik
     .train 410114,1
-    .use 211273
 step
-    #optional
     #completewith next
     .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
     .train 410114,1
 step
-    .goto Stranglethorn Vale,35.66,10.52
+    .goto Stranglethorn Vale,35.658,10.808
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Hemet Nesingwary|r
     .turnin 78830 >> Turn in Terror of the Desert Skies
+    .target Hemet Nesingwary
     .train 410114,1
 step
     #season 2
-    .train 410114 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Expose Weakness|r] |cRXP_WARN_to learn|r |T132353:0|t[Expose Weakness]
+    .train 410114 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Expose Weakness|r] |cRXP_WARN_to train|r |T132353:0|t[Expose Weakness]
     .use 211301
     .itemcount 211301,1
 ]])
@@ -1043,7 +1035,11 @@ step
     .zone Arathi Highlands >>Travel to Arathi Highlands
 step
     .train 410109,1
-    .goto Arathi Highlands,67.8,66.0
+    #loop
+    .goto Arathi Highlands,67.8,66.0,0
+    .goto Arathi Highlands,69.4,63.2,25,0
+    .goto Arathi Highlands,67.8,66.0,25,0
+    .goto Arathi Highlands,68.4,68.2,25,0
     >>Kill |cRXP_ENEMY_Needletooth|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Steady Shot|r]
     >>|cRXP_ENEMY_Needletooth|r |cRXP_WARN_is a fish that swims in the Witherbark Village lake|r
     .collect 213122,1
@@ -1063,25 +1059,40 @@ RXPGuides.RegisterGuide([[
 #name Dual-Wield Specialization - 32 (Stranglethorn Vale)
 
 step
+    #optional
     .train 410116,1
-    .train 1543 >>You have to learn |T135815:0|t[Flare] before you can obtain this rune
+    +|cRXP_WARN_You must be at least level 32 before you can acquire the|r |T132147:0|t[Dual-Wield Specialization] |cRXP_WARN_rune|r
+    .xp >32,1
+step
+    .train 410116,1
+    #optional
+    .train 1543 >>|cRXP_WARN_You must train|r |T135815:0|t[Flare] |cRXP_WARN_to acquire the|r |T132147:0|t[Dual-Wield Specialization] |cRXP_WARN_rune|r
 step
     #completewith next
     .zone Stranglethorn Vale >>Travel to Stranglethorn Vale
 step
     .train 410116,1
-    .goto Stranglethorn Vale,31.8,15.7
-    .aura 435548,1+ >>Go to the waypoint and run around until you get the buff |T132118:0|t[Danger!]
+    .goto Stranglethorn Vale,31.84,15.61
+    +|cRXP_WARN_Travel to the arrow location and run around until the buff called|r |T132118:0|t[Danger!] |cRXP_WARN_appears on you|r
+    .aura 435548
+    .aura 435428
+    .aura 435546
 step
     .train 410116,1
-    >>Use |T135815:0|t[Flare] and kill the appearing |cRXP_ENEMY_Bloodscalp Guerrilla|r. Loot him for the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r]
-    .goto Stranglethorn Vale,31.8,15.7
+    .goto Stranglethorn Vale,31.84,15.61
+    #completewith next
+    .cast 1543 >>|cRXP_WARN_Cast|r |T135815:0|t[Flare] |cRXP_WARN_to reveal the|r |cRXP_ENEMY_Bloodscalp Guerrilla|r
+    .usespell 1543
+step
+    .train 410116,1
+    .goto Stranglethorn Vale,31.84,15.61
+    >>Kill the |cRXP_ENEMY_Bloodscalp Guerrilla|r. Loot him for the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r]
     .collect 213126,1
     .mob Bloodscalp Guerrilla
 step
     .itemcount 213126,1
     .use 213126
-    .train 410116 >>Use the |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r] to learn |T132147:0|t[Dual-Wield Specialization]
+    .train 410116 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of the Scrapper|r] |cRXP_WARN_to train|r |T132147:0|t[Dual-Wield Specialization]
 ]])
 
 -- RXPGuides.RegisterGuide([[

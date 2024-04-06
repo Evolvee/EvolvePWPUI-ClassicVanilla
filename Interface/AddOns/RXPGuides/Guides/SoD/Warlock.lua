@@ -9,14 +9,16 @@ RXPGuides.RegisterGuide([[
 step << Warlock
     #season 2
     .goto Elwynn Forest,52.544,51.922
-    >>Open the |cRXP_PICK_Defias Stashbox|r. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
+    >>Open the |cRXP_PICK_Defias Stashbox|r on the ground. Loot it for the |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
     .collect 205230,1 -- Rune of Haunting (1)
+    .train 403919,1
 step << Warlock
     #season 2
     #label RoH
-    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r]
+    .cast 402265 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Haunting|r] |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Haunt]
     .use 205230
     .itemcount 205230,1
+    .train 403919,1
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -57,6 +59,7 @@ step << Orc
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Nartok|r
     .accept 77586 >>Accept Stolen Power
     .target Nartok
+    .train 403919,1
 step
     #season 2
     .goto Durotar,42.99,54.43
@@ -65,16 +68,16 @@ step
     .train 403919,1
 step
     #season 2
-    .cast 402265 >>Use the |T134939:0|t[|cRXP_FRIENDLY_Spell Notes: CALE ENCI|r]
+    .train 403919 >>|cRXP_WARN_Use the|r |T134419:0|t|cRXP_LOOT_[Rune of Haunting]|r |cRXP_WARN_to learn|r |T133816:0|t[Engrave Gloves - Haunt]
     .use 205230
-    .train 403919,1
+    .itemcount 205230,1 -- Rune of Haunting (1)
 step << Orc
     #season 2
     .goto Durotar,42.51,69.04
     >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Mai'ah|r
     .turnin 77586 >>Turn in Stolen Power
     .target Nartok
-
+    .isOnQuest 77586
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -82,7 +85,7 @@ RXPGuides.RegisterGuide([[
 << Horde Warlock SoD
 #group RestedXP Rune & Books Guide
 #subgroup Gloves
-#name Haunt - 2 (Tirisfal)
+#name Haunt - 2 (Tirisfal Glades)
 #title Haunt
 
 
@@ -556,7 +559,7 @@ RXPGuides.RegisterGuide([[
 << Warlock SoD
 #group RestedXP Rune & Books Guide
 #subgroup Gloves
-#name Metamorphosis - 25
+#name Metamorphosis - 25 (Azeroth)
 #title Metamorphosis
 
 step
@@ -570,7 +573,7 @@ step
     #label WarlockRuneMetamorphosisA
     .train 403938,1
     >>Loot the |cRXP_PICK_Demonic Reliquary|r at the top of the tower to get the |T134337:0|t[Orb of Des]
-    *|cRXP_WARN_Be careful as it's guarded by an elite. One way would be to get to the second floor, die, ress at the top and loot the chest while your Voidwalker tanks the mobs.|r
+    *|cRXP_WARN_Be careful as it's guarded by an elite. Loot the chest whilst your Voidwalker tanks the mobs|r
     .collect 210765,1
     .goto Redridge Mountains,80.2,49.5
 step << Horde
@@ -670,6 +673,149 @@ step
     .use 210980
     .itemcount 210980,1
     .train 403938 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Metamorphosis|r] |cRXP_WARN_to train|r |T237558:0|t[Metamorphosis]
+]])
+
+RXPGuides.RegisterGuide([[
+#classic
+<< Warlock SoD
+#group RestedXP Rune & Books Guide
+#subgroup Belt
+#name Grimoire of Synergy - 40 (Azeroth)
+#title Grimoire of Synergy
+
+step
+    #optional
+    #completewith next
+    .train 426445,1
+    +|cRXP_WARN_You must be at least level 30 before you can acquire the|r |T133738:0|t[Grimoire of Synergy] |cRXP_WARN_rune|r
+    .xp >30,1
+step
+    .train 403938 >> |cRXP_WARN_You must first acquire the rune for|r |T237558:0|t[Metamorphosis] |cRXP_WARN_before you acquiring the|r |T133738:0|t[Grimoire of Synergy] |cRXP_WARN_rune|r
+step
+    #optional
+    .train 426445,1
+    +|cRXP_WARN_You must be at least level 30 before you can acquire the|r |T133738:0|t[Grimoire of Synergy] |cRXP_WARN_rune|r
+    .xp >30,1
+step
+    .train 426445,1
+    #completewith next
+    .zone The Barrens >>Travel to The Barrens
+step
+    .train 426445,1
+    .goto The Barrens,49.271,57.239
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raszel Ander|r
+    >>|cRXP_WARN_You must be in|r |T237558:0|t[Metamorphosis] |cRXP_WARN_to see|r |cRXP_FRIENDLY_Raszel Ander|r
+    .accept 78994 >> Accept A Solid Foundation
+    .target Raszel Ander
+step << Alliance
+    .train 426445,1
+    .isOnQuest 78994
+    .goto The Barrens,62.05,39.41
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Wiley|r
+    .home >> Set your Hearthstone to Ratchet
+    .target Innkeeper Wiley
+step << Horde
+    .train 426445,1
+    .isOnQuest 78994
+    .goto The Barrens,45.58,59.04
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Innkeeper Byula|r
+    .home >> Set your Hearthstone to Camp Taurajo
+    .target Innkeeper Byula
+step << Alliance
+    .train 426445,1
+    .isOnQuest 78994
+    .goto The Barrens,63.084,37.163
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Bragok|r
+    .fly Azshara >> Fly to Azshara
+    .target Bragok
+step << Horde
+    .train 426445,1
+    .isOnQuest 78994
+    .goto The Barrens,44.45,59.16
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Omusa|r
+    .fly Splintertree Post >>Fly to Splintertree Post
+    .target Omusa Thunderhorn
+step
+    .train 426445,1
+    .train 126,3 -- skips step if they don't have eye of killrog trained
+    .isOnQuest 78994
+    .goto Ashenvale,88.82,41.52
+    >>|cRXP_WARN_Travel to the arrow location in Ashenvale|r
+    .cast 126 >> |cRXP_WARN_Cast|r |T136155:0|t[Eye of Kilrogg] |cRXP_WARN_and head into Bough Shadow with it (the area with all level 60+ elites) and look for a |cRXP_PICK_Bough of Shadows|r tree. There can be multiple spawns throughout Bough Shadow, and ideally you want to find one which doesn't have many elites near it so you can loot it|r
+step
+    .train 426445,1
+    .isOnQuest 78994
+    #completewith next
+    .goto Ashenvale,88.82,41.52
+    .cast 440505 >> |cRXP_WARN_Use the|r |T236874:0|t[Invisibility Potion] |cRXP_WARN_and look for one of the |cRXP_PICK_Bough of Shadows|r trees throughout Bough Shadow. The area has many patroling level 60+ elites|r
+    .use 217693
+step
+    .train 426445,1
+    .isOnQuest 78994
+    .goto Ashenvale,90.9,38.6,20,0
+    .goto Ashenvale,91,37,0
+    >>|cRXP_WARN_Before looting the |cRXP_PICK_Bough of Shadows|r, take off all your equipment and cast|r |T136121:0|t[Shadow Ward]|cRXP_WARN_. You're about to receive a very high damaging debuff which deals percentage based damage. Be ready to Hearthstone after looting|r
+    >>Loot any of the |cRXP_PICK_Bough of Shadows|r throughout Bough Shadow
+    .complete 78994,1
+step
+    #completewith next
+    .train 426445,1
+    .isOnQuest 78994
+    .hs >> Hearth to Ratchet << Alliance
+    .hs >> Hearth to Camp Taurajo << Horde
+    .zoneskip The Barrens
+step
+    .train 426445,1
+    .goto The Barrens,49.271,57.239
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raszel Ander|r
+    >>|cRXP_WARN_You must be in|r |T237558:0|t[Metamorphosis] |cRXP_WARN_to see|r |cRXP_FRIENDLY_Raszel Ander|r
+    .turnin 78994 >> Turnin A Solid Foundation
+    .accept 78914 >> Accept Soul Vessel
+    .target Raszel Ander
+step
+    .train 426445,1
+    >>|cRXP_WARN_Acquire the following materials and have an Engeineer make a|r |T133254:0|t[Soul Vessel] |cRXP_WARN_for you. Note the|r |T134133:0|t[Black Vitriol] |cRXP_WARN_and|r |T134074:0|t[Shadowgem] |cRXP_WARN_can be bought from the Auction House and the|r |T134337:0|t[Demonic Figurine] |cRXP_WARN_from a|r |cRXP_FRIENDLY_Reagent Vendor|r
+    .collect 9262,1,78914,1,1 -- Black Vitriol
+    .collect 1210,4,78914,1,1 -- Shadowgem
+    .collect 16583,1,78914,1,1 -- Demonic Figurine
+    >>|cRXP_WARN_Alternatively you can buy a|r |T133254:0|t[Soul Vessel] |cRXP_WARN_straight from the Auction House|r
+    .collect 211427,1,78914,1
+step
+    #completewith next
+    .train 426445,1
+    .zone Desolace >> Travel to Desolace
+step
+    .train 426445,1
+    .goto Desolace,51.171,82.425
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raszel Ander|r
+    >>|cRXP_WARN_You must be in|r |T237558:0|t[Metamorphosis] |cRXP_WARN_to see|r |cRXP_FRIENDLY_Raszel Ander|r
+    .turnin 78914 >> Turn in Soul Vessel
+    .accept 79298 >> Accept Tempting Fate
+    .target Raszel Ander
+step
+    .train 426445,1
+    .goto Desolace,51.171,82.425
+    .gossip 215850,1 >> Talk to |cRXP_FRIENDLY_Raszel Ander|r to begin the ritaul
+    .timer 14,Tempting Fate RP
+    .skipgossip
+step
+    .train 426445,1
+    .goto Desolace,51.195,82.465
+    >>Click on the |cRXP_PICK_Reconstructed Staff of Des'Altek|r to summon |cRXP_ENEMY_Des'Altek|r
+    >>|cRXP_WARN_Ensure you are full HP with|r |T136121:0|t[Shadow Ward] |cRXP_WARN_active as you will receive damage while channeling and throughout the fight|r
+    >>Kill |cRXP_ENEMY_Des'Altek|r
+    .complete 79298,1
+    .mob Des'Altek
+step
+    .train 426445,1
+    .goto Desolace,51.171,82.425
+    >>|Tinterface/worldmap/chatbubble_64grey.blp:20|tTalk to |cRXP_FRIENDLY_Raszel Ander|r
+    >>|cRXP_WARN_You must be in|r |T237558:0|t[Metamorphosis] |cRXP_WARN_to see|r |cRXP_FRIENDLY_Raszel Ander|r
+    .turnin 79298 >> Turn in Tempting Fate
+    .target Raszel Ander
+step
+    .train 426445 >> |cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Synergy|r] |cRXP_WARN_to train|r |T133738:0|t[Grimoire of Synergy]
+    .use 213090
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -1067,18 +1213,6 @@ step << Warlock
     .itemcount 208744,1
 ]])
 
--- RXPGuides.RegisterGuide([[
--- #classic
--- << Warlock SoD
--- #group RestedXP Rune & Books Guide
--- #subgroup Belt
--- #name Grimoire of Synergy
-
--- Grimoire of Synergy
-
-
--- ]])
-
 RXPGuides.RegisterGuide([[
 #classic
 << Warlock SoD
@@ -1099,7 +1233,7 @@ step
 step
     .train 426443,1
     #completewith next
-    .subzone 324 >> Travel to Stromgarde Keep 
+    .subzone 324 >> Travel to Stromgarde Keep
 step
     #label SyndicateConjuror
     .train 426443,1
@@ -1151,15 +1285,18 @@ step
 step
     .train 416017,1
     .goto Desolace,74.5,13.4
-    >>Kill the |cRXP_ENEMY_Reckless Warlock|r in Desolace |cRXP_WARN_ Please note, this is a rare enemy and there's a chance it may not be present.|r Loot him |T236297:0|t[Brimstone Carving]
+    >>Click the |cRXP_ENEMY_Reckless Warlock|r on the ground. Loot him for |T236297:0|t[Brimstone Carving]
+    >>|cRXP_WARN_This is a rare enemy and there's a chance it may not be present|r
     .collect 213583,1
     .mob Reckless Warlock
     .unitscan Reckless Warlock
 step
     .train 416017,1
-    .cast 1949 >> Cast |T135818:0|t[Hellfire] to damage yourself below 70%. Afterwards |T236297:0|t[Brimstone Carving] will turn into the rune.
+    >>|cRXP_WARN_Cast|r |T135818:0|t[Hellfire] |cRXP_WARN_to damage yourself below 70% health. Afterwards|r |T236297:0|t[Brimstone Carving] |cRXP_WARN_will transform into|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Wickedness|r]
+    .collect 213102,1 --Rune of Wickedness
 step
-    .train 416017 >> Use the |T236295:0|t[Item] to learn |T236295:0|t[Dance of the Wicked]
+    .train 416017 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Wickedness|r] |cRXP_WARN_to learn|r |T236295:0|t[Dance of the Wicked]
+    .use 416017
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -1179,15 +1316,18 @@ step
 step
     .train 416017,1
     .goto Stranglethorn Vale,31.2,47.4
-    >>Kill the |cRXP_ENEMY_Reckless Warlock|r in Desolace |cRXP_WARN_ Please note, this is a rare enemy and there's a chance it may not be present.|r Loot him |T236297:0|t[Brimstone Carving]
+    >>Click the |cRXP_ENEMY_Reckless Warlock|r on the ground. Loot him for |T236297:0|t[Brimstone Carving]
+    >>|cRXP_WARN_This is a rare enemy and there's a chance it may not be present|r
     .collect 213583,1
     .unitscan Reckless Warlock
     .mob Reckless Warlock
 step
     .train 416017,1
-    .cast 1949 >> Cast |T135818:0|t[Hellfire] to damage yourself below 70%. Afterwards |T236297:0|t[Brimstone Carving] will turn into the rune.
+    >>|cRXP_WARN_Cast|r |T135818:0|t[Hellfire] |cRXP_WARN_to damage yourself below 70% health. Afterwards|r |T236297:0|t[Brimstone Carving] |cRXP_WARN_will transform into|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Wickedness|r]
+    .collect 213102,1 --Rune of Wickedness
 step
-    .train 416017 >> Use the |T236295:0|t[Item] to learn |T236295:0|t[Dance of the Wicked]
+    .train 416017 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Wickedness|r] |cRXP_WARN_to learn|r |T236295:0|t[Dance of the Wicked]
+    .use 416017
 ]])
 
 RXPGuides.RegisterGuide([[
@@ -1196,6 +1336,7 @@ RXPGuides.RegisterGuide([[
 #group RestedXP Rune & Books Guide
 #subgroup Boots
 #name Shadowflame - 40 (Desolace)
+#title Shadowflame
 
 
 -- Shadowflame
@@ -1206,8 +1347,14 @@ step
     .zone Desolace >>Travel to Desolace |cRXP_WARN_It is highly recommended to form a group of atleast 3 players.|r
 step
     .train 426467,1
+    .train 19028,3 --Soul Link
     .goto Desolace,81.2,79.7
-    .cast 434869 >> |cRXP_WARN_Click on the Altar to summon |cRXP_ENEMY_Seductress Ceeyna|r |cRXP_WARN_but make sure to use |T136121:0|t[Shadow Ward], |T136190:0|t[Sacrifice] and |T136160:0|t[Soul Link]|r beforehand|r |cFFFF0000 as you will receive a lot of damage during the channel and it cannot be healed.|r
+    .cast 434869 >> |cRXP_WARN_Click on the Altar to summon|r |cRXP_ENEMY_Seductress Ceeyna|r |cRXP_WARN_but make sure to use|r |T136121:0|t[Shadow Ward]|cRXP_WARN_,|r |T136190:0|t[Sacrifice] |cRXP_WARN_and|r |T136160:0|t[Soul Link]|r |cRXP_WARN_beforehand|r |cFFFF0000as you will receive a lot of damage during the channel and it cannot be healed|r
+step
+    .train 426467,1
+    .train 19028,1 --Soul Link
+    .goto Desolace,81.2,79.7
+    .cast 434869 >> |cRXP_WARN_Click on the Altar to summon|r |cRXP_ENEMY_Seductress Ceeyna|r |cRXP_WARN_but make sure to use|r |T136121:0|t[Shadow Ward] |cRXP_WARN_and|r |T136190:0|t[Sacrifice] |cRXP_WARN_beforehand|r |cFFFF0000as you will receive a lot of damage during the channel and it cannot be healed|r
 step
     .train 426467,1
     .goto Desolace,81.2,79.7
@@ -1215,7 +1362,8 @@ step
     .collect 213101,1
     .mob Seductress Ceeyna
 step
-    .train 426467 >> Use |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowflames|r] to learn |T236302:0|t[Shadowflame]
+    .train 426467 >>|cRXP_WARN_Use the|r |T134419:0|t[|cRXP_FRIENDLY_Rune of Shadowflames|r] |cRXP_WARN_to learn|r |T236302:0|t[Shadowflame]
+    .use 213101
 ]])
 
 -- RXPGuides.RegisterGuide([[

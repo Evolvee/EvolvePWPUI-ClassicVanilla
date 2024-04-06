@@ -1078,6 +1078,24 @@ function QuestieQuestBlacklist:Load()
         [70865] = true, -- Boosted character quest
         [70869] = true, -- Boosted character quest
         [70870] = true, -- Boosted character quest
+        [78136] = true, -- Boosted character quest
+        [78137] = true, -- Boosted character quest
+        [78138] = true, -- Boosted character quest
+        [78140] = true, -- Boosted character quest
+        [78151] = true, -- Boosted character quest
+        [78157] = true, -- Boosted character quest
+        [78158] = true, -- Boosted character quest
+        [78164] = true, -- Boosted character quest
+        [78166] = true, -- Boosted character quest
+        [78167] = true, -- Boosted character quest
+        [78168] = true, -- Boosted character quest
+        [78219] = true, -- Boosted character quest
+        [78220] = true, -- Boosted character quest
+        [78221] = true, -- Boosted character quest
+        [78222] = true, -- Boosted character quest
+        [78223] = true, -- Boosted character quest
+        [78224] = true, -- Boosted character quest
+        [78225] = true, -- Boosted character quest
 
 		-- Paladin class quests with SWP patch
         [64319] = true, -- removed in wotlk
@@ -1216,7 +1234,6 @@ function QuestieQuestBlacklist:Load()
         [12480] = true, -- Not in the game
         [12490] = true, -- Not in the game
         [12493] = true, -- Not in the game
-        [25229] = true, -- Not in the game
         [12780] = true, -- Not in the game
         [12590] = true, -- Not in the game
         [11461] = true, -- Not in the game
@@ -1236,7 +1253,6 @@ function QuestieQuestBlacklist:Load()
         [12162] = true, -- Not in the game
         [12163] = true, -- Not in the game
         [12051] = true, -- Not in the game
-        [25444] = true, -- Not in the game, part of Cata pre-prepatch events
         [12682] = true, -- Not in the game
         [12586] = true, -- Not in the game
         [12835] = true, -- Not in the game
@@ -1486,6 +1502,9 @@ function QuestieQuestBlacklist:Load()
         [79593] = true, -- Coarse Weightstone
         [79594] = true, -- Copper Modulator
         [79595] = true, -- Carnival Boots
+        [80421] = true, -- Green Iron Bracers
+        [80422] = true, -- Green Fireworks
+        [80423] = true, -- The World's Largest Gnome!
 
         --- Automatic Overrides (for when Wowhead data is wrong)
         [13134] = false, -- Spill Their Blood
@@ -1796,6 +1815,7 @@ function QuestieQuestBlacklist.LoadAutoBlacklistWotlk()
         [12187] = true, --* FLAG: Participant (https://www.wowhead.com/wotlk/quest=12187) (Retail Data)
         [12693] = true, --* Wolvar Faction Choice Tracker (https://www.wowhead.com/wotlk/quest=12693) (Retail Data)
         [12694] = true, --* Oracle Faction Choice Tracker (https://www.wowhead.com/wotlk/quest=12694) (Retail Data)
+        [12781] = true, --* Welcome! (https://www.wowhead.com/wotlk/quest=12781) (Retail Data)
         [12845] = true, --* Dalaran Teleport Crystal Flag (https://www.wowhead.com/wotlk/quest=12845) (Retail Data)
 
 
@@ -2204,32 +2224,9 @@ function QuestieQuestBlacklist.LoadAutoBlacklistWotlk()
         -- Northrend -> Tournament (10 -> -241)
         --[14112] = true, --* What Do You Feed a Yeti, Anyway? (https://www.wowhead.com/wotlk/quest=14112) (Retail Data)
 
-
-        --! 3.3.3
-        -- Kalimdor -> Durotar (1 -> 14)
-        [25445] = true, --* Zalazane's Fall (https://www.wowhead.com/wotlk/quest=25445) (Retail Data)
-        [25446] = true, --* Frogs Away! (https://www.wowhead.com/wotlk/quest=25446) (Retail Data)
-        [25461] = true, --* Trollin' For Volunteers (https://www.wowhead.com/wotlk/quest=25461) (Retail Data)
-        [25470] = true, --* Lady Of Da Tigers (https://www.wowhead.com/wotlk/quest=25470) (Retail Data)
-        [25480] = true, --* Dance Of De Spirits (https://www.wowhead.com/wotlk/quest=25480) (Retail Data)
-        [25495] = true, --* Preparin' For Battle (https://www.wowhead.com/wotlk/quest=25495) (Retail Data)
-
-        -- Eastern Kingdoms -> Dun Morogh (0 -> 1)
-        [25199] = true, --* Basic Orders (https://www.wowhead.com/wotlk/quest=25199) (Retail Data)
-        [25212] = true, --* Vent Horizon (https://www.wowhead.com/wotlk/quest=25212) (Retail Data)
-        [25229] = true, --* A Few Good Gnomes (https://www.wowhead.com/wotlk/quest=25229) (Retail Data)
-        [25283] = true, --* Prepping the Speech (https://www.wowhead.com/wotlk/quest=25283) (Retail Data)
-        [25285] = true, --* In and Out (https://www.wowhead.com/wotlk/quest=25285) (Retail Data)
-        [25286] = true, --* Words for Delivery (https://www.wowhead.com/wotlk/quest=25286) (Retail Data)
-        [25287] = true, --* Words for Delivery (https://www.wowhead.com/wotlk/quest=25287) (Retail Data)
-        [25289] = true, --* One Step Forward... (https://www.wowhead.com/wotlk/quest=25289) (Retail Data)
-        [25295] = true, --* Press Fire (https://www.wowhead.com/wotlk/quest=25295) (Retail Data)
-        [25393] = true, --* Operation: Gnomeregan (https://www.wowhead.com/wotlk/quest=25393) (Retail Data)
-        [25500] = true, --* Words for Delivery (https://www.wowhead.com/wotlk/quest=25500) (Retail Data)
-
         -- Raids -> Icecrown Citadel (3 -> 4812)
-        [24872] = true, --* Respite for a Tormented Soul (https://www.wowhead.com/wotlk/quest=24872)
-        [24880] = true, --* Respite for a Tormented Soul (https://www.wowhead.com/wotlk/quest=24880)
+        --[24872] = true, --* Respite for a Tormented Soul (https://www.wowhead.com/wotlk/quest=24872)
+        --[24880] = true, --* Respite for a Tormented Soul (https://www.wowhead.com/wotlk/quest=24880)
 
         --  ->  (0 -> 0)
         [25293] = true, --* The Missing (https://www.wowhead.com/wotlk/quest=25293) (Retail Data)

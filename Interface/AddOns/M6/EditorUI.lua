@@ -3,58 +3,10 @@ local MODERN, CI_ERA = COMPAT >= 10e4, COMPAT < 2e4
 local AB = T.ActionBook:compatible(2, 35)
 local KR = T.ActionBook:compatible("Kindred", 1, 11)
 local IM = T.ActionBook:compatible("Imp", 1, 0)
-local EV = T.Evie
-local MC = T.M6Core
+local EV, MC, XU = T.Evie, T.M6Core, T.exUI
 local L = setmetatable({}, {__call=function(_,k) return k end})
 local M = {}
 
-local SetBackdrop do
-	local edgeSlices = {
-		{"TOPLEFT", 0, -1, "BOTTOMRIGHT", "BOTTOMLEFT", 1, 1},
-		{"TOPRIGHT", 0, -1, "BOTTOMLEFT", "BOTTOMRIGHT", -1, 1},
-		{"TOPLEFT", 1, 0, "BOTTOMRIGHT", "TOPRIGHT", -1, -1, ccw=true},
-		{"BOTTOMLEFT", 1, 0, "TOPRIGHT", "BOTTOMRIGHT", -1, 1, ccw=true},
-		{"TOPLEFT", 0, 0, "BOTTOMRIGHT", "TOPLEFT", 1, -1},
-		{"TOPRIGHT", 0, 0, "BOTTOMLEFT", "TOPRIGHT", -1, -1},
-		{"BOTTOMLEFT", 0, 0, "TOPRIGHT", "BOTTOMLEFT", 1, 1},
-		{"BOTTOMRIGHT", 0, 0, "TOPLEFT", "BOTTOMRIGHT", -1, 1}
-	}
-	function SetBackdrop(f, info, bgColor, edgeColor)
-		local insets = info.insets
-		local es = info.edgeFile and (info.edgeSize or 39) or 0
-		if info.bgFile then
-			local bg = f:CreateTexture(nil, "BACKGROUND", nil, -7)
-			local tileBackground = not not info.tile
-			bg:SetTexture(info.bgFile, tileBackground, tileBackground)
-			bg:SetPoint("TOPLEFT", (insets and insets.left or 0), -(insets and insets.top or 0))
-			bg:SetPoint("BOTTOMRIGHT", -(insets and insets.right or 0), (insets and insets.bottom or 0))
-			if bgColor then
-				local n = bgColor
-				bg:SetVertexColor((n - n % 2^16) / 2^16 % 256 / 255, (n - n % 2^8) / 2^8 % 256 / 255, n % 256 / 255, n >= 2^24 and (n - n % 2^24) / 2^24 % 256 / 255 or 1)
-			end
-			f.backdropBackground = bg
-		end
-		if info.edgeFile then
-			local n = edgeColor or 0
-			local r,g,b,a = (n - n % 2^16) / 2^16 % 256 / 255, (n - n % 2^8) / 2^8 % 256 / 255, n % 256 / 255, n >= 2^24 and (n - n % 2^24) / 2^24 % 256 / 255 or 1
-			f.backdropBorder = {}
-			for i=1,#edgeSlices do
-				local t, s = f:CreateTexture(nil, "BORDER", nil, -6), edgeSlices[i]
-				t:SetTexture(info.edgeFile, false, true)
-				t:SetPoint(s[1], s[2]*es, s[3]*es)
-				t:SetPoint(s[4], f, s[5], s[6]*es, s[7]*es)
-				local x1, x2, y1, y2 = 1/128+(i-1)/8, i/8-1/128, 0.0625, 1-0.0625
-				if s.ccw then
-					t:SetTexCoord(x1,y2, x2,y2, x1,y1, x2,y1)
-				else
-					t:SetTexCoord(x1, x2, y1, y2)
-				end
-				if edgeColor then t:SetVertexColor(r,g,b,a) end
-				f.backdropBorder[i] = t
-			end
-		end
-	end
-end
 do -- EscapeCallback
 	local getInfo, setInfo do
 		local info = {}
@@ -105,7 +57,7 @@ local MacroTooltip = CreateFrame("GameTooltip", "M6MacroTooltip", UIParent) do
 	desc:SetPoint("TOPRIGHT", title2, "BOTTOMRIGHT", 0, -3)
 	MacroTooltip:AddFontStrings(title, title2)
 	MacroTooltip:AddFontStrings(desc, MacroTooltip:CreateFontString())
-	SetBackdrop(MacroTooltip, {edgeFile="Interface/Tooltips/UI-Tooltip-Border", bgFile="Interface/DialogFrame/UI-DialogBox-Background-Dark", tile=true, edgeSize=16, tileSize=16, insets={left=4,right=4,bottom=4,top=4}})
+	XU:Create("Backdrop", MacroTooltip, {edgeFile="Interface/Tooltips/UI-Tooltip-Border", bgFile="Interface/DialogFrame/UI-DialogBox-Background-Dark", tile=true, edgeSize=16, tileSize=16, insets={left=4,right=4,bottom=4,top=4}})
 	MacroTooltip:SetScript("OnTooltipCleared", function(self)
 		self:SetWidth(0)
 	end)
@@ -156,239 +108,6 @@ local multilineInput do
 		input.scroll, scroller.input = scroller, input
 		return input, scroller
 	end
-end
-local lineInput do
-	function lineInput(parent, common, width)
-		local input = CreateFrame("EditBox", nil, parent)
-		input:SetAutoFocus(nil)
-		input:SetSize(width or 150, 20)
-		input:SetFontObject(ChatFontNormal)
-		input:SetScript("OnEscapePressed", input.ClearFocus)
-		input:SetScript("OnTabPressed", shiftInputFocus)
-		local l, m, r = input:CreateTexture(nil, "BACKGROUND"), input:CreateTexture(nil, "BACKGROUND"), input:CreateTexture(nil, "BACKGROUND")
-		l:SetSize(common and 8 or 32, common and 20 or 32) l:SetPoint("LEFT", common and -5 or -10, 0)
-		l:SetTexture(common and "Interface\\Common\\Common-Input-Border" or "Interface\\ChatFrame\\UI-ChatInputBorder-Left2")
-		r:SetSize(common and 8 or 32, common and 20 or 32) r:SetPoint("RIGHT", common and 0 or 10, 0)
-		r:SetTexture(common and "Interface\\Common\\Common-Input-Border" or "Interface\\ChatFrame\\UI-ChatInputBorder-Right2")
-		m:SetHeight(common and 20 or 32) m:SetPoint("LEFT", l, "RIGHT") m:SetPoint("RIGHT", r, "LEFT")
-		m:SetTexture(common and "Interface\\Common\\Common-Input-Border" or "Interface\\ChatFrame\\UI-ChatInputBorder-Mid2")
-		if common then
-			l:SetTexCoord(0,1/16, 0,5/8)
-			r:SetTexCoord(15/16,1, 0,5/8)
-			m:SetTexCoord(1/16,15/16, 0,5/8)
-		else
-			m:SetHorizTile(true)
-		end
-		return input
-	end
-end
-local uiScrollingDropdown do
-	local sdAPI, scrollingDropdown = {}, CreateFrame("Frame", nil, UIParent) do
-		local MIN_SCROLL_ENTRIES, MAX_VISIBLE_ENTRIES = 20, 16
-		local WHEEL_STEP, WHEEL_DURATION = 8, 0.25
-		local BUTTON_STEP, BUTTON_DURATION = 15, 0.15
-		local SNAP_DURATION = 0.10
-		local MAX_TARGET_DISTANCE, MIN_ANIM_FPS = 48, 45
-		local clipRoot = CreateFrame("Frame", nil, scrollingDropdown)
-		local relFrame = CreateFrame("Frame", nil, clipRoot)
-		local slider = CreateFrame("Slider", nil, scrollingDropdown, "UIPanelScrollBarTemplate")
-		local buttons = {}
-		local SetDataSource, ReleaseDataSource, Entry_OnClick do
-			local positionArchive = setmetatable({}, {__mode="k"})
-			local dataList, entryFormat, entrySelect, fullSync
-			local aTarget, aOrigin, aLength, aLeft
-			function Entry_OnClick(self)
-				local entrySelect, arg1 = entrySelect, dataList[self:GetID()]
-				PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
-				CloseDropDownMenus()
-				entrySelect(nil, arg1)
-			end
-			local function VLD_OnUpdate(self, elapsed)
-				aLeft = aLeft - elapsed
-				local isDone, position = aLeft <= 0, aTarget
-				if isDone then
-					positionArchive[dataList] = aTarget
-					aTarget, aOrigin, aLength, aLeft = nil
-					self:SetScript("OnUpdate", nil)
-				else
-					local p = 1-aLeft/aLength
-					p = p*p*(3-2*p)
-					position = aOrigin*(1-p) + aTarget*p
-				end
-				local oy, baseOffset = (position % 1)*16, math.floor(position)
-				relFrame:SetPoint("TOPLEFT", 0, oy)
-				relFrame:SetPoint("TOPRIGHT", 0, oy)
-				for i=1,#buttons do
-					local w, eid = buttons[i], i+baseOffset
-					local ek = dataList[eid]
-					w:SetShown(ek ~= nil)
-					if ek ~= nil then
-						if fullSync or w:GetID() ~= eid then
-							local text, selected = entryFormat(ek, dataList)
-							w:SetText(text)
-							w:SetChecked(selected)
-							w:SetID(eid)
-							w:GetFontString():GetLeft() -- TODO: (8.1.5) Without this, it sometimes gets lost.
-						end
-						w:SetEnabled(isDone)
-					end
-				end
-				slider:SetValue(position)
-				fullSync = false
-			end
-			local function ProcessScrollDelta(delta, time)
-				local cur, vmin, vmax = slider:GetValue(), slider:GetMinMaxValues()
-				local goal, time = cur+delta, GetFramerate() >= MIN_ANIM_FPS and time or 0
-				if aTarget and aOrigin and (aOrigin < aTarget) == (cur < goal) then
-					goal = delta < 0 and math.max(aTarget+delta, cur-MAX_TARGET_DISTANCE) or math.min(aTarget+delta, cur+MAX_TARGET_DISTANCE)
-				end
-				goal = math.min(vmax, math.max(vmin, math.floor(goal)))
-				if aTarget == goal or (not aTarget and cur == goal) then
-					return
-				end
-				aLength, aLeft = time, time
-				aOrigin, aTarget = cur, goal
-				scrollingDropdown:SetScript("OnUpdate", VLD_OnUpdate)
-				VLD_OnUpdate(scrollingDropdown, 0)
-			end
-			scrollingDropdown:SetScript("OnMouseWheel", function(_, delta)
-				return ProcessScrollDelta(-delta*WHEEL_STEP, WHEEL_DURATION)
-			end)
-			local function SB_OnClick(self)
-				return ProcessScrollDelta(self == slider.ScrollUpButton and -BUTTON_STEP or BUTTON_STEP, BUTTON_DURATION)
-			end
-			slider.ScrollUpButton:SetScript("OnClick", SB_OnClick)
-			slider.ScrollDownButton:SetScript("OnClick", SB_OnClick)
-			slider.ScrollUpButton:SetMotionScriptsWhileDisabled(true)
-			slider.ScrollDownButton:SetMotionScriptsWhileDisabled(true)
-			slider:HookScript("OnMouseUp", function(self)
-				local cv = self:GetValue()
-				if cv % 1 ~= 0 then
-					aLeft = GetFramerate() < MIN_ANIM_FPS and 0 or SNAP_DURATION
-					aLength, aOrigin, aTarget = aLeft, self:GetValue(), math.floor(cv+0.5)
-					scrollingDropdown:SetScript("OnUpdate", VLD_OnUpdate)
-				end
-			end)
-			slider:SetScript("OnValueChanged", function(_, value, userDrag)
-				if userDrag then
-					aLeft, aTarget = 0, value
-					VLD_OnUpdate(scrollingDropdown, 0)
-				end
-				local vmin, vmax = slider:GetMinMaxValues()
-				slider.ScrollUpButton:SetEnabled(value ~= vmin)
-				slider.ScrollDownButton:SetEnabled(value ~= vmax)
-			end)
-			function SetDataSource(list, format, func, skipFirst)
-				dataList, entryFormat, entrySelect, fullSync = list, format, func, true
-				local maxV, arch = #dataList-MAX_VISIBLE_ENTRIES, positionArchive[list]
-				slider:SetMinMaxValues(skipFirst, maxV)
-				aTarget, aLeft = skipFirst, 0
-				if arch and skipFirst <= arch and arch <= maxV then
-					aTarget = arch
-				end
-				VLD_OnUpdate(scrollingDropdown, 0)
-			end
-			function ReleaseDataSource()
-				dataList, entryFormat, entrySelect = nil
-			end
-			DropDownList1:HookScript("OnHide", function()
-				for k in pairs(positionArchive) do
-					positionArchive[k] = nil
-				end
-			end)
-		end
-		local function bindToCounter(frame)
-			if frame ~= scrollingDropdown then
-				frame.parent = scrollingDropdown
-			end
-			frame:SetScript("OnEnter", UIDropDownMenu_StopCounting)
-			frame:SetScript("OnLeave", UIDropDownMenu_StartCounting)
-		end
-
-		clipRoot:SetAllPoints()
-		clipRoot:SetClipsChildren(true)
-		slider:SetPoint("TOPRIGHT", -1, -12)
-		slider:SetPoint("BOTTOMRIGHT", -1, 10)
-		bindToCounter(slider)
-		bindToCounter(slider.ScrollUpButton)
-		bindToCounter(slider.ScrollDownButton)
-		bindToCounter(clipRoot)
-		bindToCounter(scrollingDropdown)
-		scrollingDropdown:SetHitRectInsets(-4, -24, -8, -8)
-		local bg = slider:CreateTexture(nil, "BACKGROUND")
-		bg:SetWidth(1)
-		bg:SetColorTexture(0.25, 0.25, 0.25)
-		bg:SetPoint("TOPLEFT", -2, 17)
-		bg:SetPoint("BOTTOMLEFT", -2, -16)
-		relFrame:SetPoint("TOPLEFT")
-		relFrame:SetPoint("TOPRIGHT")
-		relFrame:SetHeight(1)
-		for i=1,MAX_VISIBLE_ENTRIES+1 do
-			local b = CreateFrame("CheckButton", nil, clipRoot, nil, i)
-			b:SetSize(100, 16)
-			b:SetHighlightTexture([[Interface\QuestFrame\UI-QuestTitleHighlight]])
-			b:GetHighlightTexture():SetBlendMode("ADD")
-			b:GetHighlightTexture():SetAllPoints()
-			b:SetCheckedTexture([[Interface\Common\UI-DropDownRadioChecks]])
-			b:GetCheckedTexture():SetTexCoord(0, 0.5, 0.5, 1)
-			b:GetCheckedTexture():ClearAllPoints()
-			b:GetCheckedTexture():SetSize(16,16)
-			b:GetCheckedTexture():SetPoint("LEFT", 3, 0)
-			b:SetNormalTexture([[Interface\Common\UI-DropDownRadioChecks]])
-			b:GetNormalTexture():SetTexCoord(0.5, 1, 0.5, 1)
-			b:GetNormalTexture():ClearAllPoints()
-			b:GetNormalTexture():SetSize(16,16)
-			b:GetNormalTexture():SetPoint("LEFT", 3, 0)
-			b:SetNormalFontObject(GameFontHighlightSmallLeft)
-			b:SetDisabledFontObject(GameFontHighlightSmallLeft)
-			b:SetText("The Fifth Suprise")
-			b:GetFontString():ClearAllPoints()
-			b:GetFontString():SetPoint("LEFT", 22, 0)
-			b:SetPoint("TOPLEFT", relFrame, 0, 16-16*i)
-			b:SetPoint("TOPRIGHT", relFrame, -16, 16-16*i)
-			bindToCounter(b)
-			b:SetScript("OnClick", Entry_OnClick)
-			buttons[i] = b
-		end
-		scrollingDropdown:SetScript("OnHide", function(self)
-			self:Hide()
-			ReleaseDataSource()
-		end)
-		function sdAPI:Display(level, dataList, entryFormatter, entrySelect, skipFirst)
-			skipFirst = type(skipFirst) == "number" and skipFirst or 0
-			local count = #dataList-skipFirst
-			if count < MIN_SCROLL_ENTRIES then
-				local info = {func=entrySelect, minWidth=level == 1 and UIDROPDOWNMENU_OPEN_MENU:GetWidth()-40 or nil}
-				for i=skipFirst+1,#dataList do
-					local k = dataList[i]
-					info.arg1, info.text, info.checked = k, entryFormatter(k, dataList)
-					UIDropDownMenu_AddButton(info, level)
-				end
-				return
-			end
-			local minWidth = math.max(120, level == 1 and UIDROPDOWNMENU_OPEN_MENU:GetWidth()-40 or 0)
-			for i=skipFirst+1,#dataList do
-				local text = entryFormatter(dataList[i], dataList)
-				buttons[1]:SetText(text)
-				minWidth = math.max(minWidth, 60 + buttons[1]:GetFontString():GetStringWidth())
-			end
-			local info = {notClickable=true, notCheckable=true, minWidth=minWidth}
-			for i=1,MAX_VISIBLE_ENTRIES do
-				UIDropDownMenu_AddButton(info, level)
-			end
-			local baseName = "DropDownList" .. level
-			local host, b1, bX = _G[baseName], _G[baseName .. "Button1"], _G[baseName .. "Button" .. MAX_VISIBLE_ENTRIES]
-			scrollingDropdown.parent = host
-			scrollingDropdown:SetParent(host)
-			scrollingDropdown:SetPoint("TOPLEFT", b1)
-			scrollingDropdown:SetPoint("BOTTOMRIGHT", bX)
-			SetDataSource(dataList, entryFormatter, entrySelect, skipFirst)
-			scrollingDropdown:Show()
-			scrollingDropdown:SetFrameLevel(b1:GetFrameLevel()+2)
-			slider:SetFrameLevel(scrollingDropdown:GetFrameLevel()+3)
-		end
-	end
-	uiScrollingDropdown = sdAPI
 end
 
 local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate") do
@@ -484,75 +203,23 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 		contentSlot:SetPoint("TOPLEFT", f.BgSep, "BOTTOMLEFT", 0, 4)
 		contentSlot:SetPoint("BOTTOMRIGHT", 0, 0)
 	end
-	local sf, bar, slate = CreateFrame("ScrollFrame", nil, contentSlot) do
+	local sf, bar, slate = CreateFrame("Frame", nil, contentSlot) do
 		sf:SetPoint("TOPLEFT", 0, -1)
 		sf:SetPoint("BOTTOMRIGHT", -24, 5)
-		slate = CreateFrame("Frame", nil, sf) do
-			slate:SetSize(mainPanel:GetWidth()-28, 42)
-			sf:SetScrollChild(slate)
-		end
-		bar = CreateFrame("Slider", nil, sf) do
-			bar:SetWidth(19)
-			bar:SetPoint("TOPLEFT", sf, "TOPRIGHT", 1, -11)
-			bar:SetPoint("BOTTOMLEFT", sf, "BOTTOMRIGHT", 1, 13)
-			bar:SetThumbTexture("Interface\\Buttons\\UI-ScrollBar-Knob")
-			bar:GetThumbTexture():SetSize(18, 24)
-			bar:GetThumbTexture():SetTexCoord(0.20, 0.80, 0.125, 0.875)
-			bar:SetMinMaxValues(0, 1)
-			bar:SetValue(0)
-			local bg = bar:CreateTexture(nil, "BACKGROUND")
-			bg:SetPoint("TOPLEFT", 0, 16)
-			bg:SetPoint("BOTTOMRIGHT", 0, -14)
-			bg:SetColorTexture(0,0,0)
-			bg:SetAlpha(0.85)
-			local top = bar:CreateTexture(nil, "ARTWORK")
-			top:SetSize(24, 48)
-			top:SetPoint("TOPLEFT", -4, 17)
-			top:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-			top:SetTexCoord(0, 0.45, 0, 0.20)
-			local bot = bar:CreateTexture(nil, "ARTWORK")
-			bot:SetSize(24, 64)
-			bot:SetPoint("BOTTOMLEFT", -4, -15)
-			bot:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-			bot:SetTexCoord(0.515625, 0.97, 0.1440625, 0.4140625)
-			local mid = bar:CreateTexture(nil, "ARTWORK")
-			mid:SetPoint("TOPLEFT", top, "BOTTOMLEFT")
-			mid:SetPoint("BOTTOMRIGHT", bot, "TOPRIGHT")
-			mid:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-			mid:SetTexCoord(0, 0.45, 0.1640625, 1)
-			local function Move(self)
-				bar:SetValue(max(0,bar:GetValue() - (2-self:GetID()) * 216))
-			end
-			local up = CreateFrame("Button", nil, bar, "UIPanelScrollUpButtonTemplate", 1)
-			up:SetPoint("BOTTOM", bar, "TOP", 0, -2)
-			local down = CreateFrame("Button", nil, bar, "UIPanelScrollDownButtonTemplate", 3)
-			down:SetPoint("TOP", bar, "BOTTOM", 0, 2)
-			up:SetScript("OnClick", Move)
-			down:SetScript("OnClick", Move)
-			sf:SetScript("OnMouseWheel", function(_, direction)
-				(direction == 1 and up or down):Click()
-			end)
-			bar:SetScript("OnValueChanged", function(self, v, _isUserInteraction)
-				self:SetMinMaxValues(0, slate:DoLayout(v, sf:GetHeight()))
-				local _, x = self:GetMinMaxValues()
-				up:SetEnabled(v > 0)
-				down:SetEnabled(v < x)
+		local clipRoot = CreateFrame("Frame", nil, sf)
+		clipRoot:SetClipsChildren(true)
+		clipRoot:SetAllPoints()
+		slate = CreateFrame("Frame", nil, clipRoot)
+		slate:SetSize(mainPanel:GetWidth()-28, 400)
+		bar = XU:Create("ScrollBar", nil, sf) do
+			bar:SetPoint("TOPLEFT", sf, "TOPRIGHT", 1, 0)
+			bar:SetPoint("BOTTOMLEFT", sf, "BOTTOMRIGHT", 1, 0)
+			bar:SetWheelScrollTarget(sf)
+			bar:SetScript("OnValueChanged", function(_, v, _isUserInteraction)
+				slate:SetPoint("TOPLEFT", 0, v)
 			end)
 		end
 		f.scrollList, sf.bar, sf.slate = sf, bar, slate
-		local sysFilters = {all=1, active=1, keybound=1, inactive=1}
-		function sf:Reset(resetFilter, newGroup)
-			if resetFilter then
-				sf:SetFilter("all", false)
-			elseif not (sysFilters[currentFilter] or MC:GetGroupID(currentFilter)) then
-				sf:SetFilter(newGroup and MC:GetGroupID(newGroup) or "all", false)
-			end
-			if bar:GetValue() ~= 0 then
-				bar:SetValue(0)
-			else
-				bar:GetScript("OnValueChanged")(bar, 0)
-			end
-		end
 		local newMacro = CreateFrame("Button", nil, sf) do
 			newMacro:SetNormalTexture("Interface/GuildBankFrame/UI-GuildBankFrame-NewTab")
 			newMacro:SetPushedTexture("Interface/GuildBankFrame/UI-GuildBankFrame-NewTab")
@@ -572,13 +239,13 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			newMacro:SetPoint("TOPLEFT", mainPanel, "TOPLEFT", 62, -32)
 			newMacro:SetScript("OnClick", function()
 				PlaySound(SOUNDKIT.IG_CHARACTER_INFO_OPEN)
-				mainPanel.editPanel:Open(0)
+				M:OpenEditor(0)
 			end)
 		end
 		local filterButton = CreateFrame("Button", nil, sf, "UIMenuButtonStretchTemplate") do
 			filterButton:SetSize(92, 22)
 			filterButton:SetText(L"Filter")
-			filterButton:SetPoint("TOPRIGHT", mainPanel, "TOPRIGHT", -8, -36)
+			filterButton:SetPoint("TOPRIGHT", mainPanel, "TOPRIGHT", -12, -36)
 			local t = filterButton:CreateTexture(nil, "ARTWORK")
 			t:SetTexture("Interface/ChatFrame/ChatFrameExpandArrow")
 			t:SetSize(10,12)
@@ -591,8 +258,11 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				DropDownList1:ClearAllPoints()
 				DropDownList1:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 8, 6)
 			end)
+			function filterButton:HandlesGlobalMouseEvent()
+				return true
+			end
 			local function setFilter(_, fv)
-				sf:SetFilter(fv, true)
+				M:SetFilter(fv, true)
 				-- SD's short menu fallback to UIDD doesn't close the top-level menu
 				CloseDropDownMenus()
 			end
@@ -602,10 +272,10 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			end
 			function drop:initialize(level, nameList)
 				if level == 2 then
-					uiScrollingDropdown:Display(2, nameList, groupEntryFormat, setFilter, 8)
+					XU:Create("ScrollableDropDownList", 2, nameList, groupEntryFormat, setFilter, false)
 					return
 				end
-				local cv = sf:GetFilter()
+				local cv = M:GetFilter()
 				local info = {func=setFilter}
 				for i=1,#filters, 2 do
 					local fv = filters[i+1]
@@ -634,14 +304,29 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 					end
 				end
 			end
+			local filterResetButton = CreateFrame("Button", nil, filterButton) do
+				local b = filterResetButton
+				b:SetSize(23,23)
+				b:SetPoint("CENTER", filterButton, "TOPRIGHT", -3, 0)
+				b:SetNormalAtlas("auctionhouse-ui-filter-redx")
+				b:SetHighlightAtlas("auctionhouse-ui-filter-redx")
+				b:GetHighlightTexture():SetBlendMode("ADD")
+				b:GetHighlightTexture():SetAlpha(0.4)
+				b:SetScript("OnClick", function()
+					PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+					M:SetFilter("all", true)
+					if UIDROPDOWNMENU_OPEN_MENU == drop then
+						CloseDropDownMenus()
+					end
+				end)
+			end
+			mainPanel.FilterButton, filterButton.Reset = filterButton, filterResetButton
 		end
-		
 		mainPanel.Instruction = sf:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
 		mainPanel.Instruction:SetPoint("BOTTOM", sf, "TOP", 10, 12)
 		mainPanel.Instruction:SetText(L"Right click on a macro for options.")
 	end
 	local editPanel, getEditMacroText, setEditMacroText, clearMacroEditor = CreateFrame("Frame", nil, contentSlot) do
-		mainPanel.editPanel = editPanel
 		editPanel:SetPoint("TOPLEFT", sf, "TOPLEFT", 0, 0)
 		editPanel:SetPoint("BOTTOMRIGHT", sf, "BOTTOMRIGHT", 20, 0)
 		editPanel:Hide()
@@ -674,15 +359,19 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			eboxLast = {SetFocus=ebox.SetFocus}
 			editPanel.box = ebox
 		end
-		local nbox = lineInput(editPanel, true, 200) do
+		local nbox = XU:Create("LineInput", nil, editPanel) do
+			nbox:SetWidth(200)
 			nbox:SetPoint("LEFT", editPanel, "TOPLEFT", 120, -12)
+			nbox:SetScript("OnTabPressed", shiftInputFocus)
 			local lab = nbox:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 			lab:SetText(L"Name:")
 			lab:SetPoint("LEFT", editPanel, "TOPLEFT", 8, -12)
 			editPanel.nameBox = nbox
 		end
-		local gbox = lineInput(editPanel, true, 145) do
+		local gbox = XU:Create("LineInput", nil, editPanel) do
+			gbox:SetWidth(145)
 			gbox:SetPoint("LEFT", nbox, "RIGHT", 100, 0)
+			gbox:SetScript("OnTabPressed", shiftInputFocus)
 			local lab = gbox:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 			lab:SetText(L"Group:")
 			lab:SetPoint("LEFT", nbox, "RIGHT", 35, 0)
@@ -707,8 +396,8 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				bind.glob = glob
 			end
 			
-			local alternateFrame = CreateFrame("Frame", nil, UIParent) do
-				SetBackdrop(alternateFrame, { bgFile="Interface/ChatFrame/ChatFrameBackground", edgeFile="Interface/DialogFrame/UI-DialogBox-Border", tile=true, tileSize=32, edgeSize=32, insets={left=11, right=11, top=12, bottom=10}}, 0xd8000000)
+			local alternateFrame = CreateFrame("Frame", nil, bind) do
+				XU:Create("Backdrop", alternateFrame, { bgFile="Interface/ChatFrame/ChatFrameBackground", edgeFile="Interface/DialogFrame/UI-DialogBox-Border", tile=true, tileSize=32, edgeSize=32, insets={left=11, right=11, top=12, bottom=10}, bgColor=0xd8000000})
 				alternateFrame:SetSize(320, 115)
 				alternateFrame:EnableMouse(1)
 				alternateFrame:SetScript("OnHide", alternateFrame.Hide)
@@ -742,14 +431,14 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				scroll:SetPoint("TOPLEFT", 10, -28)
 				scroll:SetPoint("BOTTOMRIGHT", -33, 10)
 				input:SetMaxBytes(1023)
-				input:SetScript("OnEscapePressed", function() alternateFrame:Hide() end)
+				input:SetScript("OnEscapePressed", function() M:HideEditorModal(alternateFrame) end)
 				input:SetScript("OnChar", function(self, c)
 					if c == "\n" then
 						local bind = strtrim((self:GetText():gsub("[\r\n]", "")))
 						if bind ~= "" then
 							alternateFrame.owner:SetBinding(bind)
 						end
-						alternateFrame:Hide()
+						M:HideEditorModal(alternateFrame)
 					end
 				end)
 			end
@@ -812,7 +501,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 						Deactivate(self)
 					elseif IsAltKeyDown() then
 						if alternateFrame:IsShown() and alternateFrame.owner == self then
-							alternateFrame:Hide()
+							M:HideEditorModal(alternateFrame)
 						else
 							alternateFrame.owner = self
 							alternateFrame.caption:SetText(L"Press ENTER to save.")
@@ -826,7 +515,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 							elseif alternateFrame:GetRight() > self:GetParent():GetRight() then
 								alternateFrame:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 8+22, 4)
 							end
-							alternateFrame:Show()
+							M:ShowEditorModal(alternateFrame)
 							alternateFrame.input:SetFocus()
 						end
 					else
@@ -838,13 +527,12 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 						self:SetScript("OnKeyDown", SetBind)
 						self:SetScript("OnGamePadButtonDown", SetBind)
 						self:SetScript("OnMouseWheel", SetWheelBind)
-						editPanel.icon:HideSelectorPanel()
+						M:HideEditorModal(nil)
 						local kf = GetCurrentKeyBoardFocus()
 						if kf and kf.ClearFocus and kf.SetFocus then
 							kf:ClearFocus()
 							self.oldFocus = kf
 						end
-						
 					end
 				elseif button == "RightButton" then
 					if self.capture then
@@ -877,9 +565,10 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				end
 				Deactivate(self)
 			end
+			bind.Deactivate = Deactivate
 			editPanel.bind = bind
 		end
-		local ico = CreateFrame("Button", nil, editPanel) do
+		local ico, isd = CreateFrame("Button", nil, editPanel) do
 			ico:SetSize(204, 18)
 			ico:SetPoint("LEFT", editPanel, "TOPLEFT", 120, -33)
 			ico:RegisterForClicks("AnyUp")
@@ -900,6 +589,41 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			local lab = ico:CreateFontString(nil, "ARTWORK", "GameFontNormal")
 			lab:SetText(L"Icon:")
 			lab:SetPoint("LEFT", editPanel, "TOPLEFT", 8, -33)
+			isd = XU:Create("IconSelector", nil, ico)
+			isd:SetGridSize(7, 12)
+			isd:SetPoint("TOPLEFT", ico, "BOTTOMLEFT", -20, 4)
+			isd:SetHitRectInsets(-100, 0, 0, 0)
+			isd:SetScript("OnIconSelect", function(_, asset)
+				ico:SetIcon(asset)
+			end)
+			isd:SetScript("OnEditFocusGained", function(self, editbox)
+				local nc = NORMAL_FONT_COLOR
+				GameTooltip:SetOwner(editbox, "ANCHOR_NONE")
+				if editbox:GetBottom() < 120 then
+					GameTooltip:SetPoint("BOTTOMLEFT", editbox, "TOPLEFT", -6, 0)
+				else
+					GameTooltip:SetPoint("TOPLEFT", editbox, "BOTTOMLEFT", -6, 0)
+				end
+				GameTooltip:AddLine(L"Override Icon", 1,1,1)
+				GameTooltip:AddLine(L"Specify an icon by entering an icon file name, texture path, atlas name, or a known ability name.", nc.r, nc.g, nc.b, 1)
+				if self:IsSearchPossible() then
+					GameTooltip:AddLine((L"Press %s to search"):format(HIGHLIGHT_FONT_COLOR_CODE .. GetBindingText("ALT-ENTER") .. "|r"), nc.r, nc.g, nc.b, 1)
+				else
+					local at = HIGHLIGHT_FONT_COLOR_CODE .. "IconFileNames |cff606060<|cff40a0ffhttps://townlong-yak.com/addons/iconfilenames|r>|r|r"
+					GameTooltip:AddLine((L"Install and enable %s to search by file name."):format(at), nc.r, nc.g, nc.b, 1)
+				end
+				GameTooltip:Show()
+			end)
+			isd:SetScript("OnEditFocusLost", function(_, editbox)
+				if GameTooltip:IsOwned(editbox) then
+					GameTooltip:Hide()
+				end
+			end)
+			ico:SetScript("OnClick", function()
+				M[isd:IsShown() and "HideEditorModal" or "ShowEditorModal"](M, isd)
+				PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON)
+			end)
+			isd.SetFocus = isd.FocusManualInput
 			function ico:SetIcon(tex, ...)
 				self.value = tex
 				if select("#", ...) == 1 then
@@ -907,146 +631,16 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				end
 				self:SetText(tex and L"Static custom icon" or L"Determined by macro content")
 				self:SetNormalTexture(tex or self.dynamicIcon or "Interface\\Icons\\INV_Misc_QuestionMark")
+				isd:SetFirstAsset(tex or self.dynamicIcon)
+				isd:SetSelectedAsset(tex)
 			end
 			editPanel.icon = ico
-			do
-				local ROWS, COLS, ADVANCE, OFS_X, OFS_Y, PAD_X, PAD_Y = 7, 12, 34, 14, -13, 44, 44
-				local frame = CreateFrame("Frame", nil, ico)
-				SetBackdrop(frame, {bgFile = "Interface/ChatFrame/ChatFrameBackground", edgeFile = "Interface/DialogFrame/UI-DialogBox-Border", tile = true, tileSize = 32, edgeSize = 32, insets = { left = 11, right = 11, top = 12, bottom = 10 }}, 0)
-				frame:SetSize(PAD_X + COLS*ADVANCE, PAD_Y + ROWS*ADVANCE)
-				frame:SetHitRectInsets(-98, -16, 4, -10)
-				frame:SetPoint("TOPLEFT", ico, "BOTTOMLEFT", -16, 4)
-				frame:EnableMouse(1) frame:SetToplevel(true) frame:Hide()
-				ico:SetScript("OnClick", function() frame:SetShown(not frame:IsShown()) PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON) end)
-				M:EscapeCallback(frame, function(self, key)
-					if key == "ESCAPE" then
-						self:Hide()
-					end
-				end)
-				frame:SetScript("OnHide", frame.Hide)
-				local icons, selectedIconButton = {}
-				local function onClick(self)
-					if selectedIconButton then selectedIconButton:SetChecked(nil) end
-					ico:SetIcon(self:GetChecked() and self.tex:GetTexture() or nil)
-					selectedIconButton = self:GetChecked() and self or nil
-					PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON)
-				end
-				do -- frame.textInput
-					local ed = lineInput(frame, false, 0)
-					local hint = ed:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-					hint:SetPoint("CENTER")
-					hint:SetText("|cffa0a0a0" .. L"(enter an icon name or path here)")
-					local bg = ed:CreateTexture(nil, "BACKGROUND", nil, -8)
-					bg:SetColorTexture(0,0,0,0.95)
-					bg:SetPoint("TOPLEFT", -3, 3)
-					bg:SetPoint("BOTTOMRIGHT", 3, -3)
-					ed:SetPoint("BOTTOMLEFT", 11, 8)
-					ed:SetPoint("BOTTOMRIGHT", -34, 8)
-					ed:SetTextInsets(2, 0, 0, 0)
-					ed:SetFrameLevel(ed:GetFrameLevel()+5)
-					ed:SetScript("OnEditFocusGained", function() hint:Hide() end)
-					ed:SetScript("OnEditFocusLost", function(self) hint:SetShown(not self:GetText():match("%S")) end)
-					local function GetPositiveFileIDFromPath(path)
-						local id = GetFileIDFromPath(path)
-						return id and id > 0 and id or nil
-					end
-					ed:SetScript("OnEnterPressed", function(self)
-						local text = self:GetText()
-						if text:match("%S") then
-							local path = GetPositiveFileIDFromPath(text)
-							path = path or GetPositiveFileIDFromPath("Interface\\Icons\\" .. text)
-							ico:SetIcon(path or tonumber(text) or text or nil)
-							if selectedIconButton then selectedIconButton:SetChecked(nil) end
-							selectedIconButton = nil
-						end
-						self:SetText("")
-						self:ClearFocus()
-					end)
-					ed:SetScript("OnEscapePressed", function(self) self:SetText("") self:ClearFocus() end)
-					frame.textInput, frame.textInputHint = ed, hint
-					M:EscapeCallback(frame, "TAB", function(self, key)
-						if key == "TAB" then
-							ed:SetFocus()
-						elseif key == "ESCAPE" then
-							self:Hide()
-						end
-					end)
-				end
-				local function createIconButton(name, parent, id)
-					local f = CreateFrame("CheckButton", name, parent)
-					f:SetSize(32,32)
-					f:SetNormalTexture("")
-					f:SetHighlightTexture("Interface/Buttons/ButtonHilight-Square")
-					f:GetHighlightTexture():SetBlendMode("ADD")
-					f:SetCheckedTexture("Interface/Buttons/CheckButtonHilight")
-					f:GetCheckedTexture():SetBlendMode("ADD")
-					f:SetPushedTexture("Interface/Buttons/UI-Quickslot-Depress")
-					f.tex = f:CreateTexture() f.tex:SetAllPoints()
-					f:SetID(id or 0)
-					return f
-				end
-				for i=0, ROWS*COLS-1 do
-					local j = createIconButton(nil, frame, i)
-					j:SetPoint("TOPLEFT", OFS_X + (i % COLS)*ADVANCE, OFS_Y - math.floor(i / COLS)*ADVANCE)
-					j:SetScript("OnClick", onClick)
-					icons[i] = j
-				end
-				local icontex = {}
-				local slider = CreateFrame("Slider", nil, frame, "UIPanelScrollBarTemplate") do
-					slider:SetPoint("TOPRIGHT",-10, -27) slider:SetPoint("BOTTOMRIGHT", -10, 27)
-					slider:SetValueStep(COLS) slider:SetObeyStepOnDrag(true)
-					local t = slider:CreateTexture()
-					t:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-					t:SetSize(24,48)
-					t:SetPoint("TOPLEFT", -5, 19)
-					t:SetTexCoord(0, 0.45, 0, 0.20)
-					t = slider:CreateTexture()
-					t:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-					t:SetSize(24,64)
-					t:SetPoint("BOTTOMLEFT", -5, -17)
-					t:SetTexCoord(0.515625, 0.97, 0.1440625, 0.4140625)
-					t = slider:CreateTexture()
-					t:SetTexture("Interface\\PaperDollInfoFrame\\UI-Character-ScrollBar")
-					t:SetPoint("TOPLEFT", -5, 19-48)
-					t:SetPoint("BOTTOMRIGHT", slider, "BOTTOMLEFT", 19, 47)
-					t:SetTexCoord(0, 0.45, 0.1640625, 1)
-					slider:SetScript("OnValueChanged", function(self, value)
-						self.ScrollUpButton:SetEnabled(value > 1)
-						self.ScrollDownButton:SetEnabled(icontex[value + #icons + 1] ~= nil)
-						selectedIconButton = nil
-						for i=0,#icons do
-							local tw, isSelected = icons[i].tex
-							tw:SetTexture(icontex[i+value])
-							isSelected = ico.value == tw:GetTexture()
-							icons[i]:SetChecked(isSelected)
-							selectedIconButton = isSelected and icons[i] or selectedIconButton
-						end
-					end)
-				end
-				frame:SetScript("OnShow", function(self)
-					self:SetFrameLevel(math.min(9990, self:GetParent():GetFrameLevel()+200))
-					icontex = GetMacroIcons()
-					GetMacroItemIcons(icontex)
-					slider:SetMinMaxValues(1, #icontex-#icons)
-					slider:SetValue(1)
-					local mf = GetCurrentKeyBoardFocus()
-					if mf and mf.ClearFocus then
-						mf:ClearFocus()
-					end
-				end)
-				frame:SetScript("OnMouseWheel", function(_, delta)
-					slider:SetValue(slider:GetValue()-delta*COLS*3)
-				end)
-				function ico:HideSelectorPanel()
-					frame:Hide()
-				end
-			end
 		end
 		local save = CreateFrame("Button", nil, editPanel, "UIPanelButtonTemplate")
 		save:SetWidth(120)
 		save:SetText(L"Save")
 		save:SetPoint("BOTTOMRIGHT", -2, 4)
-		save:SetScript("OnClick", function() PlaySound(SOUNDKIT.GS_TITLE_OPTION_OK) editPanel:Save() end)
+		save:SetScript("OnClick", function() PlaySound(SOUNDKIT.GS_TITLE_OPTION_OK) M:SaveEditor() end)
 		local cancel = CreateFrame("Button", nil, editPanel, "UIPanelButtonTemplate")
 		cancel:SetWidth(120)
 		cancel:SetText(L"Cancel")
@@ -1058,24 +652,28 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 		end)
 		M:EscapeCallback(editPanel, "TAB", function(s, key)
 			if key == "ESCAPE" then
-				cancel:Click()
+				if isd:IsShown() then
+					isd:Hide()
+				else
+					cancel:Click()
+				end
 			elseif key == "TAB" then
-				local focusBox = s.nameBox:GetText() == "" and ebox:GetText() == "" and s.nameBox or ebox
+				local focusBox = isd:IsShown() and isd or s.nameBox:GetText() == "" and ebox:GetText() == "" and s.nameBox or ebox
 				focusBox:SetFocus()
 			end
 		end)
 	end
 	local menu, drop = {
-		{text="Place on action bars", func=function(_, id) MC:PickupAction(id) slate:SyncContent() end, notCheckable=true},
-		{text="Deactivate", notCheckable=true, func=function(_, id) MC:DeactivateAction(id) slate:SyncContent() end},
-		{text="|cffff0000Delete", notCheckable=true, func=function(_, id) MC:DeleteAction(id) slate:ReFilter() end},
+		{text="Place on action bars", func=function(_, id) MC:PickupAction(id) M:SyncContent() end, notCheckable=true},
+		{text="Deactivate", notCheckable=true, func=function(_, id) MC:DeactivateAction(id) M:SyncContent() end},
+		{text="|cffff0000Delete", notCheckable=true, func=function(_, id) MC:DeleteAction(id) M:ReFilter() end},
 	}, CreateFrame("Frame", "M6ActionsDropDown", slate, "UIDropDownMenuTemplate")
 	
 	local function Button_OnClick(self, button)
 		local id = self:GetID()
 		if id == 0 or button == "LeftButton" then
 			PlaySound(SOUNDKIT.IG_QUEST_LIST_OPEN)
-			editPanel:Open(id)
+			M:OpenEditor(id)
 		elseif UIDROPDOWNMENU_OPEN_MENU == drop and DropDownList1:IsVisible() and menu[1].arg1 == id then
 			CloseDropDownMenus()
 		elseif button == "RightButton" then
@@ -1092,7 +690,7 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 		local id = self:GetID()
 		if id > 0 and (IsShiftKeyDown() or MC:IsActionActivated(id)) then
 			MC:PickupAction(id)
-			slate:SyncContent()
+			M:SyncContent()
 		end
 	end
 	local function Button_OnEnter(self)
@@ -1140,31 +738,47 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 		b.border:SetAllPoints()
 		return b
 	end
-	slate.keys, slate.buttons = {}, {}
-	
-	local TOTAL_WIDTH, BUTTON_SIZE = slate:GetWidth()-2, 40
+
+	local TOTAL_WIDTH, BUTTON_SIZE = slate:GetWidth()-4, 40
 	local BUTTONS_PER_ROW = math.floor(TOTAL_WIDTH/(BUTTON_SIZE+2))
 	local BUTTON_SPACER = BUTTON_SIZE + math.floor((TOTAL_WIDTH-BUTTON_SIZE*BUTTONS_PER_ROW)/(BUTTONS_PER_ROW-1))
-	local BUTTON_LEFT = (TOTAL_WIDTH - BUTTON_SPACER*(BUTTONS_PER_ROW-1)-BUTTON_SIZE)/2
+	local BUTTON_LEFT = 2 + (TOTAL_WIDTH - BUTTON_SPACER*(BUTTONS_PER_ROW-1)-BUTTON_SIZE)/2
+	bar:SetValueStep(BUTTON_SPACER)
+	bar:SetStepsPerPage(5)
+	local GROUP_MIX_FILTERS = {all=1, active=1, keybound=1, inactive=1}
 
-	function sf:SetFilter(filterKey, callReset)
+	M.keys, M.buttons, M.headers = {}, {}, {}
+	function M:Reset(resetFilter, newGroup, preserveScroll, _scrollActionID)
+		if resetFilter then
+			M:SetFilter("all", false)
+		elseif not (GROUP_MIX_FILTERS[currentFilter] or MC:GetGroupID(currentFilter)) then
+			M:SetFilter(newGroup and MC:GetGroupID(newGroup) or "all", false)
+		end
+		if preserveScroll ~= true then
+			bar:SetValue(0, true)
+		end
+		M:RefreshView()
+	end
+	function M:SetFilter(filterKey, callReset)
+		mainPanel.FilterButton.Reset:SetShown(filterKey ~= "all")
 		if currentFilter ~= filterKey then
-			wipe(slate.keys)
+			wipe(M.keys)
 			currentFilter = filterKey
 			if callReset then
-				sf:Reset()
+				M:Reset()
 			end
 		end
 	end
-	function sf:GetFilter()
+	function M:GetFilter()
 		return currentFilter
 	end
-	function slate:PrepareView()
-		local kt = self.keys or {}
+	function M:RefreshView()
+		local kt = M.keys or {}
 		if not kt[1] then
-			local o = {}
+			local o, g, gi = {}, {}, {}
+			local isGroupMixFilter = GROUP_MIX_FILTERS[currentFilter]
 			for id, name in MC:AllActions() do
-				local f = true
+				local f, gn, gid = true, MC:GetActionGroup(id)
 				if currentFilter == "all" then
 					f = true
 				elseif currentFilter == "active" then
@@ -1174,30 +788,73 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 				elseif currentFilter == "inactive" then
 					f = not (MC:IsActionActivated(id) or MC:GetActionBind(id))
 				else
-					local _, gid = MC:GetActionGroup(id)
 					f = gid == currentFilter
 				end
 				if f then
-					kt[#kt+1] = id
-					o[id] = name
+					kt[#kt+1], o[id], gid = id, name, gid or -1
+					local ge = gi[gid] or {name=gn or "", gid=gid, active=false, keybound=false}
+					ge.active = ge.active or not not MC:IsActionActivated(id)
+					ge.keybound = ge.keybound or not not MC:GetActionBind(id)
+					g[id], gi[gid] = ge, ge
 				end
 			end
 			table.sort(kt, function(a, b)
-				local ac, bc = o[a], o[b]
+				local ac, bc = g[a], g[b]
+				if ac == bc then
+				elseif ac.active ~= bc.active then
+					return ac.active
+				elseif ac.keybound ~= bc.keybound then
+					return ac.keybound
+				elseif ac.name ~= bc.name then
+					return strcmputf8i(ac.name, bc.name) < 0
+				end
+				ac, bc = o[a], o[b]
 				if ac and bc then
-					return ac < bc
+					return strcmputf8i(ac, bc) < 0
 				elseif ac or bc then
 					return not bc
 				end
 				return a < b
 			end)
-			self.keys = kt
+
+			local bt, gPrev, gOfs, yOfs = M.buttons, nil, 1, 0
+			local ht, nhi = M.headers, 1
+			for i=1,#kt do
+				local sb, id, ge, hs, gn = bt[i], kt[i]
+				ge = g[id]
+				if not sb then
+					sb = CreateButton(slate, BUTTON_SIZE)
+					bt[i] = sb
+				end
+				if ge ~= gPrev then
+					gPrev, gOfs, yOfs, gn = ge, i, i > 1 and (yOfs + math.ceil((i-gOfs)/BUTTONS_PER_ROW) * BUTTON_SPACER) or 0, ge.name
+					if isGroupMixFilter and (gn ~= "" or i > 1) then
+						hs, yOfs = ht[nhi] or slate:CreateFontString(nil, "OVERLAY", "GameFontHighlightMed2"), yOfs + (i > 1 and 6 or 2)
+						hs:SetText(gn == "" and "|cffa0a0a0Ungrouped" or gn)
+						hs:SetPoint("TOPLEFT", 4, -yOfs)
+						ht[nhi], nhi, yOfs = hs, nhi + 1, yOfs + 18
+					end
+				end
+				sb:SetID(id)
+				sb:SetPoint("TOPLEFT", BUTTON_LEFT + (i-gOfs) % BUTTONS_PER_ROW * BUTTON_SPACER, -math.floor((i-gOfs)/BUTTONS_PER_ROW) * BUTTON_SPACER - yOfs)
+			end
+			local ch = (yOfs + math.ceil((#kt+1-gOfs)/BUTTONS_PER_ROW) * BUTTON_SPACER)
+			M.keys, slate.contentHeight = kt, ch
+			for i=1, #bt do
+				bt[i]:SetShown(i <= #kt)
+			end
+			for i=1, #ht do
+				ht[i]:SetShown(i < nhi)
+			end
+			local vh = sf:GetHeight()
+			bar:SetWindowRange(vh)
+			bar:SetMinMaxValues(0, math.max(0, ch - vh))
 		end
-		return kt
+		M:SyncContent()
 	end
-	function slate:SyncContent()
-		local bt = self.buttons
-		for i=1,#bt do
+	function M:SyncContent()
+		local bt = M.buttons
+		for i=1, #bt do
 			local b = bt[i]
 			local id = b:IsShown() and b:GetID()
 			if id and (id <= 0 or MC:IsActionValid(id)) then
@@ -1222,58 +879,41 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			end
 		end
 	end
-	function slate:ReFilter()
-		wipe(slate.keys)
-		sf:Reset()
+	function M:ReFilter()
+		wipe(M.keys)
+		M:Reset(false, nil, true)
 	end
-	function slate:DoLayout(ofs, h)
-		local kt, bt = slate:PrepareView(), self.buttons
-		for i=1,#kt do
-			local sb, id = bt[i], kt[i]
-			if not sb then
-				sb = CreateButton(self, BUTTON_SIZE)
-				sb:SetPoint("TOPLEFT", BUTTON_LEFT + (i-1) % BUTTONS_PER_ROW * BUTTON_SPACER, -math.floor((i-1)/BUTTONS_PER_ROW) * BUTTON_SPACER)
-				bt[i] = sb
-			end
-			sb:SetID(id)
-			sb:Show()
-		end
-		for i=#kt+1,#bt do
-			bt[i]:Hide()
-		end
-		self:SyncContent()
-		self:SetPoint("TOPLEFT", 0, ofs)
-		return math.max(0, math.ceil(#kt/8)*36 - h)
+	function M:ReturnToList(resetFilter)
+		editPanel:Hide()
+		wipe(M.keys)
+		M:Reset(resetFilter)
+		sf:Show()
 	end
-	mainPanel:SetScript("OnShow", function()
-		wipe(slate.keys)
-		sf:Reset()
-	end)
-	function editPanel:Save()
-		local id, nbox, gbox, mt = self.id, self.nameBox, self.groupNameBox, getEditMacroText()
+	function M:SaveEditor()
+		local id, nbox, gbox, mt = editPanel.id, editPanel.nameBox, editPanel.groupNameBox, getEditMacroText()
 		if id > 0 then
 			MC:SetAction(id, "imptext", mt)
 		else
 			id = MC:NewAction("imptext", mt)
-			self.id = id
+			editPanel.id = id
 		end
 		local group = gbox:GetText()
-		MC:SetActionBind(id, self.bind.value, self.bind.glob:GetChecked())
-		MC:SetActionIcon(id, self.icon.value)
+		MC:SetActionBind(id, editPanel.bind.value, editPanel.bind.glob:GetChecked())
+		MC:SetActionIcon(id, editPanel.icon.value)
 		MC:SetActionGroup(id, group)
 		if MC:SetActionName(id, nbox:GetText()) then
-			self:Hide()
+			editPanel:Hide()
 			clearMacroEditor()
-			wipe(slate.keys)
-			sf:Reset(false, group)
+			wipe(M.keys)
+			M:Reset(false, group, true, id)
 			sf:Show()
 		else
 			nbox:SetText(MC:GetActionName(id))
 			nbox:SetFocus()
 		end
 	end
-	function editPanel:Open(id)
-		self.id = id
+	function M:OpenEditor(id)
+		editPanel.id = id
 		local text, isBindLocal, ico, bind, name, group, ico2, _, globalBind = "", true
 		if id > 0 then
 			local t, a = MC:GetAction(id)
@@ -1284,26 +924,44 @@ local mainPanel = CreateFrame("Frame", "M6UI", UIParent, "PortraitFrameTemplate"
 			bind, isBindLocal, globalBind = MC:GetActionBind(id)
 			_, _, ico2 = AB:GetActionDescription(MC:GetAction(id))
 		end
-		self.id, self.icon.value = id, ico
+		editPanel.id, editPanel.icon.value = id, ico
 		setEditMacroText(text)
-		self.nameBox:SetText(name or "")
-		self.groupNameBox:SetText(group or "")
-		self.bind:SetBinding(bind)
-		self.bind.glob:SetChecked(globalBind and (globalBind == bind or not isBindLocal))
-		self.icon:SetIcon(ico, ico2)
+		editPanel.nameBox:SetText(name or "")
+		editPanel.groupNameBox:SetText(group or "")
+		editPanel.bind:SetBinding(bind)
+		editPanel.bind.glob:SetChecked(globalBind and (globalBind == bind or not isBindLocal))
+		editPanel.icon:SetIcon(ico, ico2)
 		CloseDropDownMenus()
 		sf:Hide()
-		self:Show()
-		self[id > 0 and "box" or "nameBox"]:SetFocus()
+		editPanel:Show()
+		editPanel[id > 0 and "box" or "nameBox"]:SetFocus()
 	end
-	function mainPanel:ReturnToList(resetFilter)
-		editPanel:Hide()
-		wipe(slate.keys)
-		sf:Reset(resetFilter)
-		sf:Show()
+	function M:ShowEditorModal(f)
+		local of = M.curEditorModal
+		f:Show()
+		M.curEditorModal = f
+		if of and of ~= f then
+			of:Hide()
+		end
+		if editPanel.bind.capture then
+			editPanel.bind:Deactivate()
+		end
 	end
+	function M:HideEditorModal(f)
+		local of = M.curEditorModal
+		if f then
+			f:Hide()
+			M.curEditorModal = of ~= f and of or nil
+		elseif of then
+			of:Hide()
+			M.curEditorModal = nil
+		end
+	end
+	mainPanel:SetScript("OnShow", function()
+		M:ReturnToList(true)
+	end)
 	function EV:M6_ACTIVE_SET_CHANGED()
-		slate:SyncContent()
+		M:SyncContent()
 	end
 end
 
@@ -1348,6 +1006,6 @@ SLASH_M61, SlashCmdList.M6 = "/m6", function(arg)
 	if mainPanel:IsShown() then
 		mainPanel:ClearAllPoints()
 		mainPanel:SetPoint("CENTER")
-		mainPanel:ReturnToList(true)
+		M:ReturnToList(true)
 	end
 end

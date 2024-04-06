@@ -12,7 +12,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "工具提示",
         ["zhTW"] = "浮動提示資訊",
         ["esES"] = "Tooltips",
-        ["frFR"] = "Info-bulle",
+        ["frFR"] = "Infobulle",
     },
     ["Tooltip Options"] = {
         ["ptBR"] = "Opções de dica de ferramenta",
@@ -24,7 +24,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "工具提示选项",
         ["zhTW"] = "浮動提示資訊選項",
         ["esES"] = "Opciones de tooltip",
-        ["frFR"] = "Options des l'info-bulles",
+        ["frFR"] = "Options des infobulles",
     },
     ["Enable Tooltips"] = {
         ["ptBR"] = "Ativar dicas de ferramentas (informaçâo)",
@@ -36,7 +36,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "启用鼠标提示",
         ["zhTW"] = "啟用浮動提示資訊",
         ["esES"] = "Habilitar tooltips",
-        ["frFR"] = "Activer les info-bulles",
+        ["frFR"] = "Activer les infobulles",
     },
     ["When this is enabled, quest info will be added to relevant mob/item tooltips."] = {
         ["ptBR"] = "Se ativada, as informações da missão serão adicionadas às dicas relevantes de mob / item",
@@ -48,7 +48,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "启用后，在目标或物品的鼠标提示中显示任务信息",
         ["zhTW"] = "啟用時，會在相關的怪物/物品浮動提示中加入任務資訊。",
         ["esES"] = "Cuando está habilitado la información de la mision aparecera en el tooltip de los monstruos/objetos relevantes",
-        ["frFR"] = "Active l'affichage des informations de quête dans les info-bulles des monstres et des objets.",
+        ["frFR"] = "Active l'affichage des informations de quête dans les infobulles des monstres et des objets.",
     },
     ["When this is checked, the level of quests will show in the tooltips."] = {
         ["ptBR"] = "Quando esta opção está marcada, o nível das missões será mostrado nas dicas de ferramentas.",
@@ -60,7 +60,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "启用后，任务等级将显示在鼠标提示中",
         ["zhTW"] = "啟用時，浮動提示資訊中會顯示任務的等級。",
         ["esES"] = "Si está marcado, el nivel de misiones mostrará en los tooltips.",
-        ["frFR"] = "Active l'affichage du niveau des quêtes dans les info-bulles.",
+        ["frFR"] = "Active l'affichage du niveau des quêtes dans les infobulles.",
     },
     ["Only show party members"] = {
         ["ptBR"] = "Somente parte compartilhada",
@@ -96,7 +96,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "显示任务 NPC",
         ["zhTW"] = "顯示 NPC 相關任務提示",
         ["esES"] = "Mostrar misiones en el tooltip del PNJ",
-        ["frFR"] = "Afficher les quêtes dans les info-bulles des PNJ",
+        ["frFR"] = "Afficher les quêtes dans les infobulles des PNJ",
     },
     ["Show quests (available/complete) in the NPC tooltips."] = {
         ["ptBR"] = "Mostra missões (disponíveis/concluídas) nas dicas de ferramentas do PNJ.",
@@ -108,10 +108,10 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "启用后，在鼠标提示中显示NPC（可接/完成）任务。",
         ["zhTW"] = "在 NPC 的浮動提示資訊中顯示任務 (可接/完成)。",
         ["esES"] = "Muestra misiones (disponibles/completadas) en el tooltip del PNJ.",
-        ["frFR"] = "Affiche les quêtes (disponibles / terminées) dans les info-bulles des PNJ.",
+        ["frFR"] = "Affiche les quêtes (disponibles / terminées) dans les infobulles des PNJ.",
     },
     ["Show quest XP at max level"] = {
-        ["ptBR"] = false,
+        ["ptBR"] = "Mostrar XP da missão no nível máximo",
         ["ruRU"] = "Опыт на макс. уровне",
         ["deDE"] = "Zeige XP auf Max-Level",
         ["koKR"] = false,
@@ -120,10 +120,10 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "显示高等级的任务经验值",
         ["zhTW"] = "滿等時顯示任務經驗值",
         ["esES"] = "Mostrar EXP de misión en el nivel máximo",
-        ["frFR"] = "Voir l'expérience des quêtes au niveau maximum",
+        ["frFR"] = "Afficher l'expérience des quêtes au niveau maximum",
     },
     ["Shows the quest XP values on quests even at max level."] = {
-        ["ptBR"] = false,
+        ["ptBR"] = "Mostra os valores de XP da missão mesmo no nível máximo",
         ["ruRU"] = "Показывать опыт за задания даже на максимальном уровне персонажа",
         ["deDE"] = "Zeigt die Quest XP auch auf Max-Level an.",
         ["koKR"] = false,
@@ -132,7 +132,7 @@ local tooltipOptionsLocales = {
         ["zhCN"] = "即使在最高等级,任务也会显示任务经验值。",
         ["zhTW"] = "滿等後也要顯示任務的經驗值。",
         ["esES"] = "Muestra los valores de EXP de misiones incluso en el nivel máximo.",
-        ["frFR"] = "Montrer le montant d'expérience des quêtes, même au niveau maximum.",
+        ["frFR"] = "Affiche le montant d'expérience des quêtes, même au niveau maximum.",
     },
 }
 

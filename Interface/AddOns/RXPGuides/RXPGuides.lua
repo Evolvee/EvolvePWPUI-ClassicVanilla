@@ -8,7 +8,7 @@ addon = LibStub("AceAddon-3.0"):NewAddon(addon, addonName, "AceEvent-3.0")
 
 local RegisterMessage_OLD = addon.RegisterMessage
 local rand, tinsert, select = math.random, table.insert, _G.select
-
+local IsAddOnLoadOnDemand = C_AddOns and C_AddOns.IsAddOnLoadOnDemand or _G.IsAddOnLoadOnDemand
 local messageList = {}
 
 local function MessageHandler(message,...)
@@ -100,8 +100,10 @@ addon.version = 40000
 local gameVersion = select(4, GetBuildInfo())
 addon.gameVersion = gameVersion
 
-if gameVersion > 40000 then
-    addon.game = "DF"
+if gameVersion > 50000 then
+    addon.game = "RETAIL"
+elseif gameVersion > 40000 then
+    addon.game = "CATA"
 elseif gameVersion > 30000 then
     addon.game = "WOTLK"
 elseif gameVersion > 20000 then
@@ -927,7 +929,19 @@ function addon:QuestAutomation(event, arg1, arg2, arg3)
             return GossipSelectActiveQuest(missingTurnIn)
         end
     elseif event == "QUEST_AUTOCOMPLETE" then
-        ShowQuestComplete(arg1)
+        if addon.gameVersion < 50000 then
+            for i = 1, GetNumAutoQuestPopUps() do
+                local id,status = GetAutoQuestPopUp(i)
+                if status == "COMPLETE" or id == arg1 then
+                    local frame = _G['WatchFrameAutoQuestPopUp' .. i]
+                    if frame and frame:IsShown() then
+                        frame:GetScript("OnMouseUp")(frame)
+                    end
+                end
+            end
+        else
+            ShowQuestComplete(arg1)
+        end
     end
 end
 
@@ -1051,7 +1065,9 @@ function addon:OnEnable()
     self:RegisterEvent("PLAYER_LEAVING_WORLD")
     self:RegisterEvent("PLAYER_LOGOUT")
 
-    self:RegisterEvent("CALENDAR_UPDATE_EVENT_LIST")
+    if IsAddOnLoadOnDemand("Blizzard_Calendar") then
+        self:RegisterEvent("CALENDAR_UPDATE_EVENT_LIST")
+    end
     self:RegisterEvent("ZONE_CHANGED")
 
     if addon.gameVersion > 90000 then
@@ -1167,7 +1183,7 @@ function addon:PLAYER_REGEN_ENABLED(...) addon.UpdateItemFrame() end
 function addon:QUEST_TURNED_IN(_, questId, xpReward)
     -- scryer/aldor quest
     if questId == 10551 or questId == 10552 then
-        local mapId = addon.mapId['Shattrath City']
+        local mapId = addon.GetMapId('Shattrath City')
         for _, point in pairs(addon.activeWaypoints) do
             if point.zone == mapId then
                 return C_Timer.After(1, function()
@@ -1605,6 +1621,16 @@ function addon.stepLogic.AHCheck(step)
     return true
 end
 
+--MAX_PLAYER_LEVEL_TABLE[GetAccountExpansionLevel()]--not working on cata beta
+function addon.stepLogic.LoremasterCheck(step)
+    if (addon.game == "WOTLK" and step.questguide and not addon.settings.profile.northrendLM) or
+        (addon.game == "CATA" and step.questguide and not addon.settings.profile.loremasterMode)
+    then
+        return false
+    end
+    return true
+end
+
 function addon.stepLogic.SeasonCheck(step)
     local currentSeason = addon.settings.profile.season or 0
     local SoM = currentSeason == 1
@@ -1649,13 +1675,14 @@ function addon.stepLogic.XpRateCheck(step)
                 else
                     rate = 1.5
                 end
-            elseif addon.settings.profile.season == 2 then
-                local guide = addon.currentGuide.name
+            elseif addon.settings.profile.season == 2 or addon.settings.profile.enableBetaFeatures then
                 --local minLevel = tonumber(guide:sub(1,2))
-                local maxLevel = tonumber(guide:match("%d+%-(%d+)"))
-                if not step.elements or not maxLevel or maxLevel < 25 then
+                local maxLevel = addon.currentGuide and tonumber(addon.currentGuide.name:match("%d+%-(%d+)"))
+                if addon.settings.profile.enableBetaFeatures then
+                    rate = 2
+                elseif UnitLevel('player') < 40 or (not step.elements or not maxLevel or maxLevel < 40) then
                     --print(minLevel,step.elements)
-                    rate = 1.5
+                    rate = 2
                 end
             end
         end

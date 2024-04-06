@@ -8,7 +8,7 @@ local QuestieDB = QuestieLoader:ImportModule("QuestieDB")
 local QuestieLib = QuestieLoader:ImportModule("QuestieLib")
 
 ---@type QuestLogCache
-local QuestLogCache = QuestieLoader:CreateModule("QuestLogCache")
+local QuestLogCache = QuestieLoader:ImportModule("QuestLogCache")
 
 ---@type QuestieCorrections
 local QuestieCorrections = QuestieLoader:ImportModule("QuestieCorrections")
@@ -46,6 +46,7 @@ end
 local minLevelForDebugOffers = 10
 
 local itemBlacklist = {
+    209027, -- Crap Treats (these are also looted from fishing, for which no real "objects" exists)
     -- Waylaid Supplies level 10
     211316, -- peacebloom
     211933, -- rough stone
@@ -151,6 +152,32 @@ local itemBlacklist = {
     211784, -- Scroll: WUBBA WUBBA
     211854, -- Scroll: OMIT KESA
     211853, -- Scroll: VOCE WELL
+
+    -- Dalaran Relics
+    216945, -- Curious Dalaran Relic
+    216946, -- Glittering Dalaran Relic
+    216947, -- Whirring Dalaran Relic
+    216948, -- Odd Dalaran Relic
+    216949, -- Heavy Dalaran Relic
+    216950, -- Creepy Dalaran Relic
+    216951, -- Slippery Dalaran Relic
+
+    -- Updates Profession Recipes
+    217249, -- Pattern: Earthen Silk Belt
+    217251, -- Pattern: Crimson Silk Shoulders
+    217254, -- Pattern: Boots of the Enchanter
+    217260, -- Pattern: Big Voodoo Mask
+    217262, -- Pattern: Big Voodoo Robe
+    217264, -- Pattern: Guardian Leather Bracers
+    217266, -- Pattern: Guardian Belt
+    217271, -- Pattern: Turtle Scale Gloves
+    217274, -- Plans: Golden Scale Gauntlets
+    217276, -- Plans: Golden Scale Boots
+    217278, -- Plans: Golden Scale Cuirass
+    217280, -- Plans: Golden Scale Coif
+    217282, -- Plans: Moonsteel Broadsword
+    217284, -- Plans: Golden Scale Shoulders
+    217286, -- Plans: Golden Scale Leggings
 }
 
 local itemWhitelist = {
@@ -178,7 +205,7 @@ local itemTripCodes = {
 ---@param itemInfo table -- subset from GetLootInfo()
 local function filterItem(itemID, itemInfo, containerGUID)
     -- return true if we should create debug offer, false if not
-    if itemID <= 0 or itemID == nil then -- if itemID invalid don't bother going further
+    if itemID <= 0 or itemID == nil or containerGUID == nil then -- if itemID or containerGUID is invalid don't bother going further
         return nil
     elseif itemID < 190000 then
         -- temporary catch-all for any item added before SoD so we only get SoD reports;

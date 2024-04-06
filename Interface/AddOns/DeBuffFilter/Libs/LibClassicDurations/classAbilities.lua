@@ -10,7 +10,8 @@ end  -- older versions didn't have that function
 
 local Spell = lib.AddAura
 local INFINITY = math.huge
-local locale = GetLocale()
+local GHOST = nil
+local FAKE = "fake"
 
 ------------------
 -- GLOBAL
@@ -74,7 +75,7 @@ Spell(7744, { duration = 5, type = "BUFF" }) -- Will of the Forsaken
 Spell({ 18137, 19312, 19309, 19308, 19310, 19311, 421248 }, { duration = 600, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Shadowguard
 Spell({ 15473, 22917, 16592 }, { duration = INFINITY, type = "BUFF" }) -- Shadowform
 
-Spell(14751, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Inner focus
+Spell(14751, { duration = FAKE, type = "BUFF", buffType = "Magic" }) -- Inner focus
 
 -- Why long auras are disabled
 -- When you first get in combat log range with a player,
@@ -89,7 +90,7 @@ Spell({ 976, 10957, 10958 }, { duration = 600, type = "BUFF", castFilter = true,
 Spell(27683, { duration = 1200, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Prayer of Shadow Protection
 Spell({ 14752, 14818, 14819, 27841 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Divine Spirit
 Spell(27681, { duration = 3600, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Prayer of Spirit
-
+Spell(19264, {duration = 600, type = 'BUFF', buffType = 'Magic'}) -- 'Touch of Weakness'", -- [444]
 Spell({ 588, 602, 1006, 7128, 10951, 10952 }, { duration = 600, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Inner Fire
 
 Spell({ 14743, 27828 }, { duration = 6, type = "BUFF", buffType = "Magic" }) -- Focused Casting (Martyrdom)
@@ -104,7 +105,7 @@ Spell({ 14893, 15357, 15359 }, { duration = 15, type = "BUFF", buffType = "Magic
 Spell({ 7001, 27873, 27874 }, { duration = 10, type = "BUFF", buffType = "Magic" }) -- Lightwell Renew
 Spell(552, { duration = 20, type = "BUFF", buffType = "Magic" }) -- Abolish Disease
 Spell({ 17, 592, 600, 3747, 6065, 6066, 10898, 10899, 10900, 10901 }, { duration = 30, type = "BUFF", buffType = "Magic" }) -- PWS
-Spell({ 139, 6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315, 6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315, 425268, 425269, 425270, 425271, 425272, 425273, 425274, 425275, 425276, 425277 }, {
+Spell({ 139, 6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315, 6074, 6075, 6076, 6077, 6078, 10927, 10928, 10929, 25315, 425268, 425269, 425270, 425271, 425272, 425273, 425274, 425275, 425276, 425277, 438341}, {
     duration = 15,
     type = "BUFF", buffType = "Magic" }) -- Renew
 
@@ -121,8 +122,9 @@ Spell(5487, { duration = INFINITY, type = "BUFF" }) -- Bear Form
 Spell(9634, { duration = INFINITY, type = "BUFF" }) -- Dire Bear Form
 Spell(1066, { duration = INFINITY, type = "BUFF" }) -- Aquatic Form
 Spell(24858, { duration = INFINITY, type = "BUFF" }) -- Moonkin Form
-Spell(24932, { duration = INFINITY, type = "BUFF" }) -- Leader of the Pack
-Spell(17116, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Nature's Swiftness
+Spell(24907, {duration = GHOST, type = 'BUFF'}) -- 'Moonkin Aura'", -- [302]
+Spell(24932, { duration = GHOST, type = "BUFF" }) -- Leader of the Pack
+Spell(17116, { duration = FAKE, type = "BUFF", buffType = "Magic" }) -- Nature's Swiftness
 Spell(409324, { duration = 10, type = "BUFF", buffType = "Magic" }) -- Ancestral Guidance
 Spell(417147, { duration = 30, type = "BUFF" }) -- Efflorescence
 
@@ -157,6 +159,8 @@ Spell({ 774, 1058, 1430, 2090, 2091, 3627, 8910, 9839, 9840, 9841, 25299, 417061
 Spell(2457, { duration = INFINITY, type = "BUFF" }) -- Battle Stance
 Spell(2458, { duration = INFINITY, type = "BUFF" }) -- Berserker Stance
 Spell(71, { duration = INFINITY, type = "BUFF" }) -- Def Stance
+Spell(412513, { duration = INFINITY, type = "BUFF" }) -- Gladiator Stance
+
 Spell(20230, { duration = 15, type = "BUFF" }) -- Retaliation
 Spell(1719, { duration = 15, type = "BUFF" }) -- Recklessness
 Spell(871, { type = "BUFF", duration = 10 }) -- Shield wall, varies
@@ -181,8 +185,8 @@ Spell({ 23885, 23886, 23887, 23888 }, { duration = 6, type = "BUFF" }) -- Bloodt
 -- ROGUE
 --------------
 
-Spell(14177, { duration = INFINITY, type = "BUFF" }) -- Cold Blood
-Spell({ 1784, 1785, 1786, 1787 }, { duration = INFINITY, type = "BUFF" }) -- Stealth
+Spell(14177, { duration = FAKE, type = "BUFF" }) -- Cold Blood
+Spell({ 1784, 1785, 1786, 1787 }, { duration = GHOST, type = "BUFF" }) -- Stealth
 
 Spell(14278, { duration = 7, type = "BUFF" }) -- Ghostly Strike
 Spell(13750, { duration = 15, type = "BUFF" }) -- Adrenaline Rush
@@ -206,10 +210,10 @@ Spell({ 430025, 425463 }, { duration = 6, type = "BUFF" }) -- Demonic Grace
 Spell(425467, { duration = 45, type = "BUFF", buffType = "Magic" }) -- Demonic Pact
 Spell(427713, { duration = 10, type = "BUFF" }) -- Backdraft
 Spell({ 18288 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" })  -- Amplify Curse
-Spell({ 6307, 7804, 7805, 11766, 11767 }, { duration = INFINITY }) -- Blood Pact
+Spell({ 6307, 7804, 7805, 11766, 11767 }, { duration = GHOST }) -- Blood Pact
 Spell({ 18708 }, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Fel Domination
-Spell({ 19480 }, { duration = INFINITY }) -- Paranoia
-Spell({ 25228 }, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Soul Link
+Spell({ 19480 }, { duration = FAKE }) -- Paranoia
+Spell({ 25228 }, { duration = FAKE, type = "BUFF", buffType = "Magic" }) -- Soul Link
 Spell({ 23829 }, { duration = INFINITY, type = "BUFF" }) -- Master Demonologist
 Spell({ 6229, 11739, 11740, 28610 }, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Shadow Ward
 Spell({ 7812, 19438, 19440, 19441, 19442, 19443 }, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Sacrifice
@@ -218,17 +222,17 @@ Spell({ 7812, 19438, 19440, 19441, 19442, 19443 }, { duration = 30, type = "BUFF
 -- SHAMAN
 ---------------
 
-Spell({ 8185, 10534, 10535 }, { duration = INFINITY, type = "BUFF" }) -- Fire Resistance Totem
-Spell({ 8182, 10476, 10477 }, { duration = INFINITY, type = "BUFF" }) -- Frost Resistance Totem
-Spell({ 10596, 10598, 10599 }, { duration = INFINITY, type = "BUFF" }) -- Nature Resistance Totem
-Spell(25909, { duration = INFINITY, type = "BUFF" }) -- Tranquil Air Totem
-Spell({ 5672, 6371, 6372, 10460, 10461 }, { duration = INFINITY, type = "BUFF" }) -- Healing Stream Totem
-Spell({ 5677, 10491, 10493, 10494 }, { duration = INFINITY, type = "BUFF" }) -- Mana Spring Totem
-Spell({ 8076, 8162, 8163, 10441, 25362 }, { duration = INFINITY, type = "BUFF" }) -- Strength of Earth Totem
-Spell({ 8836, 10626, 25360 }, { duration = INFINITY, type = "BUFF" }) -- Grace of Air Totem
-Spell({ 8072, 8156, 8157, 10403, 10404, 10405 }, { duration = INFINITY, type = "BUFF" }) -- Stoneskin Totem
+Spell({ 8185, 10534, 10535 }, { duration = 120, type = "BUFF" }) -- Fire Resistance Totem
+Spell({ 8182, 10476, 10477 }, { duration = 120, type = "BUFF" }) -- Frost Resistance Totem
+Spell({ 10596, 10598, 10599 }, { duration = 120, type = "BUFF" }) -- Nature Resistance Totem
+Spell(25909, { duration = 120, type = "BUFF" }) -- Tranquil Air Totem
+Spell({ 5672, 6371, 6372, 10460, 10461 }, { duration = 60, type = "BUFF" }) -- Healing Stream Totem
+Spell({ 5677, 10491, 10493, 10494 }, { duration = 60, type = "BUFF" }) -- Mana Spring Totem
+Spell({ 8076, 8162, 8163, 10441, 25362 }, { duration = 120, type = "BUFF" }) -- Strength of Earth Totem
+Spell({ 8836, 10626, 25360 }, { duration = 120, type = "BUFF" }) -- Grace of Air Totem
+Spell({ 8072, 8156, 8157, 10403, 10404, 10405 }, { duration = 120, type = "BUFF" }) -- Stoneskin Totem
 Spell({ 16191, 17355, 17360 }, { duration = 12, type = "BUFF" }) -- Mana Tide Totem
-Spell(16166, { duration = INFINITY, type = "BUFF" }) -- Elemental Mastery
+Spell(16166, { duration = FAKE, type = "BUFF" }) -- Elemental Mastery
 
 Spell(8178, { duration = 45, type = "BUFF" }) -- Grounding Totem Effect, no duration, but lasts 45s. Keeping for enemy buffs
 Spell({ 324, 325, 905, 945, 8134, 10431, 10432 }, { duration = 600, type = "BUFF", buffType = "Magic" }) -- Lightning Shield
@@ -291,9 +295,9 @@ Spell({ 1022, 5599, 10278 }, { type = "BUFF",
                                    end
                                end
 }) -- Blessing of Protection
-Spell({ 498, 5573 }, { type = "BUFF",
+Spell({ 498, 5573, 442948 }, { type = "BUFF",
                        duration = function(spellID)
-                           return spellID == 498 and 6 or 8
+                           return (spellID == 498 and 6) or (spellID == 442948 and 10) or 8
                        end
 }) -- Divine Protection
 Spell({ 642, 1020 }, { type = "BUFF",
@@ -317,23 +321,22 @@ Spell({ 16431, 11445 }, { duration = 60, type = "BUFF", buffType = "Magic" }) --
 -- HUNTER
 -------------
 
-Spell(13161, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Beast
-Spell(5118, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Cheetah
-Spell(13159, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Pack
-Spell(13163, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Monkey
-Spell(415423, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Viper
-Spell({ 20043, 20190 }, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Wild
-Spell({ 13165, 14318, 14319, 14320, 14321, 14322, 25296 }, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Hawk
-Spell(409580, { duration = INFINITY, type = "BUFF" }) -- Aspect of the Lion
-Spell(5384, { duration = INFINITY, type = "BUFF" }) -- Feign Death (Will it work?)
-Spell({ 19579, 24529 }, { duration = INFINITY, type = "BUFF" }) -- Spirit Bond
+Spell(13161, { duration = FAKE, type = "BUFF" }) -- Aspect of the Beast
+Spell(5118, { duration = FAKE, type = "BUFF" }) -- Aspect of the Cheetah
+Spell(13159, { duration = FAKE, type = "BUFF" }) -- Aspect of the Pack
+Spell(13163, { duration = FAKE, type = "BUFF" }) -- Aspect of the Monkey
+Spell(415423, { duration = FAKE, type = "BUFF" }) -- Aspect of the Viper
+Spell({ 20043, 20190 }, { duration = FAKE, type = "BUFF" }) -- Aspect of the Wild
+Spell({ 13165, 14318, 14319, 14320, 14321, 14322, 25296 }, { duration = FAKE, type = "BUFF" }) -- Aspect of the Hawk
+Spell(409580, { duration = FAKE, type = "BUFF" }) -- Aspect of the Lion
+Spell(5384, { duration = 360, type = "BUFF" }) -- Feign Death (Will it work?)
 Spell(415320, { duration = 10, type = "BUFF" }) -- Flanking Strike
 
 Spell({ 19506, 20905, 20906 }, { duration = 1800, type = "BUFF", castFilter = true }) -- Trueshot Aura
 Spell(19615, { duration = 8, type = "BUFF" }) -- Frenzy
 Spell({ 1130, 14323, 14324, 14325 }, { duration = 120 }) -- Hunter's Mark
 Spell(19263, { duration = 10, type = "BUFF" }) -- Deterrence
-Spell(3045, { duration = 15, type = "BUFF" }) -- Rapid Fire
+Spell(3045, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Rapid Fire
 Spell(19574, { duration = 18, type = "BUFF" }) -- Bestial Wrath
 Spell({ 136, 3111, 3661, 3662, 13542, 13543, 13544 }, { duration = 5, type = "BUFF" }) -- Mend Pet
 
@@ -341,12 +344,12 @@ Spell({ 136, 3111, 3661, 3662, 13542, 13543, 13544 }, { duration = 5, type = "BU
 -- MAGE
 -------------
 
-Spell(12043, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Presence of Mind
+Spell(12043, { duration = FAKE, type = "BUFF", buffType = "Magic" }) -- Presence of Mind
 
 Spell({ 1459, 1460, 1461, 10156, 10157 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Arcane Intellect
 Spell(23028, { duration = 3600, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Arcane Brilliance
 Spell({ 6117, 22782, 22783 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Mage Armor
-Spell({ 168, 7300, 7301 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Frost Armor
+Spell({ 168, 7300, 7301, 12544 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Frost Armor
 Spell({ 7302, 7320, 10219, 10220 }, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Ice Armor
 Spell(2855, { duration = 120, type = "BUFF", buffType = "Magic" }) -- Detect Magic
 Spell(130, { duration = 1800, type = "BUFF", buffType = "Magic" }) -- Slow Fall
@@ -359,17 +362,16 @@ Spell({ 543, 8457, 8458, 10223, 10225, 412218, 412231, 412230, 412214, 412232 },
 Spell({ 6143, 8461, 8462, 10177, 28609, 412207, 412207, 412205, 412209, 412210 }, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Frost Ward
 
 -- SoD
-Spell(436516, { duration = 20, type = "BUFF" }) -- Chrono Preserv
+Spell(443369, { duration = 20, type = "BUFF" }) -- Chrono Preserv
 Spell(400735, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Temporal Beacon
 Spell(431655, { duration = 10, type = "BUFF", buffType = "Magic" }) -- Mind Spike
-Spell(426316, { duration = 10, type = "BUFF" }) -- Shadow and flame
+Spell({ 426316, 426311 }, { duration = 10, type = "BUFF" }) -- Shadow and flame
 Spell(426490, { duration = 10, type = "BUFF" }) -- Rallying cry
 Spell(426158, { duration = 12, type = "BUFF" }) -- Sheath of Light
 Spell(438040, { duration = 15, type = "BUFF" }) -- Redirect
 Spell({ 433255, 425336 }, { duration = 15, type = "BUFF" }) -- Shamanistic Rage
 Spell({ 425874, 425876, 436391 }, { duration = 10, type = "BUFF" }) -- Decoy Totem
-Spell(426065, { duration = INFINITY, type = "BUFF" }) -- Infusion of Light
-Spell({ 427725, 427726 }, { duration = INFINITY, type = "BUFF" }) -- Immolation Aura
+Spell({ 427725, 427726 }, { duration = FAKE, type = "BUFF" }) -- Immolation Aura
 Spell({ 412019, 53601 }, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Sacred Shield
 Spell({ 412018, 58597 }, { duration = 6, type = "BUFF", buffType = "Magic" }) -- Sacred Shield
 Spell({ 408255, 408250 }, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Eclipse
@@ -387,7 +389,6 @@ Spell(425585, { duration = 10, type = "BUFF" }) -- Aegis
 Spell(427065, { duration = 12, type = "BUFF" }) -- Wrecking Crew
 Spell({ 428912, 429243, 428909 }, { duration = 15, type = "BUFF" }) -- Light's Grace
 Spell({ 426972, 427068 }, { duration = 1800, castFilter = true, type = "BUFF" }) -- Vigilance
-Spell(429144, { duration = INFINITY, type = "BUFF" }) -- Purifying Power
 Spell(431666, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Surge of Light
 Spell(425294, { duration = 6, type = "BUFF" }) -- Dispersion
 Spell({ 400624, 48108, 400625 }, { duration = 10, type = "BUFF" }) -- Hot Streak
@@ -401,7 +402,7 @@ Spell({ 402913, 403359 }, { duration = 10, type = "BUFF" }) -- Enraged Regen
 Spell(400730, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Fireball!
 Spell({ 400669, 400670 }, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Fingers of Frost
 Spell(406722, { duration = 3, type = "BUFF" }) -- Shadowstep
-Spell(425096, { duration = 6, type = "BUFF" }) -- MoS
+Spell({ 425096, 425098 }, { duration = 6, type = "BUFF" }) -- MoS
 Spell(407613, { duration = 60, type = "BUFF", buffType = "Magic" }) -- Beacon of Light
 Spell(403338, { duration = 10, type = "BUFF" }) -- Intervene
 Spell({ 408514, 974 }, { duration = 600, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Earth Shield
@@ -426,9 +427,10 @@ Spell({ 400573, 400586 }, { duration = 6, type = "BUFF" }) -- Arcane Blast
 Spell(435978, { duration = 10, type = "BUFF", buffType = "Magic" }) -- Energized Hyperconductor
 Spell(403789, { duration = INFINITY, type = "BUFF" }) -- Metamorphosis
 Spell(426301, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Grimoire of Synergy
+Spell(426303, {duration = 15, type = 'BUFF'}) -- 'Grimoire of Synergy'", -- [574]
 Spell(408696, { duration = 1800, type = "BUFF", castFilter = true, buffType = "Magic" }) -- Spirit of the Alpha
 Spell(408953, { duration = INFINITY, type = "BUFF" }) -- Building Inspiration
-Spell(415233, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Ghost Wolf
+Spell({ 415233, 2645 }, { duration = INFINITY, type = "BUFF", buffType = "Magic" }) -- Ghost Wolf
 Spell(415292, { duration = 12, type = "BUFF", buffType = "Magic" }) -- Earthliving
 Spell(409324, { duration = 10, type = "BUFF", buffType = "Magic" }) -- Ancestral Guidance
 Spell(408505, { duration = 30, type = "BUFF", buffType = "Magic" }) -- Maelstrom Weapon
@@ -465,7 +467,6 @@ Spell(428895, { duration = 15, type = "BUFF" }) -- Temporal Anomaly
 Spell(415320, { duration = 10, type = "BUFF" }) -- Flanking Strike
 Spell(409396, { duration = 30, type = "BUFF" }) -- Kill Command
 Spell(432041, { duration = 20, type = "BUFF", buffType = "Magic" }) -- Tidal Waves
-Spell(415401, { duration = INFINITY, type = "BUFF" }) -- Sniper Training
 Spell(425714, { duration = 30, type = "BUFF" }) -- Cobra Strikes
 Spell(436376, { duration = 20, type = "BUFF" }) -- Chain Heal Cost Reduced
 Spell({ 412325, 412326 }, { duration = 10, type = "BUFF" }) -- Enlightenment
@@ -503,93 +504,217 @@ Spell(430494, { duration = 300, castFilter = true, type = "BUFF" }) -- WoW Varie
 Spell(430492, { duration = 300, castFilter = true, type = "BUFF" }) -- WoW Variety Show - Healthy Competition!
 Spell(434907, { duration = 15, type = "BUFF" }) -- Amplified Circuitry
 Spell(427714, { duration = 10, type = "BUFF" }) -- Backdraft
-
+--Spell(436351, {duration = INFINITY, type = 'BUFF'}) -- 'Zandalari Ward'"
+Spell(2479, {duration = 30, type = 'BUFF'}) -- 'Honorless Target'"
+Spell({ 6783, 5215, 9913 }, {duration = GHOST, type = 'BUFF'}) -- 'Prowl'", -- [298]
+Spell(16886, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- 'Nature's Grace'", -- [305]
+Spell(436378, {duration = 4, type = 'BUFF'}) -- 'Tigerblood Talisman'", -- [310]
+Spell(23109, {duration = 15, type = 'BUFF'}) -- 'Dash'", -- [312]
+Spell(20580, {duration = GHOST, type = 'BUFF'}) -- 'Shadowmeld'", -- [315]
+Spell(8100, {duration = 1800, type = 'BUFF', buffType = 'Magic'}) -- 'Stamina'", -- [317]
+Spell(1953, {duration = 1, type = 'BUFF'}) -- 'Blink'", -- [322]
+Spell({ 407975, 433107 }, {duration = INFINITY, type = 'BUFF'}) -- 'Wild Strikes'", -- [325]
+Spell(9632, {duration = 9, type = 'BUFF'}) -- 'Bladestorm'", -- [336]
+Spell(11327, {duration = 10, type = 'BUFF'}) -- 'Vanish'", -- [344]
+Spell(3593, {duration = 3600, type = 'BUFF'}) -- 'Health II'", -- [358]
+Spell(1133, {duration = 27, type = 'BUFF'}) -- 'Drink'", -- [359]
+Spell(412735, {duration = INFINITY, type = 'BUFF'}) -- 'Demonic Knowledge'", -- [365]
+Spell(8599, {duration = 120, type = 'BUFF'}) -- 'Enrage'", -- [368]
+Spell(17680, {duration = 60, type = 'BUFF'}) -- 'Spirit Spawn-out'", -- [371]
+Spell({ 12536, 16246 }, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- 'Clearcasting'", -- [378]
+Spell(401417, {duration = 3, type = 'BUFF', buffType = 'Magic'}) -- 'Regeneration'", -- [383]
+Spell(435117, {duration = 30, type = 'BUFF'}) -- 'Meditation on the Abyss'", -- [385]
+Spell(3149, {duration = 15, type = 'BUFF'}) -- 'Furious Howl'", -- [721]
+Spell(436365, {duration = 10, type = 'BUFF'}) -- 'Two-Handed Mastery'", -- [720]
+Spell(3229, {duration = 5, type = 'BUFF', buffType = 'Magic'}) -- 'Quick Bloodlust'", -- [716]
+Spell(6268, {duration = 3, type = 'BUFF'}) -- 'Rushing Charge'", -- [715]
+Spell(24603, {duration = 10, type = 'BUFF'}) -- 'Furious Howl'", -- [712]
+Spell(430432, {duration = INFINITY, type = 'BUFF'}) -- 'Battle Hardened'", -- [638]
+Spell(20236, {duration = 120, type = 'BUFF', buffType = 'Magic'}) -- 'Lay on Hands'", -- [637]
+Spell(11350, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- 'Fire Shield'", -- [631]
+Spell(301091, {duration = INFINITY, type = 'BUFF'}) -- 'Alliance Flag'", -- [630]
+Spell(301089, {duration = INFINITY, type = 'BUFF'}) -- 'Horde Flag'", -- [625]
+Spell(20216, {duration = FAKE, type = 'BUFF', buffType = 'Magic'}) -- 'Divine Favor'", -- [624]
+Spell(2584, {duration = GHOST, type = 'BUFF'}) -- 'Waiting to Resurrect'", -- [623]
+Spell(436741, {duration = 15, type = 'BUFF'}) -- 'Overheat'", -- [608]
+Spell(436825, {duration = 15, type = 'BUFF'}) -- 'Frayed Wiring'", -- [607]
+Spell(436816, {duration = 5, type = 'BUFF'}) -- 'Sprocketfire Breath'", -- [606]
+Spell(436739, {duration = 15, type = 'BUFF'}) -- 'Cluck!'", -- [604]
+Spell(8212, {duration = 120, type = 'BUFF'}) -- 'Enlarge'", -- [603]
+Spell(25722, {duration = 900, type = 'BUFF'}) -- 'Rumsey Rum Dark'", -- [602]
+Spell(8220, {duration = 3600, type = 'BUFF'}) -- 'Flip Out'", -- [597]
+Spell(433813, {duration = 20, type = 'BUFF', buffType = 'Magic'}) -- 'Neverending Soul Vessel'", -- [596]
+Spell(412800, {duration = 15, type = 'BUFF'}) -- 'Dance of the Wicked'", -- [592]
+Spell(10732, {duration = 10, type = 'BUFF'}) -- 'Supercharge'", -- [590]
+Spell(1539, {duration = 20, type = 'BUFF'}) -- 'Feed Pet Effect'", -- [589]
+Spell(23768, {duration = 7200, type = 'BUFF'}) -- 'Sayge's Dark Fortune of Damage'", -- [586]
+Spell(436074, {duration = 10, type = 'BUFF'}) -- 'Trogg Rage'", -- [584]
+Spell(13494, {duration = 30, type = 'BUFF'}) -- 'Haste'", -- [582]
+Spell(3019, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- 'Enrage'", -- [576]
+Spell(15852, {duration = 600, type = 'BUFF', buffType = 'Poison'}) -- 'Dragonbreath Chili'", -- [573]
+Spell(19710, {duration = 900, type = 'BUFF'}) -- 'Well Fed'", -- [570]
+Spell(23738, {duration = 7200, type = 'BUFF'}) -- 'Sayge's Dark Fortune of Spirit'", -- [567]
+Spell(399963, {duration = 6, type = 'BUFF', buffType = 'Poison'}) -- 'Envenom'", -- [394]
+Spell(15062, {duration = 10, type = 'BUFF'}) -- 'Shield Wall'", -- [396]
+Spell(408680, {duration = 10, type = 'BUFF'}) -- 'Way of Earth'", -- [402]
+Spell(6150, {duration = 12, type = 'BUFF'}) -- 'Quick Shots'", -- [403]
+Spell(8095, {duration = 1800, type = 'BUFF', buffType = 'Magic'}) -- 'Armor'", -- [415]
+Spell(436471, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- 'Bloodlash'", -- [473]
+Spell(14149, {duration = 20, type = 'BUFF'}) -- 'Remorseless'", -- [493]
+Spell(438541, {duration = 1, type = 'BUFF'}) -- 'Charge'", -- [494]
+Spell(412758, {duration = 15, type = 'BUFF'}) -- 'Incinerate'", -- [495]
+Spell(17941, {duration = 10, type = 'BUFF', buffType = 'Magic'}) -- 'Shadow Trance'", -- [497]
+Spell(28682, {duration = FAKE, type = 'BUFF', buffType = 'Magic'}) -- 'Combustion'", -- [505]
+Spell(8317, {duration = 180, type = 'BUFF', buffType = 'Magic'}) -- 'Fire Shield'", -- [506]
+Spell(436482, {duration = 20, type = 'BUFF'}) -- 'Bloodbark Cleave'", -- [515]
+Spell(436374, {duration = 4, type = 'BUFF'}) -- 'Infernal Pact'", -- [521]
+Spell(3164, {duration = 3600, type = 'BUFF'}) -- 'Strength'", -- [537]
+Spell(11328, {duration = 3600, type = 'BUFF'}) -- 'Agility'", -- [538]
+Spell(437585, {duration = 60, type = 'BUFF'}) -- 'Pillars of Might'
+Spell(437410, {duration = 20, type = 'BUFF'}) -- 'Deep Slumber'
+Spell(415144, {duration = 60, type = 'BUFF'}) -- 'Mental Dexterity'
+Spell(415362, {duration = 15, type = 'BUFF', buffType = "Enrage"}) -- Raptor Fury
+Spell(426195, {duration = 20, type = 'BUFF'}) -- Vengeance
+Spell(402789, {duration = 30, type = 'BUFF'}) -- Eye of the Void
+Spell(408521, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- Riptide
+Spell(415407, {duration = 20, type = 'BUFF'}) -- Rapid Killing
+Spell(432041, {duration = 20, type = 'BUFF', buffType = 'Magic'}) -- Tidal Waves
+Spell(435112, {duration = 20, type = 'BUFF', buffType = 'Magic'}) -- Vengeance
+Spell(437877, {duration = INFINITY, type = 'BUFF'}) -- Infusion of Light
+Spell(437881, {duration = INFINITY, type = 'BUFF'}) -- Infusion of Shadow
+Spell(437930, {duration = 20, type = 'BUFF', buffType = 'Magic'}) -- PWS
+Spell(438294, {duration = 60, type = 'BUFF', buffType = 'Magic'}) -- Thorns
+Spell(440675, {duration = 8, type = 'BUFF', buffType = 'Magic'}) -- Righteous Vengeance
+Spell(440668, {duration = 30, type = 'BUFF', buffType = 'Magic'}) -- Vindicator
+Spell(440882, {duration = 10, type = 'BUFF', buffType = 'Magic'}) -- Infernal Armor
+Spell(440895, {duration = 10, type = 'BUFF', buffType = 'Magic'}) -- Mark of Chaos
+Spell({ 445181, 446580, 446581, 446582 }, {duration = 1200, type = 'BUFF', buffType = 'Magic'}) -- Murky Sapta Sight
+Spell(446088, {duration = 3600, type = 'BUFF'}) -- Leyline Attunement
+Spell({ 446219, 446231 }, {duration = 12, type = 'BUFF'}) -- Cries of Corrupted Ancestry, Serpent's Ascension
+Spell(446240, {duration = 1800, type = 'BUFF', buffType = 'Magic'}) -- Sigil of Living Dreams
+Spell({ 446256, 446336, 446396 }, {duration = 7200, type = 'BUFF'}) -- Atal'ai Mojo of Forbidden Magic / War / Life
+Spell(446228, {duration = 3600, type = 'BUFF'}) -- Nightmarish Power
+Spell(446288, {duration = 10, type = 'BUFF'}) -- Elune's Favor
+Spell({ 446289, 446297, 446310 }, {duration = 20, type = 'BUFF'}) -- Relentless Strength etc
+Spell(446322, {duration = 20, type = 'BUFF', buffType = 'Magic'}) -- Emerald Shroud
+Spell(446327, {duration = 15, type = 'BUFF'}) -- Enrage
+Spell(446335, {duration = 10, type = 'BUFF'}) -- Voodoo Frenzy
+Spell(446356, {duration = 6, type = 'BUFF'}) -- Improved Blocking
+Spell(446382, {duration = 15, type = 'BUFF'}) -- Attuned to the Void
+Spell(446397, {duration = 60, type = 'BUFF'}) -- Rainbow Generator
+Spell({446528, 446541, 446572, 446577, 446597, 446618, 446630}, {duration = 10, type = 'BUFF'}) -- Echoes
+Spell(446586, {duration = 3, type = 'BUFF'}) -- Dizzying Spin
+Spell(446687, {duration = 20, type = 'BUFF'}) -- Anguish of the Dream
+Spell({ 446695, 446698,  }, {duration = 7200, type = 'BUFF'}) -- Fervor of the Temple Explorer
+Spell(446709, {duration = 20, type = 'BUFF'}) -- Roar of the Guardian
+Spell({ 446710, 446712 }, {duration = 15, type = 'BUFF'}) -- Roar of the Grove
+Spell(446722, {duration = 15, type = 'BUFF'}) -- Call of the Arena
+Spell(446729, {duration = 10, type = 'BUFF'}) -- Troll Speed
+Spell(446733, {duration = 10, type = 'BUFF'}) -- Sleepwalk
+Spell(446888, {duration = INFINITY, type = 'BUFF'}) -- Totem Challenge
+Spell(446912, {duration = 2.5, type = 'BUFF'}) -- Dreamscape
+Spell(447549, {duration = 35, type = 'BUFF', buffType = 'Magic'}) -- Feedback
+Spell(448572, {duration = 30, type = 'BUFF', buffType = 'Magic'}) -- Sleep
+Spell(448686, {duration = 20, type = 'BUFF'}) -- Zila Gular
+Spell(448828, {duration = 6, type = 'BUFF'}) -- Overdrive
+Spell(449923, {duration = 15, type = 'BUFF', buffType = 'Magic'}) -- Benevolence
+Spell(449925, {duration = 10, type = 'BUFF'}) -- Power Shredder
+Spell(449932, {duration = 20, type = 'BUFF'}) -- Fiery Strength
+Spell(449934, {duration = 10, type = 'BUFF', buffType = 'Magic'}) -- The Furious Storm
+Spell(449975, {duration = 6, type = 'BUFF'}) -- Stalwart Block
+Spell(449982, {duration = 10, type = 'BUFF'}) -- For Lordaeron!!
+Spell(450013, {duration = 12, type = 'BUFF'}) -- Shadow Spark
+Spell(448614, {duration = 300, type = 'BUFF'}) -- Bargain Bush
+Spell(446706, {duration = 10, type = 'BUFF'}) -- Roar of the Dream
 
 -------------
 -- MOUNTS
 -------------
 
-Spell(17481, { duration = INFINITY, type = "BUFF" }) -- Deathcharger's Reins
-Spell(24252, { duration = INFINITY, type = "BUFF" }) -- Swift Zulian Tiger
-Spell(23509, { duration = INFINITY, type = "BUFF" }) -- Horn of the Frostwolf Howler
-Spell(17229, { duration = INFINITY, type = "BUFF" }) -- Reins of the Winterspring Frostsaber
-Spell(26656, { duration = INFINITY, type = "BUFF" }) -- Black Qiraji Resonating Crystal
-Spell(24242, { duration = INFINITY, type = "BUFF" }) -- Swift Razzashi Raptor
-Spell(23510, { duration = INFINITY, type = "BUFF" }) -- Stormpike Battle Charger
-Spell(470, { duration = INFINITY, type = "BUFF" }) -- Black Stallion Bridle
-Spell(22723, { duration = INFINITY, type = "BUFF" }) -- Reins of the Black War Tiger
-Spell(472, { duration = INFINITY, type = "BUFF" }) -- Pinto Bridle
-Spell(23221, { duration = INFINITY, type = "BUFF" }) -- Reins of the Swift Frostsaber
-Spell(23227, { duration = INFINITY, type = "BUFF" }) -- Swift Palomino
-Spell(23228, { duration = INFINITY, type = "BUFF" }) -- Swift White Steed
-Spell(6648, { duration = INFINITY, type = "BUFF" }) -- Chestnut Mare Bridle
-Spell(458, { duration = INFINITY, type = "BUFF" }) -- Brown Horse Bridle
-Spell(23338, { duration = INFINITY, type = "BUFF" }) -- Reins of the Swift Stormsaber
-Spell(23219, { duration = INFINITY, type = "BUFF" }) -- Reins of the Swift Mistsaber
-Spell(22721, { duration = INFINITY, type = "BUFF" }) -- Whistle of the Black War Raptor
-Spell(23229, { duration = INFINITY, type = "BUFF" }) -- Swift Brown Steed
-Spell(22717, { duration = INFINITY, type = "BUFF" }) -- Black War Steed Bridle
-Spell(10793, { duration = INFINITY, type = "BUFF" }) -- Reins of the Striped Nightsaber
-Spell(22722, { duration = INFINITY, type = "BUFF" }) -- Red Skeletal Warhorse
-Spell(18791, { duration = INFINITY, type = "BUFF" }) -- Purple Skeletal Warhorse
-Spell(10789, { duration = INFINITY, type = "BUFF" }) -- Reins of the Spotted Frostsaber
-Spell(18245, { duration = INFINITY, type = "BUFF" }) -- Horn of the Black War Wolf
-Spell(6653, { duration = INFINITY, type = "BUFF" }) -- Horn of the Dire Wolf
-Spell(23241, { duration = INFINITY, type = "BUFF" }) -- Swift Blue Raptor
-Spell(8394, { duration = INFINITY, type = "BUFF" }) -- Reins of the Striped Frostsaber
-Spell(23250, { duration = INFINITY, type = "BUFF" }) -- Horn of the Swift Brown Wolf
-Spell(22718, { duration = INFINITY, type = "BUFF" }) -- Black War Kodo
-Spell(580, { duration = INFINITY, type = "BUFF" }) -- Horn of the Timber Wolf
-Spell(17463, { duration = INFINITY, type = "BUFF" }) -- Blue Skeletal Horse
-Spell(23251, { duration = INFINITY, type = "BUFF" }) -- Horn of the Swift Timber Wolf
-Spell(23243, { duration = INFINITY, type = "BUFF" }) -- Swift Orange Raptor
-Spell(17465, { duration = INFINITY, type = "BUFF" }) -- Green Skeletal Warhorse
-Spell(22720, { duration = INFINITY, type = "BUFF" }) -- Black War Ram
-Spell(8395, { duration = INFINITY, type = "BUFF" }) -- Whistle of the Emerald Raptor
-Spell(6654, { duration = INFINITY, type = "BUFF" }) -- Horn of the Brown Wolf
-Spell(17462, { duration = INFINITY, type = "BUFF" }) -- Red Skeletal Horse
-Spell(23240, { duration = INFINITY, type = "BUFF" }) -- Swift White Ram
-Spell(23252, { duration = INFINITY, type = "BUFF" }) -- Horn of the Swift Gray Wolf
-Spell(23247, { duration = INFINITY, type = "BUFF" }) -- Great White Kodo
-Spell(23242, { duration = INFINITY, type = "BUFF" }) -- Swift Olive Raptor
-Spell(23225, { duration = INFINITY, type = "BUFF" }) -- Swift Green Mechanostrider
-Spell(10969, { duration = INFINITY, type = "BUFF" }) -- Blue Mechanostrider
-Spell(10799, { duration = INFINITY, type = "BUFF" }) -- Whistle of the Violet Raptor
-Spell(22719, { duration = INFINITY, type = "BUFF" }) -- Black Battlestrider
-Spell(6898, { duration = INFINITY, type = "BUFF" }) -- White Ram
-Spell(17464, { duration = INFINITY, type = "BUFF" }) -- Brown Skeletal Horse
-Spell(17454, { duration = INFINITY, type = "BUFF" }) -- Unpainted Mechanostrider
-Spell(23223, { duration = INFINITY, type = "BUFF" }) -- Swift White Mechanostrider
-Spell(10796, { duration = INFINITY, type = "BUFF" }) -- Whistle of the Turquoise Raptor
-Spell(23238, { duration = INFINITY, type = "BUFF" }) -- Swift Brown Ram
-Spell(23239, { duration = INFINITY, type = "BUFF" }) -- Swift Gray Ram
-Spell(6899, { duration = INFINITY, type = "BUFF" }) -- Brown Ram
-Spell(6777, { duration = INFINITY, type = "BUFF" }) -- Gray Ram
-Spell(10873, { duration = INFINITY, type = "BUFF" }) -- Red Mechanostrider
-Spell(23249, { duration = INFINITY, type = "BUFF" }) -- Great Brown Kodo
-Spell(18989, { duration = INFINITY, type = "BUFF" }) -- Gray Kodo
-Spell(18990, { duration = INFINITY, type = "BUFF" }) -- Brown Kodo
-Spell(23248, { duration = INFINITY, type = "BUFF" }) -- Great Gray Kodo
-Spell(23222, { duration = INFINITY, type = "BUFF" }) -- Swift Yellow Mechanostrider
-Spell(17453, { duration = INFINITY, type = "BUFF" }) -- Green Mechanostrider
-Spell(23214, { duration = INFINITY, type = "BUFF" }) -- Summon Charger
-Spell(13819, { duration = INFINITY, type = "BUFF" }) -- Summon Warhorse
-Spell(23161, { duration = INFINITY, type = "BUFF" }) -- Summon Dreadsteed
-Spell(5784, { duration = INFINITY, type = "BUFF" }) -- Summon Felsteed
-Spell(436288, { duration = INFINITY, type = "BUFF" }) -- Mottled Blood Raptor
-Spell(436327, { duration = INFINITY, type = "BUFF" }) -- Bengal Tiger
-Spell(429856, { duration = INFINITY, type = "BUFF" }) -- Summon Sentinel Nightsaber
-Spell(429857, { duration = INFINITY, type = "BUFF" }) -- Summon Outrider Wolf
-Spell(436289, { duration = INFINITY, type = "BUFF" }) -- Ivory Raptor
-Spell(436329, { duration = INFINITY, type = "BUFF" }) -- Golden Sabercat
+Spell(17481, { duration = FAKE, type = "BUFF" }) -- Deathcharger's Reins
+Spell(24252, { duration = FAKE, type = "BUFF" }) -- Swift Zulian Tiger
+Spell(23509, { duration = FAKE, type = "BUFF" }) -- Horn of the Frostwolf Howler
+Spell(17229, { duration = FAKE, type = "BUFF" }) -- Reins of the Winterspring Frostsaber
+Spell(26656, { duration = FAKE, type = "BUFF" }) -- Black Qiraji Resonating Crystal
+Spell(24242, { duration = FAKE, type = "BUFF" }) -- Swift Razzashi Raptor
+Spell(23510, { duration = FAKE, type = "BUFF" }) -- Stormpike Battle Charger
+Spell(470, { duration = FAKE, type = "BUFF" }) -- Black Stallion Bridle
+Spell(22723, { duration = FAKE, type = "BUFF" }) -- Reins of the Black War Tiger
+Spell(472, { duration = FAKE, type = "BUFF" }) -- Pinto Bridle
+Spell(23221, { duration = FAKE, type = "BUFF" }) -- Reins of the Swift Frostsaber
+Spell(23227, { duration = FAKE, type = "BUFF" }) -- Swift Palomino
+Spell(23228, { duration = FAKE, type = "BUFF" }) -- Swift White Steed
+Spell(6648, { duration = FAKE, type = "BUFF" }) -- Chestnut Mare Bridle
+Spell(458, { duration = FAKE, type = "BUFF" }) -- Brown Horse Bridle
+Spell(23338, { duration = FAKE, type = "BUFF" }) -- Reins of the Swift Stormsaber
+Spell(23219, { duration = FAKE, type = "BUFF" }) -- Reins of the Swift Mistsaber
+Spell(22721, { duration = FAKE, type = "BUFF" }) -- Whistle of the Black War Raptor
+Spell(23229, { duration = FAKE, type = "BUFF" }) -- Swift Brown Steed
+Spell(22717, { duration = FAKE, type = "BUFF" }) -- Black War Steed Bridle
+Spell(10793, { duration = FAKE, type = "BUFF" }) -- Reins of the Striped Nightsaber
+Spell(22722, { duration = FAKE, type = "BUFF" }) -- Red Skeletal Warhorse
+Spell(18791, { duration = FAKE, type = "BUFF" }) -- Purple Skeletal Warhorse
+Spell(10789, { duration = FAKE, type = "BUFF" }) -- Reins of the Spotted Frostsaber
+Spell(18245, { duration = FAKE, type = "BUFF" }) -- Horn of the Black War Wolf
+Spell(6653, { duration = FAKE, type = "BUFF" }) -- Horn of the Dire Wolf
+Spell(23241, { duration = FAKE, type = "BUFF" }) -- Swift Blue Raptor
+Spell(8394, { duration = FAKE, type = "BUFF" }) -- Reins of the Striped Frostsaber
+Spell(23250, { duration = FAKE, type = "BUFF" }) -- Horn of the Swift Brown Wolf
+Spell(22718, { duration = FAKE, type = "BUFF" }) -- Black War Kodo
+Spell(580, { duration = FAKE, type = "BUFF" }) -- Horn of the Timber Wolf
+Spell(17463, { duration = FAKE, type = "BUFF" }) -- Blue Skeletal Horse
+Spell(23251, { duration = FAKE, type = "BUFF" }) -- Horn of the Swift Timber Wolf
+Spell(23243, { duration = FAKE, type = "BUFF" }) -- Swift Orange Raptor
+Spell(17465, { duration = FAKE, type = "BUFF" }) -- Green Skeletal Warhorse
+Spell(22720, { duration = FAKE, type = "BUFF" }) -- Black War Ram
+Spell(8395, { duration = FAKE, type = "BUFF" }) -- Whistle of the Emerald Raptor
+Spell(6654, { duration = FAKE, type = "BUFF" }) -- Horn of the Brown Wolf
+Spell(17462, { duration = FAKE, type = "BUFF" }) -- Red Skeletal Horse
+Spell(23240, { duration = FAKE, type = "BUFF" }) -- Swift White Ram
+Spell(23252, { duration = FAKE, type = "BUFF" }) -- Horn of the Swift Gray Wolf
+Spell(23247, { duration = FAKE, type = "BUFF" }) -- Great White Kodo
+Spell(23242, { duration = FAKE, type = "BUFF" }) -- Swift Olive Raptor
+Spell(23225, { duration = FAKE, type = "BUFF" }) -- Swift Green Mechanostrider
+Spell(10969, { duration = FAKE, type = "BUFF" }) -- Blue Mechanostrider
+Spell(10799, { duration = FAKE, type = "BUFF" }) -- Whistle of the Violet Raptor
+Spell(22719, { duration = FAKE, type = "BUFF" }) -- Black Battlestrider
+Spell(6898, { duration = FAKE, type = "BUFF" }) -- White Ram
+Spell(17464, { duration = FAKE, type = "BUFF" }) -- Brown Skeletal Horse
+Spell(17454, { duration = FAKE, type = "BUFF" }) -- Unpainted Mechanostrider
+Spell(23223, { duration = FAKE, type = "BUFF" }) -- Swift White Mechanostrider
+Spell(10796, { duration = FAKE, type = "BUFF" }) -- Whistle of the Turquoise Raptor
+Spell(23238, { duration = FAKE, type = "BUFF" }) -- Swift Brown Ram
+Spell(23239, { duration = FAKE, type = "BUFF" }) -- Swift Gray Ram
+Spell(6899, { duration = FAKE, type = "BUFF" }) -- Brown Ram
+Spell(6777, { duration = FAKE, type = "BUFF" }) -- Gray Ram
+Spell(10873, { duration = FAKE, type = "BUFF" }) -- Red Mechanostrider
+Spell(23249, { duration = FAKE, type = "BUFF" }) -- Great Brown Kodo
+Spell(18989, { duration = FAKE, type = "BUFF" }) -- Gray Kodo
+Spell(18990, { duration = FAKE, type = "BUFF" }) -- Brown Kodo
+Spell(23248, { duration = FAKE, type = "BUFF" }) -- Great Gray Kodo
+Spell(23222, { duration = FAKE, type = "BUFF" }) -- Swift Yellow Mechanostrider
+Spell(17453, { duration = FAKE, type = "BUFF" }) -- Green Mechanostrider
+Spell(23214, { duration = FAKE, type = "BUFF" }) -- Summon Charger
+Spell(13819, { duration = FAKE, type = "BUFF" }) -- Summon Warhorse
+Spell(23161, { duration = FAKE, type = "BUFF" }) -- Summon Dreadsteed
+Spell(5784, { duration = FAKE, type = "BUFF" }) -- Summon Felsteed
+Spell(436288, { duration = FAKE, type = "BUFF" }) -- Mottled Blood Raptor
+Spell(436327, { duration = FAKE, type = "BUFF" }) -- Bengal Tiger
+Spell(429856, { duration = FAKE, type = "BUFF" }) -- Summon Sentinel Nightsaber
+Spell(429857, { duration = FAKE, type = "BUFF" }) -- Summon Outrider Wolf
+Spell(436289, { duration = FAKE, type = "BUFF" }) -- Ivory Raptor
+Spell(436329, { duration = FAKE, type = "BUFF" }) -- Golden Sabercat
+Spell(17458, {duration = FAKE, type = 'BUFF'}) -- 'Fluorescent Green Mechanostrider'", -- [640]
+Spell(446685, {duration = FAKE, type = 'BUFF'}) -- Blood-crazed Spirit
+
 
 -------------
 -- ITEMS
 -------------
 
-Spell(17670, { duration = INFINITY, type = "BUFF" }) -- Argent Dawn Commission
+Spell(17670, { duration = GHOST, type = "BUFF" }) -- Argent Dawn Commission
 Spell(29506, { duration = 20, type = "BUFF" }) -- The Burrower's Shell
-Spell({ 17543, 18942, 17548, 17549, 7240, 17544, 7250, 29432, 7235 }, { duration = 3600, type = "BUFF" }) -- Potion Protection
+Spell({ 17543, 18942, 17548, 17549, 7240, 17544, 7250, 29432, 7235, 7254 }, { duration = 3600, type = "BUFF" }) -- Potion Protection
 Spell(23991, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Damage Absorb
 Spell(23506, { duration = 20, type = "BUFF", buffType = "Magic" }) -- Aura of Protection
 Spell({ 17730, 128, 17729 }, { duration = 60, type = "BUFF", buffType = "Magic" }) -- Spellstone
@@ -597,5 +722,19 @@ Spell(10368, { duration = 15, type = "BUFF", buffType = "Magic" }) -- Uther's Li
 Spell(13234, { duration = 600, type = "BUFF" }) -- Harm Prevention Belt
 Spell(24021, { duration = 8, type = "BUFF" }) -- Anti-Magic Shield
 Spell(7121, { duration = 10, type = "BUFF" }) -- Anti-Magic Shield
+Spell({ 1135, 446714 }, {duration = 30, type = 'BUFF'}) -- 'Drink'", -- [314]
+Spell(1129, {duration = 30, type = 'BUFF'}) -- 'Food'", -- [345]
+Spell(432, {duration = 24, type = 'BUFF'}) -- 'Drink'", -- [377]
+Spell({ 26475, 446713 }, {duration = 30, type = 'BUFF'}) -- 'Drink'", -- [633]
+Spell(26474, {duration = 30, type = 'BUFF'}) -- 'Food'", -- [632]
+Spell(10256, {duration = 30, type = 'BUFF'}) -- 'Food'", -- [569]
+Spell(1127, {duration = 27, type = 'BUFF'}) -- 'Food'", -- [398]
+Spell(5007, {duration = 27, type = 'BUFF'}) -- 'Food'", -- [411]
+Spell(25888, {duration = 21, type = 'BUFF'}) -- 'Food'", -- [542]
+Spell(25889, {duration = 21, type = 'BUFF'}) -- 'Brain Food'", -- [543]
+Spell(25941, {duration = 900, type = 'BUFF'}) -- 'Well Fed'", -- [544]
+Spell(25804, {duration = 900, type = 'BUFF'}) -- 'Rumsey Rum Black Label'", -- [550]
+Spell(7844, {duration = 1800, type = 'BUFF'}) -- 'Fire Power'", -- [551]
+Spell(439959, {duration = 1800, type = 'BUFF'}) -- 'Lesser Arcane Elixir'", -- [552]
 
 lib:SetDataVersion(Type, Version)

@@ -11,8 +11,8 @@ local GetScreenWidth, GetScreenHeight, CreateFrame, UnitName
   = GetScreenWidth, GetScreenHeight, CreateFrame, UnitName
 
 local AceGUI = LibStub("AceGUI-3.0")
-local AceConfig = LibStub("AceConfig-3.0")
 local AceConfigDialog = LibStub("AceConfigDialog-3.0")
+local AceConfigRegistry = LibStub("AceConfigRegistry-3.0")
 local LibDD = LibStub:GetLibrary("LibUIDropDownMenu-4.0")
 
 local WeakAuras = WeakAuras
@@ -112,11 +112,7 @@ function OptionsPrivate.CreateFrame()
   frame:EnableMouse(true)
   frame:SetMovable(true)
   frame:SetResizable(true)
-  if frame.SetResizeBounds then
-    frame:SetResizeBounds(minWidth, minHeight)
-  else
-    frame:SetMinResize(minWidth, minHeight)
-  end
+  frame:SetResizeBounds(minWidth, minHeight)
   frame:SetFrameStrata("DIALOG")
   -- Workaround classic issue
   WeakAurasOptionsPortrait:SetTexture([[Interface\AddOns\WeakAuras\Media\Textures\logo_256_round.tga]])
@@ -349,7 +345,7 @@ function OptionsPrivate.CreateFrame()
 
 
   local minimizebutton = CreateFrame("Button", nil, frame, "MaximizeMinimizeButtonFrameTemplate")
-  minimizebutton:SetPoint("RIGHT", frame.CloseButton, "LEFT", WeakAuras.IsClassicEraOrWrath() and  10 or 0, 0)
+  minimizebutton:SetPoint("RIGHT", frame.CloseButton, "LEFT", WeakAuras.IsClassicEraOrWrathOrCata() and  10 or 0, 0)
   minimizebutton:SetOnMaximizedCallback(function()
     frame.minimized = false
     local right, top = frame:GetRight(), frame:GetTop()
@@ -747,14 +743,19 @@ function OptionsPrivate.CreateFrame()
   loadedButton:SetCollapseDescription(L["Collapse all loaded displays"])
   loadedButton:SetViewClick(function()
     local suspended = OptionsPrivate.Private.PauseAllDynamicGroups()
+
     if loadedButton.view.visibility == 2 then
-      for _, child in pairs(loadedButton.childButtons) do
-        child:PriorityHide(2)
+      for _, child in ipairs(loadedButton.childButtons) do
+        if child:IsLoaded() then
+          child:PriorityHide(2)
+        end
       end
       loadedButton:PriorityHide(2)
     else
-      for _, child in pairs(loadedButton.childButtons) do
-        child:PriorityShow(2)
+      for _, child in ipairs(loadedButton.childButtons) do
+        if child:IsLoaded() then
+          child:PriorityShow(2)
+        end
       end
       loadedButton:PriorityShow(2)
     end
@@ -762,7 +763,7 @@ function OptionsPrivate.CreateFrame()
   end)
   loadedButton.RecheckVisibility = function(self)
     local none, all = true, true
-    for _, child in pairs(loadedButton.childButtons) do
+    for _, child in ipairs(loadedButton.childButtons) do
       if child:GetVisibility() ~= 2 then
         all = false
       end
@@ -810,12 +811,12 @@ function OptionsPrivate.CreateFrame()
   unloadedButton:SetViewClick(function()
     local suspended = OptionsPrivate.Private.PauseAllDynamicGroups()
     if unloadedButton.view.visibility == 2 then
-      for _, child in pairs(unloadedButton.childButtons) do
+      for _, child in ipairs(unloadedButton.childButtons) do
         child:PriorityHide(2)
       end
       unloadedButton:PriorityHide(2)
     else
-      for _, child in pairs(unloadedButton.childButtons) do
+      for _, child in ipairs(unloadedButton.childButtons) do
         child:PriorityShow(2)
       end
       unloadedButton:PriorityShow(2)
@@ -824,7 +825,7 @@ function OptionsPrivate.CreateFrame()
   end)
   unloadedButton.RecheckVisibility = function(self)
     local none, all = true, true
-    for _, child in pairs(unloadedButton.childButtons) do
+    for _, child in ipairs(unloadedButton.childButtons) do
       if child:GetVisibility() ~= 2 then
         all = false
       end
@@ -909,7 +910,7 @@ function OptionsPrivate.CreateFrame()
 
     local optionTable = self:EnsureOptions(data, self.selectedTab)
     if optionTable then
-      AceConfig:RegisterOptionsTable("WeakAuras", optionTable)
+      AceConfigRegistry:RegisterOptionsTable("WeakAuras", optionTable, true)
     end
   end
 

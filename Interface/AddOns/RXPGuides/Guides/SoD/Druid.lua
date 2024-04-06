@@ -609,6 +609,7 @@ step
 step
     .train 410060,1
     #loop
+    .goto Desolace,70.6,39.8,0
     .goto Desolace,70.6,39.8,25,0
     .goto Desolace,69.2,46.6,25,0
     .goto Desolace,68.6,52.6,25,0
@@ -634,6 +635,7 @@ RXPGuides.RegisterGuide([[
 #group RestedXP Rune & Books Guide
 #subgroup Belt
 #name Nourish - 35 (Azeroth)
+#title Nourish
 
 -- Probably needs better waypoints to avoid some dangerous mobs or anything else that could kill you
 

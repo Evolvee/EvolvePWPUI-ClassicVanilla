@@ -41,7 +41,29 @@ local migrationFunctions = {
         then
             Questie.db.profile.objectiveProgressSoundChoiceName = "ObjectiveProgress"
         end
-    end
+    end,
+    [3] = function()
+        if Questie.IsSoD then
+            if Questie.db.profile.showSoDRunes then
+                Questie.db.profile.showRunesOfPhase = {
+                    phase1 = true,
+                    phase2 = false,
+                    phase3 = false,
+                    phase4 = false,
+                }
+            else
+                Questie.db.profile.showRunesOfPhase = {
+                    phase1 = false,
+                    phase2 = false,
+                    phase3 = false,
+                    phase4 = false,
+                }
+            end
+        end
+    end,
+    [4] = function()
+        Questie.db.profile.tutorialShowRunesDone = false
+    end,
 }
 
 function Migration:Migrate()

@@ -1,8 +1,8 @@
-## Interface: 11501
+## Interface: 11502
 ## Title: Ranker
 ## Notes: Your helper through the Classic Era honor system.
 ## Author: GrumpyPlayers (also known as <SG>Soul)
-## Version: 2024.02.07.01
+## Version: 2024.03.25.01
 
 ## SavedVariables: rankerData, rankerVersion, rankerOptions
 ## SavedVariablesPerCharacter: rankerObjective, rankerLimit

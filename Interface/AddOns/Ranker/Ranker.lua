@@ -77,6 +77,7 @@
                 rankerObjective = 14,
                 rankerLimit = 500000,
                 contributionPointsVarianceThreshold = 16,
+                hideHelpfulInformation = false,
             }, 
             rankChangeFactor = {1, 1, 1, 0.8, 0.8, 0.8, 0.7, 0.7, 0.6, 0.5, 0.5, 0.4, 0.4, 0.34, 0.34},
             contributionPointsFloor = {0, 2000, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000, 60000},
@@ -112,8 +113,8 @@
                 ["11_3"] = {min = 14},
             },
             contributionPointsVariancesReplace = {
-                ["11_1"] = {max = 10, progressFloor = 0.49795, progressCeil = 0.498},
-                ["11_2"] = {max = 10, progressFloor = 0.49795, progressCeil = 0.498},
+                ["11_1"] = {max = 10, progressFloor = 0.49795, progressCeil = 0.49805},
+                ["11_2"] = {max = 10, progressFloor = 0.49795, progressCeil = 0.49805},
             },
         }
 
@@ -181,22 +182,22 @@
                 addonLoaded = IsAddOnLoaded(addonName)
                 local _, gameBuild, gameBuildDate, gameTocVersion = GetBuildInfo()
                 if HasActiveSeason() and GetActiveSeason() == Enum.SeasonID.Placeholder and gameTocVersion * 1 < 20000 then
-                    local timestampNextPhase = time({["day"] = 6,["month"] = 2, ["year"] = 2024, ["hour"] = 0})
-                    local timestampNextPhaseForAll = time({["day"] = 8,["month"] = 2, ["year"] = 2024, ["hour"] = 0})
+                    local timestampNextPhase = time({["day"] = 2,["month"] = 4, ["year"] = 2024, ["hour"] = 0})
+                    local timestampNextPhaseForAll = time({["day"] = 4,["month"] = 4, ["year"] = 2024, ["hour"] = 0})
                     local timestampsTwoDays = 2 * 24 * 60 * 60
                     local timestampNow = time()
                     if ((timestampNow >= timestampNextPhase and GetSecondsUntilWeeklyReset() > timestampsTwoDays) or timestampNow >= timestampNextPhaseForAll) then
+                        if gameTocVersion * 1 >= 11501 and gameBuild * 1 >= 53623 then
+                            maxObtainableRank = 7
+                        end
+                    else
                         if gameTocVersion * 1 >= 11501 and gameBuild * 1 >= 53247 then
                             maxObtainableRank = 5
                         end
-                    else
                         if gameTocVersion * 1 == 11500 and gameBuild * 1 >= 52409 then
                             maxObtainableRank = 3
                         end
                     end
-                    -- if gameTocVersion * 1 >= ????? and gameBuild * 1 > ????? then
-                        -- maxObtainableRank = ?
-                    -- end
                     -- if gameTocVersion * 1 >= 11501 and gameBuild * 1 > ??? then
                         -- maxObtainableRank = 9
                     -- end
@@ -222,6 +223,11 @@
                     if rankerObjective > maxObtainableRank then 
                         rankerObjective = lookupData.defaults.rankerObjective 
                     end
+                    local limit = lookupData.defaults.rankerLimit
+                    local honorIncrements = lookupData.honorIncrements
+                    if maxObtainableRank >= 5 and maxObtainableRank < 14 then limit = maxObtainableRank + 1 end
+                    if maxObtainableRank >= 9 and maxObtainableRank < 13 then limit = maxObtainableRank + 2 end
+                    lookupData.defaults.rankerLimit = honorIncrements[limit]
                 end
             -- Fires during the loading screen when logging in or reloading, before the first PLAYER_ENTERING_WORLD
             elseif event == "PLAYER_LOGIN" then
@@ -237,6 +243,9 @@
                 end
                 if rankerOptions.knowsboutMinimumHK == nil then
                     rankerOptions.knowsboutMinimumHK = lookupData.defaults.knowsboutMinimumHK
+                end
+                if rankerOptions.hideHelpfulInformation == nil then
+                    rankerOptions.hideHelpfulInformation = lookupData.defaults.hideHelpfulInformation
                 end
                 if rankerObjective == nil then
                     rankerObjective = lookupData.defaults.rankerObjective
@@ -510,7 +519,11 @@
                 if maxObtainableRank >= 9 and maxObtainableRank < 13 then limit = maxObtainableRank + 2 end
                 for i = 1, limit do
                     info.func = self.SetValue
-                    info.text, info.arg1, info.checked = FormatLargeNumber(honorIncrements[i]).." honor", honorIncrements[i], honorIncrements[i] == rankerLimit
+                    if i < limit then
+                        info.text, info.arg1, info.checked = FormatLargeNumber(honorIncrements[i]).." to "..FormatLargeNumber(honorIncrements[i+1]-1).." honor", honorIncrements[i], honorIncrements[i] == rankerLimit
+                    else
+                        info.text, info.arg1, info.checked = FormatLargeNumber(honorIncrements[i]).." or more honor", honorIncrements[i], honorIncrements[i] == rankerLimit
+                    end
                     LibDD:UIDropDownMenu_AddButton(info)
                 end
             end)
@@ -713,6 +726,17 @@
             RankerFrame.buttonKnowsboutMinimumHK:HookScript("OnClick", 
             function()
                 rankerOptions.knowsboutMinimumHK = not rankerOptions.knowsboutMinimumHK
+                optionsChanged = true
+            end)
+        
+            -- Option to stop hide the helpful information about the ranking system
+            RankerFrame.buttonHideHelpfulInformation = CreateFrame("CheckButton", "default", RankerFrame, "UICheckButtonTemplate")
+            RankerFrame.buttonHideHelpfulInformation:SetPoint("TOPLEFT", 20, -120)
+            RankerFrame.buttonHideHelpfulInformation.Text:SetText("Hide the helpful information about the ranking system")
+            RankerFrame.buttonHideHelpfulInformation:SetChecked(rankerOptions.hideHelpfulInformation)
+            RankerFrame.buttonHideHelpfulInformation:HookScript("OnClick", 
+            function()
+                rankerOptions.hideHelpfulInformation = not rankerOptions.hideHelpfulInformation
                 optionsChanged = true
             end)
         end
@@ -1068,7 +1092,59 @@
             end
 
             -- Call to action
-            Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Please contact me if your actual result is way off.".."\n")
+            Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Please contact me if your actual result is way off.")
+            Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n")
+
+            -- Want to know more?
+            if not rankerOptions.hideHelpfulInformation then
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."|cffe6cc80Would you like to know more about the ranking system?|r")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Players have a certain rank, and a percentage describing their amount of progress towards the next rank.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."For example: 'rank 4 and 60.0%' indicates a player who is rank 4, and 60.0% towards reaching rank 5.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Based upon a player's rank and progress, there are |cffe6cc80up to four honor milestones|r to reach within a given week.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Obtaining honor prior to the first milestone does nothing for you. Obtaining honor between the milestones, or obtaining more honor than the milestone, are both useless too.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."|cffe6cc80You will only be awarded rank progress from the milestones you've met|r prior to the weekly reset in "..SecondsToTime(GetSecondsUntilWeeklyReset())..".")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."For example, a player |cffe6cc80at maximum level with at least 15 Honorable Kills each week|r that is rank 4 and 60.0%, can expect the following progression based upon how much honor they obtain before the weekly reset:")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Between 0 and "..FormatLargeNumber(22499).." honor: Rank 4 and 60.0% (no progress)")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Between "..FormatLargeNumber(22500).." and "..FormatLargeNumber(44999).." honor: Rank 5 and 0.0%")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Between "..FormatLargeNumber(45000).." and "..FormatLargeNumber(77499).." honor: Rank 5 and 80.0%")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Between "..FormatLargeNumber(77500).." and "..FormatLargeNumber(109999).." honor: Rank 6 and 50.0%")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - With "..FormatLargeNumber(110000).." honor or more: Rank 7 and 20.0%")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."|cffe6cc80No additional progress can be made|r in that week for the given rank and rank progress!")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Ranker shows you the rank progression that is possible for your current, or your simulated, situation. |cffe6cc80No other outcome is possible|r!")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."If you are not at maximum level then your results may vary. The exact cap for each level is still unknown.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."|cffe6cc80So, what are all honor milestones?|r")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."They are specific to each rank, and increase in honor required as you advance ranks.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Someone that is unranked, or at rank 1 merely needs 15 Honorable Kills to advance.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Unless you were rank 1 from before patch 1.14, it can only be obtained through Dishonnorable Kills.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 1: simply the 15 HK, or |cffe6cc80"..FormatLargeNumber(11250).."|r, or |cffe6cc80"..FormatLargeNumber(22500).."|r, or |cffe6cc80"..FormatLargeNumber(33750).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."From rank 2 up to rank 11 there are four honor milestones:")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 2: |cffe6cc80"..FormatLargeNumber(4500).."|r, or |cffe6cc80"..FormatLargeNumber(22500).."|r, or |cffe6cc80"..FormatLargeNumber(33750).."|r, or |cffe6cc80"..FormatLargeNumber(45000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 3: |cffe6cc80"..FormatLargeNumber(11250).."|r, or |cffe6cc80"..FormatLargeNumber(33750).."|r, or |cffe6cc80"..FormatLargeNumber(45000).."|r, or |cffe6cc80"..FormatLargeNumber(77500).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 4: |cffe6cc80"..FormatLargeNumber(22500).."|r, or |cffe6cc80"..FormatLargeNumber(45000).."|r, or |cffe6cc80"..FormatLargeNumber(77500).."|r, or |cffe6cc80"..FormatLargeNumber(110000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 5: |cffe6cc80"..FormatLargeNumber(33750).."|r, or |cffe6cc80"..FormatLargeNumber(77500).."|r, or |cffe6cc80"..FormatLargeNumber(110000).."|r, or |cffe6cc80"..FormatLargeNumber(142500).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 6: |cffe6cc80"..FormatLargeNumber(45000).."|r, or |cffe6cc80"..FormatLargeNumber(110000).."|r, or |cffe6cc80"..FormatLargeNumber(142500).."|r, or |cffe6cc80"..FormatLargeNumber(175000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 7: |cffe6cc80"..FormatLargeNumber(77500).."|r, or |cffe6cc80"..FormatLargeNumber(142500).."|r, or |cffe6cc80"..FormatLargeNumber(175000).."|r, or |cffe6cc80"..FormatLargeNumber(256520).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 8: |cffe6cc80"..FormatLargeNumber(110000).."|r, or |cffe6cc80"..FormatLargeNumber(175000).."|r, or |cffe6cc80"..FormatLargeNumber(256520).."|r, or |cffe6cc80"..FormatLargeNumber(337500).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 9: |cffe6cc80"..FormatLargeNumber(142500).."|r, or |cffe6cc80"..FormatLargeNumber(256520).."|r, or |cffe6cc80"..FormatLargeNumber(337500).."|r, or |cffe6cc80"..FormatLargeNumber(418750).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 10: |cffe6cc80"..FormatLargeNumber(175000).."|r, or |cffe6cc80"..FormatLargeNumber(337500).."|r, or |cffe6cc80"..FormatLargeNumber(418750).."|r, or |cffe6cc80"..FormatLargeNumber(500000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."As of rank 11 there are less than four honor milestones:")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 11: |cffe6cc80"..FormatLargeNumber(256520).."|r, or |cffe6cc80"..FormatLargeNumber(418750).."|r, or |cffe6cc80"..FormatLargeNumber(500000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 12: |cffe6cc80"..FormatLargeNumber(337500).."|r, or |cffe6cc80"..FormatLargeNumber(500000).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).." - Rank 13: |cffe6cc80"..FormatLargeNumber(418750).."|r honor")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Now that you know the honor milestones that make sense for you to meet, you can apply this to your situation.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."For example, if you're currently rank 13, there's only one way to progress: obtain |cffe6cc80"..FormatLargeNumber(418750).."|r honor and you'll eventually get to rank 14.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Meeting a milestone, and a minimum of 15 HK, is sufficient to make progress. Repeat this to advance ranks and meet your objective.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Ranker shows you the resulting rank and progress for each milestone, as well as the optimal path (including which milestone to meet) towards your objective.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."|cffe6cc80What is the impact of my level in the ranking system?|r")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Ranker currently assumes that you are at max level. |cffe6cc80Your progress may be different when you're not at max level|r.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."With more data from Season of Discovery it should eventually be possible to accurately predict all possible variations for each level.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n".."Note: You can |cffe6cc80hide this helpful information about the ranking system|r in the configuration options for Ranker. Type |cffe6cc80/ranker config|r to go there now.")
+                Ranker:SetFrameText(Ranker.FrameContent, Ranker:GetFrameText(Ranker.FrameContent).."\n")
+            end
+
             optionsChanged = false
         end
 
@@ -1094,6 +1170,7 @@
                 if inputCP >= contributionPointsFloor[key] and key <= inputRank then
                     rank = key
                     rankProgress = ((inputCP - contributionPointsFloor[key]) / (contributionPointsCeiling[key] - contributionPointsFloor[key]))
+                    if key >= maxObtainableRank then rank = maxObtainableRank rankProgress = 0 end
                 else
                     return rank, rankProgress
                 end
@@ -1290,7 +1367,7 @@
                                 end
                             end
                         end
-                        if lookupData.defaults.allowDecayPreventionHop == true or (lookupData.defaults.allowDecayPreventionHop ~= true and situation ~= "!!") then
+                        if (lookupData.defaults.allowDecayPreventionHop == true or (lookupData.defaults.allowDecayPreventionHop ~= true and situation ~= "!!")) and predictedNewRank <= maxObtainableRank then
                             tinsert(options, {["number"] = num, ["situation"] = situation, ["rank"] = predictedNewRank, ["rankProgress"] = predictedNewProgress, ["honorNeed"] = honorNeed, ["honorRemains"] = honorRemains, ["rankMin"] = predictedNewRankMin, ["rankProgressMin"] = predictedNewProgressMin, ["rankMax"] = predictedNewRankMax, ["rankProgressMax"] = predictedNewProgressMax})
                             Ranker:OutputToChat("  ChooseYourOwnAdventure option: "..num.." ("..situation..") need "..honorNeed.." honor ("..honorRemains.." more) for rank "..(predictedNewRankMin or "nil").." and "..(predictedNewProgressMin or "nil")..", or rank "..predictedNewRank.." and "..predictedNewProgress..", or rank "..(predictedNewRankMax or "nil").." and "..(predictedNewProgressMax or "nil")..".", debug)
                         end
